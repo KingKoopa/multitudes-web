@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Roost - Material Design Real Estate</title>
+
+        <!-- Vendors -->
+
+        <!-- Material design colors -->
+        <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+
+        <!-- CSS animations -->
+        <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css">
+
+        <!-- Site -->
+        <link rel="stylesheet" href="css/app_1.min.css">
+        <link rel="stylesheet" href="css/app_2.min.css">
+    </head>
+
+    <body>
+        <section id="main" class="four-zero">
+            <div class="four-zero__content">
+                <h1>404</h1>
+                <p>Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper</p>
+
+                <div class="four-zero__links">
+                    <a href="">Home page</a>
+                    <a href="">Previous page</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Older IE warning message -->
+        <!--[if lt IE 9]>
+            <div class="ie-warning">
+                <h1>Warning!!</h1>
+                <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+                <div class="ie-warning__inner">
+                    <ul class="ie-warning__download">
+                        <li>
+                            <a href="http://www.google.com/chrome/">
+                                <img src="img/browsers/chrome.png" alt="">
+                                <div>Chrome</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.mozilla.org/en-US/firefox/new/">
+                                <img src="img/browsers/firefox.png" alt="">
+                                <div>Firefox</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.opera.com">
+                                <img src="img/browsers/opera.png" alt="">
+                                <div>Opera</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.apple.com/safari/">
+                                <img src="img/browsers/safari.png" alt="">
+                                <div>Safari</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                                <img src="img/browsers/ie.png" alt="">
+                                <div>IE (New)</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <p>Sorry for the inconvenience!</p>
+            </div>
+        <![endif]-->
+
+        <!-- Javascript -->
+
+        <!-- jQuery -->
+        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Waves button ripple effects -->
+        <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+
+        <!-- Site functions and actions -->
+        <script src="js/app.min.js"></script>
+    </body>
+</html>

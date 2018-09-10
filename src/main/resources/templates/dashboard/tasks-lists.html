@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Roost - Material Design Real Estate</title>
+
+        <!-- Vendors -->
+
+        <!-- Material design colors -->
+        <link href="../vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+
+        <!-- CSS animations -->
+        <link rel="stylesheet" href="../vendors/bower_components/animate.css/animate.min.css">
+
+        <!-- Select 2 - Custom Selects -->
+        <link rel="stylesheet" href="../vendors/bower_components/sweetalert2/dist/sweetalert2.min.css">
+
+        <!-- SweetAlert2 - Custom Alerts -->
+        <link rel="stylesheet" href="../vendors/bower_components/select2/dist/css/select2.min.css">
+
+        <!-- Site -->
+        <link rel="stylesheet" href="../css/app_1.min.css">
+        <link rel="stylesheet" href="../css/app_2.min.css">
+
+        <!-- Page Loader JS -->
+        <script src="../js/page-loader.min.js" async></script>
+    </head>
+
+    <body>
+        <!-- Start page loader -->
+        <div id="page-loader">
+            <div class="page-loader__spinner"></div>
+        </div>
+        <!-- End page loader -->
+
+        <header id="header-alt">
+            <a href="" class="header-alt__trigger hidden-lg" data-rmd-action="block-open" data-rmd-target="#main__sidebar">
+                <i class="zmdi zmdi-menu"></i>
+            </a>
+
+            <a href="index.html" class="header-alt__logo hidden-xs">Roost Dashboard</a>
+
+            <ul class="header-alt__menu">
+                <li>
+                    <a href="" data-rmd-action="block-open" data-rmd-target=".header-alt__search-wrap" data-rmd-backdrop-class="backdrop--search">
+                        <i class="zmdi zmdi-search"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown"><i class="zmdi zmdi-notifications"></i></a>
+
+                    <div class="dropdown-menu dropdown-menu--lg pull-right">
+                        <div class="list-group__header">
+                            NOTIFICATIONS
+                        </div>
+                        <div class="list-group">
+                            <a class="list-group-item media" href="">
+                                <div class="pull-right">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>David Belle</strong>
+                                    <small>Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-right">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong class="lgi-heading">Jonathan Morris</strong>
+                                    <small class="lgi-text">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item" href="">
+                                <div class="list-group__text">
+                                    <strong>Fredric Mitchell Jr.</strong>
+                                    <small class="lgi-text">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item" href="">
+                                <div class="list-group__text">
+                                    <strong>Glenn Jecobs</strong>
+                                    <small class="lgi-text">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-right">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Bill Phillips</strong>
+                                    <small class="lgi-text">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                </div>
+                            </a>
+                            <a href="" class="view-more">View all</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown"><i class="zmdi zmdi-email"></i></a>
+
+                    <div class="dropdown-menu dropdown-menu--lg pull-right">
+                        <div class="list-group">
+                            <div class="list-group__header">
+                                MESSAGES
+                            </div>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>David Belle</strong>
+                                    <small>Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Jonathan Morris</strong>
+                                    <small>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Fredric Mitchell Jr.</strong>
+                                    <small>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Glenn Jecobs</strong>
+                                    <small>Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Bill Phillips</strong>
+                                    <small>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                </div>
+                            </a>
+
+                            <a class="view-more" href="">View all</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="hidden-xs">
+                    <a href="../index.html"><i class="zmdi zmdi-home"></i></a>
+                </li>
+                <li class="header-alt__profile dropdown">
+                    <a href="" data-toggle="dropdown">
+                        <img src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                    </a>
+
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="">Edit Profile</a></li>
+                        <li><a href="">Account Settings</a></li>
+                        <li><a href="">Other Settings</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="header-alt__search-wrap">
+                <form class="header-alt__search">
+                    <input type="text" placeholder="Search...">
+
+                    <i class="zmdi zmdi-long-arrow-left" data-rmd-action="block-close" data-rmd-target=".header-alt__search-wrap"></i>
+                </form>
+            </div>
+        </header>
+
+        <main id="main">
+            <aside id="main__sidebar">
+                <a class="hidden-lg main__block-close" href="" data-rmd-action="block-close" data-rmd-target="#main__sidebar">
+                    <i class="zmdi zmdi-long-arrow-left"></i>
+                </a>
+
+                <ul class="main-menu">
+                    <li><a target="_blank" href="../index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                    <li><a href="index.html"><i class="zmdi zmdi-chart"></i> Analytics</a></li>
+                    <li><a href="listings.html"><i class="zmdi zmdi-view-list"></i> Listings</a></li>
+                    <li><a href="leads.html"><i class="zmdi zmdi-assignment "></i> Leads</a></li>
+                    <li class="active"><a href="tasks-lists.html"><i class="zmdi zmdi-check-circle"></i> Tasks Lists</a></li>
+                    <li><a href="contacts.html"><i class="zmdi zmdi-account-box"></i> Contacts</a></li>
+                    <li><a href="notes.html"><i class="zmdi zmdi-file-text"></i> Notes</a></li>
+                    <li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
+                    <li><a href="questions-answers.html"><i class="zmdi zmdi-help"></i> Questions & Answers</a></li>
+                    <li><a href="activity-log.html"><i class="zmdi zmdi-time"></i> Activity Log</a></li>
+                </ul>
+            </aside>
+
+            <section id="main__content">
+                <div class="action-header-alt">
+                    <div class="action-header__item action-header__item--search">
+                        <form>
+                            <input type="text" placeholder="Search for tasks...">
+                        </form>
+                    </div>
+
+                    <div class="action-header__item action-header__add">
+                        <a href="#new-task" data-toggle="modal" class="btn btn-danger btn-sm">New Task</a>
+                    </div>
+
+                    <div class="action-header__item action-header__item--sort hidden-xs">
+                        <span class="action-header__small">Sort by :</span>
+
+                        <select class="select2">
+                            <option>Newest to oldest</option>
+                            <option>Oldest to Newest</option>
+                            <option>Priority highest</option>
+                            <option>Priority lowest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="main__container">
+                    <header class="main__title">
+                        <h2>Tasks Lists</h2>
+                        <small>Donec idelit nonmi porta gravida at eget metus</small>
+                    </header>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="list-group list-group--block tasks-lists">
+                                <div class="list-group__header text-left">
+                                    29 Total Tasks Lists
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-amber-400">F</i></span>
+                                            <span class="tasks-list__info">
+                                                Fivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor
+                                                <small class="text-muted">Today at 8.30 AM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Apartments</div>
+                                        <div>!!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-blue-400">N</i></span>
+                                            <span class="tasks-list__info">
+                                                Nullam id dolor id nibh ultricies vehicula ut id elit
+                                                <small class="text-muted">Today at 12.30 PM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Clients</div>
+                                        <div>!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-purple-400">C</i></span>
+                                            <span class="tasks-list__info">
+                                                Cras mattis consectetur purus sit amet fermentum
+                                                <small class="text-muted">Tomorrow at 10.30 AM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Clients</div>
+                                        <div>!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-green-400">M</i></span>
+                                            <span class="tasks-list__info">
+                                                Maecenas sed diam eget risus varius blandit sit amet non magna. Maecenas faucibus mollis interdum Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum
+                                                <small class="text-muted">Tomorrow at 05.10 PM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Marketing</div>
+                                        <div>!!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-blue-grey-400">I</i></span>
+                                            <span class="tasks-list__info">
+                                                Integer posuere erat a ante venenatis dapibus posuere velit aliquet
+                                                <small class="text-muted">05/08/2016 at 08.00 AM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Mortgage</div>
+                                        <div>!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-pink-400">V</i></span>
+                                            <span class="tasks-list__info">
+                                                Vestibulum id ligula porta felis euismod semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                                <small class="text-muted">06/08/2016 at 10.30 PM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Clients</div>
+                                        <div>!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-teal-400">D</i></span>
+                                            <span class="tasks-list__info">
+                                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et
+                                                <small class="text-muted">10/08/2016 at 09.20 AM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Apartment</div>
+                                        <div>!!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-purple-400">C</i></span>
+                                            <span class="tasks-list__info">
+                                                Curabitur blandit tempus porttitor
+                                                <small class="text-muted">15/08/2016 at 12.30 PM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Clients</div>
+                                        <div>!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-amber-400">A</i></span>
+                                            <span class="tasks-list__info">
+                                                Aenean lacinia bibendum nulla sed consectetur. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+                                                <small class="text-muted">16/08/2016 at 11.30 PM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Sold Items</div>
+                                        <div>!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-teal-400">D</i></span>
+                                            <span class="tasks-list__info">
+                                                Donec ullamcorper nulla non metus auctor fringilla. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                                                <small class="text-muted">21/08/2015 at 02.15 PM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Uncategorized</div>
+                                        <div>!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-item">
+                                    <div class="checkbox checkbox--char">
+                                        <label>
+                                            <input type="checkbox">
+                                            <span class="checkbox__helper"><i class="mdc-bg-cyan-400">Z</i></span>
+                                            <span class="tasks-list__info">
+                                                Zurabitur blandit tempus porttitor
+                                                <small class="text-muted">30/08/2016 at 10.00 AM</small>
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <div class="list-group__attrs">
+                                        <div>#Clients</div>
+                                        <div>!!</div>
+                                    </div>
+
+                                    <div class="actions list-group__actions">
+                                        <div class="dropdown">
+                                            <a href="" data-toggle="dropdown"><i class="zmdi zmdi-more-vert"></i></a>
+
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="">Mark as done</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" data-demo-action="delete-listing">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="load-more">
+                                <a href=""><i class="zmdi zmdi-refresh-alt"></i> Load more tasks</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 hidden-sm hidden-xs">
+                            <div class="card">
+                                <div class="card__header">
+                                    <h2>Labels</h2>
+                                    <small>Etiam porta malesuada magna mollis</small>
+                                </div>
+
+                                <div class="card__body tags-list">
+                                    <div class="tags-list__item">#Apartment</div>
+                                    <div class="tags-list__item">#Mortgage</div>
+                                    <div class="tags-list__item">#Client</div>
+                                    <div class="tags-list__item">#Marketing</div>
+                                    <div class="tags-list__item">#Shop</div>
+                                    <div class="tags-list__item">#Trading</div>
+                                    <div class="tags-list__item">#High Priority</div>
+                                    <div class="tags-list__item">#Sold Items</div>
+                                    <div class="tags-list__item">#Guide</div>
+                                    <div class="tags-list__item">#Uncategorized</div>
+                                    <div class="tags-list__item">#Others</div>
+                                </div>
+
+                                <div class="card__footer card__footer--highlight">
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="New Label">
+                                        <i class="form-group__bar"></i>
+                                    </div>
+
+                                    <button class="btn btn-sm btn-primary">Create Label</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- new Task Modal -->
+            <div class="modal fade" id="new-task" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">New Task</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" placeholder="What do you want to do?" class="form-control">
+                                <i class="form-group__bar"></i>
+                            </div>
+
+                            <div class="form-group">
+                                <select class="select2">
+                                    <option>Select Category</option>
+                                    <option>Apartment</option>
+                                    <option>Mortgage</option>
+                                    <option>Clients</option>
+                                    <option>Marketing</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Set Priority</label>
+                                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                    <label class="btn">
+                                        <input type="radio" name="priority-low">!
+                                    </label>
+                                    <label class="btn active">
+                                        <input type="radio" name="priority-normal" checked="">!!
+                                    </label>
+                                    <label class="btn">
+                                        <input type="radio" name="priority-high">!!!
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">Dismiss</button>
+                            <button type="button" class="btn btn-link">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer id="footer-alt">
+                Copyright © 2016 Roost Real Estate
+
+                <ul class="footer-alt__menu">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">Reports</a></li>
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </footer>
+        </main>
+
+        <!-- Javascript -->
+
+        <!-- jQuery -->
+        <script src="../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Waves button ripple effects -->
+        <script src="../vendors/bower_components/Waves/dist/waves.min.js"></script>
+
+        <!-- Select 2 - Custom Selects -->
+        <script src="../vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+        <!-- SweetAlert2 - Custom Alerts -->
+        <script src="../vendors/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+
+        <!-- IE9 Placeholder -->
+        <!--[if IE 9 ]>
+        <script src="../vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+
+        <!-- Site functions and actions -->
+        <script src="../js/app.min.js"></script>
+
+        <!-- Demo only -->
+        <script src="../js/demo/demo.js"></script>
+    </body>
+</html>

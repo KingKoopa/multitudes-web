@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Roost - Material Design Real Estate</title>
+
+        <!-- Vendors -->
+
+        <!-- Material design colors -->
+        <link href="../vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+
+        <!-- CSS animations -->
+        <link rel="stylesheet" href="../vendors/bower_components/animate.css/animate.min.css">
+
+        <!-- Select 2 - Custom Selects -->
+        <link rel="stylesheet" href="../vendors/bower_components/select2/dist/css/select2.min.css">
+
+        <!-- Site -->
+        <link rel="stylesheet" href="../css/app_1.min.css">
+        <link rel="stylesheet" href="../css/app_2.min.css">
+
+        <!-- Page Loader JS -->
+        <script src="../js/page-loader.min.js" async></script>
+    </head>
+
+    <body>
+        <!-- Start page loader -->
+        <div id="page-loader">
+            <div class="page-loader__spinner"></div>
+        </div>
+        <!-- End page loader -->
+
+        <header id="header-alt">
+            <a href="" class="header-alt__trigger hidden-lg" data-rmd-action="block-open" data-rmd-target="#main__sidebar">
+                <i class="zmdi zmdi-menu"></i>
+            </a>
+
+            <a href="index.html" class="header-alt__logo hidden-xs">Roost Dashboard</a>
+
+            <ul class="header-alt__menu">
+                <li>
+                    <a href="" data-rmd-action="block-open" data-rmd-target=".header-alt__search-wrap" data-rmd-backdrop-class="backdrop--search">
+                        <i class="zmdi zmdi-search"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown"><i class="zmdi zmdi-notifications"></i></a>
+
+                    <div class="dropdown-menu dropdown-menu--lg pull-right">
+                        <div class="list-group__header">
+                            NOTIFICATIONS
+                        </div>
+                        <div class="list-group">
+                            <a class="list-group-item media" href="">
+                                <div class="pull-right">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>David Belle</strong>
+                                    <small>Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-right">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong class="lgi-heading">Jonathan Morris</strong>
+                                    <small class="lgi-text">Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item" href="">
+                                <div class="list-group__text">
+                                    <strong>Fredric Mitchell Jr.</strong>
+                                    <small class="lgi-text">Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item" href="">
+                                <div class="list-group__text">
+                                    <strong>Glenn Jecobs</strong>
+                                    <small class="lgi-text">Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-right">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Bill Phillips</strong>
+                                    <small class="lgi-text">Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                </div>
+                            </a>
+                            <a href="" class="view-more">View all</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="" data-toggle="dropdown"><i class="zmdi zmdi-email"></i></a>
+
+                    <div class="dropdown-menu dropdown-menu--lg pull-right">
+                        <div class="list-group">
+                            <div class="list-group__header">
+                                MESSAGES
+                            </div>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>David Belle</strong>
+                                    <small>Cum sociis natoque penatibus et magnis dis parturient montes</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Jonathan Morris</strong>
+                                    <small>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Fredric Mitchell Jr.</strong>
+                                    <small>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Glenn Jecobs</strong>
+                                    <small>Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</small>
+                                </div>
+                            </a>
+                            <a class="list-group-item media" href="">
+                                <div class="pull-left">
+                                    <img class="list-group__img img-circle" width="40" height="40" src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                                </div>
+                                <div class="media-body list-group__text">
+                                    <strong>Bill Phillips</strong>
+                                    <small>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</small>
+                                </div>
+                            </a>
+
+                            <a class="view-more" href="">View all</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="hidden-xs">
+                    <a href="../index.html"><i class="zmdi zmdi-home"></i></a>
+                </li>
+                <li class="header-alt__profile dropdown">
+                    <a href="" data-toggle="dropdown">
+                        <img src="https://placeholdit.imgix.net/~text?&w=500&h=500" alt="">
+                    </a>
+
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="">Edit Profile</a></li>
+                        <li><a href="">Account Settings</a></li>
+                        <li><a href="">Other Settings</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="header-alt__search-wrap">
+                <form class="header-alt__search">
+                    <input type="text" placeholder="Search...">
+
+                    <i class="zmdi zmdi-long-arrow-left" data-rmd-action="block-close" data-rmd-target=".header-alt__search-wrap"></i>
+                </form>
+            </div>
+        </header>
+
+        <main id="main">
+            <aside id="main__sidebar">
+                <a class="hidden-lg main__block-close" href="" data-rmd-action="block-close" data-rmd-target="#main__sidebar">
+                    <i class="zmdi zmdi-long-arrow-left"></i>
+                </a>
+
+                <ul class="main-menu">
+                    <li><a target="_blank" href="../index.html"><i class="zmdi zmdi-home"></i> Home</a></li>
+                    <li><a href="index.html"><i class="zmdi zmdi-chart"></i> Analytics</a></li>
+                    <li class="active"><a href="listings.html"><i class="zmdi zmdi-view-list"></i> Listings</a></li>
+                    <li><a href="leads.html"><i class="zmdi zmdi-assignment "></i> Leads</a></li>
+                    <li><a href="tasks-lists.html"><i class="zmdi zmdi-check-circle"></i> Tasks Lists</a></li>
+                    <li><a href="contacts.html"><i class="zmdi zmdi-account-box"></i> Contacts</a></li>
+                    <li><a href="notes.html"><i class="zmdi zmdi-file-text"></i> Notes</a></li>
+                    <li><a href="calendar.html"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
+                    <li><a href="questions-answers.html"><i class="zmdi zmdi-help"></i> Questions & Answers</a></li>
+                    <li><a href="activity-log.html"><i class="zmdi zmdi-time"></i> Activity Log</a></li>
+                </ul>
+            </aside>
+
+            <section id="main__content">
+                <div class="action-header-alt">
+                    <a class="action-header__item action-header__back" href="listings.html">
+                        <i class="zmdi zmdi-long-arrow-left"></i>
+                        Back to listings
+                    </a>
+
+                    <div class="action-header__item action-header__add">
+                        <button class="btn btn-sm btn-warning">Save for later</button>
+                    </div>
+                </div>
+
+                <div class="main__container">
+                    <header class="main__title text-center">
+                        <h2>Add new listing</h2>
+                        <small>Morbi leo risus porta consectetur vestibulum ateros</small>
+                    </header>
+
+
+                    <div class="submit-property">
+                        <ul class="submit-property__steps">
+                            <li class="active"><a href="#submit-property__1"  data-toggle="tab">1</a></li>
+                            <li><a href="#submit-property__2" data-toggle="tab">2</a></li>
+                            <li><a href="#submit-property__3" data-toggle="tab">3</a></li>
+                            <li><a href="#submit-property__4" data-toggle="tab">4</a></li>
+                            <li><a href="#submit-property__5" data-toggle="tab">5</a></li>
+
+                            <li class="submit-property__caret"></li>
+                        </ul>
+
+                        <div class="tab-content submit-property__content">
+                            <div class="tab-pane fade in active" id="submit-property__1">
+                                <div class="card">
+                                    <div class="card__header">
+                                        <h2>Property Location</h2>
+                                        <small>Aenean lacinia bibendum nulla sed consectetur</small>
+                                    </div>
+
+                                    <form class="card__body">
+                                        <div class="form-group form-group--float m-b-5">
+                                            <input type="text" class="form-control">
+                                            <i class="form-group__bar"></i>
+                                            <label>Address</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label class="text-muted">
+                                                    <input type="checkbox">
+                                                    <i class="input-helper"></i>
+                                                    Hide Street number on listing
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-group--float m-b-5">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Unit/Floor/Block</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label class="text-muted">
+                                                    <input type="checkbox">
+                                                    <i class="input-helper"></i>
+                                                    Hide U/Floor/Block on listing
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <a href="#submit-property__2" data-toggle="tab" class="btn btn--circle btn-primary submit-property__button">
+                                            <i class="zmdi zmdi-long-arrow-right"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="submit-property__2">
+                                <div class="card">
+                                    <div class="card__header">
+                                        <h2>Contact Information</h2>
+                                        <small>Curabitur blandit tempus porttitor ligula malesuada</small>
+                                    </div>
+
+                                    <form class="card__body">
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Full Name</label>
+                                        </div>
+
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Organization Name (Opt.)</label>
+                                        </div>
+
+                                        <div class="form-group form-group--float form-group--float-center m-b-5">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Email Address</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label class="text-muted">
+                                                    <input type="checkbox">
+                                                    <i class="input-helper"></i>
+                                                    Hide Email Address on listing
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Contact Number</label>
+                                        </div>
+
+                                        <a href="#submit-property__3" data-toggle="tab" class="btn btn--circle btn-primary submit-property__button">
+                                            <i class="zmdi zmdi-long-arrow-right"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="submit-property__3">
+                                <div class="card">
+                                    <div class="card__header">
+                                        <h2>Sale Information</h2>
+                                        <small>Nullam iddolor dnibh ultricies vehicula utielit</small>
+                                    </div>
+
+                                    <form class="card__body">
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Askin Price</label>
+                                        </div>
+
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Maintenance amount per month</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Owner Information</label>
+                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                                <label class="btn active">
+                                                    <input type="radio" name="advanced-search-beds" checked>Agent
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="advanced-search-beds">Owner
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="advanced-search-beds">Other
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <a href="#submit-property__4" data-toggle="tab" class="btn btn--circle btn-primary submit-property__button">
+                                            <i class="zmdi zmdi-long-arrow-right"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="submit-property__4">
+                                <div class="card">
+                                    <div class="card__header">
+                                        <h2>Property Information</h2>
+                                        <small>Sed posuere consectetur estat lobortis ultricies</small>
+                                    </div>
+
+                                    <form class="card__body">
+                                        <div class="form-group">
+                                            <label>Property Type</label>
+
+                                            <select class="select2">
+                                                <option value="">Single Family Home</option>
+                                                <option value="">Condo</option>
+                                                <option value="">Townhome</option>
+                                                <option value="">Apartment Community</option>
+                                                <option value="">Room</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Property title</label>
+                                        </div>
+
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <textarea class="form-control text-center textarea-autoheight"></textarea>
+                                            <i class="form-group__bar"></i>
+                                            <label>Description</label>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-group--float form-group--float-center">
+                                                    <input type="text" class="form-control text-center">
+                                                    <i class="form-group__bar"></i>
+                                                    <label>Square Feet</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group form-group--float form-group--float-center">
+                                                    <input type="text" class="form-control text-center">
+                                                    <i class="form-group__bar"></i>
+                                                    <label>Lot Size</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-group--float form-group--float-center">
+                                            <input type="text" class="form-control text-center">
+                                            <i class="form-group__bar"></i>
+                                            <label>Year Built</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Bedrooms</label>
+                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">1
+                                                </label>
+                                                <label class="btn active">
+                                                    <input type="radio" name="inner-search-beds" checked>2
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">3
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">4
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">4+
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Bathrooms</label>
+                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">1
+                                                </label>
+                                                <label class="btn active">
+                                                    <input type="radio" name="inner-search-beds" checked>2
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">3
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">4
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">4+
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>No. of Floors</label>
+                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">1
+                                                </label>
+                                                <label class="btn active">
+                                                    <input type="radio" name="inner-search-beds" checked>2
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">3
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">4
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">4+
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Parking Space</label>
+                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">1
+                                                </label>
+                                                <label class="btn active">
+                                                    <input type="radio" name="inner-search-beds" checked>2
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">3
+                                                </label>
+                                                <label class="btn">
+                                                    <input type="radio" name="inner-search-beds">3+
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <a href="#submit-property__5" data-toggle="tab" class="btn btn--circle btn-primary submit-property__button">
+                                            <i class="zmdi zmdi-check"></i>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="submit-property__5">
+                                <div class="card">
+                                    <div class="submit-property__success">
+                                        <i class="zmdi zmdi-check"></i>
+
+                                        <h2>Successful!</h2>
+                                        <p>Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <footer id="footer-alt">
+                Copyright © 2016 Roost Real Estate
+
+                <ul class="footer-alt__menu">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Dashboard</a></li>
+                    <li><a href="">Reports</a></li>
+                    <li><a href="">Support</a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </footer>
+        </main>
+
+        <!-- Javascript -->
+
+        <!-- jQuery -->
+        <script src="../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Waves button ripple effects -->
+        <script src="../vendors/bower_components/Waves/dist/waves.min.js"></script>
+
+        <!-- Select 2 - Custom Selects -->
+        <script src="../vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+        <!-- Autosize - Textarea Auto height -->
+        <script src="../vendors/bower_components/autosize/dist/autosize.min.js"></script>
+
+        <!-- IE9 Placeholder -->
+        <!--[if IE 9 ]>
+        <script src="../vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+
+        <!-- Site functions and actions -->
+        <script src="../js/app.min.js"></script>
+
+        <!-- Demo only -->
+        <script src="../js/demo/demo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fundación Multitudes</title>
+
+        <!-- Vendors -->
+
+        <!-- Material design colors -->
+        <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+
+        <!-- CSS animations -->
+        <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css">
+
+        <!-- Select2 - Custom Selects -->
+        <link rel="stylesheet" href="vendors/bower_components/select2/dist/css/select2.min.css">
+
+        <!-- NoUiSlider - Input Slider -->
+        <link rel="stylesheet" href="vendors/bower_components/nouislider/distribute/nouislider.min.css">
+
+        <!-- Light Gallery -->
+        <link rel="stylesheet" href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css">
+
+        <!-- rateYo - Ratings -->
+        <link rel="stylesheet" href="vendors/bower_components/rateYo/src/jquery.rateyo.css">
+
+        <!-- Site -->
+        <link rel="stylesheet" href="css/app_1.min.css">
+        <link rel="stylesheet" href="css/app_2.min.css">
+
+        <!-- Page Loader JS -->
+        <script src="js/page-loader.min.js" async></script>
+        
+		<style type="text/css">
+			.TFtable{
+				width:100%; 
+				border-collapse:collapse; 
+			}
+			.TFtable td{ 
+				padding:7px; border:#4e95f4 1px solid;
+			}
+			/* provide some minimal visual accomodation for IE8 and below */
+			.TFtable tr{
+				background: #b8d1f3;
+			}
+			/*  Define the background color for all the ODD background rows  */
+			.TFtable tr:nth-child(odd){ 
+				background: #b8d1f3;
+			}
+			/*  Define the background color for all the EVEN background rows  */
+			.TFtable tr:nth-child(even){
+				background: #dae5f4;
+			}
+		</style>
+        
+    </head>
+
+    <body>
+        <!-- Start page loader -->
+        <div id="page-loader">
+            <div class="page-loader__spinner"></div>
+        </div>
+        <!-- End page loader -->
+
+        <header id="header">
+
+            <div class="header__main">
+                <div class="container">
+                    <a class="logo" href="index.html">
+                        <img src="img/logo.png" alt="">
+                        <div class="logo__text">
+                            <span>Fundación Multitudes</span>
+                            <span>Slogan</span>
+                        </div>
+                    </a>
+
+                    <div class="navigation-trigger visible-xs visible-sm" data-rmd-action="block-open" data-rmd-target=".navigation">
+                        <i class="zmdi zmdi-menu"></i>
+                    </div>
+
+                    <ul class="navigation">
+                        <li class="visible-xs visible-sm"><a class="navigation__close" data-rmd-action="navigation-close" href=""><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+
+                        <li class="navigation__dropdown">
+                            <a href="index.html">Home</a>
+                        </li>
+                        
+                         <li class="navigation__dropdown">
+                            <a href="index.html">Proveedores</a>
+                        </li>
+                        
+                        <li class="navigation__dropdown">
+                            <a href="index.html">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <section class="section">
+            <div class="container">
+                <header class="section__title section__title-alt">
+                    <h2>Lobby + Compras</h2>
+                    <small>Ficha Sujeto Pasivo</small>
+                    <br>
+	                <form>
+	                    <div class="search">
+	                        <div class="search__type dropdown">
+	                            <a data-toggle="dropdown" href="">Buscar</a>
+	                        </div>
+	
+	                        <div class="search__body">
+	                            <input class="search__input" data-rmd-action="advanced-search-open" placeholder="Ingrese criterios de búsqueda..." type="text">
+	                        </div>
+	                    </div>
+	                </form>
+                </header>
+				
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="detail-info">
+                                <div class="detail-info__header clearfix">
+                                    <strong>Hospital Til - Til</strong>
+                                    <small>61.608.006-7</small>
+                                </div>
+
+                                <ul class="detail-info__list clearfix">
+                                    <li>
+                                        <span>Monto Licitado:</span>
+                                        <span>$300.000.000</span>
+                                    </li>
+                                    
+                                    <!-- Sujetos pasivos -->
+                                    <li>
+	                                    <span></span>
+	                                    </li>
+	                                    <!-- Nº de audiencias -->
+	                                    <li>
+		                                    <span>Sujetos pasivos:</span>
+		                                    <span>1</span> 
+		                                    <a id="btn_ver_sujetos_pasivos" class="btn btn-primary btn-block" style="width:25%">Ver+</a>
+	                                    </li>
+	                                    <li>
+	                                    <div id="sujetos_pasivos_detail_table" style="display:none;">
+	                                    <table class="TFtable" style="width:100%">
+										  <tr>
+										    <th>Nombre Completo</th>
+										    <th>Cargo</th> 
+										  </tr>
+										  <tr>
+										  	<td>Joyce Valle Chacon</td>
+										    <td>Contabilidad</td>
+										  </tr>
+										</table>
+	                                    </div>
+									</li>
+                                    
+                                    <li><span></span></li>
+									<li><span></span></li>
+                                    
+                                    <!-- Nº de audiencias -->
+                                    <li>
+                                    <span>Nº de audiencias:</span>
+                                    <span>2</span> 
+                                    <a id="btn_ver_detalle_audiencia" class="btn btn-primary btn-block" style="width:25%">Ver+</a>
+                                    </li>
+                                    <li>
+                                    <div id="audiencias_detail_table" style="display:none;">
+                                    <table class="TFtable" style="width:100%">
+									  <tr>
+									    <th>Proveedores</th>
+									    <th>No Proveedores</th> 
+									  </tr>
+									  <tr>
+									  	<td>20</td>
+									    <td>10</td>
+									  </tr>
+									</table>
+                                    </div>
+								</li>
+								<li><span></span></li>
+								<li><span></span></li>
+								<!-- Licitaciones en la que participo -->
+								<li>
+                                    <span>Licitaciones públicas:</span>
+                                    <span>3</span> 
+                                    <a id="btn_ver_detalle_licitaciones" class="btn btn-primary btn-block" style="width:25%">Ver+</a>
+                                    </li>
+                                    <li>
+                                    <div id="licitaciones_detail_table" style="display:none;">
+                                    <table class="TFtable" style="width:100%">
+									  <tr>
+									    <th>Tipo</th>
+									    <th>Cantidad</th> 
+									    <th>Monto($)</th>
+									  </tr>
+									  <tr>
+									    <td>Compra Pública</td>
+									    <td>1</td> 
+									    <td>$100.000.000</td>
+									  </tr>
+									  <tr>
+									    <td>Contrato Directo</td>
+									    <td>1</td> 
+									    <td>$100.000.000</td>
+									  </tr>
+									  <tr>
+									    <td>Convenio Marco</td>
+									    <td>1</td> 
+									    <td>$100.000.000</td>
+									  </tr>
+									</table>
+                                    </div>
+								</li>
+								
+                                </ul>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Listing Search -->
+        <button class="btn btn--action btn--circle hidden-md hidden-lg" data-rmd-action="block-open" data-rmd-target="#inquire">
+            <i class="zmdi zmdi-phone"></i>
+        </button>
+
+        <footer id="footer">
+            <div class="container hidden-xs">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="footer__block">
+                            <a class="logo clearfix" href="">
+                                <div class="logo__text">
+                                    <span>Fundación Multitudes</span>
+                                    <span>Slogan</span>
+                                </div>
+                            </a>
+
+                            <address class="m-t-20 m-b-20 f-14">
+                                Román Díaz #445, Providencia, Región Metropolitana
+                            </address>
+
+                            <div class="f-20">9 9509 0351</div>
+                            <div class="f-14 m-t-5">hola@fundacionmultitudes.com / info@fundacionmultitudes.com</div>
+
+                            <div class="f-20 m-t-20">
+                                <a href="" class="m-r-10"><i class="zmdi zmdi-google"></i></a>
+                                <a href="" class="m-r-10"><i class="zmdi zmdi-facebook"></i></a>
+                                <a href=""><i class="zmdi zmdi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-4">
+                        <div class="footer__block footer__block--blog">
+                            <div class="footer__title">Latest from our blog</div>
+
+                            <a href="">
+                                Aenean lacinia bibendum nulla sed
+                                <small>On 2016/06/20 at 6:00 PM</small>
+                            </a>
+                            <a href="">
+                                Vestibulum id ligula porta felis euismod semper
+                                <small>On 2016/06/18 at 7:12 PM</small>
+                            </a>
+                            <a href="">
+                                Etiam porta sem malesuada magna mollis euismod
+                                <small>On 2016/06/10 at 12:59 PM</small>
+                            </a>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-sm-4">
+                        <div class="footer__block">
+                            <div class="footer__title">Disclaimer</div>
+
+                            <div>Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="container">
+                    <span class="footer__copyright">© Fundación Multitudes</span>
+
+                    <a href="">Sobre Nosotros</a>
+                    <a href="">Términos y condiciones</a>
+                    <a href="">Políticas de privacidad</a>
+                </div>
+
+                <div class="footer__to-top" data-rmd-action="scroll-to" data-rmd-target="html">
+                    <i class="zmdi zmdi-chevron-up"></i>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Older IE warning message -->
+        <!--[if lt IE 9]>
+        <div class="ie-warning">
+            <h1>Warning!!</h1>
+            <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+            <div class="ie-warning__inner">
+                <ul class="ie-warning__download">
+                    <li>
+                        <a href="http://www.google.com/chrome/">
+                            <img src="img/browsers/chrome.png" alt="">
+                            <div>Chrome</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mozilla.org/en-US/firefox/new/">
+                            <img src="img/browsers/firefox.png" alt="">
+                            <div>Firefox</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.opera.com">
+                            <img src="img/browsers/opera.png" alt="">
+                            <div>Opera</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.apple.com/safari/">
+                            <img src="img/browsers/safari.png" alt="">
+                            <div>Safari</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                            <img src="img/browsers/ie.png" alt="">
+                            <div>IE (New)</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p>Sorry for the inconvenience!</p>
+        </div>
+        <![endif]-->
+
+
+        <!-- Javascript -->
+
+        <!-- jQuery -->
+        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Waves button ripple effects -->
+        <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+
+        <!-- Select 2 - Custom Selects -->
+        <script src="vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
+
+        <!-- NoUiSlider -->
+        <script src="vendors/bower_components/nouislider/distribute/nouislider.min.js"></script>
+
+        <!-- Light Gallery -->
+        <script src="vendors/bower_components/lightgallery/dist/js/lightgallery-all.min.js"></script>
+
+        <!-- rateYo - Ratings -->
+        <script src="vendors/bower_components/rateYo/src/jquery.rateyo.js"></script>
+
+        <!-- Autosize - Auto height textarea -->
+        <script src="vendors/bower_components/autosize/dist/autosize.min.js"></script>
+
+        <!-- jsSocials - Social link sharing -->
+        <script src="vendors/bower_components/jssocials/dist/jssocials.min.js"></script>
+
+        <!-- Flot Charts -->
+        <script src="vendors/bower_components/Flot/jquery.flot.js"></script>
+        <script src="vendors/bower_components/Flot/jquery.flot.resize.js"></script>
+        <script src="vendors/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+
+        <!-- IE9 Placeholder -->
+        <!--[if IE 9 ]>
+        <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+
+        <!-- Site functions and actions -->
+        <script src="js/app.min.js"></script>
+
+        <!-- Demo only -->
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A" async></script>
+        <script src="js/demo/demo.js"></script>
+        <script src="js/demo/maps/listing-detail-location-map.js"></script>
+        <script src="js/demo/charts/line-chart.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        
+        <script>
+        $(document).ready(function() {
+        	
+        		//lista sujetos pasivos:
+        			$("#btn_ver_sujetos_pasivos").click(function(e){
+				if($("#sujetos_pasivos_detail_table").is(':visible')){
+					$("#sujetos_pasivos_detail_table").hide();
+					$("#btn_ver_sujetos_pasivos").text("Ver +");
+				}else{
+					$("#sujetos_pasivos_detail_table").show();
+					$("#btn_ver_sujetos_pasivos").text("Ver -");
+				}
+			});
+        	
+			//audiencias
+			$("#btn_ver_detalle_audiencia").click(function(e){
+				if($("#audiencias_detail_table").is(':visible')){
+					$("#audiencias_detail_table").hide();
+					$("#btn_ver_detalle_audiencia").text("Ver +");
+				}else{
+					$("#audiencias_detail_table").show();
+					$("#btn_ver_detalle_audiencia").text("Ver -");
+				}
+			});
+			
+			//Licitaciones:
+			$("#btn_ver_detalle_licitaciones").click(function(e){
+				if($("#licitaciones_detail_table").is(':visible')){
+					$("#licitaciones_detail_table").hide();
+					$("#btn_ver_detalle_licitaciones").text("Ver +");
+				}else{
+					$("#licitaciones_detail_table").show();
+					$("#btn_ver_detalle_licitaciones").text("Ver -");
+				}
+			});
+        });	
+		</script>
+    </body>
+    
+</html>

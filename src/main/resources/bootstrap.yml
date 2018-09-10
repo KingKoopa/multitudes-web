@@ -1,0 +1,9 @@
+---
+## Server
+server:
+  port: 9000
+  compression:
+    enabled: true
+    minResponseSize: 256
+    mimeTypes:
+      - application/json
