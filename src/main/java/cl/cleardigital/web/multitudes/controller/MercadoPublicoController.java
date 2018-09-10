@@ -39,5 +39,7 @@ public class MercadoPublicoController {
 		
 		return new ResponseEntity<List<LicitacionDetailDTO>>(licitacionDetailDTOLst, HttpStatus.OK);
 	}
+	
+	
 
 }
