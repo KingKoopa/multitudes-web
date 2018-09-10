@@ -175,6 +175,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		return licitacionDetailDTOLst;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo) throws Exception {
 		log.info("MercadoPublicoService::getFichaSujetoPasivo()");
@@ -223,5 +224,9 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		});
 		return newSujetoPasivoCabeceraLicitaciones; 
 	}
+=======
+	
+	
+>>>>>>> 7722fa3d6dc97a2375149e854a8d2f3268092baa
 
 }
