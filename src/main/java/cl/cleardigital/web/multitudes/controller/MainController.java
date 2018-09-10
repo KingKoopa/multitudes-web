@@ -25,12 +25,6 @@ public class MainController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(path= {"ficha-sujeto-pasivo"}, method = RequestMethod.GET)
-	public ModelAndView fichaSujetoPasivo() throws Exception{
-		ModelAndView modelAndView = new ModelAndView("passive-subject-list");
-		return modelAndView;
-	}
-	
 	@RequestMapping(path= {"ficha-por-categoria"}, method = RequestMethod.GET)
 	public ModelAndView fichaPorCategoria() throws Exception{
 		ModelAndView modelAndView = new ModelAndView("category-subject-list");

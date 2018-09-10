@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraLicitacionesDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailListadoDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionHeaderDTO;
@@ -171,6 +175,53 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		return licitacionDetailDTOLst;
 	}
 
-	
+	@Override
+	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo) throws Exception {
+		log.info("MercadoPublicoService::getFichaSujetoPasivo()");
+		List<LicitacionDetalle> licitacionDetalleLst =  licitacionDetalleRepository.findByCompradorRutUnidad(rutOrganismo);
+		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
+		if(licitacionDetalleLst != null && !licitacionDetalleLst.isEmpty()) {
+			Integer montoLicitado = 0;
+			sujetoPasivoCabeceraDTO.setNombreComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorNombreOrganismo());
+			sujetoPasivoCabeceraDTO.setRutComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorRutUnidad());
+			List<SujetoPasivoCabeceraLicitacionesDTO> sujetoPasivoCabeceraLicitacionesDTOLst = new ArrayList<>();
+			
+			for(LicitacionDetalle licitacionDetalle : licitacionDetalleLst) {
+				for(LicitacionItem items : licitacionDetalle.getItems()) {
+					if(items.getAdjudicacionAntidad() != null && items.getAdjudicacionMontoUnitario() != null) {
+						montoLicitado = items.getAdjudicacionAntidad() * items.getAdjudicacionMontoUnitario();
+					}
+					//tipos de licitacion:
+					SujetoPasivoCabeceraLicitacionesDTO sujetoPasivoCabeceraLicitacionesDTO = new SujetoPasivoCabeceraLicitacionesDTO();
+					sujetoPasivoCabeceraLicitacionesDTO.setTipoLicitacion(licitacionDetalle.getTipo());
+					sujetoPasivoCabeceraLicitacionesDTOLst.add(sujetoPasivoCabeceraLicitacionesDTO);
+				}
+				
+			}
+			sujetoPasivoCabeceraDTO.setMontoLicitado(montoLicitado);
+			//agrupar licitaciones y cantidad:
+			Map<String, Long> result =
+					sujetoPasivoCabeceraLicitacionesDTOLst.stream().collect(
+	                        Collectors.groupingBy(
+	                        		SujetoPasivoCabeceraLicitacionesDTO::getTipoLicitacion, Collectors.counting()
+	                        )
+	                );
+
+	        sujetoPasivoCabeceraDTO.setCabecerasLicitacion(_populateSujetoPasivoCabeceraLicitaciones(result));
+		
+		}
+		return sujetoPasivoCabeceraDTO;
+	}
+
+	private List<SujetoPasivoCabeceraLicitacionesDTO> _populateSujetoPasivoCabeceraLicitaciones(Map<String, Long> result){
+		List<SujetoPasivoCabeceraLicitacionesDTO> newSujetoPasivoCabeceraLicitaciones = new ArrayList<>();
+		result.forEach((key,value)->{
+			SujetoPasivoCabeceraLicitacionesDTO sujetoPasivoCabeceraLicitacionesDTO = new SujetoPasivoCabeceraLicitacionesDTO();
+			sujetoPasivoCabeceraLicitacionesDTO.setTipoLicitacion(key);
+			sujetoPasivoCabeceraLicitacionesDTO.setCantidad(value.intValue());
+			newSujetoPasivoCabeceraLicitaciones.add(sujetoPasivoCabeceraLicitacionesDTO);
+		});
+		return newSujetoPasivoCabeceraLicitaciones; 
+	}
 
 }
