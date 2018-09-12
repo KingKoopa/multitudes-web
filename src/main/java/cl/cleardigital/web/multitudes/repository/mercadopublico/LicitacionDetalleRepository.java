@@ -10,10 +10,8 @@ public interface LicitacionDetalleRepository extends JpaRepository<LicitacionDet
 	
 	public List<LicitacionDetalle> findDistinctByItemsAdjudicacionRutProveedor(String rutProveedor);
 	
-<<<<<<< HEAD
 	public List<LicitacionDetalle> findByCompradorRutUnidad(String rutOrganismo);
-=======
+
 	public List<LicitacionDetalle> findDistinctByCompradorRutUnidad(String rutUnidad);
 	
->>>>>>> 7722fa3d6dc97a2375149e854a8d2f3268092baa
 }
