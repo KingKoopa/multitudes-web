@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailListadoDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionHeaderDTO;
@@ -169,6 +170,16 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			});
 		}
 		return licitacionDetailDTOLst;
+	}
+	
+	@Override
+	public List<SujetoActivoCabeceraDTO> getCompradoresPorRut(String rutUnidad)throws Exception {
+		
+		List<SujetoActivoCabeceraDTO> licitacionDetalleLst = licitacionDetalleRepository.getDistinctByCompradorRutUnidad(rutUnidad);
+		
+		log.info(licitacionDetalleLst.toString());          
+		return licitacionDetalleLst;
+		
 	}
 
 	
