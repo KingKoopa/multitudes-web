@@ -1,10 +1,14 @@
 package cl.cleardigital.web.multitudes.dto.fichas;
 
+import java.io.Serializable;
 import java.util.List;
 
-import cl.cleardigital.web.multitudes.dto.leylobby.DataDTO;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-public class SujetoActivoCabeceraDTO {
+@JsonInclude(Include.NON_NULL)
+@SuppressWarnings("serial")
+public class SujetoActivoCabeceraDTO implements Serializable{
 	
 	private String nombreProveedor;
 	private String rutProveedor;

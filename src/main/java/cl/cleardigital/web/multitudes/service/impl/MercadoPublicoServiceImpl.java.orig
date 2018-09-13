@@ -14,9 +14,12 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+<<<<<<< HEAD
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraLicitacionesDTO;
+=======
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+>>>>>>> a212e3f963b2fb1073ae7394d002d032dc861267
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailListadoDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionHeaderDTO;
@@ -175,6 +178,16 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		}
 		return licitacionDetailDTOLst;
 	}
+	
+	@Override
+	public List<SujetoActivoCabeceraDTO> getCompradoresPorRut(String rutUnidad)throws Exception {
+		
+		List<SujetoActivoCabeceraDTO> licitacionDetalleLst = licitacionDetalleRepository.getDistinctByCompradorRutUnidad(rutUnidad);
+		
+		log.info(licitacionDetalleLst.toString());          
+		return licitacionDetalleLst;
+		
+	}
 
 	@Override
 	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo) throws Exception {
@@ -228,19 +241,5 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		});
 		return newSujetoPasivoCabeceraLicitaciones; 
 	}
-
-	
-	@Override
-	public List<SujetoActivoCabeceraDTO> getCompradoresPorRut(String rutUnidad)throws Exception {
-		
-		List<SujetoActivoCabeceraDTO> licitacionDetalleLst = licitacionDetalleRepository.getDistinctByCompradorRutUnidad(rutUnidad);
-		
-		log.info(licitacionDetalleLst.toString());          
-		return licitacionDetalleLst;
-		
-	}
-
-	
-	
 
 }

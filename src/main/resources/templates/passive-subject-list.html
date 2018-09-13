@@ -8,25 +8,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Fundación Multitudes</title>
 
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		
+		<!-- JS file -->
+		<script src="js/jquery.easy-autocomplete.min.js"></script>
+		
+		<!-- CSS file -->
+		<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
+		
         <!-- Vendors -->
-
+		
         <!-- Material design colors -->
-        <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+<!--         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet"> -->
 
-        <!-- CSS animations -->
-        <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css">
+<!--         CSS animations -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css"> -->
 
-        <!-- Select2 - Custom Selects -->
-        <link rel="stylesheet" href="vendors/bower_components/select2/dist/css/select2.min.css">
+<!--         Select2 - Custom Selects -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/select2/dist/css/select2.min.css"> -->
 
-        <!-- NoUiSlider - Input Slider -->
-        <link rel="stylesheet" href="vendors/bower_components/nouislider/distribute/nouislider.min.css">
+<!--         NoUiSlider - Input Slider -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/nouislider/distribute/nouislider.min.css"> -->
 
-        <!-- Light Gallery -->
-        <link rel="stylesheet" href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css">
+<!--         Light Gallery -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css"> -->
 
-        <!-- rateYo - Ratings -->
-        <link rel="stylesheet" href="vendors/bower_components/rateYo/src/jquery.rateyo.css">
+<!--         rateYo - Ratings -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/rateYo/src/jquery.rateyo.css"> -->
 
         <!-- Site -->
         <link rel="stylesheet" href="css/app_1.min.css">
@@ -114,7 +122,7 @@
 	                        </div>
 	
 	                        <div class="search__body">
-	                            <input class="search__input" id="rutOrganismo" name="rutOrganismo" data-rmd-action="advanced-search-open" placeholder="Ingrese criterios de búsqueda..." type="text">
+	                            <input class="search__input" id="searchField" name="searchField" data-rmd-action="advanced-search-open" placeholder="Ingrese criterios de búsqueda..." type="text">
 	                        </div>
 	                    </div>
 	                </form>
@@ -360,36 +368,36 @@
         <!-- Javascript -->
 
         <!-- jQuery -->
-        <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
-        <!-- Bootstrap -->
+        Bootstrap
         <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-        <!-- Waves button ripple effects -->
+        Waves button ripple effects
         <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
 
-        <!-- Select 2 - Custom Selects -->
+        Select 2 - Custom Selects
         <script src="vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
 
-        <!-- NoUiSlider -->
+        NoUiSlider
         <script src="vendors/bower_components/nouislider/distribute/nouislider.min.js"></script>
 
-        <!-- Light Gallery -->
+        Light Gallery
         <script src="vendors/bower_components/lightgallery/dist/js/lightgallery-all.min.js"></script>
 
-        <!-- rateYo - Ratings -->
+        rateYo - Ratings
         <script src="vendors/bower_components/rateYo/src/jquery.rateyo.js"></script>
 
-        <!-- Autosize - Auto height textarea -->
+        Autosize - Auto height textarea
         <script src="vendors/bower_components/autosize/dist/autosize.min.js"></script>
 
-        <!-- jsSocials - Social link sharing -->
+        jsSocials - Social link sharing
         <script src="vendors/bower_components/jssocials/dist/jssocials.min.js"></script>
 
-        <!-- Flot Charts -->
+        Flot Charts
         <script src="vendors/bower_components/Flot/jquery.flot.js"></script>
         <script src="vendors/bower_components/Flot/jquery.flot.resize.js"></script>
-        <script src="vendors/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+        <script src="vendors/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script> -->
 
         <!-- IE9 Placeholder -->
         <!--[if IE 9 ]>
@@ -404,7 +412,8 @@
         <script src="js/demo/demo.js"></script>
         <script src="js/demo/maps/listing-detail-location-map.js"></script>
         <script src="js/demo/charts/line-chart.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		
+		
         
         <script>
         $(document).ready(function() {
@@ -443,6 +452,30 @@
 			});
         });	
 		</script>
+		
+		 <script>
+		var options = {
+			url : function(phrase) {
+				return "http://localhost:9000/mercado-publico/search?rutUnidad="
+						+ phrase;
+			},
+			adjustWidth : false,
+			getValue : "rutProveedor",
+			minCharNumber : 3,
+			list : {
+				match : {
+					enabled : true
+				},
+				onChooseEvent : function() {
+					var selectedItemValue = $("#searchField")
+							.getSelectedItemData().fiscalId;
+					$("#fiscalId").val(selectedItemValue);
+				}
+			}
+		};
+
+		$("#searchField").easyAutocomplete(options);
+	</script> 
     </body>
     
 </html>

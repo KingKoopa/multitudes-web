@@ -25,9 +25,13 @@ public interface LeyLobbyFeignClient {
 			) throws Exception;
 	
 	@RequestMapping(value = "/audiencias/{audiencia_id}", method = RequestMethod.GET)
-	public ResponseEntity<String> getAudienciaDetallle(
+	public ResponseEntity<String> getAudienciaDetalle(
 			@PathVariable(name="audiencia_id") Integer audienciaId
 			) throws Exception;
 	
+	@RequestMapping(value = "/instituciones/{institucion_id}", method = RequestMethod.GET)
+	public ResponseEntity<String> getInstitucionDetalle(
+			@PathVariable(name="institucion_id") Integer institucionId
+			) throws Exception;
 }
 

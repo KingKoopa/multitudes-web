@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.service.MercadoPublicoService;
 import cl.cleardigital.web.multitudes.util.RUTValidator;
@@ -39,6 +41,24 @@ public class MercadoPublicoController {
 		
 		return new ResponseEntity<List<LicitacionDetailDTO>>(licitacionDetailDTOLst, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ResponseEntity<?> getCompradoresPorRut(
+			@RequestParam(name="rutUnidad") String rutUnidad
+			) throws Exception {
+		List<SujetoActivoCabeceraDTO> licitacionDetailDTOLst = mainService.getCompradoresPorRut(rutUnidad);
+		return new ResponseEntity<List<SujetoActivoCabeceraDTO>>(licitacionDetailDTOLst, HttpStatus.OK);
+	}
+	
+	
+	/*@RequestMapping(value="/traer-compradores-por-rut", method = RequestMethod.GET)
+	public ResponseEntity<?> getCompradoresPorRut(
+			@RequestParam(value="rutUnidad") String rutUnidad) throws Exception{
+		
+		List<LicitacionDetailDTO> licitacionDetailDTOLst = mainService.getCompradoresPorRut(rutUnidad);
+		
+		return new ResponseEntity<List<LicitacionDetailDTO>>(licitacionDetailDTOLst, HttpStatus.OK);
+	}*/
 	
 	
 

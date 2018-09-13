@@ -84,7 +84,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
 			audienciaCabeceraLst.stream().forEach(audienciaCabecera ->{
 				try {
-					leyLobbyFeignClient.getAudienciaDetallle(audienciaCabecera.getAudienceDetailId());
+					leyLobbyFeignClient.getAudienciaDetalle(audienciaCabecera.getAudienceDetailId());
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -92,6 +92,26 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 			});
 		}
 		return Boolean.TRUE;
+	}
+
+	@Override
+	public Boolean getInstitucionesDetalle() throws Exception {
+		
+		List<AudienciaCabecera> audienciaCabeceraLst = cabeceraAudienciaRepository.findAll();
+		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
+			audienciaCabeceraLst.stream().forEach(audienciaCabecera ->{
+				Integer institucionId = Integer.parseInt(audienciaCabecera.getInstitucionUrl().split("/")[6]);
+				try {
+					String institucionDetalle = leyLobbyFeignClient.getInstitucionDetalle(institucionId).getBody();
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+		}
+		
+		return null;
 	}
 
 }

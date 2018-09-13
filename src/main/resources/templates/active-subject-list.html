@@ -11,6 +11,12 @@
 
 <!-- Vendors -->
 
+<!-- Using jQuery with a CDN -->
+<script src="lib/jquery-3.2.1.min.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="js/jquery-1.11.2.min.js"></script>
+
 <!-- JS file -->
 <script src="js/jquery.easy-autocomplete.min.js"></script>
 
@@ -124,13 +130,14 @@
 				<h2>Lobby + Compras</h2>
 				<small>Ficha Sujeto Activo</small> <br>
 				<form>
+				<input type="hidden" name="fiscalId" id="fiscalId" />
 					<div class="search">
 						<div class="search__type dropdown">
 							<a data-toggle="dropdown" href="">Buscar</a>
 						</div>
-
+						
 						<div class="search__body">
-							<input id="searchField" class="search__input"
+							<input id="searchField" class="search__input" name="searchField"
 								data-rmd-action="advanced-search-open"
 								placeholder="Ingrese criterios de búsqueda..." type="text">
 						</div>
@@ -398,14 +405,14 @@
 	<!-- Site functions and actions -->
 	<script src="js/app.min.js"></script>
 
-	<!-- Demo only -->
+	<!-- Demo only
 	<script
 		src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A"
 		async></script>
 	<script src="js/demo/demo.js"></script>
 	<script src="js/demo/maps/listing-detail-location-map.js"></script>
 	<script src="js/demo/charts/line-chart.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
 
 	<script>
 		$(document).ready(function() {
@@ -434,16 +441,15 @@
 		});
 	</script>
 
-	
 	 <script>
 		var options = {
 			url : function(phrase) {
-				return "http://buscador.cgroup.io:8080/person/search?searchField="
+				return "http://localhost:9000/mercado-publico/search?rutUnidad="
 						+ phrase;
 			},
 			adjustWidth : false,
 			getValue : "displayableName",
-			minCharNumber : 3,
+			minCharNumber : 1,
 			list : {
 				match : {
 					enabled : true

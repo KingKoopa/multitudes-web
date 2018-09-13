@@ -22,14 +22,14 @@ public class SujetoPasivoController {
 	private MercadoPublicoService mercadoPublicoService;
 	
 	@RequestMapping(path= {"ficha-sujeto-pasivo"}, method = RequestMethod.GET)
-	public ModelAndView fichaSujetoPasivo(@RequestParam(value="rutOrganismo", required=false) String rutOrganismo) throws Exception{
+	public ModelAndView fichaSujetoPasivo() throws Exception{
 		ModelAndView modelAndView = new ModelAndView("passive-subject-list");
 		return modelAndView;
 	}
 	
 	@RequestMapping(path= {"ficha-sujeto-pasivo-cabecera"}, method = RequestMethod.POST)
 	public ModelAndView getSujetoPasivoData(
-			@RequestParam(value="rutOrganismo", required=false) String rutOrganismo) throws Exception{
+			@RequestParam(value="searchField", required=false) String rutOrganismo) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView("passive-subject-list");
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();

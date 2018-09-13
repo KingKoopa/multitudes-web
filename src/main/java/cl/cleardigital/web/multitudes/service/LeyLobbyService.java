@@ -6,4 +6,5 @@ public interface LeyLobbyService {
 	
 	public Boolean getAudienciasDetalle() throws Exception;
 	
+	public Boolean getInstitucionesDetalle() throws Exception;
 }

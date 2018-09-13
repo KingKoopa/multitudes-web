@@ -21,5 +21,13 @@ public class LeyLobbyController {
 		
 		return new ResponseEntity<Boolean>(leyLobbyService.getAudienciasHeaders(), HttpStatus.OK);
 	}
+	
+	
+	@RequestMapping(value="/traer-institucion-detalle", method = RequestMethod.GET)
+	public ResponseEntity<?> traerInstitucionDetalle() throws Exception{
+		
+		return new ResponseEntity<Boolean>(leyLobbyService.getInstitucionesDetalle(), HttpStatus.OK);
+	}
+	
 
 }
