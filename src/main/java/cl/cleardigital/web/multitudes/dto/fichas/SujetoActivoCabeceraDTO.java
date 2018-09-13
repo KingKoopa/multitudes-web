@@ -3,6 +3,8 @@ package cl.cleardigital.web.multitudes.dto.fichas;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -17,10 +19,26 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	private String tipoProveedor;
 	private Integer numeroAudiencias;
 	private Integer numeroLicitaciones;
+	private String displayableName;
 	private List<SujetoActivoAudienciaDTO> sujetosActivos;
 	private List<SujetoActivoLicitacionesDTO> sujetoLicitaciones;
 	
+	
 		
+    public String getDisplayableName() {
+		
+		this.displayableName = this.rutProveedor 
+							  + " " + this.nombreProveedor ;
+		//Remover los acentos
+		this.displayableName = StringUtils.stripAccents(this.displayableName);
+		return displayableName;
+	}
+    
+	public void setDisplayableName(String displayableName) 
+	{
+		this.displayableName = displayableName;
+	}
+	
 	public List<SujetoActivoAudienciaDTO> getSujetosActivos() 
 	{
 		return sujetosActivos;
@@ -93,14 +111,17 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	{
 		this.sujetoLicitaciones = sujetoLicitaciones;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "SujetoActivoCabeceraDTO [nombreProveedor=" + nombreProveedor + ", rutProveedor=" + rutProveedor
 				+ ", giro=" + giro + ", monto=" + monto + ", tipoProveedor=" + tipoProveedor + ", numeroAudiencias="
-				+ numeroAudiencias + ", numeroLicitaciones=" + numeroLicitaciones + ", sujetosActivos=" + sujetosActivos
-				+ ", sujetoLicitaciones=" + sujetoLicitaciones + "]";
+				+ numeroAudiencias + ", numeroLicitaciones=" + numeroLicitaciones + ", displayableName="
+				+ displayableName + ", sujetosActivos=" + sujetosActivos + ", sujetoLicitaciones=" + sujetoLicitaciones
+				+ "]";
 	}
+
+	
 
 		
 }		

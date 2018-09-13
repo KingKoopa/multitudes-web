@@ -351,9 +351,7 @@
     border-radius:2px;
     width:100%
 }
-.search__input,.search__input:focus{
-    box-shadow:none
-}
+
 .header__recommended{
     padding-top:30px;
     padding-bottom:50px;
@@ -472,7 +470,7 @@
     margin-top:24px
 }
 .search-backdrop{
-    z-index:9
+    z-index:auto
 }
 .action-header{
     background-color:#fff;

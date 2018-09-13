@@ -32,12 +32,16 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
                 "/images/**",
                 "/css/**",
                 "/js/**",
+                "/fonts/**",
+                "/vendors/**",
                 "/lib/**")
                 .addResourceLocations(
                         "classpath:/META-INF/resources/webjars/",
                         "classpath:/static/img/",
                         "classpath:/static/css/",
                         "classpath:/static/js/",
+                        "classpath:/static/fonts/",
+                        "classpath:/static/vendors/",
                         "classpath:/static/lib/");
     }
 }

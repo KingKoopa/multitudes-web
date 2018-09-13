@@ -588,7 +588,7 @@
 }
 
 .search-backdrop {
-  z-index: 9;
+  z-index: auto
 }
 
 .action-header {

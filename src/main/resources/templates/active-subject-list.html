@@ -9,51 +9,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fundación Multitudes</title>
 
-<!-- Vendors -->
+<!-- Site -->
+<link rel="stylesheet" href="css/app_1.min.css">
+<link rel="stylesheet" href="css/app_2.min.css"> 
 
-<!-- Using jQuery with a CDN -->
-<script src="lib/jquery-3.2.1.min.js"></script>
-
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="js/jquery-1.11.2.min.js"></script>
+ <script src="lib/popper.min.js"></script> 
+ <script src="lib/jquery-3.2.1.min.js"></script>
+- <link href="lib/animate.css" rel="stylesheet" /> 
+<!-- Css -->
+ <link href="css/style.css" rel="stylesheet" /> 
 
 <!-- JS file -->
-<script src="js/jquery.easy-autocomplete.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="lib/jquery-3.2.1.min.js"></script>
 
+<script src="js/jquery.easy-autocomplete.min.js"></script>
 <!-- CSS file -->
 <link rel="stylesheet" href="js/easy-autocomplete.min.css" />
 
 <!-- Additional CSS Themes file - not required-->
 <link rel="stylesheet" href="js/easy-autocomplete.themes.min.css" />
 
-<!-- Material design colors -->
+<!-- Material design colors 
 <link
 	href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"
 	rel="stylesheet">
-
+-->
 <!-- CSS animations -->
 <link rel="stylesheet"
 	href="vendors/bower_components/animate.css/animate.min.css">
 
-<!-- Select2 - Custom Selects -->
+<!-- Select2 - Custom Selects 
 <link rel="stylesheet"
 	href="vendors/bower_components/select2/dist/css/select2.min.css">
-
+-->
 <!-- NoUiSlider - Input Slider -->
 <link rel="stylesheet"
 	href="vendors/bower_components/nouislider/distribute/nouislider.min.css">
 
-<!-- Light Gallery -->
+<!-- Light Gallery 
 <link rel="stylesheet"
 	href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css">
-
+-->
 <!-- rateYo - Ratings -->
 <link rel="stylesheet"
 	href="vendors/bower_components/rateYo/src/jquery.rateyo.css">
 
-<!-- Site -->
-<link rel="stylesheet" href="css/app_1.min.css">
-<link rel="stylesheet" href="css/app_2.min.css">
 
 <!-- Page Loader JS -->
 <script src="js/page-loader.min.js" async></script>
@@ -129,17 +130,17 @@
 			<header class="section__title section__title-alt">
 				<h2>Lobby + Compras</h2>
 				<small>Ficha Sujeto Activo</small> <br>
+				
 				<form>
 				<input type="hidden" name="fiscalId" id="fiscalId" />
 					<div class="search">
 						<div class="search__type dropdown">
 							<a data-toggle="dropdown" href="">Buscar</a>
 						</div>
-						
 						<div class="search__body">
-							<input id="searchField" class="search__input" name="searchField"
+							<input  id="searchField" class="search__input" name="searchField"
 								data-rmd-action="advanced-search-open"
-								placeholder="Ingrese criterios de búsqueda..." type="text">
+								placeholder="   Ingrese criterios de búsqueda..." type="text">
 						</div>
 					</div>
 				</form>
@@ -356,41 +357,41 @@
             <p>Sorry for the inconvenience!</p>
         </div>
         <![endif]-->
-
+  
 
 	<!-- Javascript -->
 
-	<!-- jQuery -->
+	<!-- jQuery 
 	<script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
-	<!-- Bootstrap -->
+	-->
+	<!-- Bootstrap 
 	<script
 		src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-	<!-- Waves button ripple effects -->
+	-->
+	<!-- Waves button ripple effects 
 	<script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
-
-	<!-- Select 2 - Custom Selects -->
+	-->
+	<!-- Select 2 - Custom Selects 
 	<script
 		src="vendors/bower_components/select2/dist/js/select2.full.min.js"></script>
-
+	-->
 	<!-- NoUiSlider -->
 	<script
 		src="vendors/bower_components/nouislider/distribute/nouislider.min.js"></script>
 
-	<!-- Light Gallery -->
+	<!-- Light Gallery 
 	<script
 		src="vendors/bower_components/lightgallery/dist/js/lightgallery-all.min.js"></script>
-
+	-->
 	<!-- rateYo - Ratings -->
 	<script src="vendors/bower_components/rateYo/src/jquery.rateyo.js"></script>
 
-	<!-- Autosize - Auto height textarea -->
+	<!-- Autosize - Auto height textarea 
 	<script src="vendors/bower_components/autosize/dist/autosize.min.js"></script>
-
-	<!-- jsSocials - Social link sharing -->
+	-->
+	<!-- jsSocials - Social link sharing 
 	<script src="vendors/bower_components/jssocials/dist/jssocials.min.js"></script>
-
+	-->
 	<!-- Flot Charts -->
 	<script src="vendors/bower_components/Flot/jquery.flot.js"></script>
 	<script src="vendors/bower_components/Flot/jquery.flot.resize.js"></script>
@@ -406,13 +407,11 @@
 	<script src="js/app.min.js"></script>
 
 	<!-- Demo only
-	<script
-		src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A"
-		async></script>
+	<script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A" async></script>
 	<script src="js/demo/demo.js"></script>
 	<script src="js/demo/maps/listing-detail-location-map.js"></script>
 	<script src="js/demo/charts/line-chart.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+	-->
 
 	<script>
 		$(document).ready(function() {
@@ -449,14 +448,14 @@
 			},
 			adjustWidth : false,
 			getValue : "displayableName",
-			minCharNumber : 1,
+			minCharNumber : 3,
 			list : {
 				match : {
 					enabled : true
 				},
 				onChooseEvent : function() {
 					var selectedItemValue = $("#searchField")
-							.getSelectedItemData().fiscalId;
+							.getSelectedItemData().rutProveedor;
 					$("#fiscalId").val(selectedItemValue);
 				}
 			}
