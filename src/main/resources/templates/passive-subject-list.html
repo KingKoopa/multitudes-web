@@ -115,6 +115,7 @@
                     <small>Ficha Organismo Comprador</small>
                     <br>
 	                 <form id="searcher_form" th:action="@{/ficha-sujeto-pasivo-cabecera}" method="post">  
+	                 	<input type="hidden" name="fiscalId" id="fiscalId" />
 	                    <div class="search">
 	                        <div class="search__type dropdown">
 	                            <!-- <a data-toggle="dropdown" href="">Buscar</a> -->
@@ -161,10 +162,17 @@
 										  <tr>
 										    <th>Nombre Completo</th>
 										    <th>Cargo</th> 
+										    <th>Nº de audiencias</th> 
 										  </tr>
 										  <tr>
 										  	<td>Joyce Valle Chacon</td>
 										    <td>Contabilidad</td>
+										    <td>10</td>
+										  </tr>
+										   <tr>
+										  	<td>PATRICIA MARTA SILVA MELENDEZ</td>
+										    <td>Subsecretario(a)</td>
+										    <td>20</td>
 										  </tr>
 										</table>
 	                                    </div>
@@ -187,8 +195,8 @@
 									    <th>No Proveedores</th> 
 									  </tr>
 									  <tr>
-									  	<td>20</td>
-									    <td>10</td>
+									  	<td>80%</td>
+									    <td>20%</td>
 									  </tr>
 									</table>
                                     </div>
@@ -197,7 +205,7 @@
 								<li><span></span></li>
 								<!-- Licitaciones en la que participo -->
 								<li>
-                                    <span>Licitaciones públicas:</span>
+                                    <span>Licitaciones adjudicadas:</span>
                                     <span th:text="${sujetoPasivoCabeceraDTO != null ?  sujetoPasivoCabeceraDTO.licitacionesPublicas : ''}"></span> 
                                     <a id="btn_ver_detalle_licitaciones" class="btn btn-primary btn-block" style="width:25%">Ver+</a>
                                     </li>
@@ -460,7 +468,7 @@
 						+ phrase;
 			},
 			adjustWidth : false,
-			getValue : "rutProveedor",
+			getValue : "displayableName",
 			minCharNumber : 3,
 			list : {
 				match : {
@@ -468,7 +476,7 @@
 				},
 				onChooseEvent : function() {
 					var selectedItemValue = $("#searchField")
-							.getSelectedItemData().fiscalId;
+							.getSelectedItemData().rutProveedor;
 					$("#fiscalId").val(selectedItemValue);
 				}
 			}

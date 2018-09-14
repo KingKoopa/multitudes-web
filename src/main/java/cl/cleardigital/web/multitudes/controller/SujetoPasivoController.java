@@ -29,12 +29,12 @@ public class SujetoPasivoController {
 	
 	@RequestMapping(path= {"ficha-sujeto-pasivo-cabecera"}, method = RequestMethod.POST)
 	public ModelAndView getSujetoPasivoData(
-			@RequestParam(value="searchField", required=false) String rutOrganismo) throws Exception{
+			@RequestParam(value="fiscalId", required=false) String fiscalId) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView("passive-subject-list");
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
-		if(rutOrganismo != null) {
-			sujetoPasivoCabeceraDTO = mercadoPublicoService.getFichaSujetoPasivo(rutOrganismo);
+		if(fiscalId != null) {
+			sujetoPasivoCabeceraDTO = mercadoPublicoService.getFichaSujetoPasivo(fiscalId);
 		}
 		modelAndView.addObject("sujetoPasivoCabeceraDTO", sujetoPasivoCabeceraDTO);
 		return modelAndView;
