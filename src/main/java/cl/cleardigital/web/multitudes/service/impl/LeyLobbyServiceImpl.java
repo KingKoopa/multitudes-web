@@ -98,12 +98,15 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	public Boolean getInstitucionesDetalle() throws Exception {
 		
 		List<AudienciaCabecera> audienciaCabeceraLst = cabeceraAudienciaRepository.findAll();
+
 		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
 			audienciaCabeceraLst.stream().forEach(audienciaCabecera ->{
 				Integer institucionId = Integer.parseInt(audienciaCabecera.getInstitucionUrl().split("/")[6]);
 				try {
 					String institucionDetalle = leyLobbyFeignClient.getInstitucionDetalle(institucionId).getBody();
 					//TODO: PROGRAMAR
+					
+					
 					
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

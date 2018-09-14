@@ -44,6 +44,7 @@
         <script src="js/page-loader.min.js" async></script>
         
 		<style type="text/css">
+			.easy-autocomplete-container { max-height: 160px; overflow-y: scroll; } 
 			.TFtable{
 				width:100%; 
 				border-collapse:collapse; 
@@ -127,6 +128,14 @@
 	                        </div>
 	                    </div>
 	                </form>
+	                <br>
+	                		<div>
+	                			<label>Fecha Desde:</label>
+	                            <input  type="date" value="2018-01-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                        	<label>Fecha Hasta:</label>
+	                            <input  type="date" value="2018-01-31">
+	                  		</div>
+	                
                 </header>
 				
 
@@ -471,6 +480,7 @@
 			getValue : "displayableName",
 			minCharNumber : 3,
 			list : {
+				maxNumberOfElements: 13,
 				match : {
 					enabled : true
 				},

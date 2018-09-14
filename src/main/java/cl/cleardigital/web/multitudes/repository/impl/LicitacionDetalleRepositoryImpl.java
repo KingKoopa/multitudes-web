@@ -27,7 +27,8 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 		// TODO Auto-generated method stub
 		Query query = entityManager.createNativeQuery("SELECT " + 
 				"	    li.comprador_nombre_organismo as Nombre, " + 
-				"	    li.comprador_rut_unidad as Rut " +  
+				"	    li.comprador_rut_unidad as Rut, " +  
+				"	    li.comprador_region_unidad as Region " + 
 				"	FROM  licitacion_detalle li " + 
 				"	WHERE " + 
 				"	    CONCAT_WS(\" \", " + 
@@ -44,6 +45,7 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 	      SujetoActivoCabeceraDTO personActive = new SujetoActivoCabeceraDTO();
           personActive.setNombreProveedor((String) obj[0]);
           personActive.setRutProveedor((String) obj[1]);
+          personActive.setRegion((String) obj[2]);
 
           personActiveLst.add(personActive);
 	    }
