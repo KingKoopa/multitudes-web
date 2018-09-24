@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -106,17 +107,21 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 //		List<AudienciaCabecera> audienciaCabeceraLst = new ArrayList<>();
 //		audienciaCabeceraLst.add(cabeceraAudienciaRepository.findOne(1));
 		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
-			audienciaCabeceraLst.stream().forEach(audienciaCabecera ->{
+			for(AudienciaCabecera audienciaCabecera : audienciaCabeceraLst) {	
 				Integer institucionId = Integer.parseInt(audienciaCabecera.getInstitucionUrl().split("/")[6]);
 				InstitucionDetalle institucionDetalle = institucionDetalleRepository.findOne(institucionId);
+//				List<String> codigosInstitucion = new ArrayList<>();
 				if(institucionDetalle == null) {//no existe el organismo
-					institucionDetalle = new InstitucionDetalle();
 					try {
+						institucionDetalle = new InstitucionDetalle();
 						String institucionDetalleStr = leyLobbyFeignClient.getInstitucionDetalle(institucionId).getBody();
 						if(institucionDetalleStr != null) {
 							InstitucionDetalleDTO institucionDetalleDTO = gson.fromJson(institucionDetalleStr, InstitucionDetalleDTO.class);
+//							if(!codigosInstitucion.isEmpty() && codigosInstitucion.contains(institucionDetalleDTO.getCodigo())) continue;
+							institucionDetalle.setId(institucionId);
 							institucionDetalle.setCodigo(institucionDetalleDTO.getCodigo());
 							institucionDetalle.setNombre(institucionDetalleDTO.getNombre());
+//							codigosInstitucion.add(institucionDetalleDTO.getCodigo());
 							institucionDetalleRepository.save(institucionDetalle);
 						}
 						
@@ -126,7 +131,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 				}
 				audienciaCabecera.setInstitucionDetalle(institucionDetalle);
 				cabeceraAudienciaRepository.save(audienciaCabecera);
-			});
+			}
 		}
 		
 		return Boolean.TRUE;

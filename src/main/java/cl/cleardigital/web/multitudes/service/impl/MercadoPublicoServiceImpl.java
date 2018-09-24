@@ -52,8 +52,8 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 //		LocalDate now = LocalDate.now();
 //		LocalDate to = now.minusMonths(3);
 		
-		LocalDate now = LocalDate.of(2018, 1, 1);
-		LocalDate to = LocalDate.of(2018, 2, 1);
+		LocalDate now = LocalDate.of(2015, 7, 1);
+		LocalDate to = LocalDate.of(2015, 9, 1);
 		
 		for (LocalDate actual = now; actual.isBefore(to); actual = actual.plusDays(1)) {
 			DateTimeFormatter formatters = DateTimeFormatter.ofPattern("ddMMyyyy");
