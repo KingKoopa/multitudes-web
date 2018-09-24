@@ -264,6 +264,7 @@
         cursor:pointer
     }
 }
+
 .search__type .dropdown-menu>div>span,.search__type>a{
     display:block;
     color:#3e3e3e;

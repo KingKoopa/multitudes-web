@@ -15,6 +15,7 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	private String nombreProveedor;
 	private String rutProveedor;
 	private String giro;
+	private String region;
 	private Integer monto;
 	private String tipoProveedor;
 	private Integer numeroAudiencias;
@@ -25,10 +26,13 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	
 	
 		
-    public String getDisplayableName() {
+
+
+	public String getDisplayableName() {
 		
 		this.displayableName = this.rutProveedor 
-							  + " " + this.nombreProveedor ;
+							  + " " + this.nombreProveedor
+							  + " " + this.region;
 		//Remover los acentos
 		this.displayableName = StringUtils.stripAccents(this.displayableName);
 		return displayableName;
@@ -37,6 +41,13 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	public void setDisplayableName(String displayableName) 
 	{
 		this.displayableName = displayableName;
+	}
+    public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
 	}
 	
 	public List<SujetoActivoAudienciaDTO> getSujetosActivos() 
@@ -111,15 +122,18 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	{
 		this.sujetoLicitaciones = sujetoLicitaciones;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "SujetoActivoCabeceraDTO [nombreProveedor=" + nombreProveedor + ", rutProveedor=" + rutProveedor
-				+ ", giro=" + giro + ", monto=" + monto + ", tipoProveedor=" + tipoProveedor + ", numeroAudiencias="
-				+ numeroAudiencias + ", numeroLicitaciones=" + numeroLicitaciones + ", displayableName="
-				+ displayableName + ", sujetosActivos=" + sujetosActivos + ", sujetoLicitaciones=" + sujetoLicitaciones
-				+ "]";
+				+ ", giro=" + giro + ", region=" + region + ", monto=" + monto + ", tipoProveedor=" + tipoProveedor
+				+ ", numeroAudiencias=" + numeroAudiencias + ", numeroLicitaciones=" + numeroLicitaciones
+				+ ", displayableName=" + displayableName + ", sujetosActivos=" + sujetosActivos
+				+ ", sujetoLicitaciones=" + sujetoLicitaciones + "]";
 	}
+	
+
+
 
 	
 
