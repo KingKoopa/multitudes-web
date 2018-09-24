@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.leylobby.CabeceraAudienciaDTO;
 import cl.cleardigital.web.multitudes.feign.client.LeyLobbyFeignClient;
 import cl.cleardigital.web.multitudes.model.leylobby.AudienciaCabecera;
@@ -117,5 +119,16 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		
 		return null;
 	}
+
+	@Override
+	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre) throws Exception {
+		// TODO Auto-generated method stub
+		
+		List<SujetoPasivoAudienciaDTO> pasivoDetalleLst = cabeceraAudienciaRepository.findByPasivoAudiencias(nombre);    
+		
+		return pasivoDetalleLst;
+	}
+	
+	
 
 }
