@@ -41,8 +41,13 @@ public class AudienciaCabecera implements Serializable {
 	@Id
 	private Integer id;
 
-	@Column(name="institucion_detail_id")
-	private Integer institucionDetailId;
+//	@Column(name="institucion_detail_id")
+//	private Integer institucionDetailId;
+	
+	//bi-directional many-to-one association to instucionDetalle
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "institucion_detail_id", nullable = false)
+	private InstitucionDetalle institucionDetalle;
 
 	@Column(name="institucion_url")
 	private String institucionUrl;
@@ -146,12 +151,24 @@ public class AudienciaCabecera implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getInstitucionDetailId() {
-		return this.institucionDetailId;
+//	public Integer getInstitucionDetailId() {
+//		return this.institucionDetailId;
+//	}
+//
+//	public void setInstitucionDetailId(Integer institucionDetailId) {
+//		this.institucionDetailId = institucionDetailId;
+//	}
+
+	public InstitucionDetalle getInstitucionDetalle() {
+		return institucionDetalle;
 	}
 
-	public void setInstitucionDetailId(Integer institucionDetailId) {
-		this.institucionDetailId = institucionDetailId;
+	public void setInstitucionDetalle(InstitucionDetalle institucionDetalle) {
+		this.institucionDetalle = institucionDetalle;
+	}
+
+	public void setSujetoPasivoDetailId(Integer sujetoPasivoDetailId) {
+		this.sujetoPasivoDetailId = sujetoPasivoDetailId;
 	}
 
 	public String getInstitucionUrl() {

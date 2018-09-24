@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.fichas.InstitucionDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.leylobby.CabeceraAudienciaDTO;
 import cl.cleardigital.web.multitudes.feign.client.LeyLobbyFeignClient;
 import cl.cleardigital.web.multitudes.model.leylobby.AudienciaCabecera;
+import cl.cleardigital.web.multitudes.model.leylobby.InstitucionDetalle;
 import cl.cleardigital.web.multitudes.repository.leylobby.CabeceraAudienciaRepository;
+import cl.cleardigital.web.multitudes.repository.leylobby.InstitucionDetalleRepository;
 import cl.cleardigital.web.multitudes.service.LeyLobbyService;
 
 @Service("leyLobbyService")
@@ -28,6 +31,9 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	
 	@Autowired
 	private CabeceraAudienciaRepository cabeceraAudienciaRepository;
+	
+	@Autowired
+	private InstitucionDetalleRepository institucionDetalleRepository;
 	
 	@Override
 	public Boolean getAudienciasHeaders() throws Exception {
@@ -86,7 +92,6 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 				try {
 					leyLobbyFeignClient.getAudienciaDetalle(audienciaCabecera.getAudienceDetailId());
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			});
@@ -98,21 +103,33 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	public Boolean getInstitucionesDetalle() throws Exception {
 		
 		List<AudienciaCabecera> audienciaCabeceraLst = cabeceraAudienciaRepository.findAll();
+//		List<AudienciaCabecera> audienciaCabeceraLst = new ArrayList<>();
+//		audienciaCabeceraLst.add(cabeceraAudienciaRepository.findOne(1));
 		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
 			audienciaCabeceraLst.stream().forEach(audienciaCabecera ->{
 				Integer institucionId = Integer.parseInt(audienciaCabecera.getInstitucionUrl().split("/")[6]);
-				try {
-					String institucionDetalle = leyLobbyFeignClient.getInstitucionDetalle(institucionId).getBody();
-					//TODO: PROGRAMAR
-					
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				InstitucionDetalle institucionDetalle = institucionDetalleRepository.findOne(institucionId);
+				if(institucionDetalle == null) {//no existe el organismo
+					institucionDetalle = new InstitucionDetalle();
+					try {
+						String institucionDetalleStr = leyLobbyFeignClient.getInstitucionDetalle(institucionId).getBody();
+						if(institucionDetalleStr != null) {
+							InstitucionDetalleDTO institucionDetalleDTO = gson.fromJson(institucionDetalleStr, InstitucionDetalleDTO.class);
+							institucionDetalle.setCodigo(institucionDetalleDTO.getCodigo());
+							institucionDetalle.setNombre(institucionDetalleDTO.getNombre());
+							institucionDetalleRepository.save(institucionDetalle);
+						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
+				audienciaCabecera.setInstitucionDetalle(institucionDetalle);
+				cabeceraAudienciaRepository.save(audienciaCabecera);
 			});
 		}
 		
-		return null;
+		return Boolean.TRUE;
 	}
 
 }
