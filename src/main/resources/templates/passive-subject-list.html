@@ -166,8 +166,9 @@
 		                                    <a id="btn_ver_sujetos_pasivos" class="btn btn-primary btn-block" style="width:25%">Ver+</a>
 	                                    </li>
 	                                    <li>
-	                                    <div id="sujetos_pasivos_detail_table" style="display:none;">
+	                                    <div id="sujetos_pasivos_detail_table"  style="display: none;">
 		                                    <table th:if="${sujetoPasivoCabeceraDTO != null}" class="TFtable" style="width:100%">
+											  <th:block th:each="audiencia : ${sujetoPasivoCabeceraDTO.sujetoPasivoAudiencias}">
 											  <tr>
 											    <th>Nombre Completo</th>
 											    <th>Cargo</th> 
@@ -415,9 +416,10 @@
 		
         
         <script>
+        
         $(document).ready(function() {
         	
-        		//lista sujetos pasivos:
+          //lista sujetos pasivos:
         			$("#btn_ver_sujetos_pasivos").click(function(e){
 				if($("#sujetos_pasivos_detail_table").is(':visible')){
 					$("#sujetos_pasivos_detail_table").hide();

@@ -16,7 +16,7 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 	private String nombreComprador;
 	private String rutComprador;
 	private Integer montoLicitado;
-	private Integer sujetosPasivosCantidad;
+	private Integer sujetosPasivosCantidad = 0;
 	private Integer numeroAudiencias;
 	private Integer licitacionesPublicas;
 	private List<SujetoPasivoCabeceraLicitacionesDTO> cabecerasLicitacion;
