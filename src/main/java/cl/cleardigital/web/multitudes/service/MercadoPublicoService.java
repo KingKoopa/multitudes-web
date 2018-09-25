@@ -3,6 +3,7 @@ package cl.cleardigital.web.multitudes.service;
 import java.util.List;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 
@@ -15,5 +16,7 @@ public interface MercadoPublicoService {
 	public List<SujetoActivoCabeceraDTO> getCompradoresPorRut(String rutUnidad) throws Exception;
 	
 	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo) throws Exception;
+	
+	
 	
 }

@@ -1,6 +1,5 @@
 package cl.cleardigital.web.multitudes.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 
 import cl.cleardigital.web.multitudes.dto.fichas.InstitucionDetalleDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.leylobby.CabeceraAudienciaDTO;
 import cl.cleardigital.web.multitudes.feign.client.LeyLobbyFeignClient;
 import cl.cleardigital.web.multitudes.model.leylobby.AudienciaCabecera;
@@ -136,5 +136,15 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		
 		return Boolean.TRUE;
 	}
+
+	@Override
+	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre) throws Exception {
+		
+		List<SujetoPasivoAudienciaDTO> pasivoDetalleLst = cabeceraAudienciaRepository.findByPasivoAudiencias(nombre);    
+		
+		return pasivoDetalleLst;
+	}
+	
+	
 
 }

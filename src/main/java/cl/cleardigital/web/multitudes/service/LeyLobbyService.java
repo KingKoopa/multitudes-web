@@ -1,5 +1,9 @@
 package cl.cleardigital.web.multitudes.service;
 
+import java.util.List;
+
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
+
 public interface LeyLobbyService {
 	
 	public Boolean getAudienciasHeaders() throws Exception;
@@ -7,4 +11,6 @@ public interface LeyLobbyService {
 	public Boolean getAudienciasDetalle() throws Exception;
 	
 	public Boolean getInstitucionesDetalle() throws Exception;
+	
+	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre)throws Exception;
 }

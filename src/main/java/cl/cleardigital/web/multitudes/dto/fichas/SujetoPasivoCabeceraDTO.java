@@ -20,6 +20,7 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 	private Integer numeroAudiencias;
 	private Integer licitacionesPublicas;
 	private List<SujetoPasivoCabeceraLicitacionesDTO> cabecerasLicitacion;
+	private List<SujetoPasivoAudienciaDTO> sujetoPasivoAudiencias;
 	
 	public String getNombreComprador() {
 		return nombreComprador;
@@ -62,6 +63,12 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 	}
 	public void setCabecerasLicitacion(List<SujetoPasivoCabeceraLicitacionesDTO> cabecerasLicitacion) {
 		this.cabecerasLicitacion = cabecerasLicitacion;
+	}
+	public List<SujetoPasivoAudienciaDTO> getSujetoPasivoAudiencias() {
+		return sujetoPasivoAudiencias;
+	}
+	public void setSujetoPasivoAudiencias(List<SujetoPasivoAudienciaDTO> sujetoPasivoAudiencias) {
+		this.sujetoPasivoAudiencias = sujetoPasivoAudiencias;
 	}
 	@Override
 	public String toString() {

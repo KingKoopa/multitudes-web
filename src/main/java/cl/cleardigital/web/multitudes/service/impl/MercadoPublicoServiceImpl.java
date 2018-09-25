@@ -14,9 +14,10 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraLicitacionesDTO;
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailListadoDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionHeaderDTO;
@@ -45,6 +46,9 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 	
 	@Autowired
 	private LicitacionDetalleRepository licitacionDetalleRepository;
+	
+	@Autowired
+	private LeyLobbyServiceImpl leyLobbyServiceImpl;
 	
 	@Override
 	public Boolean getLicitacionPorFecha() throws Exception {
@@ -215,6 +219,14 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			}
 		
 		}
+		
+		//poblar audiencias
+		List<SujetoPasivoAudienciaDTO> pasivoDetalleLst = leyLobbyServiceImpl.findByPasivoAudiencias(sujetoPasivoCabeceraDTO.getNombreComprador());
+		if(pasivoDetalleLst != null && !pasivoDetalleLst.isEmpty()) {
+			sujetoPasivoCabeceraDTO.setSujetoPasivoAudiencias(pasivoDetalleLst);
+			sujetoPasivoCabeceraDTO.setSujetosPasivosCantidad(pasivoDetalleLst.size());
+		}
+		
 		return sujetoPasivoCabeceraDTO;
 	}
 
@@ -239,6 +251,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		return licitacionDetalleLst;
 		
 	}
+
 
 	
 	
