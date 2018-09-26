@@ -84,12 +84,14 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		return Boolean.TRUE;
 	}
 
+	//PorHacer	
 	@Override
 	public Boolean getAudienciasDetalle() throws Exception {
-		
+	
 		List<AudienciaCabecera> audienciaCabeceraLst = cabeceraAudienciaRepository.findAll();
 		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
 			audienciaCabeceraLst.stream().forEach(audienciaCabecera ->{
+				
 				try {
 					leyLobbyFeignClient.getAudienciaDetalle(audienciaCabecera.getAudienceDetailId());
 				} catch (Exception e) {

@@ -14,6 +14,7 @@ public class SujetoPasivoCabeceraLicitacionesDTO implements Serializable {
 	private Integer cantidad;
 	private Integer monto = 1000000;
 	
+	
 	public String getTipoLicitacion() {
 		return tipoLicitacion;
 	}
