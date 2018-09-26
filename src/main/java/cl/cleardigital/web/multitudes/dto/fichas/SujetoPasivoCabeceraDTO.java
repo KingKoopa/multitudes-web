@@ -19,9 +19,18 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 	private Integer sujetosPasivosCantidad = 0;
 	private Integer numeroAudiencias;
 	private Integer licitacionesPublicas;
+	private String regionComprador;
 	private List<SujetoPasivoCabeceraLicitacionesDTO> cabecerasLicitacion;
 	private List<SujetoPasivoAudienciaDTO> sujetoPasivoAudiencias;
 	
+	
+	
+	public String getRegionComprador() {
+		return regionComprador;
+	}
+	public void setRegionComprador(String regionComprador) {
+		this.regionComprador = regionComprador;
+	}
 	public String getNombreComprador() {
 		return nombreComprador;
 	}

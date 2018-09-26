@@ -189,6 +189,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			Integer montoLicitado = 0;
 			sujetoPasivoCabeceraDTO.setNombreComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorNombreOrganismo());
 			sujetoPasivoCabeceraDTO.setRutComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorRutUnidad());
+			sujetoPasivoCabeceraDTO.setRegionComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorRegionUnidad());
 			List<SujetoPasivoCabeceraLicitacionesDTO> sujetoPasivoCabeceraLicitacionesDTOLst = new ArrayList<>();
 			
 			for(LicitacionDetalle licitacionDetalle : licitacionDetalleLst) {
