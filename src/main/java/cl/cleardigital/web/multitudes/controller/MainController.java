@@ -30,4 +30,5 @@ public class MainController {
 		ModelAndView modelAndView = new ModelAndView("category-subject-list");
 		return modelAndView;
 	}
+	
 }

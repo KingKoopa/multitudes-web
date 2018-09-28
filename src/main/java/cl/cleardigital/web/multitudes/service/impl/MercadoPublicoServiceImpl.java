@@ -18,6 +18,7 @@ import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraLicitacionesDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoLicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailListadoDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionHeaderDTO;
@@ -253,9 +254,19 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		return licitacionDetalleLst;
 		
 	}
+	
+	@Override
+	public List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> getDetalleLicitacionAdjudicada(String rutAdjudicado, String tipo)
+			throws Exception {
+		
+		List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> AdjudicacionDetalleLst = licitacionDetalleRepository.getDistinctByLicitacionAdjudicadaRutUnidad(rutAdjudicado, tipo);
+		
+		log.info(AdjudicacionDetalleLst.toString());
 
 
-	
-	
+		return AdjudicacionDetalleLst;
+	}
+
+
 
 }

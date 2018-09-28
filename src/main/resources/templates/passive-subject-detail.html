@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<!--[if IE 9 ]><html lang="es" class="ie9"><![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Fundación Multitudes</title>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		
+		<!-- JS file -->
+		<script src="js/jquery.easy-autocomplete.min.js"></script>
+		
+		<!-- CSS file -->
+		<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
+
+        <!-- Site -->
+        <link rel="stylesheet" href="css/app_1.min.css">
+        <link rel="stylesheet" href="css/app_2.min.css">
+
+        <!-- Page Loader JS -->
+        <script src="js/page-loader.min.js" async></script>
+        
+		<style type="text/css">
+			.easy-autocomplete-container { max-height: 160px; overflow-y: scroll; } 
+			.TFtable{
+				width:100%; 
+				border-collapse:collapse; 
+			}
+			.TFtable td{ 
+				padding:7px; border:#4e95f4 1px solid;
+			}
+			/* provide some minimal visual accomodation for IE8 and below */
+			.TFtable tr{
+				background: #b8d1f3;
+			}
+			/*  Define the background color for all the ODD background rows  */
+			.TFtable tr:nth-child(odd){ 
+				background: #b8d1f3;
+			}
+			/*  Define the background color for all the EVEN background rows  */
+			.TFtable tr:nth-child(even){
+				background: #dae5f4;
+			}
+		</style>
+        
+    </head>
+
+    <body>
+         <div id="page-loader">
+            <div class="page-loader__spinner"></div>
+         </div> 
+        
+
+        <header id="header">
+
+            <div class="header__main">
+                <div class="container">
+                    <a class="logo" href="index.html">
+                        <img src="img/logo.png" alt="">
+                        <div class="logo__text">
+                            <span>Fundación Multitudes</span>
+                            <span>Slogan</span>
+                        </div>
+                    </a>
+
+                    <div class="navigation-trigger visible-xs visible-sm" data-rmd-action="block-open" data-rmd-target=".navigation">
+                        <i class="zmdi zmdi-menu"></i>
+                    </div>
+
+                    <ul class="navigation">
+                        <li class="visible-xs visible-sm"><a class="navigation__close" data-rmd-action="navigation-close" href=""><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+
+                        <li class="navigation__dropdown">
+                            <a href="index.html">Home</a>
+                        </li>
+                        
+                         <li class="navigation__dropdown">
+                            <a href="index.html">Proveedores</a>
+                        </li>
+                        
+                        <li class="navigation__dropdown">
+                            <a href="index.html">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <section class="section">
+            <div class="container">
+                <header class="section__title section__title-alt">
+                    <h2>Lobby + Compras</h2>
+                    <small>Detalle de Licitaciones Adjudicadas</small>
+	                <br>
+	                
+        		 </header>
+				
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="detail-info">
+                                
+                                <ul class="detail-info__list clearfix">
+                                    
+                                    <!-- Sujetos pasivos -->
+                                                                     
+	                                    <li>
+	                                    <div id="sujetos_pasivos_detail_table" >
+		                                    <table class="TFtable" style="width:125%">
+											  <tr>
+											    <th>Fecha</th>
+											    <th>Código</th> 
+											    <th>Región</th> 
+											    <th>Toma Razón<th> 
+											  </tr>
+											  <!-- adjudicacionDetalleLst -->
+											  <th:block th:each="licitacion : ${SujetoPasivoLicitacionesAdjudicadasDetalleDTO}">
+											  <tr>
+											        <td th:text="${licitacion.fecha}"></td>
+											        <td>
+											        <a th:href="@{'http://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?idlicitacion='+${licitacion.codigoExterno}}"
+											         th:text="${licitacion.codigoExterno}" target="blank"></a></td>
+											        <td th:text="${licitacion.region}"></td>
+											        <td th:text="${licitacion.tomaRazon}"></td>
+											   </tr>
+											    </th:block>
+											</table>
+	                                    </div>
+									</li>
+								
+                                </ul>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Listing Search -->
+        <button class="btn btn--action btn--circle hidden-md hidden-lg" data-rmd-action="block-open" data-rmd-target="#inquire">
+            <i class="zmdi zmdi-phone"></i>
+        </button>
+
+        <footer id="footer">
+            <div class="container hidden-xs">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="footer__block">
+                            <a class="logo clearfix" href="">
+                                <div class="logo__text">
+                                    <span>Fundación Multitudes</span>
+                                    <span>Slogan</span>
+                                </div>
+                            </a>
+
+                            <address class="m-t-20 m-b-20 f-14">
+                                Román Díaz #445, Providencia, Región Metropolitana
+                            </address>
+
+                            <div class="f-20">9 9509 0351</div>
+                            <div class="f-14 m-t-5">hola@fundacionmultitudes.com / info@fundacionmultitudes.com</div>
+
+                            <div class="f-20 m-t-20">
+                                <a href="" class="m-r-10"><i class="zmdi zmdi-google"></i></a>
+                                <a href="" class="m-r-10"><i class="zmdi zmdi-facebook"></i></a>
+                                <a href=""><i class="zmdi zmdi-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <div class="container">
+                    <span class="footer__copyright">© Fundación Multitudes</span>
+
+                    <a href="">Sobre Nosotros</a>
+                    <a href="">Términos y condiciones</a>
+                    <a href="">Políticas de privacidad</a>
+                </div>
+
+                <div class="footer__to-top" data-rmd-action="scroll-to" data-rmd-target="html">
+                    <i class="zmdi zmdi-chevron-up"></i>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Site functions and actions -->
+        <script src="js/app.min.js"></script>
+
+        <!-- Demo only -->
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A" async></script>
+        <script src="js/demo/demo.js"></script>
+        <script src="js/demo/maps/listing-detail-location-map.js"></script>
+        <script src="js/demo/charts/line-chart.js"></script>
+		
+		
+        
+        <script>
+        
+        $(document).ready(function() {
+        	
+          //lista sujetos pasivos:
+        			$("#btn_ver_sujetos_pasivos").click(function(e){
+				if($("#sujetos_pasivos_detail_table").is(':visible')){
+					$("#sujetos_pasivos_detail_table").hide();
+					$("#btn_ver_sujetos_pasivos").text("Ver +");
+				}else{
+					$("#sujetos_pasivos_detail_table").show();
+					$("#btn_ver_sujetos_pasivos").text("Ver -");
+				}
+			});
+        	
+			//audiencias
+			$("#btn_ver_detalle_audiencia").click(function(e){
+				if($("#audiencias_detail_table").is(':visible')){
+					$("#audiencias_detail_table").hide();
+					$("#btn_ver_detalle_audiencia").text("Ver +");
+				}else{
+					$("#audiencias_detail_table").show();
+					$("#btn_ver_detalle_audiencia").text("Ver -");
+				}
+			});
+			
+			//Licitaciones:
+			$("#btn_ver_detalle_licitaciones").click(function(e){
+				if($("#licitaciones_detail_table").is(':visible')){
+					$("#licitaciones_detail_table").hide();
+					$("#btn_ver_detalle_licitaciones").text("Ver +");
+				}else{
+					$("#licitaciones_detail_table").show();
+					$("#btn_ver_detalle_licitaciones").text("Ver -");
+				}
+			});
+        });	
+		</script>
+		
+		 <script>
+		var options = {
+			url : function(phrase) {
+				return "http://localhost:9000/mercado-publico/search?rutUnidad="
+						+ phrase;
+			},
+			adjustWidth : false,
+			getValue : "displayableName",
+			minCharNumber : 3,
+			list : {
+				maxNumberOfElements: 13,
+				match : {
+					enabled : true
+				},
+				onChooseEvent : function() {
+					var selectedItemValue = $("#searchField")
+							.getSelectedItemData().rutProveedor;
+					$("#fiscalId").val(selectedItemValue);
+				}
+			}
+		};
+
+		$("#searchField").easyAutocomplete(options);
+	</script> 
+    </body>
+    
+</html>
