@@ -3,6 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <!--[if IE 9 ]><html lang="es" class="ie9"><![endif]-->
     <head>
+    
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,10 +14,11 @@
 		<!-- JS file -->
 		<script src="js/jquery.easy-autocomplete.min.js"></script>
 		
-		<!-- CSS file -->
+		<!-- Icono -->
 		<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
 		
         <!-- Vendors -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
         <!-- Material design colors -->
 <!--         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet"> -->
@@ -223,6 +225,7 @@
 										    <th>Descripción</th>
 										    <th>Región</th>
 										    <th>Cantidad</th> 
+										    <th>Detalle</th>
 										    <!-- <th>Monto($)</th> -->
 										  </tr>
 										  <th:block th:each="licitacion : ${sujetoPasivoCabeceraDTO.cabecerasLicitacion}">
@@ -231,6 +234,7 @@
 										        <td th:text="${licitacion.descripcion}"></td>
 										        <td th:text="${sujetoPasivoCabeceraDTO.regionComprador}"></td>
 										        <td th:text="${licitacion.cantidad}"></td>
+										        <td align="center"><a target="_blank" th:href="@{/licitaciones-adjudicadas-detalle(fiscalId=${sujetoPasivoCabeceraDTO.rutComprador},(tipoLicitacion=${licitacion.tipoLicitacion}))}"><i class="fa fa-search"></i></a></td>
 										        <!-- <td th:text="${#numbers.formatDecimal(licitacion.monto, 0, 'DEFAULT', 0, 'DEFAULT')}"></td> -->
 										    </tr>
 										  </th:block>
