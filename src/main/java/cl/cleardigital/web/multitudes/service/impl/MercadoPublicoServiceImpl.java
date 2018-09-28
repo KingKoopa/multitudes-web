@@ -189,7 +189,6 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			Integer montoLicitado = 0;
 			sujetoPasivoCabeceraDTO.setNombreComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorNombreOrganismo());
 			sujetoPasivoCabeceraDTO.setRutComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorRutUnidad());
-			sujetoPasivoCabeceraDTO.setRegionComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorRegionUnidad());
 			List<SujetoPasivoCabeceraLicitacionesDTO> sujetoPasivoCabeceraLicitacionesDTOLst = new ArrayList<>();
 			
 			for(LicitacionDetalle licitacionDetalle : licitacionDetalleLst) {
@@ -197,21 +196,23 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 					if(items.getAdjudicacionAntidad() != null && items.getAdjudicacionMontoUnitario() != null) {
 						montoLicitado = items.getAdjudicacionAntidad() * items.getAdjudicacionMontoUnitario();
 					}
-					//tipos de licitacion:
-					SujetoPasivoCabeceraLicitacionesDTO sujetoPasivoCabeceraLicitacionesDTO = new SujetoPasivoCabeceraLicitacionesDTO();
-					sujetoPasivoCabeceraLicitacionesDTO.setTipoLicitacion(licitacionDetalle.getTipo());
-					sujetoPasivoCabeceraLicitacionesDTOLst.add(sujetoPasivoCabeceraLicitacionesDTO);
 				}
+				//tipos de licitacion:
+				SujetoPasivoCabeceraLicitacionesDTO sujetoPasivoCabeceraLicitacionesDTO = new SujetoPasivoCabeceraLicitacionesDTO();
+				sujetoPasivoCabeceraLicitacionesDTO.setTipoLicitacion(licitacionDetalle.getTipo());
+				sujetoPasivoCabeceraLicitacionesDTOLst.add(sujetoPasivoCabeceraLicitacionesDTO);
 				
 			}
 			sujetoPasivoCabeceraDTO.setMontoLicitado(montoLicitado);
 			//agrupar licitaciones y cantidad:
 			Map<String, Long> result =
-					sujetoPasivoCabeceraLicitacionesDTOLst.stream().collect(
+					sujetoPasivoCabeceraLicitacionesDTOLst.stream()
+					.collect(
 	                        Collectors.groupingBy(
 	                        		SujetoPasivoCabeceraLicitacionesDTO::getTipoLicitacion, Collectors.counting()
 	                        )
 	                );
+			
 
 			List<SujetoPasivoCabeceraLicitacionesDTO> newSujetoPasivoCabeceraLicitaciones = _populateSujetoPasivoCabeceraLicitaciones(result);
 			if(newSujetoPasivoCabeceraLicitaciones != null && !newSujetoPasivoCabeceraLicitaciones.isEmpty()) {

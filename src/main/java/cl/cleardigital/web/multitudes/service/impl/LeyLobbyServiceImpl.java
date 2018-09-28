@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
@@ -91,7 +93,6 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		List<AudienciaCabecera> audienciaCabeceraLst = cabeceraAudienciaRepository.findAll();
 		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
 			audienciaCabeceraLst.stream().forEach(audienciaCabecera ->{
-				
 				try {
 					leyLobbyFeignClient.getAudienciaDetalle(audienciaCabecera.getAudienceDetailId());
 				} catch (Exception e) {
@@ -105,34 +106,40 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	@Override
 	public Boolean getInstitucionesDetalle() throws Exception {
 		
-		List<AudienciaCabecera> audienciaCabeceraLst = cabeceraAudienciaRepository.findAll();
-//		List<AudienciaCabecera> audienciaCabeceraLst = new ArrayList<>();
-//		audienciaCabeceraLst.add(cabeceraAudienciaRepository.findOne(1));
-		if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
-			for(AudienciaCabecera audienciaCabecera : audienciaCabeceraLst) {	
-				Integer institucionId = Integer.parseInt(audienciaCabecera.getInstitucionUrl().split("/")[6]);
-				InstitucionDetalle institucionDetalle = institucionDetalleRepository.findOne(institucionId);
-//				List<String> codigosInstitucion = new ArrayList<>();
-				if(institucionDetalle == null) {//no existe el organismo
-					try {
-						institucionDetalle = new InstitucionDetalle();
-						String institucionDetalleStr = leyLobbyFeignClient.getInstitucionDetalle(institucionId).getBody();
-						if(institucionDetalleStr != null) {
-							InstitucionDetalleDTO institucionDetalleDTO = gson.fromJson(institucionDetalleStr, InstitucionDetalleDTO.class);
-//							if(!codigosInstitucion.isEmpty() && codigosInstitucion.contains(institucionDetalleDTO.getCodigo())) continue;
-							institucionDetalle.setId(institucionId);
-							institucionDetalle.setCodigo(institucionDetalleDTO.getCodigo());
-							institucionDetalle.setNombre(institucionDetalleDTO.getNombre());
-//							codigosInstitucion.add(institucionDetalleDTO.getCodigo());
-							institucionDetalleRepository.save(institucionDetalle);
+		Long pages = cabeceraAudienciaRepository.count()/1000;
+		
+		Integer currentPage = 0;
+		
+		Integer lastPage = pages.intValue();
+		
+		log.info("Ultima pagina: {}", lastPage);
+		
+		for(Integer actualPage = currentPage; actualPage <= lastPage;  actualPage++) {
+			Page<AudienciaCabecera> audienciaCabeceraPage = cabeceraAudienciaRepository.findAll(new PageRequest(actualPage, 1000));
+			List<AudienciaCabecera> audienciaCabeceraLst = audienciaCabeceraPage.getContent();
+			if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
+				for(AudienciaCabecera audienciaCabecera : audienciaCabeceraLst) {	
+					Integer institucionId = Integer.parseInt(audienciaCabecera.getInstitucionUrl().split("/")[6]);
+					InstitucionDetalle institucionDetalle = institucionDetalleRepository.findOne(institucionId);
+					if(institucionDetalle == null) {//no existe el organismo
+						try {
+							institucionDetalle = new InstitucionDetalle();
+							String institucionDetalleStr = leyLobbyFeignClient.getInstitucionDetalle(institucionId).getBody();
+							if(institucionDetalleStr != null) {
+								InstitucionDetalleDTO institucionDetalleDTO = gson.fromJson(institucionDetalleStr, InstitucionDetalleDTO.class);
+								institucionDetalle.setId(institucionId);
+								institucionDetalle.setCodigo(institucionDetalleDTO.getCodigo());
+								institucionDetalle.setNombre(institucionDetalleDTO.getNombre());
+								institucionDetalleRepository.save(institucionDetalle);
+							}
+							
+						} catch (Exception e) {
+							e.printStackTrace();
 						}
-						
-					} catch (Exception e) {
-						e.printStackTrace();
 					}
+					audienciaCabecera.setInstitucionDetalle(institucionDetalle);
+					cabeceraAudienciaRepository.save(audienciaCabecera);
 				}
-				audienciaCabecera.setInstitucionDetalle(institucionDetalle);
-				cabeceraAudienciaRepository.save(audienciaCabecera);
 			}
 		}
 		
