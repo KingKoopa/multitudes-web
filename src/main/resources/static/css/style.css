@@ -92,9 +92,29 @@ h6.block {
 /* Lins and Others
 ------------------------------------
 */
+.paging-nav {
+			
+  text-align: left;
+  padding-top: 4px;
+}
+
+.paging-nav a {
+  margin: auto 1px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 2px 7px;
+  background: #64b1ec;
+  color: white;
+  border-radius: 3px;
+}
+
+.paging-nav .selected-page {
+  background: #64b1ec;
+  font-weight: bold;
+}
 a {
   text-shadow: none !important;
-  color: #584b8d;
+  color: #64b1ec;
   transition: color 0.1s linear 0s, background-color 0.1s linear 0s, opacity 0.2s linear 0s !important; }
 
 a:focus,
