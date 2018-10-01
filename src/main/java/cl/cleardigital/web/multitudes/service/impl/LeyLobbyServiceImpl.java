@@ -106,7 +106,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	@Override
 	public Boolean getInstitucionesDetalle() throws Exception {
 		
-		Long pages = cabeceraAudienciaRepository.count()/1000;
+		Long pages = cabeceraAudienciaRepository.count()/100;
 		
 		Integer currentPage = 0;
 		
@@ -115,7 +115,8 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		log.info("Ultima pagina: {}", lastPage);
 		
 		for(Integer actualPage = currentPage; actualPage <= lastPage;  actualPage++) {
-			Page<AudienciaCabecera> audienciaCabeceraPage = cabeceraAudienciaRepository.findAll(new PageRequest(actualPage, 1000));
+			log.info("página actual: {}", actualPage);
+			Page<AudienciaCabecera> audienciaCabeceraPage = cabeceraAudienciaRepository.findAll(new PageRequest(actualPage, 100));
 			List<AudienciaCabecera> audienciaCabeceraLst = audienciaCabeceraPage.getContent();
 			if(audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
 				for(AudienciaCabecera audienciaCabecera : audienciaCabeceraLst) {	
