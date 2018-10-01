@@ -13,8 +13,17 @@
 		<!-- JS file -->
 		<script src="js/jquery.easy-autocomplete.min.js"></script>
 		
+		<!-- Pagination -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+		
+		
+		<script src="/js/paging.js"></script>
+
+				
 		<!-- CSS file -->
 		<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
 
         <!-- Site -->
         <link rel="stylesheet" href="css/app_1.min.css">
@@ -44,6 +53,7 @@
 			.TFtable tr:nth-child(even){
 				background: #dae5f4;
 			}
+			
 		</style>
         
     </head>
@@ -100,33 +110,34 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-
                             <div class="detail-info">
                                 
-                                <ul class="detail-info__list clearfix">
+                                <ul class="detail-info__list clearfix" id="ull">
                                     
                                     <!-- Sujetos pasivos -->
                                                                      
-	                                    <li>
-	                                    <div id="sujetos_pasivos_detail_table" >
-		                                    <table class="TFtable" style="width:125%">
+	                                 <li>
+	                                    <div id="sujetos_pasivos_detail_table">
+		                                    <table class="TFtable" style="width:125%" id="mitable">
+		                                    <thead>
 											  <tr>
 											    <th>Fecha</th>
 											    <th>Código</th> 
 											    <th>Región</th> 
 											    <th>Toma Razón<th> 
 											  </tr>
+											  </thead>
 											  <!-- adjudicacionDetalleLst -->
-											  <th:block th:each="licitacion : ${SujetoPasivoLicitacionesAdjudicadasDetalleDTO}">
-											  <tr>
-											        <td th:text="${licitacion.fecha}"></td>
-											        <td>
-											        <a th:href="@{'http://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?idlicitacion='+${licitacion.codigoExterno}}"
-											         th:text="${licitacion.codigoExterno}" target="blank"></a></td>
-											        <td th:text="${licitacion.region}"></td>
-											        <td th:text="${licitacion.tomaRazon}"></td>
-											   </tr>
-											    </th:block>
+												  <th:block th:each="licitacion : ${SujetoPasivoLicitacionesAdjudicadasDetalleDTO}">
+												  <tr>
+												        <td th:text="${licitacion.fecha}"></td>
+												        <td>
+												        <a th:href="@{'http://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?idlicitacion='+${licitacion.codigoExterno}}"
+												         th:text="${licitacion.codigoExterno}" target="blank"></a></td>
+												        <td th:text="${licitacion.region}"></td>
+												        <td th:text="${licitacion.tomaRazon}"></td>
+												  </tr>
+												   </th:block>
 											</table>
 	                                    </div>
 									</li>
@@ -237,6 +248,13 @@
 					$("#btn_ver_detalle_licitaciones").text("Ver -");
 				}
 			});
+
+			$('#mitable').paging({
+				limit: 10,
+				rowDisplayStyle: 'block',
+				activePage: 0,
+				rows: []
+			});
         });	
 		</script>
 		
@@ -261,9 +279,10 @@
 				}
 			}
 		};
-
-		$("#searchField").easyAutocomplete(options);
 	</script> 
+	
+	
+
     </body>
     
 </html>
