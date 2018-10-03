@@ -2875,7 +2875,7 @@ input[type="radio"], input[type="checkbox"] {
 #footer {
 	padding-top: 50px;
 	padding-bottom: 50px;
-	background-color: #e0e0e6;
+	/*background-color: #e0e0e6;*/
 	font-size: 14px;
 	line-height: 22px;
 }
