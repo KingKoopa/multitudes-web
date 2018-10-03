@@ -54,6 +54,17 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 		 
 		return personPasiveLst;
 	}
+<<<<<<< HEAD
+=======
+
+	@Override
+	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+>>>>>>> 8c78fbeabeb4fdb8d7c9c0130733e224fb277239
 
 	@Override
 	public Integer getCantidadSujetosActivos(Integer audienciaId) throws Exception {
@@ -72,11 +83,5 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 				e.printStackTrace();
 			}
 		return cantidadSujetosActivos;
-	}
-
-	@Override
-	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoLicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.repository.mercadopublico.LicitacionDetalleCustomRepository;
 
@@ -26,7 +27,7 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 	}
 	
 	@Override
-	public List<SujetoActivoCabeceraDTO> getDistinctByCompradorRutUnidad(String rutUnidad)throws Exception {
+	public List<SujetoPasivoCabeceraDTO> getDistinctByCompradorRutUnidad(String rutUnidad)throws Exception {
 		// TODO Auto-generated method stub
 		Query query = entityManager.createNativeQuery("SELECT " + 
 				"	    li.comprador_nombre_organismo as Nombre, " + 
@@ -43,17 +44,17 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 		
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
-		List<SujetoActivoCabeceraDTO> personActiveLst = new ArrayList<>();
+		List<SujetoPasivoCabeceraDTO> personPasiveLst = new ArrayList<>();
 	    for(Object[] obj: objLst){
-	      SujetoActivoCabeceraDTO personActive = new SujetoActivoCabeceraDTO();
-          personActive.setNombreProveedor((String) obj[0]);
-          personActive.setRutProveedor((String) obj[1]);
-          personActive.setRegion((String) obj[2]);
+	    	SujetoPasivoCabeceraDTO personPasive = new SujetoPasivoCabeceraDTO();
+	    	personPasive.setNombreComprador((String) obj[0]);
+	    	personPasive.setRutComprador((String) obj[1]);
+	    	personPasive.setRegionComprador((String) obj[2]);
 
-          personActiveLst.add(personActive);
+	    	personPasiveLst.add(personPasive);
 	    }
 		 
-		return personActiveLst;
+		return personPasiveLst;
 	}
 	
 	@Override
@@ -86,6 +87,35 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 	    }
 		 
 		return personAdjudicadaLst;
+	}
+
+	@Override
+	public List<SujetoActivoCabeceraDTO> getDistinctByVendedorRutProveedor(String rutProveedor) throws Exception {
+
+		Query query = entityManager.createNativeQuery("SELECT " + 
+				"	    li.adjudicacion_nombre_proveedor as Nombre," + 
+				"	    li.adjudicacion_rut_proveedor as Rut" + 
+				"	FROM  licitacion_item li " + 
+				"	WHERE " + 
+				"	    CONCAT_WS(\" \", " + 
+				"	            LTRIM(RTRIM(li.adjudicacion_nombre_proveedor)), " + 
+				"	            LTRIM(RTRIM(li.adjudicacion_rut_proveedor)) " + 
+				"	            ) LIKE '%"+rutProveedor+"%' " + 
+				"	GROUP BY li.adjudicacion_rut_proveedor " + 
+				"	ORDER BY li.adjudicacion_nombre_proveedor ASC");
+		
+		@SuppressWarnings("unchecked")
+		List<Object[]> objLst = query.getResultList();
+		List<SujetoActivoCabeceraDTO> personActiveLst = new ArrayList<>();
+	    for(Object[] obj: objLst){
+	      SujetoActivoCabeceraDTO personActive = new SujetoActivoCabeceraDTO();
+          personActive.setNombreProveedor((String) obj[0]);
+          personActive.setRutProveedor((String) obj[1]);
+
+          personActiveLst.add(personActive);
+	    }
+		 
+		return personActiveLst;
 	}
 
 	

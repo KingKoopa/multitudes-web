@@ -1,19 +1,18 @@
-package cl.cleardigital.web.multitudes.service;
+package cl.cleardigital.web.multitudes.repository.leylobby;
 
 import java.util.List;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 
-public interface LeyLobbyService {
-	
-	public Boolean getAudienciasHeaders() throws Exception;
-	
-	public Boolean getAudienciasDetalle() throws Exception;
-	
-	public Boolean getInstitucionesDetalle() throws Exception;
+public interface CabeceraAudienciaCustomRepository {
 	
 	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre)throws Exception;
 	
+<<<<<<< HEAD
+	public Integer getCantidadSujetosActivos(Integer audienciaId)throws Exception;
+=======
 	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre)throws Exception;
+>>>>>>> 8c78fbeabeb4fdb8d7c9c0130733e224fb277239
+
 }

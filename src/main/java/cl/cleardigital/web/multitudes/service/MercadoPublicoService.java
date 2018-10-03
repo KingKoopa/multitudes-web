@@ -13,9 +13,13 @@ public interface MercadoPublicoService {
 	
 	public List<LicitacionDetailDTO> getLicitacionDetallePorRutProveedor(String rutProveedor) throws Exception;
 	
-	public List<SujetoActivoCabeceraDTO> getCompradoresPorRut(String rutUnidad) throws Exception;
+	public List<SujetoPasivoCabeceraDTO> getCompradoresPorRut(String rutUnidad) throws Exception;
+	
+	public List<SujetoActivoCabeceraDTO> getVendedoresPorRut(String rutVendedor) throws Exception;
 	
 	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo) throws Exception;
+	
+	public SujetoActivoCabeceraDTO getFichaSujetoActivo(String rutProveedor) throws Exception;
 
 	public List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> getDetalleLicitacionAdjudicada(String rutAdjudicado, String tipo) throws Exception;
 	
