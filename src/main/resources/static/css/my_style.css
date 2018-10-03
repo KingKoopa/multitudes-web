@@ -1,0 +1,35 @@
+
+.easy-autocomplete-container { max-height: 160px; overflow-y: scroll; } 
+.TFtable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.TFtable td {
+	padding: 7px;
+	border: #4e95f4 1px solid;
+}
+/* provide some minimal visual accomodation for IE8 and below */
+.TFtable tr {
+	background: #b8d1f3;
+}
+/*  Define the background color for all the ODD background rows  */
+.TFtable tr:nth-child(odd) {
+	background: #b8d1f3;
+}
+/*  Define the background color for all the EVEN background rows  */
+.TFtable tr:nth-child(even) {
+	background: #dae5f4;
+}
+.btn-propio{
+	width: 68px; 
+	color: #fff; 
+	height: 51px; 
+	background-color: #2196F3; 
+	border-color: #2196F3;
+}
+.btn-propio-2{ 
+	color: #fff;
+	background-color: #2196F3; 
+	border-color: #2196F3;
+}

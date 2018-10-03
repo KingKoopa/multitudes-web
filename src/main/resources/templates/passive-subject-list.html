@@ -41,33 +41,11 @@
         <!-- Site -->
         <link rel="stylesheet" href="css/app_1.min.css">
         <link rel="stylesheet" href="css/app_2.min.css">
+ 		<link href="css/my_style.css" rel="stylesheet" />
 
         <!-- Page Loader JS -->
         <script src="js/page-loader.min.js" async></script>
-        
-		<style type="text/css">
-			.easy-autocomplete-container { max-height: 160px; overflow-y: scroll; } 
-			.TFtable{
-				width:100%; 
-				border-collapse:collapse; 
-			}
-			.TFtable td{ 
-				padding:7px; border:#4e95f4 1px solid;
-			}
-			/* provide some minimal visual accomodation for IE8 and below */
-			.TFtable tr{
-				background: #b8d1f3;
-			}
-			/*  Define the background color for all the ODD background rows  */
-			.TFtable tr:nth-child(odd){ 
-				background: #b8d1f3;
-			}
-			/*  Define the background color for all the EVEN background rows  */
-			.TFtable tr:nth-child(even){
-				background: #dae5f4;
-			}
-		</style>
-        
+
     </head>
 
     <body>
@@ -462,7 +440,7 @@
 		 <script>
 		var options = {
 			url : function(phrase) {
-				return "http://localhost:9000/mercado-publico/search?rutUnidad="
+				return "http://localhost:9000/mercado-publico/search-comprador?rutUnidad="
 						+ phrase;
 			},
 			adjustWidth : false,
@@ -475,7 +453,7 @@
 				},
 				onChooseEvent : function() {
 					var selectedItemValue = $("#searchField")
-							.getSelectedItemData().rutProveedor;
+							.getSelectedItemData().rutComprador;
 					$("#fiscalId").val(selectedItemValue);
 				}
 			}

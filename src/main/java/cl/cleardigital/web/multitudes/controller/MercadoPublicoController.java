@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.service.MercadoPublicoService;
 import cl.cleardigital.web.multitudes.util.RUTValidator;
@@ -44,11 +45,20 @@ public class MercadoPublicoController {
 	}
 	
 	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@RequestMapping(value = "/search-comprador", method = RequestMethod.GET)
 	public ResponseEntity<?> getCompradoresPorRut(
 			@RequestParam(name="rutUnidad") String rutUnidad
 			) throws Exception {
-		List<SujetoActivoCabeceraDTO> licitacionDetailDTOLst = mainService.getCompradoresPorRut(rutUnidad);
+		List<SujetoPasivoCabeceraDTO> licitacionDetailDTOLst = mainService.getCompradoresPorRut(rutUnidad);
+		return new ResponseEntity<List<SujetoPasivoCabeceraDTO>>(licitacionDetailDTOLst, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/search-vendedor", method = RequestMethod.GET)
+	public ResponseEntity<?> getVendedoresPorRut(
+			@RequestParam(name="rutUnidad") String rutUnidad
+			) throws Exception {
+		
+		List<SujetoActivoCabeceraDTO> licitacionDetailDTOLst = mainService.getVendedoresPorRut(rutUnidad);
 		return new ResponseEntity<List<SujetoActivoCabeceraDTO>>(licitacionDetailDTOLst, HttpStatus.OK);
 	}
 	

@@ -49,20 +49,6 @@ public class SujetoPasivoController {
 		
 		return modelAndView;
 	}
-/*
-	@RequestMapping(path= {"licitaciones-adjudicadas-detalle2"}, method = RequestMethod.GET)
-	public ResponseEntity<?> fichaSujetoPasivoLicitacionDetalle2(
-			@RequestParam(value="fiscalId", required=false) String fiscalId
-			,@RequestParam(value="tipoLicitacion", required=false) String tipoLicitacion)throws Exception{
-		
-		List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> adjudicacionDetalleLst = new ArrayList<>();
-		if(fiscalId != null) {
-			adjudicacionDetalleLst = mercadoPublicoService.getDetalleLicitacionAdjudicada(fiscalId, tipoLicitacion);
-		}
-
-		return new ResponseEntity<List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO>>(adjudicacionDetalleLst, HttpStatus.OK);
-	}
-*/
 	
 	@RequestMapping(path= {"ficha-sujeto-pasivo-cabecera"}, method = RequestMethod.POST)
 	public ModelAndView getSujetoPasivoData(
@@ -76,5 +62,6 @@ public class SujetoPasivoController {
 		modelAndView.addObject("sujetoPasivoCabeceraDTO", sujetoPasivoCabeceraDTO);
 		return modelAndView;
 	}
+	
 	
 }

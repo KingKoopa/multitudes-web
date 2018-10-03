@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.repository.leylobby.CabeceraAudienciaCustomRepository;
 
@@ -51,6 +52,12 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 	    }
 		 
 		return personPasiveLst;
+	}
+
+	@Override
+	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

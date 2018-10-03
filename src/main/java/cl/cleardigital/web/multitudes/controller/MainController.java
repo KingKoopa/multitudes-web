@@ -19,12 +19,6 @@ public class MainController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(path= {"ficha-sujeto-activo"}, method = RequestMethod.GET)
-	public ModelAndView fichaSujetoActivo() throws Exception{
-		ModelAndView modelAndView = new ModelAndView("active-subject-list");
-		return modelAndView;
-	}
-	
 	@RequestMapping(path= {"ficha-por-categoria"}, method = RequestMethod.GET)
 	public ModelAndView fichaPorCategoria() throws Exception{
 		ModelAndView modelAndView = new ModelAndView("category-subject-list");

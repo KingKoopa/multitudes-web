@@ -3,6 +3,7 @@ package cl.cleardigital.web.multitudes.dto.fichas;
 import java.io.Serializable;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -20,10 +21,22 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 	private Integer numeroAudiencias;
 	private Integer licitacionesPublicas;
 	private String regionComprador;
+	private String displayableName;
 	private List<SujetoPasivoCabeceraLicitacionesDTO> cabecerasLicitacion;
 	private List<SujetoPasivoAudienciaDTO> sujetoPasivoAudiencias;
 	
-	
+	public String getDisplayableName() {
+		
+		this.displayableName = this.rutComprador 
+							  + " " + this.nombreComprador
+							  + " " + this.regionComprador;
+		//Remover los acentos
+		this.displayableName = StringUtils.stripAccents(this.displayableName);
+		return displayableName;
+	}
+	public void setDisplayableName(String displayableName) {
+		this.displayableName = displayableName;
+	}
 	
 	public String getRegionComprador() {
 		return regionComprador;
@@ -83,6 +96,7 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this,ToStringStyle.JSON_STYLE);
 	}
+
 	
 	
 }

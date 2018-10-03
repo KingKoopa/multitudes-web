@@ -20,7 +20,7 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	private String tipoProveedor;
 	private Integer numeroAudiencias;
 	private Integer numeroLicitaciones;
-	private String displayableName;
+	private String displayableName; //Nombre & Region Proveedor
 	private List<SujetoActivoAudienciaDTO> sujetosActivos;
 	private List<SujetoActivoLicitacionesDTO> sujetoLicitaciones;
 	
@@ -31,8 +31,7 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	public String getDisplayableName() {
 		
 		this.displayableName = this.rutProveedor 
-							  + " " + this.nombreProveedor
-							  + " " + this.region;
+							  + " " + this.nombreProveedor;
 		//Remover los acentos
 		this.displayableName = StringUtils.stripAccents(this.displayableName);
 		return displayableName;
