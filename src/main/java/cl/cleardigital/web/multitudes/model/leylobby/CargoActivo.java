@@ -1,7 +1,11 @@
 package cl.cleardigital.web.multitudes.model.leylobby;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Type;
 
 
 /**
@@ -18,7 +22,8 @@ public class CargoActivo implements Serializable {
 	private Integer id;
 
 	@Column(name="remunerado")
-	private Integer remunerado;
+	@Type(type = "org.hibernate.type.NumericBooleanType")
+	private Boolean remunerado;
 
 	@Column(name="sujeto_apellidos")
 	private String sujetoApellidos;
@@ -29,6 +34,10 @@ public class CargoActivo implements Serializable {
 	@Column(name="tipo")
 	private String tipo;
 
+	//bi-directional many-to-one association to Asistente
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cargoActivo")
+	private List<Asistente> asistentes;
+	
 	public CargoActivo() {
 	}
 
@@ -40,11 +49,11 @@ public class CargoActivo implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getRemunerado() {
+	public Boolean getRemunerado() {
 		return this.remunerado;
 	}
 
-	public void setRemunerado(Integer remunerado) {
+	public void setRemunerado(Boolean remunerado) {
 		this.remunerado = remunerado;
 	}
 
@@ -70,6 +79,14 @@ public class CargoActivo implements Serializable {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public List<Asistente> getAsistentes() {
+		return asistentes;
+	}
+
+	public void setAsistentes(List<Asistente> asistentes) {
+		this.asistentes = asistentes;
 	}
 
 }

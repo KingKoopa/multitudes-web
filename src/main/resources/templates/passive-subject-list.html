@@ -174,12 +174,14 @@
 											    <th>Nombre Completo</th>
 											    <th>Cargo</th> 
 											    <th>Nº de audiencias</th> 
+											    <th>Sujetos Activos</th>
 											  </tr>
 											  <th:block th:each="audiencia : ${sujetoPasivoCabeceraDTO.sujetoPasivoAudiencias}">
 											    <tr>
 											        <td th:text="${audiencia.nombreCompleto}"></td>
 											        <td th:text="${audiencia.cargo}"></td>
 											        <td th:text="${audiencia.cantidadDeAudiencias}"></td>
+											        <td th:text="${audiencia.sujetoActivosCantidad}"></td>
 											    </tr>
 											  </th:block>
 											</table>

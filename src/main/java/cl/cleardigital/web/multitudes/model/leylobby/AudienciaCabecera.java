@@ -40,9 +40,6 @@ public class AudienciaCabecera implements Serializable {
 
 	@Id
 	private Integer id;
-
-//	@Column(name="institucion_detail_id")
-//	private Integer institucionDetailId;
 	
 	//bi-directional many-to-one association to instucionDetalle
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -150,14 +147,6 @@ public class AudienciaCabecera implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-//	public Integer getInstitucionDetailId() {
-//		return this.institucionDetailId;
-//	}
-//
-//	public void setInstitucionDetailId(Integer institucionDetailId) {
-//		this.institucionDetailId = institucionDetailId;
-//	}
 
 	public InstitucionDetalle getInstitucionDetalle() {
 		return institucionDetalle;

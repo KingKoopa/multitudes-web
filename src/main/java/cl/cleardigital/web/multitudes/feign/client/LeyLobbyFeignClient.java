@@ -27,11 +27,19 @@ public interface LeyLobbyFeignClient {
 	@RequestMapping(value = "/audiencias/{audiencia_id}", method = RequestMethod.GET)
 	public ResponseEntity<String> getAudienciaDetalle(
 			@PathVariable(name="audiencia_id") Integer audienciaId
+			,@RequestHeader("api-key") String apiKey
 			) throws Exception;
 	
 	@RequestMapping(value = "/instituciones/{institucion_id}", method = RequestMethod.GET)
 	public ResponseEntity<String> getInstitucionDetalle(
 			@PathVariable(name="institucion_id") Integer institucionId
+			,@RequestHeader("api-key") String apiKey
+			) throws Exception;
+	
+	@RequestMapping(value = "/cargos-activos/{cargo_id}", method = RequestMethod.GET)
+	public ResponseEntity<String> getCargoActivo(
+			@PathVariable(name="cargo_id") Integer cargoId
+			,@RequestHeader("api-key") String apiKey
 			) throws Exception;
 }
 

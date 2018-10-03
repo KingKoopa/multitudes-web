@@ -33,6 +33,12 @@ public class LeyLobbyController {
 		return new ResponseEntity<Boolean>(leyLobbyService.getInstitucionesDetalle(), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/traer-audiencia-detalle", method = RequestMethod.GET)
+	public ResponseEntity<?> traerDetalleAudiencia() throws Exception{
+		
+		return new ResponseEntity<Boolean>(leyLobbyService.getAudienciasDetalle(), HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/traer-pasivo-detalle", method = RequestMethod.GET)
 	public ResponseEntity<?> getPasivoAudiencias(
 			@RequestParam(name="nombre") String nombre

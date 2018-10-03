@@ -1,6 +1,8 @@
 package cl.cleardigital.web.multitudes.model.leylobby;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -14,9 +16,6 @@ import javax.persistence.*;
 @NamedQuery(name="Asistente.findAll", query="SELECT a FROM Asistente a")
 public class Asistente implements Serializable {
 
-	@Column(name="active_position_id")
-	private Integer activePositionId;
-
 	@Column(name="apellidos")
 	private String apellidos;
 
@@ -24,6 +23,7 @@ public class Asistente implements Serializable {
 	private String cargoActivoUrl;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column(name="nombres")
@@ -53,15 +53,18 @@ public class Asistente implements Serializable {
 	@Column(name="representante_legal")
 	private String representanteLegal;
 
+	//bi-directional many-to-one association to cargoActivo
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cargo_activo_id", nullable = false)
+	private CargoActivo cargoActivo;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "audiencia_detalle_asistente", joinColumns = {
+			@JoinColumn(name = "asistente_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "audiencia_detalle_id", nullable = false, updatable = false) })
+	private List<AudienciaDetalle> audienciasDetalle;
+	
 	public Asistente() {
-	}
-
-	public Integer getActivePositionId() {
-		return this.activePositionId;
-	}
-
-	public void setActivePositionId(Integer activePositionId) {
-		this.activePositionId = activePositionId;
 	}
 
 	public String getApellidos() {
@@ -158,6 +161,22 @@ public class Asistente implements Serializable {
 
 	public void setRepresentanteLegal(String representanteLegal) {
 		this.representanteLegal = representanteLegal;
+	}
+
+	public CargoActivo getCargoActivo() {
+		return cargoActivo;
+	}
+
+	public void setCargoActivo(CargoActivo cargoActivo) {
+		this.cargoActivo = cargoActivo;
+	}
+
+	public List<AudienciaDetalle> getAudienciasDetalle() {
+		return audienciasDetalle;
+	}
+
+	public void setAudienciasDetalle(List<AudienciaDetalle> audienciasDetalle) {
+		this.audienciasDetalle = audienciasDetalle;
 	}
 
 }

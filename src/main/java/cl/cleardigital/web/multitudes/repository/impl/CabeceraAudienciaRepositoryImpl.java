@@ -26,16 +26,17 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 	
 	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre) throws Exception {
 		// TODO Auto-generated method stub
-		Query query = entityManager.createNativeQuery("select concat(ac.nombres, ' '\r\n" + 
-				", ac.apellidos) as \"Nombre\"\r\n" + 
-				", ac.cargo\r\n" + 
-				", count(ac.id) as cantidad_audiencias\r\n" + 
-				"from institucion_detalle ins\r\n" + 
-				"join audiencia_cabecera ac \r\n" + 
-				"on ac.institucion_detail_id = ins.id\r\n" + 
-				"where ins.nombre like '%"+nombre+"%'\r\n" + 
-				"and str_to_date(ac.fecha_inicio,'%Y-%m-%d') between '2015-06-01' AND '2015-06-31'\r\n" + 
-				"group by ac.nombres\r\n" + 
+		Query query = entityManager.createNativeQuery("select concat(ac.nombres, ' ' " + 
+				", ac.apellidos) as \"Nombre\" " + 
+				", ac.cargo " + 
+				", count(ac.id) as cantidad_audiencias " + 
+				", ac.id " +
+				"from institucion_detalle ins " + 
+				"join audiencia_cabecera ac  " + 
+				"on ac.institucion_detail_id = ins.id " + 
+				"where ins.nombre like '%"+nombre+"%' " + 
+				"and str_to_date(ac.fecha_inicio,'%Y-%m-%d') between '2015-06-01' AND '2015-06-31' " + 
+				"group by ac.nombres " + 
 				", ac.apellidos");
 		
 		@SuppressWarnings("unchecked")
@@ -46,13 +47,29 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 	    	personPasive.setNombreCompleto((String) obj[0]);
 	    	personPasive.setCargo((String) obj[1]);
 	    	personPasive.setCantidadDeAudiencias(((BigInteger) obj[2]).intValue());
-
+	    	personPasive.setSujetoActivosCantidad(getCantidadSujetosActivos((Integer) obj[3]));
 	    	personPasiveLst.add(personPasive);
 	    }
 		 
 		return personPasiveLst;
 	}
-	
 
-
+	@Override
+	public Integer getCantidadSujetosActivos(Integer audienciaId) throws Exception {
+		Query query = entityManager.createNativeQuery("   select " + 
+				"    count(ada.asistente_id) as sujetos_activos " + 
+				"    from audiencia_detalle ad " + 
+				"    join audiencia_detalle_asistente ada on ada.audiencia_detalle_id = ad.id " + 
+				"    where ad.id = " + audienciaId + 
+				"    group by ad.id, ada.audiencia_detalle_id ");
+		Integer cantidadSujetosActivos = 0;
+			try {
+				if(query.getSingleResult() != null) {
+					cantidadSujetosActivos = ((BigInteger) query.getSingleResult()).intValue();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return cantidadSujetosActivos;
+	}
 }
