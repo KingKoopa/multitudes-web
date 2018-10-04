@@ -1,6 +1,7 @@
 package cl.cleardigital.web.multitudes.repository.impl;
 
 import java.math.BigInteger;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 		return entityManager;
 	}
 	
-	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre) throws Exception {
+	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre, Date fechaDesde, Date fechaHAsta) throws Exception {
 		// TODO Auto-generated method stub
 		Query query = entityManager.createNativeQuery("select concat(ac.nombres, ' ' " + 
 				", ac.apellidos) as \"Nombre\" " + 
@@ -36,7 +37,7 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 				"join audiencia_cabecera ac  " + 
 				"on ac.institucion_detail_id = ins.id " + 
 				"where ins.nombre like '%"+nombre+"%' " + 
-				"and str_to_date(ac.fecha_inicio,'%Y-%m-%d') between '2015-06-01' AND '2015-06-31' " + 
+				"and str_to_date(ac.fecha_inicio,'%Y-%m-%d') between '"+fechaDesde+"' AND '"+fechaHAsta+"' " + 
 				"group by ac.nombres " + 
 				", ac.apellidos");
 		
