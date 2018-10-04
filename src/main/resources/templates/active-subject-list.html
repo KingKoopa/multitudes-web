@@ -122,7 +122,15 @@
 								placeholder="   Ingrese criterios de búsqueda..." type="text">
 						</div>
 					</div>
+					<div>
+	                	<label>Fecha Desde:</label>
+	                    <input  type="date" value="2015-07-01" id="fechaDesde">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                    <label>Fecha Hasta:</label>
+	                    <input  type="date" value="2015-07-31" id="fechaHasta">
+	                </div>
 				</form>
+				<br>
+	                		
 			</header>
 
 
@@ -140,7 +148,7 @@
 								<li><span>Monto adjudicado:</span> <span th:text="${sujetoActivoCabeceraDTO != null ? '$'+#numbers.formatDecimal(sujetoActivoCabeceraDTO.monto, 0, 'DEFAULT', 0, 'DEFAULT'): ''}"></span>
 								</li>
 								<li><span>Categoria:</span> <span th:text="${sujetoActivoCabeceraDTO != null ? sujetoActivoCabeceraDTO.giro : ''}"></span></li>
-								<li><span>Tipo Proveedor:</span> <span th:text="${sujetoActivoCabeceraDTO != null ? sujetoActivoCabeceraDTO.tipoProveedor : ''}"></span></li>
+								<!-- <li><span>Tipo Proveedor:</span> <span th:text="${sujetoActivoCabeceraDTO != null ? sujetoActivoCabeceraDTO.tipoProveedor : ''}"></span></li> Falta Dato -->
 								<li><span></span></li>
 								<!-- Nº de audiencias -->
 								<li><span>Nº de audiencias:</span> <span>2</span> <a
@@ -177,35 +185,25 @@
 										</table>
 									</div>
 								</li>
-								<li><span></span></li>
-								<li><span></span></li>
 								<!-- Licitaciones en la que participo -->
-								<li><span>Nº de licitaciones que participó:</span> <span>3</span>
+								<li><span>Nº de licitaciones que participó:</span> <span th:text="${sujetoActivoCabeceraDTO != null ?  sujetoActivoCabeceraDTO.numeroLicitaciones : '0'}"></span>
 									<a id="btn_ver_detalle_licitaciones"
 									class="btn btn-propio-2 btn-block" style="width: 25%">Ver+</a></li>
 								<li>
 									<div id="licitaciones_detail_table" style="display: none;">
-										<table class="TFtable" style="width: 100%">
+										<table th:if="${sujetoActivoCabeceraDTO != null}" class="TFtable" style="width: 100%">
 											<tr>
 												<th>Tipo</th>
+												<th>Descripción</th>
 												<th>Cantidad</th>
-												<th>Monto($)</th>
 											</tr>
+											<th:block th:each="licitacion : ${sujetoActivoCabeceraDTO.sujetoLicitaciones}">
 											<tr>
-												<td>Compra Pública</td>
-												<td>1</td>
-												<td>$100.000.000</td>
+												<td th:text="${licitacion.tipo}"></td>
+												<td th:text="${licitacion.descripcion}"></td>
+												<td th:text="${licitacion.cantidad}"></td>
 											</tr>
-											<tr>
-												<td>Contrato Directo</td>
-												<td>1</td>
-												<td>$100.000.000</td>
-											</tr>
-											<tr>
-												<td>Convenio Marco</td>
-												<td>1</td>
-												<td>$100.000.000</td>
-											</tr>
+											</th:block>
 										</table>
 									</div>
 								</li>

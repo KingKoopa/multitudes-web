@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,16 +51,18 @@ public class SujetoPasivoController {
 	
 	@RequestMapping(path= {"ficha-sujeto-pasivo-cabecera"}, method = RequestMethod.POST)
 	public ModelAndView getSujetoPasivoData(
-			@RequestParam(value="fiscalId", required=false) String fiscalId) throws Exception{
+			@RequestParam(value="fiscalId", required=false) String fiscalId
+			,@RequestParam(value="fechaDesde", required=false) Date fechaDesde
+			,@RequestParam(value="fechaHasta", required=false) Date fechaHasta) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView("passive-subject-list");
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
 		if(fiscalId != null) {
-			sujetoPasivoCabeceraDTO = mercadoPublicoService.getFichaSujetoPasivo(fiscalId);
+			sujetoPasivoCabeceraDTO = mercadoPublicoService.getFichaSujetoPasivo(fiscalId, fechaDesde, fechaHasta);
 		}
 		modelAndView.addObject("sujetoPasivoCabeceraDTO", sujetoPasivoCabeceraDTO);
 		return modelAndView;
-	}
+	} 
 	
 	
 }

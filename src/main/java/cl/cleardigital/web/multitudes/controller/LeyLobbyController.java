@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +42,11 @@ public class LeyLobbyController {
 	
 	@RequestMapping(value = "/traer-pasivo-detalle", method = RequestMethod.GET)
 	public ResponseEntity<?> getPasivoAudiencias(
-			@RequestParam(name="nombre") String nombre
+			@RequestParam(name="nombre") String nombre,
+			@RequestParam(name="fechaDesde") Date fechaDesde,
+			@RequestParam(name="fechaHasta") Date fechaHasta
 			) throws Exception {
-		List<SujetoPasivoAudienciaDTO> pasivoDetailDTOLst = leyLobbyService.findByPasivoAudiencias(nombre);
+		List<SujetoPasivoAudienciaDTO> pasivoDetailDTOLst = leyLobbyService.findByPasivoAudiencias(nombre, fechaDesde, fechaHasta);
 		return new ResponseEntity<List<SujetoPasivoAudienciaDTO>>(pasivoDetailDTOLst, HttpStatus.OK);
 	}
 	

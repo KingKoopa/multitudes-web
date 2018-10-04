@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
@@ -13,7 +14,7 @@ public interface LeyLobbyService {
 	
 	public Boolean getInstitucionesDetalle() throws Exception;
 	
-	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre)throws Exception;
+	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre, Date fechaDesde, Date fechaHasta)throws Exception;
 	
 	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre)throws Exception;
 }

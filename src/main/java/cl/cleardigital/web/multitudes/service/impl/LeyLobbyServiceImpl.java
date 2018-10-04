@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.service.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -230,9 +231,9 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	}
 
 	@Override
-	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre) throws Exception {
+	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre, Date fechaDesde, Date fechaHasta) throws Exception {
 		
-		List<SujetoPasivoAudienciaDTO> pasivoDetalleLst = cabeceraAudienciaRepository.findByPasivoAudiencias(nombre);    
+		List<SujetoPasivoAudienciaDTO> pasivoDetalleLst = cabeceraAudienciaRepository.findByPasivoAudiencias(nombre, fechaDesde, fechaHasta);    
 		
 		return pasivoDetalleLst;
 	}

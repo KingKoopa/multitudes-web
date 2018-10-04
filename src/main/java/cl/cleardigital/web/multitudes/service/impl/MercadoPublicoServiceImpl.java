@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.service.impl;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -184,7 +185,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 	}
 
 	@Override
-	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo) throws Exception {
+	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo, Date fechaDesde, Date fechaHasta) throws Exception {
 		log.info("MercadoPublicoService::getFichaSujetoPasivo()");
 		List<LicitacionDetalle> licitacionDetalleLst =  licitacionDetalleRepository.findByCompradorRutUnidad(rutOrganismo);
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
@@ -226,7 +227,8 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		}
 		
 		//poblar audiencias
-		List<SujetoPasivoAudienciaDTO> pasivoDetalleLst = leyLobbyServiceImpl.findByPasivoAudiencias(sujetoPasivoCabeceraDTO.getNombreComprador());
+		List<SujetoPasivoAudienciaDTO> pasivoDetalleLst = leyLobbyServiceImpl.findByPasivoAudiencias
+														(sujetoPasivoCabeceraDTO.getNombreComprador(), fechaDesde, fechaHasta);
 		if(pasivoDetalleLst != null && !pasivoDetalleLst.isEmpty()) {
 			sujetoPasivoCabeceraDTO.setSujetoPasivoAudiencias(pasivoDetalleLst);
 			sujetoPasivoCabeceraDTO.setSujetosPasivosCantidad(pasivoDetalleLst.size());
@@ -275,28 +277,39 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 	                );
 			
 
-			/*List<SujetoActivoLicitacionesDTO> newSujetoActivoLicitacionesDTO = _populateSujetoActivoLicitaciones(result);
+			List<SujetoActivoLicitacionesDTO> newSujetoActivoLicitacionesDTO = _populateSujetoActivoLicitaciones(result);
 			if(newSujetoActivoLicitacionesDTO != null && !newSujetoActivoLicitacionesDTO.isEmpty()) {
-		        SujetoActivoCabeceraDTO.setCabecerasLicitacion(newSujetoActivoLicitacionesDTO);
-		        SujetoActivoCabeceraDTO.setLicitacionesPublicas(newSujetoActivoLicitacionesDTO.size());
-			}*/
+				sujetoActivoCabeceraDTO.setSujetoLicitaciones(newSujetoActivoLicitacionesDTO);
+				sujetoActivoCabeceraDTO.setNumeroLicitaciones(newSujetoActivoLicitacionesDTO.size());
+			}
 		
 		}
 		
 		//poblar audiencias             
-		List<SujetoActivoAudienciaDTO> activoDetalleLst = leyLobbyServiceImpl.findByActivoAudiencias(sujetoActivoCabeceraDTO.getNombreProveedor());
+		/*List<SujetoActivoAudienciaDTO> activoDetalleLst = leyLobbyServiceImpl.findByActivoAudiencias(sujetoActivoCabeceraDTO.getNombreProveedor());
 		if(activoDetalleLst != null && !activoDetalleLst.isEmpty()) {
-			//sujetoActivoCabeceraDTO.setSujetoPasivoAudiencias(activoDetalleLst);
-			//sujetoActivoCabeceraDTO.setSujetosPasivosCantidad(activoDetalleLst.size());
-		}
+			sujetoActivoCabeceraDTO.setSujetosActivos(activoDetalleLst);
+			sujetoActivoCabeceraDTO.setSujetosPasivosCantidad(activoDetalleLst.size());
+		}*/
 		
 		
 		
 		return sujetoActivoCabeceraDTO;
 	}
 	 
-	 
+	private List<SujetoActivoLicitacionesDTO> _populateSujetoActivoLicitaciones(Map<String, Long> result){
+		List<SujetoActivoLicitacionesDTO> newSujetoActivoLicitacionesDTO = new ArrayList<>();
+		result.forEach((key,value)->{
+			SujetoActivoLicitacionesDTO sujetoActivoLicitacionesDTO = new SujetoActivoLicitacionesDTO();
+			sujetoActivoLicitacionesDTO.setTipo(key);
+			sujetoActivoLicitacionesDTO.setCantidad(value.intValue());
+			newSujetoActivoLicitacionesDTO.add(sujetoActivoLicitacionesDTO);
+		});
 
+	
+		return newSujetoActivoLicitacionesDTO; 
+	}
+	
 	private List<SujetoPasivoCabeceraLicitacionesDTO> _populateSujetoPasivoCabeceraLicitaciones(Map<String, Long> result){
 		List<SujetoPasivoCabeceraLicitacionesDTO> newSujetoPasivoCabeceraLicitaciones = new ArrayList<>();
 		result.forEach((key,value)->{
@@ -306,9 +319,9 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			newSujetoPasivoCabeceraLicitaciones.add(sujetoPasivoCabeceraLicitacionesDTO);
 		});
 		
-		
 		return newSujetoPasivoCabeceraLicitaciones; 
 	}
+		
 
 	
 	@Override
