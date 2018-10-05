@@ -43,6 +43,5 @@ public class SujetoActivoController {
 		return modelAndView;
 	}
 	
-	
 
 }

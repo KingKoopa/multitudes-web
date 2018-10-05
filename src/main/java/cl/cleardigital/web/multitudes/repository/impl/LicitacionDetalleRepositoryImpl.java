@@ -10,8 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.LicitacionesAdjudicadasDetalleDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoLicitacionesDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoLicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.repository.mercadopublico.LicitacionDetalleCustomRepository;
 
 @Repository
@@ -57,7 +58,7 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 	}
 	
 	@Override
-	public List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> getDistinctByLicitacionAdjudicadaRutUnidad(String rutAdjudicado, String tipo)throws Exception {
+	public List<LicitacionesAdjudicadasDetalleDTO> getDistinctByLicitacionAdjudicadaRutUnidad(String rutAdjudicado, String tipo)throws Exception {
 		Query query = entityManager.createNativeQuery("select  \r\n" + 
 				"date_format(ld.fecha_adjudicacion, '%d-%m-%Y')\r\n" + 
 				", ld.codigo_externo\r\n" + 
@@ -74,9 +75,41 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 		
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
-		List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> personAdjudicadaLst = new ArrayList<>();
+		List<LicitacionesAdjudicadasDetalleDTO> personAdjudicadaLst = new ArrayList<>();
 	    for(Object[] obj: objLst){
-	    	SujetoPasivoLicitacionesAdjudicadasDetalleDTO personAdjudicada = new SujetoPasivoLicitacionesAdjudicadasDetalleDTO();
+	    	LicitacionesAdjudicadasDetalleDTO personAdjudicada = new LicitacionesAdjudicadasDetalleDTO();
+	    	personAdjudicada.setFecha(((String) obj[0]).toString());
+	    	personAdjudicada.setCodigoExterno((String) obj[1]);
+	    	personAdjudicada.setRegion((String) obj[2]);
+	    	personAdjudicada.setTomaRazon((String) obj[3]);
+
+	    	personAdjudicadaLst.add(personAdjudicada);
+	    }
+		 
+		return personAdjudicadaLst;
+	}
+	
+	@Override
+	public List<LicitacionesAdjudicadasDetalleDTO> getDistinctByLicitacionAdjudicadaRutProveedor(String rutAdjudicado, String tipo)throws Exception {
+		Query query = entityManager.createNativeQuery("select \r\n" + 
+				"date_format(ld.fecha_adjudicacion, '%d-%m-%Y') as 'Fecha'\r\n" + 
+				", ld.codigo_externo\r\n" + 
+				", ld.comprador_region_unidad\r\n" + 
+				", ld.comprador_nombre_usuario\r\n" + 
+				"from licitacion_detalle ld\r\n" + 
+				"join licitacion_detalle_licitacion_item ldi on ldi.codigo_externo = ld.codigo_externo\r\n" + 
+				"join licitacion_item li on li.id = ldi.licitacion_item_id\r\n" + 
+				"where li.adjudicacion_rut_proveedor = '"+rutAdjudicado+"'\r\n" + 
+				"and ld.tipo = '"+tipo+"'\r\n" + 
+				"group by ld.codigo_externo\r\n" + 
+				", ld.comprador_region_unidad\r\n" + 
+				", ld.comprador_nombre_usuario "); 
+		
+		@SuppressWarnings("unchecked")
+		List<Object[]> objLst = query.getResultList();
+		List<LicitacionesAdjudicadasDetalleDTO> personAdjudicadaLst = new ArrayList<>();
+	    for(Object[] obj: objLst){
+	    	LicitacionesAdjudicadasDetalleDTO personAdjudicada = new LicitacionesAdjudicadasDetalleDTO();
 	    	personAdjudicada.setFecha(((String) obj[0]).toString());
 	    	personAdjudicada.setCodigoExterno((String) obj[1]);
 	    	personAdjudicada.setRegion((String) obj[2]);

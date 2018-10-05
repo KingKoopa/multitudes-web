@@ -4,8 +4,8 @@ import java.sql.Date;
 import java.util.List;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.LicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoLicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 
 public interface MercadoPublicoService {
@@ -22,6 +22,7 @@ public interface MercadoPublicoService {
 	
 	public SujetoActivoCabeceraDTO getFichaSujetoActivo(String rutProveedor) throws Exception;
 
-	public List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> getDetalleLicitacionAdjudicada(String rutAdjudicado, String tipo) throws Exception;
+	public List<LicitacionesAdjudicadasDetalleDTO> getDetalleLicitacionAdjudicada(String rutAdjudicado, String tipo) throws Exception;
 	
+	public List<LicitacionesAdjudicadasDetalleDTO> getDistinctByLicitacionAdjudicadaRutProveedor(String rutAdjudicado, String tipo)throws Exception;
 }
