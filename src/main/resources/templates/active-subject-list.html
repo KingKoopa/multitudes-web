@@ -9,58 +9,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fundación Multitudes</title>
 
-<!-- Site -->
-<link rel="stylesheet" href="css/app_1.min.css">
-<link rel="stylesheet" href="css/app_2.min.css"> 
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		
+		<!-- JS file -->
+		<script src="/js/jquery.easy-autocomplete.min.js"></script>
+		
+		
+		<!-- Icono -->
+		<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
+		
+        <!-- Vendors -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+        <!-- Material design colors -->
+<!--         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet"> -->
 
-<link rel="stylesheet" href="css/pro.css"> 
+<!--         CSS animations -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/animate.css/animate.min.css"> -->
 
- <script src="lib/popper.min.js"></script> 
- <script src="lib/jquery-3.2.1.min.js"></script>
-<link href="lib/animate.css" rel="stylesheet" /> 
-<!-- Css -->
- <link href="css/style.css" rel="stylesheet" /> 
- <link href="css/my_style.css" rel="stylesheet" /> 
+<!--         Select2 - Custom Selects -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/select2/dist/css/select2.min.css"> -->
 
-<!-- JS file -->
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="lib/jquery-3.2.1.min.js"></script>
+<!--         NoUiSlider - Input Slider -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/nouislider/distribute/nouislider.min.css"> -->
 
-<script src="js/jquery.easy-autocomplete.min.js"></script>
-<!-- CSS file -->
-<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
+<!--         Light Gallery -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css"> -->
 
-<!-- Additional CSS Themes file - not required-->
-<link rel="stylesheet" href="js/easy-autocomplete.themes.min.css" />
+<!--         rateYo - Ratings -->
+<!--         <link rel="stylesheet" href="vendors/bower_components/rateYo/src/jquery.rateyo.css"> -->
 
-<!-- Material design colors 
-<link
-	href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"
-	rel="stylesheet">
--->
-<!-- CSS animations -->
-<link rel="stylesheet"
-	href="vendors/bower_components/animate.css/animate.min.css">
+        <!-- Site -->
+        <link rel="stylesheet" href="/css/app_1.min.css">
+        <link rel="stylesheet" href="/css/app_2.min.css">
+ 		<link href="/css/my_style.css" rel="stylesheet" />
 
-<!-- Select2 - Custom Selects 
-<link rel="stylesheet"
-	href="vendors/bower_components/select2/dist/css/select2.min.css">
--->
-<!-- NoUiSlider - Input Slider -->
-<link rel="stylesheet"
-	href="vendors/bower_components/nouislider/distribute/nouislider.min.css">
-
-<!-- Light Gallery 
-<link rel="stylesheet"
-	href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css">
--->
-<!-- rateYo - Ratings -->
-<link rel="stylesheet"
-	href="vendors/bower_components/rateYo/src/jquery.rateyo.css">
-
-
-<!-- Page Loader JS -->
-<script src="js/page-loader.min.js" async></script>
+        <!-- Page Loader JS -->
+        <script src="js/page-loader.min.js" async></script>
 
 </head>
 
@@ -121,7 +106,7 @@
 								data-rmd-action="advanced-search-open"
 								placeholder="   Ingrese criterios de búsqueda..." type="text">
 						</div>
-					</div>
+					</div><br>
 					<div>
 	                	<label>Fecha Desde:</label>
 	                    <input  type="date" value="2015-07-01" id="fechaDesde">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -196,13 +181,15 @@
 												<th>Tipo</th>
 												<th>Descripción</th>
 												<th>Cantidad</th>
+												<th>Detalle</th>
 											</tr>
 											<th:block th:each="licitacion : ${sujetoActivoCabeceraDTO.sujetoLicitaciones}">
 											<tr>
 												<td th:text="${licitacion.tipo}"></td>
 												<td th:text="${licitacion.descripcion}"></td>
 												<td th:text="${licitacion.cantidad}"></td>
-											</tr>
+												<td align="center"><a target="_blank" th:href="@{/mercado-publico/licitaciones-adjudicadas-detalle(fiscalId=${sujetoActivoCabeceraDTO.rutProveedor},(tipoLicitacion=${licitacion.tipo}),(origen='A'))}"><i class="fa fa-search"></i></a></td>
+										    </tr>
 											</th:block>
 										</table>
 									</div>

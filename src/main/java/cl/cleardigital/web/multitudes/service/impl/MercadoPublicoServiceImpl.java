@@ -15,13 +15,12 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.LicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoLicitacionesDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraLicitacionesDTO;
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoLicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailListadoDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionHeaderDTO;
@@ -345,10 +344,22 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 	}
 	
 	@Override
-	public List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> getDetalleLicitacionAdjudicada(String rutAdjudicado, String tipo)
+	public List<LicitacionesAdjudicadasDetalleDTO> getDetalleLicitacionAdjudicada(String rutAdjudicado, String tipo)
 			throws Exception {
 		
-		List<SujetoPasivoLicitacionesAdjudicadasDetalleDTO> AdjudicacionDetalleLst = licitacionDetalleRepository.getDistinctByLicitacionAdjudicadaRutUnidad(rutAdjudicado, tipo);
+		List<LicitacionesAdjudicadasDetalleDTO> AdjudicacionDetalleLst = licitacionDetalleRepository.getDistinctByLicitacionAdjudicadaRutUnidad(rutAdjudicado, tipo);
+		
+		log.info(AdjudicacionDetalleLst.toString());
+
+
+		return AdjudicacionDetalleLst;
+	}
+	
+	@Override
+	public List<LicitacionesAdjudicadasDetalleDTO> getDistinctByLicitacionAdjudicadaRutProveedor(String rutAdjudicado, String tipo)
+			throws Exception {
+		
+		List<LicitacionesAdjudicadasDetalleDTO> AdjudicacionDetalleLst = licitacionDetalleRepository.getDistinctByLicitacionAdjudicadaRutProveedor(rutAdjudicado, tipo);
 		
 		log.info(AdjudicacionDetalleLst.toString());
 

@@ -12,7 +12,8 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 		
 		<!-- JS file -->
-		<script src="js/jquery.easy-autocomplete.min.js"></script>
+		<script src="/js/jquery.easy-autocomplete.min.js"></script>
+		
 		
 		<!-- Icono -->
 		<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
@@ -39,9 +40,9 @@
 <!--         <link rel="stylesheet" href="vendors/bower_components/rateYo/src/jquery.rateyo.css"> -->
 
         <!-- Site -->
-        <link rel="stylesheet" href="css/app_1.min.css">
-        <link rel="stylesheet" href="css/app_2.min.css">
- 		<link href="css/my_style.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/app_1.min.css">
+        <link rel="stylesheet" href="/css/app_2.min.css">
+ 		<link href="/css/my_style.css" rel="stylesheet" />
 
         <!-- Page Loader JS -->
         <script src="js/page-loader.min.js" async></script>
@@ -215,7 +216,7 @@
 										        <td th:text="${licitacion.descripcion}"></td>
 										        <!-- <td th:text="${sujetoPasivoCabeceraDTO.regionComprador}"></td> -->
 										        <td th:text="${licitacion.cantidad}"></td>
-										        <td align="center"><a target="_blank" th:href="@{/licitaciones-adjudicadas-detalle(fiscalId=${sujetoPasivoCabeceraDTO.rutComprador},(tipoLicitacion=${licitacion.tipoLicitacion}))}"><i class="fa fa-search"></i></a></td>
+										        <td align="center"><a target="_blank" th:href="@{/mercado-publico/licitaciones-adjudicadas-detalle(fiscalId=${sujetoPasivoCabeceraDTO.rutComprador},(tipoLicitacion=${licitacion.tipoLicitacion}),(origen=P))}"><i class="fa fa-search"></i></a></td>
 										        <!-- <td th:text="${#numbers.formatDecimal(licitacion.monto, 0, 'DEFAULT', 0, 'DEFAULT')}"></td> -->
 										    </tr>
 										  </th:block>

@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-
+import cl.cleardigital.web.multitudes.dto.fichas.LicitacionesAdjudicadasDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
@@ -62,7 +64,30 @@ public class MercadoPublicoController {
 		return new ResponseEntity<List<SujetoActivoCabeceraDTO>>(licitacionDetailDTOLst, HttpStatus.OK);
 	}
 	
-	
+	@RequestMapping(path= {"licitaciones-adjudicadas-detalle"}, method = RequestMethod.GET)
+	public ModelAndView fichaLicitacionDetalle(
+			@RequestParam(value="fiscalId", required=false) String fiscalId
+			,@RequestParam(value="tipoLicitacion", required=false) String tipoLicitacion
+			,@RequestParam(value="origen", required=false) String origen)throws Exception{
+		
+		List<LicitacionesAdjudicadasDetalleDTO> adjudicacionDetalleLst = new ArrayList<>();
+		ModelAndView modelAndView = new ModelAndView("passive-subject-detail");
+		
+		 if(origen.equals("P")) {
+				if(fiscalId != null) {
+					adjudicacionDetalleLst = mainService.getDetalleLicitacionAdjudicada(fiscalId, tipoLicitacion);
+				}
+				
+		 }else if (origen.equals("A")) {
+				if(fiscalId != null) {
+					adjudicacionDetalleLst = mainService.getDistinctByLicitacionAdjudicadaRutProveedor(fiscalId, tipoLicitacion);
+				}
+		}
+		 
+		modelAndView.addObject("LicitacionesAdjudicadasDetalleDTO", adjudicacionDetalleLst);
+		
+		return modelAndView;
+	}
 	
 
 }

@@ -49,7 +49,9 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 	    	personPasive.setNombreCompleto((String) obj[0]);
 	    	personPasive.setCargo((String) obj[1]);
 	    	personPasive.setCantidadDeAudiencias(((BigInteger) obj[2]).intValue());
-	    	personPasive.setSujetoActivosCantidad(getCantidadSujetosActivos((Integer) obj[3]));
+	    	Integer audienciaId = (Integer) obj[3];
+	    	Integer resultado = (audienciaId != null) ? getCantidadSujetosActivos(audienciaId) : 0;
+	    	personPasive.setSujetoActivosCantidad(resultado);
 	    	personPasiveLst.add(personPasive);
 	    }
 		 
