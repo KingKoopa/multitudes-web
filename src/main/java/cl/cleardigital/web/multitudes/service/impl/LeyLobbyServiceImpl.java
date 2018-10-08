@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.dashboard.AudienciasPorMesDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.InstitucionDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
@@ -244,6 +245,14 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		List<SujetoActivoAudienciaDTO> activoDetalleLst = cabeceraAudienciaRepository.findByActivoAudiencias(nombre);
 		
 		return activoDetalleLst;
+	}
+	
+	@Override
+	public List<AudienciasPorMesDTO> getAudienciasPorMes () throws Exception {
+		
+		//List<AudienciasPorMesDTO> activoDetalleLst = cabeceraAudienciaRepository.findByActivoAudiencias(nombre);
+		
+		return null;
 	}
 	
 	
