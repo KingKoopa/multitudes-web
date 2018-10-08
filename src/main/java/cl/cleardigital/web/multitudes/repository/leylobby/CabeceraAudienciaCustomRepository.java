@@ -13,7 +13,5 @@ public interface CabeceraAudienciaCustomRepository {
 	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre)throws Exception;
 	
 	public Integer getCantidadSujetosActivos(Integer audienciaId)throws Exception;
-	
-	//Audiencias Por Mes public Integer getCantidadSujetosActivos(Integer audienciaId)throws Exception;
 
 }

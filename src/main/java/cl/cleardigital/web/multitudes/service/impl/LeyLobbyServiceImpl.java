@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPublicasDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.InstitucionDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
@@ -29,6 +30,7 @@ import cl.cleardigital.web.multitudes.repository.leylobby.AsistenteRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.AudienciaDetalleRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.CabeceraAudienciaRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.CargoActivoRepository;
+import cl.cleardigital.web.multitudes.repository.leylobby.DashboardRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.InstitucionDetalleRepository;
 import cl.cleardigital.web.multitudes.service.LeyLobbyService;
 
@@ -57,6 +59,9 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	
 	@Autowired
 	private AudienciaDetalleRepository audienciaDetalleRepository;
+	
+	@Autowired
+	private DashboardRepository dashboardRepository;
 	
 	@Override
 	public Boolean getAudienciasHeaders() throws Exception {
@@ -244,6 +249,14 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		List<SujetoActivoAudienciaDTO> activoDetalleLst = cabeceraAudienciaRepository.findByActivoAudiencias(nombre);
 		
 		return activoDetalleLst;
+	}
+
+	@Override
+	public List<Top10AudienciasPublicasDTO> getTop10AudienciasPublicas() throws Exception {
+
+		dashboardRepository.getTop10AudienciasPublicas(); //TODO: Implementar logica.
+		
+		return null;
 	}
 	
 	
