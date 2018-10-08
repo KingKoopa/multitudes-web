@@ -1,11 +1,14 @@
 package cl.cleardigital.web.multitudes.dto.fichas;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@SuppressWarnings("serial")
 @JsonInclude(Include.NON_NULL)
-public class LicitacionesAdjudicadasDetalleDTO {
+public class LicitacionesAdjudicadasDetalleDTO implements Serializable{
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private String fecha;

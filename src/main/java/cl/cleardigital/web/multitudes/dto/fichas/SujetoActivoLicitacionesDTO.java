@@ -1,6 +1,13 @@
 package cl.cleardigital.web.multitudes.dto.fichas;
 
-public class SujetoActivoLicitacionesDTO {
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@SuppressWarnings("serial")
+@JsonInclude(Include.NON_NULL)
+public class SujetoActivoLicitacionesDTO implements Serializable{
 	
 	private String tipo;
 	private String descripcion;
