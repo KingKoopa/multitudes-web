@@ -261,13 +261,12 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	}
 	
 	
-	
 	@Override
 	public List<AudienciasPorMesDTO> getAudienciasPorMes () throws Exception {
 		
-		//List<AudienciasPorMesDTO> activoDetalleLst = cabeceraAudienciaRepository.findByActivoAudiencias(nombre);
+		List<AudienciasPorMesDTO> audienciasPorMesLst = dashboardRepository.getAudienciasPorMes();
 		
-		return null;
+		return audienciasPorMesLst;
 	}
 	
 	
