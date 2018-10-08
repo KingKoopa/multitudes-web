@@ -255,9 +255,9 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 	@Override
 	public List<Top10AudienciasPublicasDTO> getTop10AudienciasPublicas() throws Exception {
 
-		dashboardRepository.getTop10AudienciasPublicas(); //TODO: Implementar logica.
+		List<Top10AudienciasPublicasDTO> top10AudienciasPublicasLst = dashboardRepository.getTop10AudienciasPublicas(); 
 		
-		return null;
+		return top10AudienciasPublicasLst;
 	}
 	
 	
