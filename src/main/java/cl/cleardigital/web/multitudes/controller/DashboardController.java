@@ -24,7 +24,7 @@ public class DashboardController {
 	private LeyLobbyService lobbyService;
 	
 	@RequestMapping(path= {""}, method = RequestMethod.GET)
-	public ModelAndView charts() throws Exception{
+	public ModelAndView dashboard() throws Exception{
 		ModelAndView modelAndView = new ModelAndView("dashboard");
 		return modelAndView;
 	}
@@ -36,7 +36,7 @@ public class DashboardController {
 		
 		return new ResponseEntity<List<AudienciasPorMesDTO>>(audienciasPorMesDTOLst, HttpStatus.OK);	
 	}
-
+	
 	@RequestMapping(value = "/top-audiencias-publicas", method = RequestMethod.GET)
 	public ResponseEntity<?> getTopAudienciasPublicas(
 			) throws Exception {
@@ -55,6 +55,4 @@ public class DashboardController {
 		return new ResponseEntity<List<Top10AudienciasPrivadasDTO>>(top10AudienciasPrivadasLst, HttpStatus.OK);	
 
 	}
-	
-	
 }
