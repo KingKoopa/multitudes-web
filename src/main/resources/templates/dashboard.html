@@ -9,6 +9,10 @@
         <title>Fundación Multitudes</title>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		
+		<!-- Alertify -->
+		<script src="/js/alertify/lib/alertify.js"></script>
+		<script src="/js/alertify/lib/alertify.min.js"></script>
 				
 		<!-- CSS file -->
 		<link rel="stylesheet" href="/css/style.css" />
@@ -110,6 +114,38 @@
 
                     </div>
                 </div>
+                
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="detail-info">
+                                
+                               <!-- Page length options -->
+				<div class="panel panel-flat">
+					<div class="panel-heading">
+						<h4 align="center" class="panel-title">Top 10 Audiencias Privadas</h4>
+					</div>
+
+					<table id="top10AudienciasPrivadas" class="table datatable-show-all">
+						<thead>
+							<tr>
+								<th class="text-left">#</th>
+								<th class="text-left">Cantidad</th>
+								<th class="text-left">Proveedor</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<!-- /page length options -->
+                              
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
             </div>
         </section>
 
@@ -171,71 +207,37 @@
         <script>
         
         $(document).ready(function() {
+	        	$.ajax({
+	    			type : "GET",
+	    			url : "/dashboard/top-audiencias-privadas",
+	    			success : cargarTop10AudienciasPrivadas,
+	    			error : errorDialog
+	    		});
         	
-          //lista sujetos pasivos:
-        			$("#btn_ver_sujetos_pasivos").click(function(e){
-				if($("#sujetos_pasivos_detail_table").is(':visible')){
-					$("#sujetos_pasivos_detail_table").hide();
-					$("#btn_ver_sujetos_pasivos").text("Ver +");
-				}else{
-					$("#sujetos_pasivos_detail_table").show();
-					$("#btn_ver_sujetos_pasivos").text("Ver -");
-				}
-			});
-        	
-			//audiencias
-			$("#btn_ver_detalle_audiencia").click(function(e){
-				if($("#audiencias_detail_table").is(':visible')){
-					$("#audiencias_detail_table").hide();
-					$("#btn_ver_detalle_audiencia").text("Ver +");
-				}else{
-					$("#audiencias_detail_table").show();
-					$("#btn_ver_detalle_audiencia").text("Ver -");
-				}
-			});
-			
-			//Licitaciones:
-			$("#btn_ver_detalle_licitaciones").click(function(e){
-				if($("#licitaciones_detail_table").is(':visible')){
-					$("#licitaciones_detail_table").hide();
-					$("#btn_ver_detalle_licitaciones").text("Ver +");
-				}else{
-					$("#licitaciones_detail_table").show();
-					$("#btn_ver_detalle_licitaciones").text("Ver -");
-				}
-			});
-
-			$('#mitable').paging({
-				limit: 10,
-				rowDisplayStyle: 'block',
-				activePage: 0,
-				rows: []
-			});
         });	
+        
+        function cargarTop10AudienciasPrivadas(data, status, jqxhrObject) {
+			if (data) {
+				var contador = 0;
+				data.forEach(function(top10AudienciaPrivada) {
+					contador++;
+					var cantidad = top10AudienciaPrivada.cantidad;
+					var nombreProveedor = top10AudienciaPrivada.proveedor;
+
+					$("#top10AudienciasPrivadas")
+							.append("<tbody>"+
+									"<tr>"+
+										"<td class=text-left>"+ contador +"</td>"+
+										"<td class=text-left>"+ cantidad +"</td>"+
+										"<td class=text-left>"+ nombreProveedor +"</td>"+
+									"</tr>"+
+									"</tbody>"
+							);
+						});
+			}
+		}
 		</script>
 		
-		 <script>
-		var options = {
-			url : function(phrase) {
-				return "http://localhost:9000/mercado-publico/search?rutUnidad="
-						+ phrase;
-			},
-			adjustWidth : false,
-			getValue : "displayableName",
-			minCharNumber : 3,
-			list : {
-				maxNumberOfElements: 13,
-				match : {
-					enabled : true
-				},
-				onChooseEvent : function() {
-					var selectedItemValue = $("#searchField")
-							.getSelectedItemData().rutProveedor;
-					$("#fiscalId").val(selectedItemValue);
-				}
-			}
-		};
-	</script> 
 	
 	
 
