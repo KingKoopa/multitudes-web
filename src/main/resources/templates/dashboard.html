@@ -2,195 +2,315 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <!--[if IE 9 ]><html lang="es" class="ie9"><![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fundación Multitudes</title>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fundación Multitudes</title>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-				
-		<!-- CSS file -->
-		<link rel="stylesheet" href="/css/style.css" />
-		<link rel="stylesheet" href="/css/my_style.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-        <!-- Site -->
-        <link rel="stylesheet" href="/css/app_1.min.css">
-        <link rel="stylesheet" href="/css/app_2.min.css">
-        
-        
-    </head>
+<!-- Global stylesheets -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900"
+	rel="stylesheet" type="text/css">
+<link href="/css/dashboard/bootstrap.css" rel="stylesheet"
+	type="text/css">
+<link href="/css/dashboard/bootstrap.min.css" rel="stylesheet"
+	type="text/css">
+<link href="/css/dashboard/colors.css" rel="stylesheet" type="text/css">
+<link href="/css/dashboard/colors.min.css" rel="stylesheet"
+	type="text/css">
+<link href="/css/dashboard/components.css" rel="stylesheet"
+	type="text/css">
+<link href="/css/dashboard/components.min.css" rel="stylesheet"
+	type="text/css">
+<link href="/css/dashboard/core.css" rel="stylesheet" type="text/css">
+<link href="/css/dashboard/core.min.css" rel="stylesheet"
+	type="text/css">
+<!-- /global stylesheets -->
 
-    <body>
-        <header id="header">
+<!-- Alertify -->
+<script src="/js/alertify/lib/alertify.js"></script>
+<script src="/js/alertify/lib/alertify.min.js"></script>
 
-            <div class="header__main">
-                <div class="container">
-                    <a class="logo" href="index.html">
-                        <img src="/img/logo.png" alt="">
-                        <div class="logo__text">
-                            <span>Fundación Multitudes</span>
-                            <span>Slogan</span>
-                        </div>
-                    </a>
+<!-- CSS file -->
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/my_style.css" />
 
-                    <div class="navigation-trigger visible-xs visible-sm" data-rmd-action="block-open" data-rmd-target=".navigation">
-                        <i class="zmdi zmdi-menu"></i>
-                    </div>
+<!-- Site -->
+<link rel="stylesheet" href="/css/app_1.min.css">
+<link rel="stylesheet" href="/css/app_2.min.css">
 
-                    <ul class="navigation">
-                        <li class="visible-xs visible-sm"><a class="navigation__close" data-rmd-action="navigation-close" href=""><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
-                        <li class="navigation__dropdown">
-                            <a href="index.html">Home</a>
-                        </li>
-                        
-                         <li class="navigation__dropdown">
-                            <a href="index.html">Proveedores</a>
-                        </li>
-                        
-                        <li class="navigation__dropdown">
-                            <a href="index.html">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <section class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="detail-info">
-                                
-                               <!-- Page length options -->
-				<div class="panel panel-flat">
-					<div class="panel-heading">
-						<h4 class="panel-title" align="center">Top 10 Audiencias Públicas</h4>
+</head>
+
+<body>
+	<header id="header">
+
+		<div class="header__main">
+			<div class="container">
+				<a class="logo" href="index.html"> <img src="/img/logo.png"
+					alt="">
+					<div class="logo__text">
+						<span>Fundación Multitudes</span> <span>Slogan</span>
+					</div>
+				</a>
+
+				<div class="navigation-trigger visible-xs visible-sm"
+					data-rmd-action="block-open" data-rmd-target=".navigation">
+					<i class="zmdi zmdi-menu"></i>
+				</div>
+
+				<ul class="navigation">
+					<li class="visible-xs visible-sm"><a class="navigation__close"
+						data-rmd-action="navigation-close" href=""><i
+							class="zmdi zmdi-long-arrow-right"></i></a></li>
+
+					<li class="navigation__dropdown"><a href="index.html">Home</a>
+					</li>
+
+					<li class="navigation__dropdown"><a href="index.html">Proveedores</a>
+					</li>
+
+					<li class="navigation__dropdown"><a href="index.html">Contacto</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
+							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h4 class="panel-title" align="center">
+										<u>Top 10 Audiencias Públicas</u>
+									</h4>
+								</div>
+								<table class="table datatable-show-all"
+									id="top10AudienciasPublicas">
+									<thead>
+										<tr>
+											<th class="text-left">#</th>
+											<th class="text-left">Cantidad</th>
+											<th class="text-left">Institucion</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+
+						</div>
 					</div>
 
-					<table class="table datatable-show-all" id="top10AudienciasPublicas">
-						<thead>
-							<tr>
-								<th class="text-left"></th>
-								<th class="text-left">Cantidad</th>
-								<th class="text-left">Institucion</th>
-							</tr>
-						</thead>
-					</table>
 				</div>
-				<!-- /page length options -->
-                              
-                                
-                            </div>
-                        </div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
 
-                    </div>
-                </div>
-            </div>
-        </section>
+							<div id="myfirstchart" style="height: 250px;"></div>
 
-        <footer id="footer">
-            <div class="container hidden-xs">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="footer__block">
-                            <a class="logo clearfix" href="">
-                                <div class="logo__text">
-                                    <span>Fundación Multitudes</span>
-                                    <span>Slogan</span>
-                                </div>
-                            </a>
+						</div>
+					</div>
 
-                            <address class="m-t-20 m-b-20 f-14">
-                                Román Díaz #445, Providencia, Región Metropolitana
-                            </address>
+				</div>
+			</div>
 
-                            <div class="f-20">9 9509 0351</div>
-                            <div class="f-14 m-t-5">hola@fundacionmultitudes.com / info@fundacionmultitudes.com</div>
 
-                            <div class="f-20 m-t-20">
-                                <a href="" class="m-r-10"><i class="zmdi zmdi-google"></i></a>
-                                <a href="" class="m-r-10"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href=""><i class="zmdi zmdi-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
 
-            <div class="footer__bottom">
-                <div class="container">
-                    <span class="footer__copyright">© Fundación Multitudes</span>
+							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h4 align="center" class="panel-title">
+										<u>Top 10 Audiencias Privadas</u>
+									</h4>
+								</div>
 
-                    <a href="">Sobre Nosotros</a>
-                    <a href="">Términos y condiciones</a>
-                    <a href="">Políticas de privacidad</a>
-                </div>
+								<table id="top10AudienciasPrivadas"
+									class="table datatable-show-all">
+									<thead>
+										<tr>
+											<th class="text-left">#</th>
+											<th class="text-left">Cantidad</th>
+											<th class="text-left">Proveedor</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+							<!-- /page length options -->
 
-                <div class="footer__to-top" data-rmd-action="scroll-to" data-rmd-target="html">
-                    <i class="zmdi zmdi-chevron-up"></i>
-                </div>
-            </div>
-        </footer>
 
-        <!-- Site functions and actions -->
-        <script src="/js/app.min.js"></script>
+						</div>
+					</div>
 
-        <!-- Demo only -->
-        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A" async></script>
-        <script src="/js/demo/demo.js"></script>
-        <script src="/js/demo/maps/listing-detail-location-map.js"></script>
-        <script src="/js/demo/charts/line-chart.js"></script>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<footer id="footer">
+		<div class="container hidden-xs">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="footer__block">
+						<a class="logo clearfix" href="">
+							<div class="logo__text">
+								<span>Fundación Multitudes</span> <span>Slogan</span>
+							</div>
+						</a>
+
+						<address class="m-t-20 m-b-20 f-14">Román Díaz #445,
+							Providencia, Región Metropolitana</address>
+
+						<div class="f-20">9 9509 0351</div>
+						<div class="f-14 m-t-5">hola@fundacionmultitudes.com /
+							info@fundacionmultitudes.com</div>
+
+						<div class="f-20 m-t-20">
+							<a href="" class="m-r-10"><i class="zmdi zmdi-google"></i></a> <a
+								href="" class="m-r-10"><i class="zmdi zmdi-facebook"></i></a> <a
+								href=""><i class="zmdi zmdi-twitter"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer__bottom">
+			<div class="container">
+				<span class="footer__copyright">© Fundación Multitudes</span> <a
+					href="">Sobre Nosotros</a> <a href="">Términos y condiciones</a> <a
+					href="">Políticas de privacidad</a>
+			</div>
+
+			<div class="footer__to-top" data-rmd-action="scroll-to"
+				data-rmd-target="html">
+				<i class="zmdi zmdi-chevron-up"></i>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Site functions and actions -->
+	<script src="/js/app.min.js"></script>
+
+	<!-- Demo only -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A"
+		async></script>
+	<script src="/js/demo/demo.js"></script>
+	<script src="/js/demo/maps/listing-detail-location-map.js"></script>
+	<script src="/js/demo/charts/line-chart.js"></script>
+
+
+
+	<script>
+		$(document).ready(function() {
+
+			$.ajax({
+				type : "GET",
+				url : "/dashboard/top-audiencias-publicas",
+				success : top10AudienciasPublicas,
+				error : errorDialog
+			});
+
+			$.ajax({
+				type : "GET",
+				url : "/dashboard/top-audiencias-privadas",
+				success : cargarTop10AudienciasPrivadas,
+				error : errorDialog
+			});
+			
+			function audienciasPorMesAjax() {
+				$.ajax({
+					type : "GET",
+					url : "/dashboard/audiencias-por-mes",
+					success : audienciasPorMes,
+					error : errorDialog
+				});
+			}
+			
+			
+
+			new Morris.Bar({
+				element : 'myfirstchart',
+				data : audienciasPorMesAjax,
+					
+				xkey : 'year',
+				
+				ykeys : [ 'value' ],
+				
+				labels : [ 'Value' ]
+			});
+
+		});
 		
-		
-        
-     <script>
-        
-        $(document).ready(function() {
-        	
-    		$.ajax({
-    			type : "GET",
-    			url : "/dashboard/top-audiencias-publicas",
-    			success : top10AudienciasPublicas,
-    			error : errorDialog
-    		});
-        });
+		function audienciasPorMes(data, status, jqxhrObject) {
+			return JSON.stringify(data);
+		}
 
-    		function top10AudienciasPublicas(data, status, jqxhrObject) {
-    			if (data) {
-    				var contador = 0; 
-    				data.forEach(function(top10AudienciasPublicas) {
-    							contador++;
-    							var cantidad = top10AudienciasPublicas.cantidad;
-    							var institucion = top10AudienciasPublicas.institucion;
+		function top10AudienciasPublicas(data, status, jqxhrObject) {
+			if (data) {
+				var contador = 0;
+				data.forEach(function(top10AudienciasPublicas) {
+					contador++;
+					var cantidad = top10AudienciasPublicas.cantidad;
+					var institucion = top10AudienciasPublicas.institucion;
 
-    							$("#top10AudienciasPublicas")
-    									.append(
-    											"<tbody>"+
-	    											"<tr>"+
-	    												"<td class=text-left>"+contador+"</td>" +
-														"<td class=text-left>"+cantidad+"</td>" +
-														"<td class=text-left>"+institucion+"</td>"+
-													"</tr>"+
-												"</tbody>"
-												);
-    						});
-    					}
-    			}
-    		
-    		function errorDialog(data, status, jqxhrObject) {
-    			alertify
-    					.error('Ha ocurrido un error, favor contactese con el administrador.');
-    		}
-        	
+					$("#top10AudienciasPublicas").append(
+							"<tbody>" + "<tr>" + "<td class=text-left>"
+									+ contador + "</td>"
+									+ "<td class=text-left>" + cantidad
+									+ "</td>" + "<td class=text-left>"
+									+ institucion + "</td>" + "</tr>"
+									+ "</tbody>");
+				});
+			}
+		}
 
+		function cargarTop10AudienciasPrivadas(data, status, jqxhrObject) {
+			if (data) {
+				var contador = 0;
+				data.forEach(function(top10AudienciaPrivada) {
+					contador++;
+					var cantidad = top10AudienciaPrivada.cantidad;
+					var nombreProveedor = top10AudienciaPrivada.proveedor;
+
+					$("#top10AudienciasPrivadas").append(
+							"<tbody>" + "<tr>" + "<td class=text-left>"
+									+ contador + "</td>"
+									+ "<td class=text-left>" + cantidad
+									+ "</td>" + "<td class=text-left>"
+									+ nombreProveedor + "</td>" + "</tr>"
+									+ "</tbody>");
+				});
+			}
+		}
+
+		function errorDialog(data, status, jqxhrObject) {
+			alertify
+					.error('Ha ocurrido un error, favor contactese con el administrador.');
+		}
 	</script>
-		
 
-	
-	
+</body>
 
-    </body>
-    
 </html>
