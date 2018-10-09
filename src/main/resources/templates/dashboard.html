@@ -73,37 +73,14 @@
 						<h4 class="panel-title" align="center">Top 10 Audiencias Públicas</h4>
 					</div>
 
-					<table class="table datatable-show-all">
+					<table class="table datatable-show-all" id="top10AudienciasPublicas">
 						<thead>
 							<tr>
-								<th class="text-center">Cantidad</th>
-								<th class="text-center">Institucion</th>
+								<th class="text-left"></th>
+								<th class="text-left">Cantidad</th>
+								<th class="text-left">Institucion</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td class="text-center">Cicely</td>
-								<td class="text-center">Sigler</td>
-							</tr>
-						</tbody>
-						<tbody>
-							<tr>
-								<td class="text-center">Cicely</td>
-								<td class="text-center">Sigler</td>
-							</tr>
-						</tbody>
-						<tbody>
-							<tr>
-								<td class="text-center">Cicely</td>
-								<td class="text-center">Sigler</td>
-							</tr>
-						</tbody>
-						<tbody>
-							<tr>
-								<td class="text-center">Cicely</td>
-								<td class="text-center">Sigler</td>
-							</tr>
-						</tbody>
 					</table>
 				</div>
 				<!-- /page length options -->
@@ -204,18 +181,48 @@
 		
 		
         
-        <script>
+     <script>
         
         $(document).ready(function() {
+        	
+	    		$.ajax({
+	    			type : "GET",
+	    			url : "/dashboard/top-audiencias-publicas",
+	    			success : top10AudienciasPublicas,
+	    			error : errorDialog
+		    		});
+	        	
+	
 	        	$.ajax({
 	    			type : "GET",
 	    			url : "/dashboard/top-audiencias-privadas",
 	    			success : cargarTop10AudienciasPrivadas,
 	    			error : errorDialog
-	    		});
+			});
         	
-        });	
-        
+        });
+
+    		function top10AudienciasPublicas(data, status, jqxhrObject) {
+    			if (data) {
+    				var contador = 0; 
+    				data.forEach(function(top10AudienciasPublicas) {
+    							contador++;
+    							var cantidad = top10AudienciasPublicas.cantidad;
+    							var institucion = top10AudienciasPublicas.institucion;
+
+    							$("#top10AudienciasPublicas")
+    									.append(
+    											"<tbody>"+
+	    											"<tr>"+
+	    												"<td class=text-left>"+contador+"</td>" +
+														"<td class=text-left>"+cantidad+"</td>" +
+														"<td class=text-left>"+institucion+"</td>"+
+													"</tr>"+
+												"</tbody>");
+        			});	
+    			}
+    		}
+    		
         function cargarTop10AudienciasPrivadas(data, status, jqxhrObject) {
 			if (data) {
 				var contador = 0;
@@ -233,13 +240,16 @@
 									"</tr>"+
 									"</tbody>"
 							);
-						});
-			}
-		}
-		</script>
-		
-	
-	
+    					});
+    			}
+        }
+        
+    		function errorDialog(data, status, jqxhrObject) {
+    			alertify.error('Ha ocurrido un error, favor contactese con el administrador.');
+    		}
+        	
+
+	</script>
 
     </body>
     
