@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPublicasDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.AudienciasPorMesDTO;
+import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPrivadasDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.InstitucionDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
@@ -267,6 +268,14 @@ public class LeyLobbyServiceImpl implements LeyLobbyService{
 		List<AudienciasPorMesDTO> audienciasPorMesLst = dashboardRepository.getAudienciasPorMes();
 		
 		return audienciasPorMesLst;
+	}
+
+	@Override
+	public List<Top10AudienciasPrivadasDTO> getTop10AudienciasPrivadas() throws Exception {
+		
+		List<Top10AudienciasPrivadasDTO> top10AudienciasPrivadasLst = dashboardRepository.getTop10AudienciasPrivadas(); 
+		
+		return top10AudienciasPrivadasLst;
 	}
 	
 	

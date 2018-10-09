@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.cleardigital.web.multitudes.dto.dashboard.AudienciasPorMesDTO;
+import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPrivadasDTO;
+import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPublicasDTO;
 import cl.cleardigital.web.multitudes.service.LeyLobbyService;
 
 @Controller
@@ -33,6 +35,25 @@ public class DashboardController {
 		List<AudienciasPorMesDTO> audienciasPorMesDTOLst = lobbyService.getAudienciasPorMes();
 		
 		return new ResponseEntity<List<AudienciasPorMesDTO>>(audienciasPorMesDTOLst, HttpStatus.OK);	
+	}
+
+	@RequestMapping(value = "/top-audiencias-publicas", method = RequestMethod.GET)
+	public ResponseEntity<?> getTopAudienciasPublicas(
+			) throws Exception {
+		
+		List<Top10AudienciasPublicasDTO> top10AudienciasPublicasLst  = lobbyService.getTop10AudienciasPublicas();
+		
+		return new ResponseEntity<List<Top10AudienciasPublicasDTO>>(top10AudienciasPublicasLst, HttpStatus.OK);	
+	}
+	
+	@RequestMapping(value = "/top-audiencias-privadas", method = RequestMethod.GET)
+	public ResponseEntity<?> getTopAudienciasPrivadas(
+			) throws Exception {
+		
+		List<Top10AudienciasPrivadasDTO> top10AudienciasPrivadasLst  = lobbyService.getTop10AudienciasPrivadas();
+		
+		return new ResponseEntity<List<Top10AudienciasPrivadasDTO>>(top10AudienciasPrivadasLst, HttpStatus.OK);	
+
 	}
 	
 	
