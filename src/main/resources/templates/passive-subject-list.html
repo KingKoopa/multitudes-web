@@ -2,26 +2,27 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <!--[if IE 9 ]><html lang="es" class="ie9"><![endif]-->
-    <head>
-    
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Fundación Multitudes</title>
+<head>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-		
-		<!-- JS file -->
-		<script src="/js/jquery.easy-autocomplete.min.js"></script>
-		
-		
-		<!-- Icono -->
-		<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
-		
-        <!-- Vendors -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		
-        <!-- Material design colors -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fundación Multitudes</title>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<!-- JS file -->
+<script src="/js/jquery.easy-autocomplete.min.js"></script>
+
+
+<!-- Icono -->
+<link rel="stylesheet" href="js/easy-autocomplete.min.css" />
+
+<!-- Vendors -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Material design colors -->
 <!--         <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet"> -->
 
 <!--         CSS animations -->
@@ -39,136 +40,133 @@
 <!--         rateYo - Ratings -->
 <!--         <link rel="stylesheet" href="vendors/bower_components/rateYo/src/jquery.rateyo.css"> -->
 
-        <!-- Site -->
-        <link rel="stylesheet" href="/css/app_1.min.css">
-        <link rel="stylesheet" href="/css/app_2.min.css">
- 		<link href="/css/my_style.css" rel="stylesheet" />
+<!-- Site -->
+<link rel="stylesheet" href="/css/app_1.min.css">
+<link rel="stylesheet" href="/css/app_2.min.css">
+<link href="/css/my_style.css" rel="stylesheet" />
 
-        <!-- Page Loader JS -->
-        <!-- <script src="js/page-loader.min.js" async></script> -->
+<!-- Page Loader JS -->
+<!-- <script src="js/page-loader.min.js" async></script> -->
 
-    </head>
+</head>
 
-    <body>
-        <!-- Start page loader -->
-        <!-- <div id="page-loader">
+<body>
+	<!-- Start page loader -->
+	<!-- <div id="page-loader">
             <div class="page-loader__spinner"></div>
         </div> -->
-        <!-- End page loader -->
+	<!-- End page loader -->
 
-        <header id="header">
+	<header id="header">
 
-            <div class="header__main">
-                <div class="container">
-                    <a class="logo" href="index.html">
-                        <img src="img/logo.png" alt="">
-                        <div class="logo__text">
-                            <span>Fundación Multitudes</span>
-                            <span>Slogan</span>
-                        </div>
-                    </a>
+		<div class="header__main">
+			<div class="container">
+				<a class="logo" th:href="@{/}"> <img src="img/logo.png"
+					alt="">
+					<div class="logo__text">
+						<span>Fundación Multitudes</span> <span>Slogan</span>
+					</div>
+				</a>
 
-                    <div class="navigation-trigger visible-xs visible-sm" data-rmd-action="block-open" data-rmd-target=".navigation">
-                        <i class="zmdi zmdi-menu"></i>
-                    </div>
+				<div class="navigation-trigger visible-xs visible-sm"
+					data-rmd-action="block-open" data-rmd-target=".navigation">
+					<i class="zmdi zmdi-menu"></i>
+				</div>
 
-                    <ul class="navigation">
-                        <li class="visible-xs visible-sm"><a class="navigation__close" data-rmd-action="navigation-close" href=""><i class="zmdi zmdi-long-arrow-right"></i></a></li>
+				<ul class="navigation">
+					<li class="visible-xs visible-sm"><a class="navigation__close"
+						data-rmd-action="navigation-close" href=""><i
+							class="zmdi zmdi-long-arrow-right"></i></a></li>
+					<li class="navigation__dropdown"><a th:href="@{/}">Home</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-pasivo}">Ficha Sujeto Pasivo</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-activo}"">Ficha Sujeto Activo</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboar</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<section class="section">
+		<div class="container">
+			<header class="section__title section__title-alt">
+				<h2>Lobby + Compras</h2>
+				<small>Ficha Organismo Comprador</small> <br>
+				<form id="searcher_form"
+					th:action="@{/ficha-sujeto-pasivo-cabecera}" method="post">
+					<input type="hidden" name="fiscalId" id="fiscalId" />
+					<div class="search">
+						<div class="search__type dropdown">
+							<!-- <a data-toggle="dropdown" href="">Buscar</a> -->
+							<button type="submit" class="btn-primary"
+								style="width: 68px; height: 51px;">Buscar</button>
+						</div>
 
-                        <li class="navigation__dropdown">
-                            <a href="index.html">Home</a>
-                        </li>
-                        
-                         <li class="navigation__dropdown">
-                            <a href="index.html">Proveedores</a>
-                        </li>
-                        
-                        <li class="navigation__dropdown">
-                            <a href="index.html">Contacto</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <section class="section">
-            <div class="container">
-                <header class="section__title section__title-alt">
-                    <h2>Lobby + Compras</h2>
-                    <small>Ficha Organismo Comprador</small>
-                    <br>
-	                 <form id="searcher_form" th:action="@{/ficha-sujeto-pasivo-cabecera}" method="post">  
-	                 	<input type="hidden" name="fiscalId" id="fiscalId" />
-	                    <div class="search">
-	                        <div class="search__type dropdown">
-	                            <!-- <a data-toggle="dropdown" href="">Buscar</a> -->
-	                            <button type="submit" class="btn-primary" style="width: 68px;height: 51px;">Buscar</button>
-	                        </div>
-	
-	                        <div class="search__body">
-	                            <input class="search__input" id="searchField" name="searchField" data-rmd-action="advanced-search-open" placeholder="Ingrese criterios de búsqueda..." type="text">
-	                        </div>
-	                    </div>
-	                    <br>
-	                    <div>
-	                			<label>Fecha Desde:</label>
-	                            <input  type="date" value="2015-07-01" id="fechaDesde" name="fechaDesde" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	                        	<label>Fecha Hasta:</label>
-	                            <input  type="date" value="2015-07-31" id="fechaHasta" name="fechaHasta" >
-	                  </div>
-	                </form>
-	                	
-	                
-                </header>
-				
+						<div class="search__body">
+							<input class="search__input" id="searchField" name="searchField"
+								data-rmd-action="advanced-search-open"
+								placeholder="Ingrese criterios de búsqueda..." type="text">
+						</div>
+					</div>
+					<br>
+					<div>
+						<label>Fecha Desde:</label> <input type="date" value="2015-07-01"
+							id="fechaDesde" name="fechaDesde">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label>Fecha Hasta:</label> <input type="date" value="2015-07-31"
+							id="fechaHasta" name="fechaHasta">
+					</div>
+				</form>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
 
-                            <div class="detail-info">
-                                <div class="detail-info__header clearfix">
-                                    <strong th:text="${sujetoPasivoCabeceraDTO != null ? sujetoPasivoCabeceraDTO.nombreComprador : ''}"></strong>
-                                    <small th:text="${sujetoPasivoCabeceraDTO != null ? sujetoPasivoCabeceraDTO.rutComprador : ''}"></small>
-                                </div>
+			</header>
 
-                                <ul class="detail-info__list clearfix">
-                                    <li>
-                                        <span>Monto Transado:</span>
-                                        <span th:text="${sujetoPasivoCabeceraDTO != null ? '$'+#numbers.formatDecimal(sujetoPasivoCabeceraDTO.montoLicitado, 0, 'DEFAULT', 0, 'DEFAULT') : ''}"></span>
-                                    </li>
-                                    
-                                    <!-- Sujetos pasivos -->
-                                    <li>
-	                                    <span></span>
-	                                    </li>
-	                                    <!-- Nº de audiencias -->
-	                                    <li>
-		                                    <span>Sujetos pasivos:</span>
-		                                    <span th:text="${sujetoPasivoCabeceraDTO != null ? sujetoPasivoCabeceraDTO.sujetosPasivosCantidad : '0'}"></span> 
-		                                    <a id="btn_ver_sujetos_pasivos" class="btn btn-primary btn-block" style="width:25%">Ver+</a>
-	                                    </li>
-	                                    <li>
-	                                    <div id="sujetos_pasivos_detail_table"  style="display: none;">
-		                                    <table th:if="${sujetoPasivoCabeceraDTO != null}" class="TFtable" style="width:100%">
-											  <tr>
-											    <th>Nombre Completo</th>
-											    <th>Cargo</th> 
-											    <th>Nº de audiencias</th> 
-											    <th>Sujetos Activos</th>
-											  </tr>
-											  <th:block th:each="audiencia : ${sujetoPasivoCabeceraDTO.sujetoPasivoAudiencias}">
-											    <tr>
-											        <td th:text="${audiencia.nombreCompleto}"></td>
-											        <td th:text="${audiencia.cargo}"></td>
-											        <td th:text="${audiencia.cantidadDeAudiencias}"></td>
-											        <td th:text="${audiencia.sujetoActivosCantidad}"></td>
-											    </tr>
-											  </th:block>
-											</table>
-	                                    </div>
-									</li>
-                                    
-                                    <!-- <li><span></span></li>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+
+						<div class="detail-info">
+							<div class="detail-info__header clearfix">
+								<strong
+									th:text="${sujetoPasivoCabeceraDTO != null ? sujetoPasivoCabeceraDTO.nombreComprador : ''}"></strong>
+								<small
+									th:text="${sujetoPasivoCabeceraDTO != null ? sujetoPasivoCabeceraDTO.rutComprador : ''}"></small>
+							</div>
+
+							<ul class="detail-info__list clearfix">
+								<li><span>Monto Transado:</span> <span
+									th:text="${sujetoPasivoCabeceraDTO != null ? '$'+#numbers.formatDecimal(sujetoPasivoCabeceraDTO.montoLicitado, 0, 'DEFAULT', 0, 'DEFAULT') : ''}"></span>
+								</li>
+
+								<!-- Sujetos pasivos -->
+								<li><span></span></li>
+								<!-- Nº de audiencias -->
+								<li><span>Sujetos pasivos:</span> <span
+									th:text="${sujetoPasivoCabeceraDTO != null ? sujetoPasivoCabeceraDTO.sujetosPasivosCantidad : '0'}"></span>
+									<a id="btn_ver_sujetos_pasivos"
+									class="btn btn-primary btn-block" style="width: 25%">Ver+</a></li>
+								<li>
+									<div id="sujetos_pasivos_detail_table" style="display: none;">
+										<table th:if="${sujetoPasivoCabeceraDTO != null}"
+											class="TFtable" style="width: 100%">
+											<tr>
+												<th>Nombre Completo</th>
+												<th>Cargo</th>
+												<th>Nº de audiencias</th>
+												<th>Sujetos Activos</th>
+											</tr>
+											<th:block
+												th:each="audiencia : ${sujetoPasivoCabeceraDTO.sujetoPasivoAudiencias}">
+												<tr>
+													<td th:text="${audiencia.nombreCompleto}"></td>
+													<td th:text="${audiencia.cargo}"></td>
+													<td th:text="${audiencia.cantidadDeAudiencias}"></td>
+													<td th:text="${audiencia.sujetoActivosCantidad}"></td>
+												</tr>
+											</th:block>
+										</table>
+									</div>
+								</li>
+
+								<!-- <li><span></span></li>
 									<li><span></span></li>
                                     
                                     Nº de audiencias
@@ -194,78 +192,81 @@
 								<!-- <li><span></span></li>
 								<li><span></span></li> -->
 								<!-- Licitaciones en la que participo -->
+								<li><span>Licitaciones adjudicadas:</span> <span
+									th:text="${sujetoPasivoCabeceraDTO != null ?  sujetoPasivoCabeceraDTO.licitacionesPublicas : '0'}"></span>
+									<a id="btn_ver_detalle_licitaciones"
+									class="btn btn-primary btn-block" style="width: 25%">Ver+</a></li>
 								<li>
-                                    <span>Licitaciones adjudicadas:</span>
-                                    <span th:text="${sujetoPasivoCabeceraDTO != null ?  sujetoPasivoCabeceraDTO.licitacionesPublicas : '0'}"></span> 
-                                    <a id="btn_ver_detalle_licitaciones" class="btn btn-primary btn-block" style="width:25%">Ver+</a>
-                                    </li>
-                                    <li>
-                                    <div id="licitaciones_detail_table" style="display:none;">
-	                                    <table th:if="${sujetoPasivoCabeceraDTO != null}" class="TFtable" style="width:100%">
-										  <tr>
-										    <th>Tipo</th>
-										    <th>Descripción</th>
-										    <!-- <th>Región</th> -->
-										    <th>Cantidad</th> 
-										    <th>Detalle</th>
-										    <!-- <th>Monto($)</th> -->
-										  </tr>
-										  <th:block th:each="licitacion : ${sujetoPasivoCabeceraDTO.cabecerasLicitacion}">
-										    <tr>
-										        <td th:text="${licitacion.tipoLicitacion}"></td>
-										        <td th:text="${licitacion.descripcion}"></td>
-										        <!-- <td th:text="${sujetoPasivoCabeceraDTO.regionComprador}"></td> -->
-										        <td th:text="${licitacion.cantidad}"></td>
-										        <td align="center"><a target="_blank" th:href="@{/mercado-publico/licitaciones-adjudicadas-detalle(fiscalId=${sujetoPasivoCabeceraDTO.rutComprador},(tipoLicitacion=${licitacion.tipoLicitacion}),(origen=P))}"><i class="fa fa-search"></i></a></td>
-										        <!-- <td th:text="${#numbers.formatDecimal(licitacion.monto, 0, 'DEFAULT', 0, 'DEFAULT')}"></td> -->
-										    </tr>
-										  </th:block>
+									<div id="licitaciones_detail_table" style="display: none;">
+										<table th:if="${sujetoPasivoCabeceraDTO != null}"
+											class="TFtable" style="width: 100%">
+											<tr>
+												<th>Tipo</th>
+												<th>Descripción</th>
+												<!-- <th>Región</th> -->
+												<th>Cantidad</th>
+												<th>Detalle</th>
+												<!-- <th>Monto($)</th> -->
+											</tr>
+											<th:block
+												th:each="licitacion : ${sujetoPasivoCabeceraDTO.cabecerasLicitacion}">
+												<tr>
+													<td th:text="${licitacion.tipoLicitacion}"></td>
+													<td th:text="${licitacion.descripcion}"></td>
+													<!-- <td th:text="${sujetoPasivoCabeceraDTO.regionComprador}"></td> -->
+													<td th:text="${licitacion.cantidad}"></td>
+													<td align="center"><a target="_blank"
+														th:href="@{/mercado-publico/licitaciones-adjudicadas-detalle(fiscalId=${sujetoPasivoCabeceraDTO.rutComprador},(tipoLicitacion=${licitacion.tipoLicitacion}),(origen=P))}"><i
+															class="fa fa-search"></i></a></td>
+													<!-- <td th:text="${#numbers.formatDecimal(licitacion.monto, 0, 'DEFAULT', 0, 'DEFAULT')}"></td> -->
+												</tr>
+											</th:block>
 										</table>
-                                    </div>
+									</div>
 								</li>
-								
-                                </ul>
-                                
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-        </section>
+							</ul>
 
-        <!-- Listing Search -->
-        <button class="btn btn--action btn--circle hidden-md hidden-lg" data-rmd-action="block-open" data-rmd-target="#inquire">
-            <i class="zmdi zmdi-phone"></i>
-        </button>
+						</div>
+					</div>
 
-        <footer id="footer">
-            <div class="container hidden-xs">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="footer__block">
-                            <a class="logo clearfix" href="">
-                                <div class="logo__text">
-                                    <span>Fundación Multitudes</span>
-                                    <span>Slogan</span>
-                                </div>
-                            </a>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                            <address class="m-t-20 m-b-20 f-14">
-                                Román Díaz #445, Providencia, Región Metropolitana
-                            </address>
+	<!-- Listing Search -->
+	<button class="btn btn--action btn--circle hidden-md hidden-lg"
+		data-rmd-action="block-open" data-rmd-target="#inquire">
+		<i class="zmdi zmdi-phone"></i>
+	</button>
 
-                            <div class="f-20">9 9509 0351</div>
-                            <div class="f-14 m-t-5">hola@fundacionmultitudes.com / info@fundacionmultitudes.com</div>
+	<footer id="footer">
+		<div class="container hidden-xs">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="footer__block">
+						<a class="logo clearfix" href="">
+							<div class="logo__text">
+								<span>Fundación Multitudes</span> <span>Slogan</span>
+							</div>
+						</a>
 
-                            <div class="f-20 m-t-20">
-                                <a href="" class="m-r-10"><i class="zmdi zmdi-google"></i></a>
-                                <a href="" class="m-r-10"><i class="zmdi zmdi-facebook"></i></a>
-                                <a href=""><i class="zmdi zmdi-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-sm-4">
+						<address class="m-t-20 m-b-20 f-14">Román Díaz #445,
+							Providencia, Región Metropolitana</address>
+
+						<div class="f-20">9 9509 0351</div>
+						<div class="f-14 m-t-5">hola@fundacionmultitudes.com /
+							info@fundacionmultitudes.com</div>
+
+						<div class="f-20 m-t-20">
+							<a href="" class="m-r-10"><i class="zmdi zmdi-google"></i></a> <a
+								href="" class="m-r-10"><i class="zmdi zmdi-facebook"></i></a> <a
+								href=""><i class="zmdi zmdi-twitter"></i></a>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-sm-4">
                         <div class="footer__block footer__block--blog">
                             <div class="footer__title">Latest from our blog</div>
 
@@ -283,33 +284,32 @@
                             </a>
                         </div>
                     </div> -->
-                    <!-- <div class="col-sm-4">
+				<!-- <div class="col-sm-4">
                         <div class="footer__block">
                             <div class="footer__title">Disclaimer</div>
 
                             <div>Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</div>
                         </div>
                     </div> -->
-                </div>
-            </div>
+			</div>
+		</div>
 
-            <div class="footer__bottom">
-                <div class="container">
-                    <span class="footer__copyright">© Fundación Multitudes</span>
+		<div class="footer__bottom">
+			<div class="container">
+				<span class="footer__copyright">© Fundación Multitudes</span> <a
+					href="">Sobre Nosotros</a> <a href="">Términos y condiciones</a> <a
+					href="">Políticas de privacidad</a>
+			</div>
 
-                    <a href="">Sobre Nosotros</a>
-                    <a href="">Términos y condiciones</a>
-                    <a href="">Políticas de privacidad</a>
-                </div>
+			<div class="footer__to-top" data-rmd-action="scroll-to"
+				data-rmd-target="html">
+				<i class="zmdi zmdi-chevron-up"></i>
+			</div>
+		</div>
+	</footer>
 
-                <div class="footer__to-top" data-rmd-action="scroll-to" data-rmd-target="html">
-                    <i class="zmdi zmdi-chevron-up"></i>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Older IE warning message -->
-        <!--[if lt IE 9]>
+	<!-- Older IE warning message -->
+	<!--[if lt IE 9]>
         <div class="ie-warning">
             <h1>Warning!!</h1>
             <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
@@ -352,10 +352,10 @@
         <![endif]-->
 
 
-        <!-- Javascript -->
+	<!-- Javascript -->
 
-        <!-- jQuery -->
-        <!-- <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+	<!-- jQuery -->
+	<!-- <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
         Bootstrap
         <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -386,63 +386,63 @@
         <script src="vendors/bower_components/Flot/jquery.flot.resize.js"></script>
         <script src="vendors/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script> -->
 
-        <!-- IE9 Placeholder -->
-        <!--[if IE 9 ]>
+	<!-- IE9 Placeholder -->
+	<!--[if IE 9 ]>
         <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
         <![endif]-->
 
-        <!-- Site functions and actions -->
-        <script src="js/app.min.js"></script>
+	<!-- Site functions and actions -->
+	<script src="js/app.min.js"></script>
 
-        <!-- Demo only -->
-        <!-- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A" async></script> -->
-        <script src="js/demo/demo.js"></script>
-        <script src="js/demo/maps/listing-detail-location-map.js"></script>
-        <script src="js/demo/charts/line-chart.js"></script>
-		
-		
-        
-        <script>
-        document.getElementById("searchField").required = true;
-        
-        $(document).ready(function() {
-        	
-          //lista sujetos pasivos:
-        			$("#btn_ver_sujetos_pasivos").click(function(e){
-				if($("#sujetos_pasivos_detail_table").is(':visible')){
+	<!-- Demo only -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A" async></script> -->
+	<script src="js/demo/demo.js"></script>
+	<script src="js/demo/maps/listing-detail-location-map.js"></script>
+	<script src="js/demo/charts/line-chart.js"></script>
+
+
+
+	<script>
+		document.getElementById("searchField").required = true;
+
+		$(document).ready(function() {
+
+			//lista sujetos pasivos:
+			$("#btn_ver_sujetos_pasivos").click(function(e) {
+				if ($("#sujetos_pasivos_detail_table").is(':visible')) {
 					$("#sujetos_pasivos_detail_table").hide();
 					$("#btn_ver_sujetos_pasivos").text("Ver +");
-				}else{
+				} else {
 					$("#sujetos_pasivos_detail_table").show();
 					$("#btn_ver_sujetos_pasivos").text("Ver -");
 				}
 			});
-        	
+
 			//audiencias
-			$("#btn_ver_detalle_audiencia").click(function(e){
-				if($("#audiencias_detail_table").is(':visible')){
+			$("#btn_ver_detalle_audiencia").click(function(e) {
+				if ($("#audiencias_detail_table").is(':visible')) {
 					$("#audiencias_detail_table").hide();
 					$("#btn_ver_detalle_audiencia").text("Ver +");
-				}else{
+				} else {
 					$("#audiencias_detail_table").show();
 					$("#btn_ver_detalle_audiencia").text("Ver -");
 				}
 			});
-			
+
 			//Licitaciones:
-			$("#btn_ver_detalle_licitaciones").click(function(e){
-				if($("#licitaciones_detail_table").is(':visible')){
+			$("#btn_ver_detalle_licitaciones").click(function(e) {
+				if ($("#licitaciones_detail_table").is(':visible')) {
 					$("#licitaciones_detail_table").hide();
 					$("#btn_ver_detalle_licitaciones").text("Ver +");
-				}else{
+				} else {
 					$("#licitaciones_detail_table").show();
 					$("#btn_ver_detalle_licitaciones").text("Ver -");
 				}
 			});
-        });	
-		</script>
-		
-		 <script>
+		});
+	</script>
+
+	<script>
 		var options = {
 			url : function(phrase) {
 				return "http://localhost:9000/mercado-publico/search-comprador?rutUnidad="
@@ -452,7 +452,7 @@
 			getValue : "displayableName",
 			minCharNumber : 3,
 			list : {
-				maxNumberOfElements: 13,
+				maxNumberOfElements : 13,
 				match : {
 					enabled : true
 				},
@@ -465,7 +465,7 @@
 		};
 
 		$("#searchField").easyAutocomplete(options);
-	</script> 
-    </body>
-    
+	</script>
+</body>
+
 </html>
