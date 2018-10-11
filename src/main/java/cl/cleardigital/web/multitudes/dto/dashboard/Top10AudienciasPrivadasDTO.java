@@ -13,9 +13,17 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class Top10AudienciasPrivadasDTO implements Serializable{
 	
 	private Integer cantidad;
-	
 	private String proveedor;
+	private String rutProveedor;
 	
+	public String getRutProveedor() {
+		return rutProveedor;
+	}
+
+	public void setRutProveedor(String rutProveedor) {
+		this.rutProveedor = rutProveedor;
+	}
+
 	public Integer getCantidad() {
 		return cantidad;
 	}
