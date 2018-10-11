@@ -1,6 +1,9 @@
 #header-alt:after,.action-header:after,.grid-widget:after,.groups-grid--listing .groups-grid__item:after,.list-group--block:after,.team__item:after{
     clear:both
 }
+.footer__to-top i {
+    color: #3e3e3e;
+}
 .neighb-guide__item,.waves-effect{
     -webkit-tap-highlight-color:transparent
 }
