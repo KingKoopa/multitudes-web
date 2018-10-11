@@ -25,4 +25,10 @@ public class MainController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(path= {""}, method = RequestMethod.GET)
+	public ModelAndView home() throws Exception{
+		ModelAndView modelAndView = new ModelAndView("home");
+		return modelAndView;
+	}
+	
 }

@@ -69,7 +69,7 @@
 
             <div class="header__main">
                 <div class="container">
-                    <a class="logo" href="index.html">
+                    <a class="logo" th:href="@{/}">
                         <img src="img/logo.png" alt="">
                         <div class="logo__text">
                             <span>Fundación Multitudes</span>
@@ -84,17 +84,10 @@
                     <ul class="navigation">
                         <li class="visible-xs visible-sm"><a class="navigation__close" data-rmd-action="navigation-close" href=""><i class="zmdi zmdi-long-arrow-right"></i></a></li>
 
-                        <li class="navigation__dropdown">
-                            <a href="index.html">Home</a>
-                        </li>
-                        
-                         <li class="navigation__dropdown">
-                            <a href="index.html">Proveedores</a>
-                        </li>
-                        
-                        <li class="navigation__dropdown">
-                            <a href="index.html">Contacto</a>
-                        </li>
+                    <li class="navigation__dropdown"><a th:href="@{/}">Home</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-pasivo}">Ficha Sujeto Pasivo</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-activo}"">Ficha Sujeto Activo</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboar</a></li>
                     </ul>
                 </div>
             </div>

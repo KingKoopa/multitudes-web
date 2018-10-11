@@ -70,8 +70,7 @@
 
 		<div class="header__main">
 			<div class="container">
-				<a class="logo" th:href="@{/}"> <img src="/img/logo.png"
-					alt="">
+				<a class="logo" th:href="@{/}"> <img src="/img/logo.png" alt="">
 					<div class="logo__text">
 						<span>Fundación Multitudes</span> <span>Slogan</span>
 					</div>
@@ -86,11 +85,12 @@
 					<li class="visible-xs visible-sm"><a class="navigation__close"
 						data-rmd-action="navigation-close" href=""><i
 							class="zmdi zmdi-long-arrow-right"></i></a></li>
-
-					<li class="navigation__dropdown"><a th:href="@{/}">Home</a></li>
-					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-pasivo}">Ficha Sujeto Pasivo</a></li>
-					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-activo}"">Ficha Sujeto Activo</a></li>
-					<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboar</a></li>
+					<li class="navigation__dropdown"><a
+						th:href="@{/ficha-sujeto-pasivo}"">Ficha Sujeto Pasivo</a></li>
+					<li class="navigation__dropdown"><a
+						th:href="@{/ficha-sujeto-activo}">Ficha Sujeto Activo</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboar</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -101,24 +101,8 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="detail-info">
-							<!-- Page length options -->
-							<div class="panel panel-flat">
-								<div class="panel-heading">
-									<h4 class="panel-title" align="center">
-										<u>Top 10 Audiencias Públicas</u>
-									</h4>
-								</div>
-								<table class="table datatable-show-all"
-									id="top10AudienciasPublicas">
-									<thead>
-										<tr>
-											<th class="text-left">#</th>
-											<th class="text-left">Cantidad</th>
-											<th class="text-left">Institucion</th>
-										</tr>
-									</thead>
-								</table>
-							</div>
+							
+						<h1>Home</h1>
 
 						</div>
 					</div>
@@ -126,53 +110,6 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card">
-						<h3 class="title" align="center">
-							<u>Audiencias Por Mes</u>
-						</h3>
-						<div class="detail-info">
-							<div id="myfirstchart" style="width: 100%"></div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card">
-						<div class="detail-info">
-
-							<!-- Page length options -->
-							<div class="panel panel-flat">
-								<div class="panel-heading">
-									<h4 align="center" class="panel-title">
-										<u>Top 10 Audiencias Privadas</u>
-									</h4>
-								</div>
-
-								<table id="top10AudienciasPrivadas"
-									class="table datatable-show-all">
-									<thead>
-										<tr>
-											<th class="text-left">#</th>
-											<th class="text-left">Cantidad</th>
-											<th class="text-left">Proveedor</th>
-										</tr>
-									</thead>
-								</table>
-							</div>
-							<!-- /page length options -->
-
-
-						</div>
-					</div>
-
-				</div>
-			</div>
 
 		</div>
 	</section>
@@ -219,89 +156,6 @@
 		</div>
 	</footer>
 
-	<script>
-		$(document).ready(function() {
-
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/top-audiencias-publicas",
-				success : top10AudienciasPublicas,
-				error : errorDialog
-			});
-
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/top-audiencias-privadas",
-				success : cargarTop10AudienciasPrivadas,
-				error : errorDialog
-			});
-
-			var chart = new Morris.Bar({
-				element : 'myfirstchart',
-
-				data : [ 0, 0 ],
-
-				xkey : 'fecha',
-
-				ykeys : [ 'cantidad' ],
-
-				labels : [ 'Cantidad' ]
-			});
-
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/audiencias-por-mes",
-				error : errorDialog
-			}).done(function(data) {
-				var yourDataStr = JSON.stringify(data);
-				chart.setData(JSON.parse(yourDataStr));
-			});
-
-		});
-
-		function top10AudienciasPublicas(data, status, jqxhrObject) {
-			if (data) {
-				var contador = 0;
-				data.forEach(function(top10AudienciasPublicas) {
-					contador++;
-					var cantidad = top10AudienciasPublicas.cantidad;
-					var institucion = top10AudienciasPublicas.institucion;
-
-					$("#top10AudienciasPublicas").append(
-							"<tbody>" + "<tr>" + "<td class=text-left>"
-									+ contador + "</td>"
-									+ "<td class=text-left>" + cantidad
-									+ "</td>" + "<td class=text-left>"
-									+ institucion + "</td>" + "</tr>"
-									+ "</tbody>");
-				});
-			}
-		}
-
-		function cargarTop10AudienciasPrivadas(data, status, jqxhrObject) {
-			if (data) {
-				var contador = 0;
-				data.forEach(function(top10AudienciaPrivada) {
-					contador++;
-					var cantidad = top10AudienciaPrivada.cantidad;
-					var nombreProveedor = top10AudienciaPrivada.proveedor;
-
-					$("#top10AudienciasPrivadas").append(
-							"<tbody>" + "<tr>" + "<td class=text-left>"
-									+ contador + "</td>"
-									+ "<td class=text-left>" + cantidad
-									+ "</td>" + "<td class=text-left>"
-									+ nombreProveedor + "</td>" + "</tr>"
-									+ "</tbody>");
-				});
-			}
-		}
-
-		function errorDialog(data, status, jqxhrObject) {
-			alertify
-					.error('Ha ocurrido un error, favor contactese con el administrador.');
-		}
-	</script>
 
 </body>
 
