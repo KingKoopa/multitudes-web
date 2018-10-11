@@ -1,6 +1,7 @@
 package cl.cleardigital.web.multitudes.dto.dashboard;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
