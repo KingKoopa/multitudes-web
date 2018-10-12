@@ -1,7 +1,6 @@
 package cl.cleardigital.web.multitudes.repository.impl;
 
 import java.math.BigInteger;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
