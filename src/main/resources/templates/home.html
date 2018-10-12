@@ -143,12 +143,71 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="detail-info">
-							<div class="container">
-								<h4><u>Nuestro Objetivo</u></h4>
+							<div class="container" style="width: 100%">
+								<h4>
+									<u>Nuestro Objetivo</u>
+								</h4>
 								<br>
-								<p>LobbyCompras es una plataforma ideada por Fundación Multitudes dispuesta al servicio de la comunidad, construida de datos provistos por organismos públicos del estado de Chile relativos a Lobby y Compras Públicas.
-								La principal finalidad de esta plataforma es entregar un insumo que promueva la investigación y fiscalización, principalmente a manos de la sociedad civil.      
-								Esto gracias a la posibilidad de realizar consultas individualizadas de la actividad de lobby y compras de organismos públicos y proveedores.<p>
+								<p>LobbyCompras es una plataforma ideada por Fundación
+									Multitudes dispuesta al servicio de la comunidad, construida de
+									datos provistos por organismos públicos del estado de Chile
+									relativos a Lobby y Compras Públicas. La principal finalidad de
+									esta plataforma es entregar un insumo que promueva la
+									investigación y fiscalización, principalmente a manos de la
+									sociedad civil. Esto gracias a la posibilidad de realizar
+									consultas individualizadas de la actividad de lobby y compras
+									de organismos públicos y proveedores.
+								<p>
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h4 class="panel-title" align="center">
+											<u>Top 10 Audiencias Públicas</u>
+										</h4>
+									</div>
+									<table class="table datatable-show-all"
+										id="top10AudienciasPublicas">
+										<thead>
+											<tr>
+												<th class="text-left">#</th>
+												<th class="text-left">Cantidad</th>
+												<th class="text-left">Institucion</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<div class="card">
+											<h3 class="title" align="center">
+												<u>Audiencias Por Mes</u>
+											</h3>
+											<div class="detail-info">
+												<div id="myfirstchart" style="width: 100%"></div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="panel panel-flat">
+									<div class="panel-heading">
+										<h4 align="center" class="panel-title">
+											<u>Top 10 Audiencias Privadas</u>
+										</h4>
+									</div>
+
+									<table id="top10AudienciasPrivadas"
+										class="table datatable-show-all">
+										<thead>
+											<tr>
+												<th class="text-left">#</th>
+												<th class="text-left">Cantidad</th>
+												<th class="text-left">Proveedor</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
 
 							</div>
 						</div>
@@ -192,13 +251,97 @@
 		<div class="footer__bottom">
 			<div class="container">
 				<span class="footer__copyright">© Fundación Multitudes</span> <a
-					href="https://www.fundacionmultitudes.org/sobre-nosotros" target="_blank">Sobre Nosotros</a> <a href="">Términos y condiciones</a> <a
-					href="">Políticas de privacidad</a>
+					href="https://www.fundacionmultitudes.org/sobre-nosotros"
+					target="_blank">Sobre Nosotros</a> <a href="">Términos y
+					condiciones</a> <a href="">Políticas de privacidad</a>
 			</div>
 
 		</div>
 	</footer>
+	<script>
+		$(document).ready(function() {
 
+			$.ajax({
+				type : "GET",
+				url : "/dashboard/top-audiencias-publicas",
+				success : top10AudienciasPublicas,
+				error : errorDialog
+			});
+
+			$.ajax({
+				type : "GET",
+				url : "/dashboard/top-audiencias-privadas",
+				success : cargarTop10AudienciasPrivadas,
+				error : errorDialog
+			});
+
+			var chart = new Morris.Bar({
+				element : 'myfirstchart',
+
+				data : [ 0, 0 ],
+
+				xkey : 'fecha',
+
+				ykeys : [ 'cantidad' ],
+
+				labels : [ 'Cantidad' ]
+			});
+
+			$.ajax({
+				type : "GET",
+				url : "/dashboard/audiencias-por-mes",
+				error : errorDialog
+			}).done(function(data) {
+				var yourDataStr = JSON.stringify(data);
+				chart.setData(JSON.parse(yourDataStr));
+			});
+
+		});
+
+		function top10AudienciasPublicas(data, status, jqxhrObject) {
+			if (data) {
+				var contador = 0;
+				data.forEach(function(top10AudienciasPublicas) {
+					contador++;
+					var cantidad = top10AudienciasPublicas.cantidad;
+					var institucion = top10AudienciasPublicas.institucion;
+
+					$("#top10AudienciasPublicas").append(
+							"<tbody>" + "<tr>" + "<td class=text-left>"
+									+ contador + "</td>"
+									+ "<td class=text-left>" + cantidad
+									+ "</td>" + "<td class=text-left>"
+									+ institucion + "</td>" + "</tr>"
+									+ "</tbody>");
+				});
+			}
+		}
+
+		function cargarTop10AudienciasPrivadas(data, status, jqxhrObject) {
+			if (data) {
+				var contador = 0;
+				data.forEach(function(top10AudienciaPrivada) {
+					contador++;
+					var cantidad = top10AudienciaPrivada.cantidad;
+					var nombreProveedor = top10AudienciaPrivada.proveedor;
+					var rutProveedor = top10AudienciaPrivada.rutProveedor;
+
+					$("#top10AudienciasPrivadas").append(
+							"<tbody>" + "<tr>" + "<td class=text-left>"
+									+ contador + "</td>"
+									+ "<td class=text-left>" + cantidad
+									+ "</td>" + "<td class=text-left>"
+									+ nombreProveedor + "</td>" + "</tr>"
+									+ "</tbody>");
+				});
+			}
+		}
+
+		function errorDialog(data, status, jqxhrObject) {
+			alertify
+					.error('Ha ocurrido un error, favor contactese con el administrador.');
+		}
+	</script>
 
 </body>
 
