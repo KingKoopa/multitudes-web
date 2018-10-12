@@ -96,8 +96,7 @@
 						th:href="@{/ficha-sujeto-pasivo}"">Ficha Sujeto Pasivo</a></li>
 					<li class="navigation__dropdown"><a
 						th:href="@{/ficha-sujeto-activo}">Ficha Sujeto Activo</a></li>
-					<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboard</a>
-					</li>
+					<!--<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboard</a></li>-->
 				</ul>
 			</div>
 		</div>
@@ -137,14 +136,14 @@
 			class="sr-only">Next</span>
 		</a>
 	</div>
-	<section class="section">
+	<section class="section" style="background-color: #eee">
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
 						<div class="detail-info">
-							<div class="container" style="width: 100%">
-								<h4>
+							<div class="container" style="width: 100%;">
+								<h4 align="center">
 									<u>Nuestro Objetivo</u>
 								</h4>
 								<br>
@@ -158,64 +157,77 @@
 									consultas individualizadas de la actividad de lobby y compras
 									de organismos públicos y proveedores.
 								<p>
-								<div class="panel panel-flat">
-									<div class="panel-heading">
-										<h4 class="panel-title" align="left">
-											<u>Top 10 Audiencias Públicas</u>
-										</h4>
-									</div>
-									<table class="table datatable-show-all"
-										id="top10AudienciasPublicas">
-										<thead>
-											<tr>
-												<th class="text-left">#</th>
-												<th class="text-left">Cantidad</th>
-												<th class="text-left">Institucion</th>
-											</tr>
-										</thead>
-									</table>
-								</div>
-
-								<div class="row">
-									<div class="col-md-12">
-										<div class="card">
-											<h3 class="title" align="left">
-												<u>Audiencias Por Mes</u>
-											</h3>
-											<div class="detail-info">
-												<div id="myfirstchart" style="width: 100%"></div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-
-								<div class="panel panel-flat">
-									<div class="panel-heading">
-										<h4 align="left" class="panel-title">
-											<u>Top 10 Audiencias Privadas</u>
-										</h4>
-									</div>
-
-									<table id="top10AudienciasPrivadas"
-										class="table datatable-show-all">
-										<thead>
-											<tr>
-												<th class="text-left">#</th>
-												<th class="text-left">Cantidad</th>
-												<th class="text-left">Proveedor</th>
-											</tr>
-										</thead>
-									</table>
-								</div>
-
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
+							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h4 class="panel-title" align="center">
+										<u>Top 10 Audiencias Públicas</u>
+									</h4>
+								</div>
+								<table class="table datatable-show-all"
+									id="top10AudienciasPublicas">
+									<thead>
+										<tr>
+											<th class="text-left">#</th>
+											<th class="text-left">Cantidad</th>
+											<th class="text-left">Institucion</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<h3 class="title" align="center">
+							<u>Audiencias Por Mes</u>
+						</h3>
+						<div class="detail-info">
+							<div id="myfirstchart" style="width: 100%"></div>
 						</div>
 					</div>
 
 				</div>
 			</div>
-
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
+							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h4 align="center" class="panel-title">
+										<u>Top 10 Audiencias Privadas</u>
+									</h4>
+								</div>
+								<table id="top10AudienciasPrivadas"
+									class="table datatable-show-all">
+									<thead>
+										<tr>
+											<th class="text-left">#</th>
+											<th class="text-left">Cantidad</th>
+											<th class="text-left">Proveedor</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+							<!-- /page length options -->
+						</div>
+					</div>
+				</div>
+			</div>
 
 		</div>
 	</section>
