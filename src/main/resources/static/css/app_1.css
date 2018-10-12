@@ -7101,7 +7101,7 @@ a.mdc-bg-deep-purple-A700:focus {
 }
 
 .mdc-text-indigo {
-  color: #3F51B5;
+  color: #060b25;
 }
 
 a.mdc-text-indigo:hover,
@@ -7151,11 +7151,11 @@ a.mdc-text-indigo-300:focus {
 
 a.mdc-text-indigo-400:hover,
 a.mdc-text-indigo-400:focus {
-  color: #3F51B5;
+  color: #060b25;
 }
 
 .mdc-text-indigo-500 {
-  color: #3F51B5;
+  color: #060b25;
 }
 
 a.mdc-text-indigo-500:hover,
@@ -7236,7 +7236,7 @@ a.mdc-text-indigo-A700:focus {
 }
 
 .mdc-bg-indigo {
-  background-color: #3F51B5;
+  background-color: #060b25;
 }
 
 a.mdc-bg-indigo:hover,
@@ -7286,11 +7286,11 @@ a.mdc-bg-indigo-300:focus {
 
 a.mdc-bg-indigo-400:hover,
 a.mdc-bg-indigo-400:focus {
-  background-color: #3F51B5;
+  background-color: #060b25;
 }
 
 .mdc-bg-indigo-500 {
-  background-color: #3F51B5;
+  background-color: #060b25;
 }
 
 a.mdc-bg-indigo-500:hover,
@@ -12901,7 +12901,7 @@ a {
 
 #header {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  background-color: #3F51B5;
+  background-color: #060b25;
 }
 
 #header.affix {
@@ -12910,7 +12910,7 @@ a {
 }
 
 .header--minimal {
-  background: #3F51B5 url(../img/patterns/header_pattern.png) repeat-x bottom 20px left;
+  background: #060b25 url(../img/patterns/header_pattern.png) repeat-x bottom 20px left;
   padding-bottom: 30px;
 }
 

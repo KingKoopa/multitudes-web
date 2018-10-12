@@ -70,16 +70,24 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!-- Page Loader JS -->
+<script src="js/page-loader.min.js" async></script>
+
 </head>
 
 <body>
+	<!-- Start page loader -->
+	<div id="page-loader">
+		<div class="page-loader__spinner"></div>
+	</div>
+	<!-- End page loader -->
 	<header id="header">
-
 		<div class="header__main">
 			<div class="container">
-				<a class="logo" th:href="@{/}"> <img src="/img/logo.png" alt="">
+				<a class="logo" th:href="@{/}"> <img src="/img/logoFinal.png"
+					alt="" style="height: 50px; width: 150px;">
 					<div class="logo__text">
-						<span>Fundación Multitudes</span> <span>Slogan</span>
+						<span style="color: white;">Fundación Multitudes</span>
 					</div>
 				</a>
 
@@ -92,10 +100,13 @@
 					<li class="visible-xs visible-sm"><a class="navigation__close"
 						data-rmd-action="navigation-close" href=""><i
 							class="zmdi zmdi-long-arrow-right"></i></a></li>
+					<li class="navigation__dropdown"><a target="_blank"
+						href="https://www.fundacionmultitudes.org/sobre-nosotros">Sobre
+							Nosotros</a></li>
 					<li class="navigation__dropdown"><a
-						th:href="@{/ficha-sujeto-pasivo}"">Ficha Sujeto Pasivo</a></li>
+						th:href="@{/ficha-sujeto-pasivo}">Organismo Comprador</a></li>
 					<li class="navigation__dropdown"><a
-						th:href="@{/ficha-sujeto-activo}">Ficha Sujeto Activo</a></li>
+						th:href="@{/ficha-sujeto-activo}">Proveedor del Estado</a></li>
 					<!--<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboard</a></li>-->
 				</ul>
 			</div>
@@ -109,34 +120,42 @@
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<li data-target="#myCarousel" data-slide-to="3"></li>
+			<li data-target="#myCarousel" data-slide-to="4"></li>
 		</ol>
-
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="/img//sold.png" alt="" style="width: 100%; height: 300px">
+				<img src="/img/multitudes_images/manos_alzadas_1.png" alt="" style="width: 100%; height: 400px">
 			</div>
 
 			<div class="item">
-				<img src="/img//sold.png" alt="" style="width: 100%; height: 300px">
+				<img src="/img/multitudes_images/junta_vecinal_2.png" alt="" style="width: 100%; height: 400px">
 			</div>
 
 			<div class="item">
-				<img src="/img/sold.png" alt="" style="width: 100%; height: 300px">
+				<img src="/img/multitudes_images/graficos_3.png" alt="" style="width: 100%; height: 400px">
+			</div>
+
+			<div class="item">
+				<img src="/img/multitudes_images/focus_4.png" alt="" style="width: 100%; height: 400px">
+			</div>
+
+			<div class="item">
+				<img src="/img/multitudes_images/ubuntu_5.png" alt="" style="width: 100%; height: 400px">
 			</div>
 		</div>
-
 		<!-- Left and right controls -->
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left"></span> <span
-			class="sr-only">Previous</span>
+			class="sr-only">Previa</span>
 		</a> <a class="right carousel-control" href="#myCarousel"
 			data-slide="next"> <span
 			class="glyphicon glyphicon-chevron-right"></span> <span
-			class="sr-only">Next</span>
+			class="sr-only">Siguiente</span>
 		</a>
 	</div>
-	<section class="section" style="background-color: #eee">
+	<section class="section" style="background-color: #eee;">
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-md-12">
@@ -147,7 +166,7 @@
 									<u>Nuestro Objetivo</u>
 								</h4>
 								<br>
-								<p>LobbyCompras es una plataforma ideada por Fundación
+								<p align="justify">LobbyCompras es una plataforma ideada por Fundación
 									Multitudes dispuesta al servicio de la comunidad, construida de
 									datos provistos por organismos públicos del estado de Chile
 									relativos a Lobby y Compras Públicas. La principal finalidad de
