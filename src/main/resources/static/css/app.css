@@ -10368,7 +10368,7 @@ a {
 /* Headers */
 #header {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  background-color: #3F51B5;
+  background-color: ##060b25;
 }
 #header.affix {
   position: static;
@@ -12980,7 +12980,7 @@ html:not(.ie9) .page-loader__spinner {
 }
 /* Header */
 #header-alt {
-  background-color: #3F51B5;
+  background-color: #060b25;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   position: fixed;
   left: 0;
