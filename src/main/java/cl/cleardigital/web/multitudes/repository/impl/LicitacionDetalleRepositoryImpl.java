@@ -132,16 +132,33 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 		List<Object[]> objLst = query.getResultList();
 		List<LicitacionesAdjudicadasDetalleDTO> personAdjudicadaLst = new ArrayList<>();
 	    for(Object[] obj: objLst){
-	    	LicitacionesAdjudicadasDetalleDTO personAdjudicada = new LicitacionesAdjudicadasDetalleDTO();
-	    	personAdjudicada.setFecha(((String) obj[0]).toString());
-	    	personAdjudicada.setCodigoExterno((String) obj[1]);
-	    	personAdjudicada.setRegion((String) obj[2]);
-	    	personAdjudicada.setTomaRazon((String) obj[3]);
+		    	LicitacionesAdjudicadasDetalleDTO personAdjudicada = new LicitacionesAdjudicadasDetalleDTO();
+		    	String codigoExterno = (String) obj[1];
+		    	personAdjudicada.setFecha(((String) obj[0]).toString());
+		    	personAdjudicada.setCodigoExterno(codigoExterno);
+		    	personAdjudicada.setRegion((String) obj[2]);
+		    	personAdjudicada.setTomaRazon((String) obj[3]);
+		    	personAdjudicada.setAdjudicadoStr(_getCompradorOtorgante(codigoExterno));
 
 	    	personAdjudicadaLst.add(personAdjudicada);
 	    }
 		 
 		return personAdjudicadaLst;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private String _getCompradorOtorgante(String codigoExterno){
+		Query query = entityManager.createNativeQuery("select \n" + 
+				" COALESCE(concat(ld.comprador_nombre_organismo,' / ',ld.comprador_rut_unidad),'',concat(ld.comprador_nombre_organismo,' / ',ld.comprador_rut_unidad))\n" + 
+				"from licitacion_detalle ld\n" + 
+				"where ld.codigo_externo = '"+ codigoExterno +"'"); 
+		
+		List<String> objLst = query.getResultList();
+		String compradorOtorgante = "";
+	    for(String obj: objLst){
+	    	compradorOtorgante = obj;
+	    }
+		return compradorOtorgante;
 	}
 
 	@Override
