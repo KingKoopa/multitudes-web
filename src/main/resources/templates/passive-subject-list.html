@@ -13,7 +13,7 @@
 
 <!-- JS file -->
 <script src="/js/jquery.easy-autocomplete.min.js"></script>
-<link rel="icon" type="image/x-icon" href="/img/icono_multitudes.png" />
+
 
 <!-- Icono -->
 <link rel="stylesheet" href="js/easy-autocomplete.min.css" />
@@ -46,15 +46,15 @@
 <link href="/css/my_style.css" rel="stylesheet" />
 
 <!-- Page Loader JS -->
-<script src="js/page-loader.min.js" async></script>
+<script src="js/page-loader.min.js" async></script> 
 
 </head>
 
 <body>
 	<!-- Start page loader -->
-	<div id="page-loader">
-		<div class="page-loader__spinner"></div>
-	</div>
+	 <div id="page-loader">
+     <div class="page-loader__spinner"></div>
+        </div> 
 	<!-- End page loader -->
 
 	<header id="header">
@@ -77,13 +77,9 @@
 					<li class="visible-xs visible-sm"><a class="navigation__close"
 						data-rmd-action="navigation-close" href=""><i
 							class="zmdi zmdi-long-arrow-right"></i></a></li>
-					<li class="navigation__dropdown"><a target="_blank"
-						href="https://www.fundacionmultitudes.org/sobre-nosotros">Sobre
-							Nosotros</a></li>
-					<li class="navigation__dropdown"><a
-						th:href="@{/ficha-sujeto-pasivo}">Organismo Comprador</a></li>
-					<li class="navigation__dropdown"><a
-						th:href="@{/ficha-sujeto-activo}">Proveedor del Estado</a></li>
+					<li class="navigation__dropdown"><a target="_blank" href="https://www.fundacionmultitudes.org/sobre-nosotros">Sobre Nosotros</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-pasivo}">Organismo Comprador</a></li>
+					<li class="navigation__dropdown"><a th:href="@{/ficha-sujeto-activo}">Proveedor del Estado</a></li>
 					<!--<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboard</a></li>-->
 				</ul>
 			</div>
@@ -301,9 +297,8 @@
 		<div class="footer__bottom">
 			<div class="container">
 				<span class="footer__copyright">© Fundación Multitudes</span> <a
-					href="https://www.fundacionmultitudes.org/sobre-nosotros"
-					target="_blank">Sobre Nosotros</a> <a href="">Términos y
-					condiciones</a> <a href="">Políticas de privacidad</a>
+					href="https://www.fundacionmultitudes.org/sobre-nosotros" target="_blank">Sobre Nosotros</a> <a href="">Términos y condiciones</a> <a
+					href="">Políticas de privacidad</a>
 			</div>
 
 		</div>

@@ -46,13 +46,9 @@
 <!-- Site functions and actions -->
 <script src="/js/app.min.js"></script>
 
-<!-- Demo only 
-	<script
-		src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A"
-		async></script>
-	<script src="/js/demo/demo.js"></script>
-	<script src="/js/demo/maps/listing-detail-location-map.js"></script>
-	<script src="/js/demo/charts/line-chart.js"></script> -->
+<!--Navegacion  -->
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="js/bootstrap.min.js" rel="stylesheet" />
 
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.js"></script>
@@ -106,25 +102,29 @@
 						<span style="color: white;">Fundación Multitudes</span>
 					</div>
 				</a>
-
-				<div class="navigation-trigger visible-xs visible-sm"
-					data-rmd-action="block-open" data-rmd-target=".navigation">
-					<i class="zmdi zmdi-menu"></i>
-				</div>
-
-				<ul class="navigation">
-					<li class="visible-xs visible-sm"><a class="navigation__close"
-						data-rmd-action="navigation-close" href=""><i
-							class="zmdi zmdi-long-arrow-right"></i></a></li>
-					<li class="navigation__dropdown"><a target="_blank"
-						href="https://www.fundacionmultitudes.org/sobre-nosotros">Sobre
-							Nosotros</a></li>
-					<li class="navigation__dropdown"><a
-						th:href="@{/ficha-sujeto-pasivo}">Organismo Comprador</a></li>
-					<li class="navigation__dropdown"><a
-						th:href="@{/ficha-sujeto-activo}">Proveedor del Estado</a></li>
-					<!--<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboard</a></li>-->
-				</ul>
+				<nav class="navbar navbar-expand-lg navbar-dark" id="menu"
+					style="width: 60%; background-color: #060b25">
+					<div class="container">
+						<button class="navbar-toggler" type="button"
+							data-toggle="collapse" data-target="#menu-content"
+							aria-controls="menu-content" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="menu-content">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item dropdown"><a class="nav-link nav-btn"
+									target="_blank"
+									href="https://www.fundacionmultitudes.org/sobre-nosotros">Sobre
+										Nosotros</a></li>
+								<li class="nav-item dropdown"><a class="nav-link nav-btn"
+									th:href="@{/ficha-sujeto-pasivo}">Organismo Comprador</a></li>
+								<li class="nav-item dropdown"><a class="nav-link nav-btn"
+									th:href="@{/ficha-sujeto-activo}">Proveedor del Estado</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
 			</div>
 		</div>
 	</header>
@@ -149,9 +149,9 @@
 						style="width: 100%; height: 400px">
 					<div class="centrado">
 						<h3>
-							<span style="background-color:green;"><b>Todas las personas tienen derecho a incidir y defender sus
-								intereses y los de la comunidad como parte del ejercicio de la
-								democracia.</b></span>
+							<span style="background-color: green;"><b>Todas las
+									personas tienen derecho a incidir y defender sus intereses y
+									los de la comunidad como parte del ejercicio de la democracia.</b></span>
 						</h3>
 					</div>
 				</div>
@@ -164,7 +164,8 @@
 						style="width: 100%; height: 400px">
 					<div class="centrado">
 						<h3>
-						<span style="background-color:blue"><b>Acercamos la ciudadanía a las instituciones públicas.</b></span>
+							<span style="background-color: blue"><b>Acercamos la
+									ciudadanía a las instituciones públicas.</b></span>
 						</h3>
 					</div>
 				</div>
@@ -177,8 +178,9 @@
 						style="width: 100%; height: 400px">
 					<div class="centrado">
 						<h3>
-							<span style="background-color:orange;"><b>Entregamos herramientas para la incidencia y rendición de
-								cuentas efectiva.</b></span>
+							<span style="background-color: orange;"><b>Entregamos
+									herramientas para la incidencia y rendición de cuentas
+									efectiva.</b></span>
 						</h3>
 					</div>
 				</div>
@@ -190,8 +192,9 @@
 						style="width: 100%; height: 400px">
 					<div class="centrado">
 						<h3>
-							<span style="background-color:green;"><b>Ampliamos los espacios de participación ciudadana en la
-								toma de decisiones.</b></span>
+							<span style="background-color: green;"><b>Ampliamos
+									los espacios de participación ciudadana en la toma de
+									decisiones.</b></span>
 						</h3>
 					</div>
 				</div>
@@ -203,7 +206,8 @@
 						style="width: 100%; height: 400px">
 					<div class="centrado">
 						<h3>
-							<span style="background-color:blue;"><b>Somos Gobierno Abierto.</b></span>
+							<span style="background-color: blue;"><b>Somos
+									Gobierno Abierto.</b></span>
 						</h3>
 					</div>
 				</div>
@@ -250,7 +254,6 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="detail-info">
-							<!-- Page length options -->
 							<div class="panel panel-flat">
 								<div class="panel-heading">
 									<h4 class="panel-title" align="center">
@@ -275,14 +278,18 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<h3 class="title" align="center">
-							<u>Audiencias Por Mes</u>
-						</h3>
 						<div class="detail-info">
-							<div id="myfirstchart" style="width: 100%"></div>
+							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h3 class="title" align="center">
+										<u>Audiencias Por Mes</u>
+									</h3>
+								</div>
+								<div id="myfirstchart" style="width: 100%;"></div>
+							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<div class="row">
@@ -307,7 +314,6 @@
 									</thead>
 								</table>
 							</div>
-							<!-- /page length options -->
 						</div>
 					</div>
 				</div>
