@@ -48,7 +48,7 @@
 
 <!--Navegacion  -->
 <link href="css/bootstrap.min.css" rel="stylesheet" />
-<link href="js/bootstrap.min.js" rel="stylesheet" />
+<script src="js/bootstrap.min.js"></script>
 
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.js"></script>
@@ -69,6 +69,22 @@
 
 <!-- Page Loader JS -->
 <script src="js/page-loader.min.js" async></script>
+
+<!-- CSS / JS Tables -->
+<link rel="stylesheet" type="text/css" href="/css/tables/animate.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/tables/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/tables/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/tables/main.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/tables/perfect-scrollbar.css">
+<link rel="stylesheet" type="text/css" href="/css/tables/util.css">
+<script src="/js/tables/bootstrap.min.js"></script>
+<script src="/js/tables/jquery-3.2.1.min.js"></script>
+<script src="/js/tables/main.js"></script>
+<script src="/js/tables/popper.js"></script>
+<script src="/js/tables/select2.min.js"></script>
 
 <style type="text/css">
 .contenedor {
@@ -254,21 +270,23 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="detail-info">
-							<div class="panel panel-flat">
-								<div class="panel-heading">
-									<h4 class="panel-title" align="center">
-										<u>Top 10 Audiencias Públicas</u>
-									</h4>
-								</div>
-								<table class="table datatable-show-all"
-									id="top10AudienciasPublicas">
+							<div class="panel-heading">
+								<h4 class="panel-title" align="center">
+									<u>Top 10 Audiencias Públicas</u>
+								</h4>
+								<br>
+							</div>
+							<div class="table100 ver5 m-b-110">
+								<table data-vertable="ver5" id="top10AudienciasPublicas">
 									<thead>
-										<tr>
-											<th class="text-left">#</th>
-											<th class="text-left">Cantidad</th>
-											<th class="text-left">Institucion</th>
+										<tr class="row100 head">
+											<th class="column100 column2" data-column="column2">#</th>
+											<th class="column100 column3" data-column="column3">Cantidad</th>
+											<th class="column100 column4" data-column="column4">Institucion</th>
 										</tr>
 									</thead>
+									<tbody>
+									</tbody>
 								</table>
 							</div>
 						</div>
@@ -286,7 +304,7 @@
 										<u>Audiencias Por Mes</u>
 									</h3>
 								</div>
-								<div id="myfirstchart" style="width: 100%;"></div>
+								<div id="myfirstchart"></div>
 							</div>
 						</div>
 					</div>
@@ -303,16 +321,18 @@
 										<u>Top 10 Audiencias Privadas</u>
 									</h4>
 								</div>
-								<table id="top10AudienciasPrivadas"
-									class="table datatable-show-all">
-									<thead>
-										<tr>
-											<th class="text-left">#</th>
-											<th class="text-left">Cantidad</th>
-											<th class="text-left">Proveedor</th>
-										</tr>
-									</thead>
-								</table>
+								<div class="table100 ver5 m-b-110">
+									<table data-vertable="ver5" id="top10AudienciasPrivadas">
+										<thead>
+											<tr class="row100 head">
+												<th class="column100 column2" data-column="column2">#</th>
+												<th class="column100 column3" data-column="column3">Cantidad</th>
+												<th class="column100 column4" data-column="column4">Institucion</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -403,39 +423,51 @@
 		function top10AudienciasPublicas(data, status, jqxhrObject) {
 			if (data) {
 				var contador = 0;
-				data.forEach(function(top10AudienciasPublicas) {
-					contador++;
-					var cantidad = top10AudienciasPublicas.cantidad;
-					var institucion = top10AudienciasPublicas.institucion;
+				data
+						.forEach(function(top10AudienciasPublicas) {
+							contador++;
+							var cantidad = top10AudienciasPublicas.cantidad;
+							var institucion = top10AudienciasPublicas.institucion;
 
-					$("#top10AudienciasPublicas").append(
-							"<tbody>" + "<tr>" + "<td class=text-left>"
-									+ contador + "</td>"
-									+ "<td class=text-left>" + cantidad
-									+ "</td>" + "<td class=text-left>"
-									+ institucion + "</td>" + "</tr>"
-									+ "</tbody>");
-				});
+							$("#top10AudienciasPublicas")
+									.append(
+											"<tr class=row100>"
+													+ "<td class='column100 column2' data-column='column2'>"
+													+ contador
+													+ "</td>"
+													+ "<td class='column100 column3' data-column='column3'>"
+													+ cantidad
+													+ "</td>"
+													+ "<td class='column100 column4' data-column='column4'>"
+													+ institucion + "</td>"
+													+ "</tr>");
+						});
 			}
 		}
 
 		function cargarTop10AudienciasPrivadas(data, status, jqxhrObject) {
 			if (data) {
 				var contador = 0;
-				data.forEach(function(top10AudienciaPrivada) {
-					contador++;
-					var cantidad = top10AudienciaPrivada.cantidad;
-					var nombreProveedor = top10AudienciaPrivada.proveedor;
-					var rutProveedor = top10AudienciaPrivada.rutProveedor;
+				data
+						.forEach(function(top10AudienciaPrivada) {
+							contador++;
+							var cantidad = top10AudienciaPrivada.cantidad;
+							var nombreProveedor = top10AudienciaPrivada.proveedor;
+							var rutProveedor = top10AudienciaPrivada.rutProveedor;
 
-					$("#top10AudienciasPrivadas").append(
-							"<tbody>" + "<tr>" + "<td class=text-left>"
-									+ contador + "</td>"
-									+ "<td class=text-left>" + cantidad
-									+ "</td>" + "<td class=text-left>"
-									+ nombreProveedor + "</td>" + "</tr>"
-									+ "</tbody>");
-				});
+							$("#top10AudienciasPrivadas")
+									.append(
+											"<tr class=row100>"
+													+ "<td class='column100 column2' data-column='column2'>"
+													+ contador
+													+ "</td>"
+													+ "<td class='column100 column3' data-column='column3'>"
+													+ cantidad
+													+ "</td>"
+													+ "<td class='column100 column4' data-column='column4'>"
+													+ nombreProveedor + "</td>"
+													+ "</tr>");
+						});
 			}
 		}
 
