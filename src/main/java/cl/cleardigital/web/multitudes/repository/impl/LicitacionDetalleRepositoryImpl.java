@@ -6,12 +6,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.LicitacionesAdjudicadasDetalleDTO;
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoLicitacionesDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.repository.mercadopublico.LicitacionDetalleCustomRepository;
 
@@ -77,16 +77,39 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 		List<Object[]> objLst = query.getResultList();
 		List<LicitacionesAdjudicadasDetalleDTO> personAdjudicadaLst = new ArrayList<>();
 	    for(Object[] obj: objLst){
-	    	LicitacionesAdjudicadasDetalleDTO personAdjudicada = new LicitacionesAdjudicadasDetalleDTO();
-	    	personAdjudicada.setFecha(((String) obj[0]).toString());
-	    	personAdjudicada.setCodigoExterno((String) obj[1]);
-	    	personAdjudicada.setRegion((String) obj[2]);
-	    	personAdjudicada.setTomaRazon((String) obj[3]);
-
-	    	personAdjudicadaLst.add(personAdjudicada);
+		    	LicitacionesAdjudicadasDetalleDTO personAdjudicada = new LicitacionesAdjudicadasDetalleDTO();
+		    	String codigoExterno = (String) obj[1];
+		    	personAdjudicada.setFecha(((String) obj[0]).toString());
+		    	personAdjudicada.setCodigoExterno(codigoExterno);
+		    	personAdjudicada.setRegion((String) obj[2]);
+		    	personAdjudicada.setTomaRazon((String) obj[3]);
+		    	personAdjudicada.setAdjudicadoStr(_getProveedoresAdjudicados(codigoExterno));
+	
+		    	personAdjudicadaLst.add(personAdjudicada);
 	    }
 		 
 		return personAdjudicadaLst;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private String _getProveedoresAdjudicados(String codigoExterno){
+		Query query = entityManager.createNativeQuery("select  \n" + 
+				"COALESCE(concat(li.adjudicacion_nombre_proveedor,' / ',li.adjudicacion_rut_proveedor),'',concat(li.adjudicacion_nombre_proveedor,' / ',li.adjudicacion_rut_proveedor))\n" + 
+				"from licitacion_detalle ld\n" + 
+				"join licitacion_detalle_licitacion_item ldi on ldi.codigo_externo = ld.codigo_externo\n" + 
+				"join licitacion_item li on li.id = ldi.licitacion_item_id\n" + 
+				"where ld.codigo_externo = '"+ codigoExterno +"'\n" + 
+				"group by ld.codigo_externo\n" + 
+				", ld.comprador_region_unidad\n" + 
+				", ld.comprador_nombre_usuario \n" + 
+				", concat(li.adjudicacion_nombre_proveedor,' / ',li.adjudicacion_rut_proveedor)"); 
+		
+		List<String> objLst = query.getResultList();
+		List<String> proveedoresAdjudicados = new ArrayList<>();
+	    for(String obj: objLst){
+	    		proveedoresAdjudicados.add((String) obj);
+	    }
+		return StringUtils.join(proveedoresAdjudicados);
 	}
 	
 	@Override

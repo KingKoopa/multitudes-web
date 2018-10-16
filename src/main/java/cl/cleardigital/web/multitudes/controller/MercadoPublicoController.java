@@ -71,7 +71,7 @@ public class MercadoPublicoController {
 			,@RequestParam(value="origen", required=false) String origen)throws Exception{
 		
 		List<LicitacionesAdjudicadasDetalleDTO> adjudicacionDetalleLst = new ArrayList<>();
-		ModelAndView modelAndView = new ModelAndView("passive-subject-detail");
+		ModelAndView modelAndView = new ModelAndView("adjudicated-licitation-detail");
 		
 		 if(origen.equals("P")) {
 				if(fiscalId != null) {

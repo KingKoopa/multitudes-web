@@ -129,8 +129,8 @@
 													<th>Fecha</th>
 													<th>Código</th>
 													<th>Región</th>
-													<th>Toma Razón
-													<th>
+													<th>Toma Razón</th>
+													<th>Adjudicado</th>
 												</tr>
 											</thead>
 											<!-- adjudicacionDetalleLst -->
@@ -143,6 +143,7 @@
 														th:text="${licitacion.codigoExterno}" target="blank"></a></td>
 													<td th:text="${licitacion.region}"></td>
 													<td th:text="${licitacion.tomaRazon}"></td>
+													<td th:text="${licitacion.adjudicadoStr}"></td>
 												</tr>
 											</th:block>
 										</table>

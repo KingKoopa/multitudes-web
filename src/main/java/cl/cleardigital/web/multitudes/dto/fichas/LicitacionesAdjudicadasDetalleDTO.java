@@ -1,6 +1,7 @@
 package cl.cleardigital.web.multitudes.dto.fichas;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -16,6 +17,7 @@ public class LicitacionesAdjudicadasDetalleDTO implements Serializable{
 	private String codigoExterno;
 	private String region;
 	private String tomaRazon;
+	private String adjudicadoStr;
 	
 	public String getFecha() {
 		return fecha;
@@ -40,6 +42,12 @@ public class LicitacionesAdjudicadasDetalleDTO implements Serializable{
 	}
 	public void setTomaRazon(String tomaRazon) {
 		this.tomaRazon = tomaRazon;
+	}
+	public String getAdjudicadoStr() {
+		return adjudicadoStr;
+	}
+	public void setAdjudicadoStr(String adjudicadoStr) {
+		this.adjudicadoStr = adjudicadoStr;
 	}
 	@Override
 	public String toString() {

@@ -39,6 +39,7 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 				"order by count(ac.id) desc " + 
 				"limit 10");
 		
+		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
 		for(Object[] obj: objLst){
 			Top10AudienciasPublicasDTO top10AudienciasPublicasDTO = new Top10AudienciasPublicasDTO();
@@ -86,6 +87,7 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 				"order by count(ad.id) desc " + 
 				"limit 10;");
 		
+		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
 		for(Object[] obj: objLst){
 			Top10AudienciasPrivadasDTO top10AudienciasPrivadasDTO = new Top10AudienciasPrivadasDTO();
