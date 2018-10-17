@@ -27,6 +27,20 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 
+.contenedor {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
+
+.centrado {
+	color: white;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+
 body {
 	color: #626262;
 	font-family: "Segoe UI", Arial, sans-serif;
@@ -347,7 +361,7 @@ hr.dotted {
 	z-index: 1052;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
 	background-image: none;
-	background-color: #04234a;
+	background-color: #060b25;
 	margin-bottom: 15px;
 	transition: background-color 0.3s ease;
 	margin-left: auto;
@@ -941,11 +955,42 @@ hr.dotted {
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.feature-box:not (.gray ) +.feature-box:not (.gray ) {
-	box-shadow: none;
-	border-top: 1px solid #eee;
-}
+.feature-box
+:not
+ 
+(
+.gray
+ 
+)
++
+.feature-box
+:not
+ 
+(
+.gray
+ 
+)
+{
+box-shadow
+:
+ 
+none
+;
 
+	
+border-top
+:
+ 
+1
+px
+ 
+solid
+ 
+#eee
+;
+
+
+}
 .feature-box.gray {
 	background-color: rgba(134, 158, 158, 0.07);
 	box-shadow: none;
@@ -2428,11 +2473,28 @@ input[type="radio"], input[type="checkbox"] {
 	height: 100%;
 }
 
-.featured-gallery.item-listing.grid .item .item-image>a:not (.save-item
-	) {
-	height: 100%;
-}
+.featured-gallery
+.item-listing
+.grid
+ 
+.item
+ 
+.item-image
+>
+a
+:not
+ 
+(
+.save-item
 
+	
+)
+{
+height
+:
+ 
+100%;
+}
 .featured-gallery.item-listing.grid .item .item-price {
 	font-weight: 600;
 }

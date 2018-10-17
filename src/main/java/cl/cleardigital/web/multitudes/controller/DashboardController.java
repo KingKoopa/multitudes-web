@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import cl.cleardigital.web.multitudes.dto.dashboard.AudienciasPorMesDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPrivadasDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPublicasDTO;
+import cl.cleardigital.web.multitudes.dto.dashboard.Top10CompradorLicitacionesDTO;
+import cl.cleardigital.web.multitudes.dto.dashboard.Top10ProveedorLicitacionesDTO;
 import cl.cleardigital.web.multitudes.service.LeyLobbyService;
 
 @Controller
@@ -53,6 +55,26 @@ public class DashboardController {
 		List<Top10AudienciasPrivadasDTO> top10AudienciasPrivadasLst  = lobbyService.getTop10AudienciasPrivadas();
 		
 		return new ResponseEntity<List<Top10AudienciasPrivadasDTO>>(top10AudienciasPrivadasLst, HttpStatus.OK);	
+
+	}
+	
+	@RequestMapping(value = "/top-comprador-licitaciones", method = RequestMethod.GET)
+	public ResponseEntity<?> getTopCompradorLicitaciones(
+			) throws Exception {
+		
+		List<Top10CompradorLicitacionesDTO> top10CompradorLicitacionesLst  = lobbyService.getTop10CompradorLicitaciones();
+		
+		return new ResponseEntity<List<Top10CompradorLicitacionesDTO>>(top10CompradorLicitacionesLst, HttpStatus.OK);	
+
+	}
+	
+	@RequestMapping(value = "/top-proveedor-licitaciones", method = RequestMethod.GET)
+	public ResponseEntity<?> getTopProveedorLicitaciones(
+			) throws Exception {
+		
+		List<Top10ProveedorLicitacionesDTO> top10ProveedorLicitacionesLst  = lobbyService.getTop10ProveedorLicitaciones();
+		
+		return new ResponseEntity<List<Top10ProveedorLicitacionesDTO>>(top10ProveedorLicitacionesLst, HttpStatus.OK);	
 
 	}
 }

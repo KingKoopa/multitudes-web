@@ -108,7 +108,7 @@
 					</div>
 				</a>
 				<nav class="navbar navbar-expand-lg navbar-dark" id="menu"
-					style="width: 60%; background-color: #060b25">
+					style="width: 60%;">
 					<div class="container">
 						<button class="navbar-toggler" type="button"
 							data-toggle="collapse" data-target="#menu-content"
@@ -229,7 +229,7 @@
 			class="sr-only">Siguiente</span>
 		</a>
 	</div>
-	<section class="section" style="background-color: #eee;">
+	<section class="section" style="background-color: #1a1b3336;">
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-md-12">
@@ -327,6 +327,62 @@
 					</div>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
+							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h4 align="center" class="panel-title">
+										<u>Top 10 Comprador Licitaciones</u>
+									</h4>
+								</div>
+								<div class="table100 ver5 m-b-110">
+									<table data-vertable="ver5" id="top10CompradorLicitaciones">
+										<thead>
+											<tr class="row100 head">
+												<th class="column100 column2" data-column="column2">#</th>
+												<th class="column100 column3" data-column="column3">Cantidad</th>
+												<th class="column100 column4" data-column="column4">Comprador</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
+							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h4 align="center" class="panel-title">
+										<u>Top 10 Proveedor Licitaciones</u>
+									</h4>
+								</div>
+								<div class="table100 ver5 m-b-110">
+									<table data-vertable="ver5" id="top10ProveedorLicitaciones">
+										<thead>
+											<tr class="row100 head">
+												<th class="column100 column2" data-column="column2">#</th>
+												<th class="column100 column3" data-column="column3">Cantidad</th>
+												<th class="column100 column4" data-column="column4">Proveedor</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 		</div>
 	</section>
@@ -407,6 +463,20 @@
 				chart.setData(JSON.parse(yourDataStr));
 			});
 
+			$.ajax({
+				type : "GET",
+				url : "/dashboard/top-comprador-licitaciones",
+				success : top10CompradorLicitaciones,
+				error : errorDialog
+			});
+
+			$.ajax({
+				type : "GET",
+				url : "/dashboard/top-proveedor-licitaciones",
+				success : top10ProveedorLicitaciones,
+				error : errorDialog
+			});
+
 		});
 
 		function top10AudienciasPublicas(data, status, jqxhrObject) {
@@ -455,6 +525,57 @@
 													+ "</td>"
 													+ "<td class='column100 column4' data-column='column4'>"
 													+ nombreProveedor + "</td>"
+													+ "</tr>");
+						});
+			}
+		}
+
+		function top10CompradorLicitaciones(data, status, jqxhrObject) {
+			if (data) {
+				var contador = 0;
+				data
+						.forEach(function(top10CompradorLicitaciones) {
+							contador++;
+							var cantidad = top10CompradorLicitaciones.cantidad;
+							var institucion = top10CompradorLicitaciones.nombreComprador;
+							var rutComprador = top10CompradorLicitaciones.rutComprador;
+
+							$("#top10CompradorLicitaciones")
+									.append(
+											"<tr class=row100>"
+													+ "<td class='column100 column2' data-column='column2'>"
+													+ contador
+													+ "</td>"
+													+ "<td class='column100 column3' data-column='column3'>"
+													+ cantidad
+													+ "</td>"
+													+ "<td class='column100 column4' data-column='column4'>"
+													+ institucion + "</td>"
+													+ "</tr>");
+						});
+			}
+		}
+		function top10ProveedorLicitaciones(data, status, jqxhrObject) {
+			if (data) {
+				var contador = 0;
+				data
+						.forEach(function(top10ProveedorLicitaciones) {
+							contador++;
+							var cantidad = top10ProveedorLicitaciones.cantidad;
+							var institucion = top10ProveedorLicitaciones.nombreProveedor;
+							var rutProveedor = top10ProveedorLicitaciones.rutProveedor;
+
+							$("#top10ProveedorLicitaciones")
+									.append(
+											"<tr class=row100>"
+													+ "<td class='column100 column2' data-column='column2'>"
+													+ contador
+													+ "</td>"
+													+ "<td class='column100 column3' data-column='column3'>"
+													+ cantidad
+													+ "</td>"
+													+ "<td class='column100 column4' data-column='column4'>"
+													+ institucion + "</td>"
 													+ "</tr>");
 						});
 			}
