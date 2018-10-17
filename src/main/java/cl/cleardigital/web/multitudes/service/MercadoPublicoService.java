@@ -1,6 +1,6 @@
 package cl.cleardigital.web.multitudes.service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
@@ -10,7 +10,7 @@ import cl.cleardigital.web.multitudes.dto.licitaciones.LicitacionDetailDTO;
 
 public interface MercadoPublicoService {
 	
-	public Boolean getLicitacionPorFecha() throws Exception;
+	public Boolean getLicitacionPorFecha(Date fechaDesde, Date fechaHasta) throws Exception;
 	
 	public List<LicitacionDetailDTO> getLicitacionDetallePorRutProveedor(String rutProveedor) throws Exception;
 	
@@ -18,7 +18,7 @@ public interface MercadoPublicoService {
 	
 	public List<SujetoActivoCabeceraDTO> getVendedoresPorRut(String rutVendedor) throws Exception;
 	
-	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo, Date fechaDesde, Date fechaHasta) throws Exception;
+	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo, java.sql.Date fechaDesde, java.sql.Date fechaHasta) throws Exception;
 	
 	public SujetoActivoCabeceraDTO getFichaSujetoActivo(String rutProveedor) throws Exception;
 

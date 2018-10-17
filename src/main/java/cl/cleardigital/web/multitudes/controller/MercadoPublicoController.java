@@ -1,9 +1,11 @@
 package cl.cleardigital.web.multitudes.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,9 +33,10 @@ public class MercadoPublicoController {
 	private RUTValidator RUTValidator;
 	
 	@RequestMapping(value="/traer-licitaciones-por-dia", method = RequestMethod.GET)
-	public ResponseEntity<?> traerLicitacionesPorDia() throws Exception{
+	public ResponseEntity<?> traerLicitacionesPorDia(@RequestParam(value = "fechaDesde", required=false) @DateTimeFormat(pattern="dd-MM-yyyy") Date fechaDesde
+												  , @RequestParam(value = "fechaHasta", required=false) @DateTimeFormat(pattern="dd-MM-yyyy") Date fechaHasta) throws Exception{
 		
-		return new ResponseEntity<Boolean>(mainService.getLicitacionPorFecha(), HttpStatus.OK);
+		return new ResponseEntity<Boolean>(mainService.getLicitacionPorFecha(fechaDesde, fechaHasta), HttpStatus.OK);
 		
 	}
 	

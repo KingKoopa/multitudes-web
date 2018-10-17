@@ -1,7 +1,8 @@
 package cl.cleardigital.web.multitudes.service.impl;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,8 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
-import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.LicitacionesAdjudicadasDetalleDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoLicitacionesDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
@@ -54,15 +55,15 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 	private LeyLobbyServiceImpl leyLobbyServiceImpl;
 	
 	@Override
-	public Boolean getLicitacionPorFecha() throws Exception {
+	public Boolean getLicitacionPorFecha(Date fechaDesde, Date fechaHasta) throws Exception {
 		
-//		LocalDate now = LocalDate.now();
-//		LocalDate to = now.minusMonths(3);
+//		LocalDate from = LocalDate.of(2015, 7, 1);
+//		LocalDate to = LocalDate.of(2015, 9, 1);
 		
-		LocalDate now = LocalDate.of(2015, 7, 1);
-		LocalDate to = LocalDate.of(2015, 9, 1);
+		LocalDate from = fechaDesde.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate to = fechaHasta.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		
-		for (LocalDate actual = now; actual.isBefore(to); actual = actual.plusDays(1)) {
+		for (LocalDate actual = from; actual.isBefore(to); actual = actual.plusDays(1)) {
 			DateTimeFormatter formatters = DateTimeFormatter.ofPattern("ddMMyyyy");
 			String day = actual.format(formatters);
 			log.info("DIA A CONSULTAR: {}", day);
@@ -184,7 +185,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 	}
 
 	@Override
-	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo, Date fechaDesde, Date fechaHasta) throws Exception {
+	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo, java.sql.Date fechaDesde, java.sql.Date fechaHasta) throws Exception {
 		log.info("MercadoPublicoService::getFichaSujetoPasivo()");
 		List<LicitacionDetalle> licitacionDetalleLst =  licitacionDetalleRepository.findByCompradorRutUnidad(rutOrganismo);
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
