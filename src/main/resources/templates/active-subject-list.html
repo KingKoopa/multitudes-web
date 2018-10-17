@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fundación Multitudes</title>
-
+<link rel="icon" type="image/x-icon" href="/img/icono_multitudes.png" />
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 <!-- JS file -->
@@ -47,6 +47,11 @@
 
 <!-- Page Loader JS -->
 <script src="js/page-loader.min.js" async></script>
+
+<!-- CSS Tables -->
+<link rel="stylesheet" type="text/css" href="/css/tables/main.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/tables/perfect-scrollbar.css">
 
 </head>
 
@@ -146,33 +151,47 @@
 									id="btn_ver_detalle_audiencia"
 									class="btn btn-propio-2 btn-block" style="width: 25%">Ver+</a></li>
 								<li>
-									<div id="audiencias_detail_table" style="display: none;">
-										<table class="TFtable" style="width: 100%">
-											<tr>
-												<th>Sujeto Activo</th>
-												<th>Fecha</th>
-												<th>Tema</th>
-												<th>Materias</th>
-												<th>Organismo</th>
-											</tr>
-											<tr>
-												<td>ANTONIO FRANCISCO BELMONTE SANCHEZ</td>
-												<td>01/01/2017</td>
-												<td>Informar Estado de Avance de las Obras. Hospital de
-													Antofagasta\ La Serena - Vallenar</td>
-												<td>Elaboración, dictación, modificación, denegación o
-													rechazo de actos administrativos, proyectos de ley y leyes.</td>
-												<td>Ministerio Obras Públicas</td>
-											</tr>
-											<tr>
-												<td>ANTONIO FRANCISCO BELMONTE SANCHEZ</td>
-												<td>05/05/2017</td>
-												<td>ESTADO DE COMPRA DE TERRENO EN PADRE LAS CASAS
-													POSTULACIÓN A VIVIENDAS SOCIALES EN RENAICO</td>
-												<td>Elaboración, dictación, modificación, denegación o
-													rechazo de actos administrativos, proyectos de ley y leyes.</td>
-												<td>Ministerio Obras Públicas</td>
-											</tr>
+									<div class="table100 ver5 m-b-110" id="audiencias_detail_table"
+										style="display: none;">
+										<table data-vertable="ver5">
+											<thead>
+												<tr class="row100 head">
+													<th class="column100 column2" data-column="column2">Sujeto
+														Activo</th>
+													<th class="column100 column3" data-column="column3">Fecha</th>
+													<th class="column100 column4" data-column="column4">Tema</th>
+													<th class="column100 column5" data-column="column5">Materias</th>
+													<th class="column100 column6" data-column="column6">Organismo</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="row100">
+													<td class="column100 column2" data-column="column2">ANTONIO
+														FRANCISCO BELMONTE SANCHEZ</td>
+													<td class="column100 column3" data-column="column3">01/01/2017</td>
+													<td class="column100 column4" data-column="column4">Informar
+														Estado de Avance de las Obras. Hospital de Antofagasta\ La
+														Serena - Vallenar</td>
+													<td class="column100 column5" data-column="column5">Elaboración,
+														dictación, modificación, denegación o rechazo de actos
+														administrativos, proyectos de ley y leyes.</td>
+													<td class="column100 column6" data-column="column6">Ministerio
+														Obras Públicas</td>
+												</tr>
+												<tr class="row100">
+													<td class="column100 column2" data-column="column2">ANTONIO
+														FRANCISCO BELMONTE SANCHEZ</td>
+													<td class="column100 column3" data-column="column3">05/05/2017</td>
+													<td class="column100 column4" data-column="column4">ESTADO
+														DE COMPRA DE TERRENO EN PADRE LAS CASAS POSTULACIÓN A
+														VIVIENDAS SOCIALES EN RENAICO</td>
+													<td class="column100 column5" data-column="column5">Elaboración,
+														dictación, modificación, denegación o rechazo de actos
+														administrativos, proyectos de ley y leyes.</td>
+													<td class="column100 column6" data-column="column6">Ministerio
+														de Obras Publicas</td>
+												</tr>
+											</tbody>
 										</table>
 									</div>
 								</li>
@@ -182,26 +201,35 @@
 									<a id="btn_ver_detalle_licitaciones"
 									class="btn btn-propio-2 btn-block" style="width: 25%">Ver+</a></li>
 								<li>
-									<div id="licitaciones_detail_table" style="display: none;">
+									<div id="licitaciones_detail_table"
+										class="table100 ver5 m-b-110" style="display: none;">
 										<table th:if="${sujetoActivoCabeceraDTO != null}"
-											class="TFtable" style="width: 100%">
-											<tr>
-												<th>Tipo</th>
-												<th>Descripción</th>
-												<th>Cantidad</th>
-												<th>Detalle</th>
-											</tr>
-											<th:block
-												th:each="licitacion : ${sujetoActivoCabeceraDTO.sujetoLicitaciones}">
-												<tr>
-													<td th:text="${licitacion.tipo}"></td>
-													<td th:text="${licitacion.descripcion}"></td>
-													<td th:text="${licitacion.cantidad}"></td>
-													<td align="center"><a target="_blank"
-														th:href="@{/mercado-publico/licitaciones-adjudicadas-detalle(fiscalId=${sujetoActivoCabeceraDTO.rutProveedor},(tipoLicitacion=${licitacion.tipo}),(origen='A'))}"><i
-															class="fa fa-search"></i></a></td>
+											data-vertable="ver5">
+											<thead>
+												<tr class="row100 head">
+													<th class="column100 column2" data-column="column2">Tipo</th>
+													<th class="column100 column3" data-column="column3">Descripción</th>
+													<th class="column100 column4" data-column="column4">Cantidad</th>
+													<th class="column100 column5" data-column="column5">Detalle</th>
 												</tr>
-											</th:block>
+											</thead>
+											<tbody>
+												<th:block
+													th:each="licitacion : ${sujetoActivoCabeceraDTO.sujetoLicitaciones}">
+													<tr class="row100">
+														<td th:text="${licitacion.tipo}" class="column100 column2"
+															data-column="column2"></td>
+														<td th:text="${licitacion.descripcion}"
+															class="column100 column3" data-column="column3"></td>
+														<td th:text="${licitacion.cantidad}"
+															class="column100 column4" data-column="column4"></td>
+														<td align="center" class="column100 column5"
+															data-column="column5"><a target="_blank"
+															th:href="@{/mercado-publico/licitaciones-adjudicadas-detalle(fiscalId=${sujetoActivoCabeceraDTO.rutProveedor},(tipoLicitacion=${licitacion.tipo}),(origen='A'))}"><i
+																class="fa fa-search"></i></a></td>
+													</tr>
+												</th:block>
+											</tbody>
 										</table>
 									</div>
 								</li>

@@ -9,7 +9,7 @@
 <title>Fundación Multitudes</title>
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
+<link rel="icon" type="image/x-icon" href="/img/icono_multitudes.png" />
 <!-- JS file -->
 <script src="/js/jquery.easy-autocomplete.min.js"></script>
 
@@ -26,6 +26,11 @@
 <!-- CSS file -->
 <link rel="stylesheet" href="/js/easy-autocomplete.min.css" />
 <link rel="stylesheet" href="/css/style.css" />
+
+<!-- CSS Tables -->
+<link rel="stylesheet" type="text/css" href="/css/tables/main.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/tables/perfect-scrollbar.css">
 
 <!-- Site -->
 <link rel="stylesheet" href="/css/app_1.min.css">
@@ -122,30 +127,37 @@
 								<!-- Sujetos pasivos -->
 
 								<li>
-									<div id="sujetos_pasivos_detail_table">
-										<table class="TFtable" style="width: 125%" id="mitable">
+									<div id="sujetos_pasivos_detail_table"
+										class="table100 ver5 m-b-110" style="width: 125%">
+										<table id="mitable" data-vertable="ver5">
 											<thead>
-												<tr>
-													<th>Fecha</th>
-													<th>Código</th>
-													<th>Región</th>
-													<th>Toma Razón</th>
-													<th>Proveedor/Otorgante</th>
+												<tr class="row100 head">
+													<th class="column100 column2" data-column="column2">Fecha</th>
+													<th class="column100 column3" data-column="column3">Código</th>
+													<th class="column100 column4" data-column="column4">Región</th>
+													<th class="column100 column5" data-column="column5">Toma
+														Razón</th>
+													<th class="column100 column5" data-column="column5">Proveedor/Otorgante</th>
 												</tr>
 											</thead>
-											<!-- adjudicacionDetalleLst -->
-											<th:block
-												th:each="licitacion : ${LicitacionesAdjudicadasDetalleDTO}">
-												<tr>
-													<td th:text="${licitacion.fecha}"></td>
-													<td><a
-														th:href="@{'http://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?idlicitacion='+${licitacion.codigoExterno}}"
-														th:text="${licitacion.codigoExterno}" target="blank"></a></td>
-													<td th:text="${licitacion.region}"></td>
-													<td th:text="${licitacion.tomaRazon}"></td>
-													<td th:text="${licitacion.adjudicadoStr}"></td>
-												</tr>
-											</th:block>
+											<tbody>
+												<th:block
+													th:each="licitacion : ${LicitacionesAdjudicadasDetalleDTO}">
+													<tr class="row100">
+														<td th:text="${licitacion.fecha}"
+															class="column100 column2" data-column="column2"></td>
+														<td class="column100 column3" data-column="column3"><a
+															th:href="@{'http://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?idlicitacion='+${licitacion.codigoExterno}}"
+															th:text="${licitacion.codigoExterno}" target="blank"></a></td>
+														<td th:text="${licitacion.region}"
+															class="column100 column4" data-column="column4"></td>
+														<td th:text="${licitacion.tomaRazon}"
+															class="column100 column4" data-column="column4"></td>
+														<td th:text="${licitacion.adjudicadoStr}"
+															class="column100 column4" data-column="column4"></td>
+													</tr>
+												</th:block>
+											</tbody>
 										</table>
 									</div>
 								</li>
