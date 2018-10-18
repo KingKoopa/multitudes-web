@@ -75,6 +75,15 @@
 <link rel="stylesheet" type="text/css"
 	href="/css/tables/perfect-scrollbar.css">
 
+<!-- Prueba Morris -->
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 <style type="text/css">
 .contenedor {
 	position: relative;
@@ -134,7 +143,7 @@
 		</div>
 	</header>
 
-<!-- 	<div id="myCarousel" class="carousel slide" data-ride="carousel"
+	<!-- 	<div id="myCarousel" class="carousel slide" data-ride="carousel"
 		style="width: 100%;">
 		Indicators
 		<ol class="carousel-indicators">
@@ -230,6 +239,7 @@
 		</a>
 	</div> -->
 	<section class="section" style="background-color: #1a1b3336;">
+		<div id="myfirstchart2"></div>
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-md-12">
@@ -436,7 +446,19 @@
 				error : errorDialog
 			});
 
-			var chart = new Morris.Bar({
+			var chart = new Morris.Line({
+				element : 'myfirstchart2',
+				
+				data : [ 0, 0 ],
+
+				xkey : 'fecha',
+
+				ykeys : [ 'cantidad' ],
+
+				labels : [ 'Cantidad' ]
+			});
+
+			/* var chart = new Morris.Bar({
 				element : 'myfirstchart',
 
 				data : [ 0, 0 ],
@@ -446,7 +468,7 @@
 				ykeys : [ 'cantidad' ],
 
 				labels : [ 'Cantidad' ]
-			});
+			}); */
 
 			$.ajax({
 				type : "GET",
