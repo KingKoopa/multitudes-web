@@ -119,9 +119,10 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 		List<Top10ProveedorLicitacionesDTO> top10ProveedorLicitacionesLst = new ArrayList<>();
 
 		Query query = entityManager.createNativeQuery(
-				"select count(comprador_rut_unidad), comprador_rut_unidad, comprador_nombre_unidad\r\n"
-						+ "from licitacion_detalle  \r\n" + "group by comprador_rut_unidad \r\n"
-						+ "order by count(comprador_rut_unidad) desc limit 10;");
+				"select count(adjudicacion_rut_proveedor), adjudicacion_rut_proveedor, adjudicacion_nombre_proveedor\n" + 
+				"from licitacion_item\n" + 
+				"group by adjudicacion_rut_proveedor\n" + 
+				"order by count(adjudicacion_rut_proveedor) desc limit 10");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
