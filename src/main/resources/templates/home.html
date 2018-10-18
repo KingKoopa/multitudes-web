@@ -50,6 +50,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <script src="js/bootstrap.min.js"></script>
 
+<!--  
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.0/morris.js"></script>
 
@@ -58,6 +59,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+-->
 
 <!--  Carousel -->
 <link rel="stylesheet"
@@ -75,7 +77,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/css/tables/perfect-scrollbar.css">
 
-<!-- Prueba Morris -->
+<!-- Prueba Morris 
 <link rel="stylesheet"
 	href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -83,6 +85,11 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>-->
+
+<script src="/js/Chart.min.js" async></script>
 
 <style type="text/css">
 .contenedor {
@@ -98,6 +105,7 @@
 	transform: translate(-50%, -50%);
 	position: absolute;
 }
+
 </style>
 </head>
 
@@ -239,7 +247,6 @@
 		</a>
 	</div> -->
 	<section class="section" style="background-color: #1a1b3336;">
-		<div id="myfirstchart2"></div>
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-md-12">
@@ -359,7 +366,9 @@
 										<u>Audiencias Por Mes</u>
 									</h3>
 								</div>
-								<div id="myfirstchart"></div>
+								<div>
+									<canvas id="myLineChart" width="1250" height="350"></canvas>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -430,70 +439,114 @@
 		</div>
 	</footer>
 	<script>
-		$(document).ready(function() {
+		$(document)
+				.ready(
+						function() {
 
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/top-audiencias-publicas",
-				success : top10AudienciasPublicas,
-				error : errorDialog
-			});
+							function drawLineChart() {
 
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/top-audiencias-privadas",
-				success : cargarTop10AudienciasPrivadas,
-				error : errorDialog
-			});
+								// Add a helper to format timestamp data
+								Date.prototype.formatMMDDYYYY = function() {
+									return (this.getMonth() + 1) + "/"
+											+ this.getDate() + "/"
+											+ this.getFullYear();
+								}
 
-			var chart = new Morris.Line({
-				element : 'myfirstchart2',
-				
-				data : [ 0, 0 ],
+								var jsonData = $
+										.ajax(
+												{
+													url : '/dashboard/audiencias-por-mes',
+													dataType : 'json',
+												})
+										.done(
+												function(results) {
 
-				xkey : 'fecha',
+													// Split timestamp and data into separate arrays
+													var labels = [], data = [];
+													results
+															.forEach(function(
+																	packet) {
+																labels
+																		.push(packet.fecha);
+																data
+																		.push(packet.cantidad);
+															});
 
-				ykeys : [ 'cantidad' ],
+													// Create the chart.js data structure using 'labels' and 'data'
+													var tempData = {
+														labels : labels,
+														responsive : true,
+														datasets : [ {
+															fillColor : "rgba(151,187,205,0.2)",
+															strokeColor : "rgba(151,187,205,1)",
+															pointColor : "rgba(151,187,205,1)",
+															pointStrokeColor : "#fff",
+															pointHighlightFill : "#fff",
+															pointHighlightStroke : "rgba(151,187,205,1)",
+															data : data
+														} ]
+													};
+													var ctx = document
+															.getElementById(
+																	"myLineChart")
+															.getContext("2d");
+													var myLineChart = new Chart(
+															ctx).Line(tempData);
+												});
+							}
 
-				labels : [ 'Cantidad' ]
-			});
+							drawLineChart();
 
-			/* var chart = new Morris.Bar({
-				element : 'myfirstchart',
+							$.ajax({
+								type : "GET",
+								url : "/dashboard/top-audiencias-publicas",
+								success : top10AudienciasPublicas,
+								error : errorDialog
+							});
 
-				data : [ 0, 0 ],
+							$.ajax({
+								type : "GET",
+								url : "/dashboard/top-audiencias-privadas",
+								success : cargarTop10AudienciasPrivadas,
+								error : errorDialog
+							});
 
-				xkey : 'fecha',
+							/* 					var chart = new Morris.Bar({
+							 element : 'myfirstchart',
 
-				ykeys : [ 'cantidad' ],
+							 data : [ 0, 0 ],
 
-				labels : [ 'Cantidad' ]
-			}); */
+							 xkey : 'fecha',
 
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/audiencias-por-mes",
-				error : errorDialog
-			}).done(function(data) {
-				var yourDataStr = JSON.stringify(data);
-				chart.setData(JSON.parse(yourDataStr));
-			});
+							 ykeys : [ 'cantidad' ],
 
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/top-comprador-licitaciones",
-				success : top10CompradorLicitaciones,
-				error : errorDialog
-			});
+							 labels : [ 'Cantidad' ]
+							 }); 
 
-			$.ajax({
-				type : "GET",
-				url : "/dashboard/top-proveedor-licitaciones",
-				success : top10ProveedorLicitaciones,
-				error : errorDialog
-			});
+							 $.ajax({
+							 type : "GET",
+							 url : "/dashboard/audiencias-por-mes",
+							 error : errorDialog
+							 }).done(function(data) {
+							 var yourDataStr = JSON.stringify(data);
+							 chart.setData(JSON.parse(yourDataStr));
+							 });*/
 
-		});
+							$.ajax({
+								type : "GET",
+								url : "/dashboard/top-comprador-licitaciones",
+								success : top10CompradorLicitaciones,
+								error : errorDialog
+							});
+
+							$.ajax({
+								type : "GET",
+								url : "/dashboard/top-proveedor-licitaciones",
+								success : top10ProveedorLicitaciones,
+								error : errorDialog
+							});
+
+						});
 
 		function top10AudienciasPublicas(data, status, jqxhrObject) {
 			if (data) {
