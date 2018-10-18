@@ -84,6 +84,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 				if(licitacionListado.getListado() != null && !licitacionListado.getListado().isEmpty()) {
 					log.info("-->***Inicio Listado: [ \n");
 					for(LicitacionHeaderDTO licitacionHeaderDTO : licitacionListado.getListado()) {
+						log.info("*DIA A CONSULTAR*: {}", day);
 						log.info("Nombre: {}",licitacionHeaderDTO.getNombre());
 						log.info("Código estado: {}",licitacionHeaderDTO.getCodigoEstado());
 						log.info("Fecha cierre: {}",licitacionHeaderDTO.getFechaCierre());
@@ -104,6 +105,10 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 						LicitacionDetailListadoDTO licitacionDetailListadoDTO = gson.fromJson(detalleLicitacion, LicitacionDetailListadoDTO.class);
 						if(licitacionDetailListadoDTO != null && !licitacionDetailListadoDTO.getListado().isEmpty()) {
 							for(LicitacionDetailDTO licitacionDetailDTO : licitacionDetailListadoDTO.getListado()) {
+								log.info("*DIA A CONSULTAR*: {}", day);
+								log.info("*ADJUDICACION FECHA*: {}", licitacionDetailDTO.getAdjudicacion() != null ? licitacionDetailDTO.getAdjudicacion().getFecha() : null);
+								log.info("*FECHA ADJUDICACION*: {}", licitacionDetailDTO.getFechas() != null ? licitacionDetailDTO.getFechas().getFechaAdjudicacion() : null);
+								
 								//almacenar items del detalle:
 								List<LicitacionItem> licitacionItemLst = new ArrayList<>();
 								for(ListadoDTO listadoDTO : licitacionDetailDTO.getItems().getListado()) {
