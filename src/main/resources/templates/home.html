@@ -366,8 +366,8 @@
 										<u>Audiencias Por Mes</u>
 									</h3>
 								</div>
-								<div>
-									<canvas id="myLineChart" width="1250" height="350"></canvas>
+								<div style="width:100%;">
+									<canvas id="myLineChart"></canvas>
 								</div>
 							</div>
 						</div>
@@ -475,7 +475,6 @@
 													// Create the chart.js data structure using 'labels' and 'data'
 													var tempData = {
 														labels : labels,
-														responsive : true,
 														datasets : [ {
 															fillColor : "rgba(151,187,205,0.2)",
 															strokeColor : "rgba(151,187,205,1)",
@@ -490,8 +489,13 @@
 															.getElementById(
 																	"myLineChart")
 															.getContext("2d");
+													
+													options = {
+															  responsive: true
+															};
+													
 													var myLineChart = new Chart(
-															ctx).Line(tempData);
+															ctx).Line(tempData, options);
 												});
 							}
 
