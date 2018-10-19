@@ -105,7 +105,6 @@
 	transform: translate(-50%, -50%);
 	position: absolute;
 }
-
 </style>
 </head>
 
@@ -273,7 +272,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-12 col-sm-6">
 					<div class="card">
 						<div class="detail-info">
 							<!-- Page length options -->
@@ -283,13 +282,14 @@
 										<u>Top 10 Licitadores</u>
 									</h4>
 								</div>
-								<div class="table100 ver5 m-b-110">
-									<table data-vertable="ver5" id="top10ProveedorLicitaciones">
+								<div class="table100 ver5 m-b-70">
+									<table id="top10ProveedorLicitaciones">
 										<thead>
 											<tr class="row100 head">
 												<th class="column100 column2" data-column="column2">#</th>
 												<th class="column100 column3" data-column="column3">Cantidad</th>
 												<th class="column100 column4" data-column="column4">Proveedor</th>
+												<th class="column100 column5" data-column="column5">Rut</th>
 											</tr>
 										</thead>
 										<tbody></tbody>
@@ -299,9 +299,25 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-12 col-sm-6">
+					<div class="card">
+						<div class="detail-info">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h3 class="title" align="center">
+										<u>Top 10 Licitadores</u>
+									</h3>
+								</div>
+								<div style="width: 100%;">
+									<canvas id="myBarChart" height="360"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-12 col-sm-6">
 					<div class="card">
 						<div class="detail-info">
 							<!-- Page length options -->
@@ -318,6 +334,7 @@
 												<th class="column100 column2" data-column="column2">#</th>
 												<th class="column100 column3" data-column="column3">Cantidad</th>
 												<th class="column100 column4" data-column="column4">Organismo</th>
+												<th class="column100 column5" data-column="column5">Rut</th>
 											</tr>
 										</thead>
 										<tbody></tbody>
@@ -327,9 +344,25 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-12 col-sm-6">
+					<div class="card">
+						<div class="detail-info">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h3 class="title" align="center">
+										<u>Top 10 Licitaciones</u>
+									</h3>
+								</div>
+								<div style="width: 100%;">
+									<canvas id="myBarChart2" height="370"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-12 col-sm-6">
 					<div class="card">
 						<div class="detail-info">
 							<div class="panel-heading">
@@ -354,20 +387,17 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
+				<div class="col-12 col-sm-6">
 					<div class="card">
 						<div class="detail-info">
-							<!-- Page length options -->
 							<div class="panel panel-flat">
 								<div class="panel-heading">
 									<h3 class="title" align="center">
-										<u>Audiencias Por Mes</u>
+										<u>Top 10 Organismos con Mayores Audiencias</u>
 									</h3>
 								</div>
-								<div style="width:100%;">
-									<canvas id="myLineChart" height="80"></canvas>
+								<div style="width: 100%;">
+									<canvas id="myBarChart3" height="310"></canvas>
 								</div>
 							</div>
 						</div>
@@ -378,7 +408,24 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="detail-info">
-							<!-- Page length options -->
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h3 class="title" align="center">
+										<u>Audiencias Por Mes</u>
+									</h3>
+								</div>
+								<div style="width: 100%;">
+									<canvas id="myLineChart" height="80"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<div class="card">
+						<div class="detail-info">
 							<div class="panel panel-flat">
 								<div class="panel-heading">
 									<h4 align="center" class="panel-title">
@@ -392,10 +439,27 @@
 												<th class="column100 column2" data-column="column2">#</th>
 												<th class="column100 column3" data-column="column3">Cantidad</th>
 												<th class="column100 column4" data-column="column4">Institucion</th>
+												<th class="column100 column5" data-column="column5">Rut</th>
 											</tr>
 										</thead>
 										<tbody></tbody>
 									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="card">
+						<div class="detail-info">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h3 class="title" align="center">
+										<u>Audiencias Por Mes</u>
+									</h3>
+								</div>
+								<div style="width: 100%;">
+									<canvas id="myBarChart4" height="510"></canvas>
 								</div>
 							</div>
 						</div>
@@ -443,6 +507,238 @@
 				.ready(
 						function() {
 
+							function drawBarChart4() {
+
+								// Add a helper to format timestamp data
+								Date.prototype.formatMMDDYYYY = function() {
+									return (this.getMonth() + 1) + "/"
+											+ this.getDate() + "/"
+											+ this.getFullYear();
+								}
+
+								var jsonData = $
+										.ajax(
+												{
+													url : '/dashboard/top-audiencias-privadas',
+													dataType : 'json',
+												})
+										.done(
+												function(results) {
+
+													var labels = [], data = [];
+													results
+															.forEach(function(
+																	packet) {
+																labels
+																		.push(packet.proveedor);
+																data
+																		.push(packet.cantidad);
+															});
+
+													// Create the chart.js data structure using 'labels' and 'data'
+													var tempData = {
+														labels : labels,
+														datasets : [ {
+															fillColor : "rgba(151,187,205,0.2)",
+															strokeColor : "rgba(151,187,205,1)",
+															pointColor : "rgba(151,187,205,1)",
+															pointStrokeColor : "#fff",
+															pointHighlightFill : "#fff",
+															pointHighlightStroke : "rgba(151,187,205,1)",
+															data : data
+														} ]
+													};
+													var ctx = document
+															.getElementById(
+																	"myBarChart4")
+															.getContext("2d");
+
+													options = {
+														responsive : true
+													};
+
+													var myBarChart = new Chart(
+															ctx).Bar(tempData,
+															options);
+												});
+							}
+
+							drawBarChart4();
+
+							function drawBarChart4() {
+
+								// Add a helper to format timestamp data
+								Date.prototype.formatMMDDYYYY = function() {
+									return (this.getMonth() + 1) + "/"
+											+ this.getDate() + "/"
+											+ this.getFullYear();
+								}
+
+								var jsonData = $
+										.ajax(
+												{
+													url : '/dashboard/top-audiencias-publicas',
+													dataType : 'json',
+												})
+										.done(
+												function(results) {
+
+													var labels = [], data = [];
+													results
+															.forEach(function(
+																	packet) {
+																labels
+																		.push(packet.institucion);
+																data
+																		.push(packet.cantidad);
+															});
+
+													// Create the chart.js data structure using 'labels' and 'data'
+													var tempData = {
+														labels : labels,
+														datasets : [ {
+															fillColor : "rgba(151,187,205,0.2)",
+															strokeColor : "rgba(151,187,205,1)",
+															pointColor : "rgba(151,187,205,1)",
+															pointStrokeColor : "#fff",
+															pointHighlightFill : "#fff",
+															pointHighlightStroke : "rgba(151,187,205,1)",
+															data : data
+														} ]
+													};
+													var ctx = document
+															.getElementById(
+																	"myBarChart3")
+															.getContext("2d");
+
+													options = {
+														responsive : true
+													};
+
+													var myBarChart = new Chart(
+															ctx).Bar(tempData,
+															options);
+												});
+							}
+
+							drawBarChart3();
+
+							function drawBarChart2() {
+
+								// Add a helper to format timestamp data
+								Date.prototype.formatMMDDYYYY = function() {
+									return (this.getMonth() + 1) + "/"
+											+ this.getDate() + "/"
+											+ this.getFullYear();
+								}
+
+								var jsonData = $
+										.ajax(
+												{
+													url : '/dashboard/top-comprador-licitaciones',
+													dataType : 'json',
+												})
+										.done(
+												function(results) {
+
+													var labels = [], data = [];
+													results
+															.forEach(function(
+																	packet) {
+																labels
+																		.push(packet.rutComprador);
+																data
+																		.push(packet.cantidad);
+															});
+
+													// Create the chart.js data structure using 'labels' and 'data'
+													var tempData = {
+														labels : labels,
+														datasets : [ {
+															fillColor : "rgba(151,187,205,0.2)",
+															strokeColor : "rgba(151,187,205,1)",
+															pointColor : "rgba(151,187,205,1)",
+															pointStrokeColor : "#fff",
+															pointHighlightFill : "#fff",
+															pointHighlightStroke : "rgba(151,187,205,1)",
+															data : data
+														} ]
+													};
+													var ctx = document
+															.getElementById(
+																	"myBarChart2")
+															.getContext("2d");
+
+													options = {
+														responsive : true
+													};
+
+													var myBarChart = new Chart(
+															ctx).Bar(tempData,
+															options);
+												});
+							}
+
+							drawBarChart2();
+
+							function drawBarChart() {
+
+								// Add a helper to format timestamp data
+								Date.prototype.formatMMDDYYYY = function() {
+									return (this.getMonth() + 1) + "/"
+											+ this.getDate() + "/"
+											+ this.getFullYear();
+								}
+
+								var jsonData = $
+										.ajax(
+												{
+													url : '/dashboard/top-proveedor-licitaciones',
+													dataType : 'json',
+												})
+										.done(
+												function(results) {
+
+													var labels = [], data = [];
+													results
+															.forEach(function(
+																	packet) {
+																labels
+																		.push(packet.rutProveedor);
+																data
+																		.push(packet.cantidad);
+															});
+
+													// Create the chart.js data structure using 'labels' and 'data'
+													var tempData = {
+														labels : labels,
+														datasets : [ {
+															fillColor : "rgba(151,187,205,0.2)",
+															strokeColor : "rgba(151,187,205,1)",
+															pointColor : "rgba(151,187,205,1)",
+															pointStrokeColor : "#fff",
+															pointHighlightFill : "#fff",
+															pointHighlightStroke : "rgba(151,187,205,1)",
+															data : data
+														} ]
+													};
+													var ctx = document
+															.getElementById(
+																	"myBarChart")
+															.getContext("2d");
+
+													options = {
+														responsive : true
+													};
+
+													var myBarChart = new Chart(
+															ctx).Bar(tempData,
+															options);
+												});
+							}
+
+							drawBarChart();
+
 							function drawLineChart() {
 
 								// Add a helper to format timestamp data
@@ -489,13 +785,14 @@
 															.getElementById(
 																	"myLineChart")
 															.getContext("2d");
-													
+
 													options = {
-															  responsive: true
-															};
-													
+														responsive : true
+													};
+
 													var myLineChart = new Chart(
-															ctx).Line(tempData, options);
+															ctx).Line(tempData,
+															options);
 												});
 							}
 
@@ -514,27 +811,6 @@
 								success : cargarTop10AudienciasPrivadas,
 								error : errorDialog
 							});
-
-							/* 					var chart = new Morris.Bar({
-							 element : 'myfirstchart',
-
-							 data : [ 0, 0 ],
-
-							 xkey : 'fecha',
-
-							 ykeys : [ 'cantidad' ],
-
-							 labels : [ 'Cantidad' ]
-							 }); 
-
-							 $.ajax({
-							 type : "GET",
-							 url : "/dashboard/audiencias-por-mes",
-							 error : errorDialog
-							 }).done(function(data) {
-							 var yourDataStr = JSON.stringify(data);
-							 chart.setData(JSON.parse(yourDataStr));
-							 });*/
 
 							$.ajax({
 								type : "GET",
@@ -597,7 +873,10 @@
 													+ cantidad
 													+ "</td>"
 													+ "<td class='column100 column4' data-column='column4'>"
-													+ nombreProveedor + "</td>"
+													+ nombreProveedor
+													+ "</td>"
+													+ "<td class='column100 column5' data-column='column5'>"
+													+ rutProveedor + "</td>"
 													+ "</tr>");
 						});
 			}
@@ -623,7 +902,10 @@
 													+ cantidad
 													+ "</td>"
 													+ "<td class='column100 column4' data-column='column4'>"
-													+ institucion + "</td>"
+													+ institucion
+													+ "</td>"
+													+ "<td class='column100 column5' data-column='column5'>"
+													+ rutComprador + "</td>"
 													+ "</tr>");
 						});
 			}
@@ -648,7 +930,10 @@
 													+ cantidad
 													+ "</td>"
 													+ "<td class='column100 column4' data-column='column4'>"
-													+ institucion + "</td>"
+													+ institucion
+													+ "</td>"
+													+ "<td class='column100 column5' data-column='column5'>"
+													+ rutProveedor + "</td>"
 													+ "</tr>");
 						});
 			}
