@@ -8,7 +8,16 @@ public class Top10CompradorLicitacionesDTO {
 	private Integer cantidad;
 	private String nombreComprador;
 	private String rutComprador;
+	private Integer monto;
 	
+	
+	
+	public Integer getMonto() {
+		return monto;
+	}
+	public void setMonto(Integer monto) {
+		this.monto = monto;
+	}
 	public Integer getCantidad() {
 		return cantidad;
 	}

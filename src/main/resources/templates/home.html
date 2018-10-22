@@ -90,6 +90,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>-->
 
 <script src="/js/Chart.min.js" async></script>
+<script src="/js/utils.js" async></script>
 
 <style type="text/css">
 .contenedor {
@@ -286,9 +287,9 @@
 									<table id="top10ProveedorLicitaciones">
 										<thead>
 											<tr class="row100 head">
-												<th class="column100 column2" data-column="column2">#</th>
-												<th class="column100 column3" data-column="column3">Cantidad</th>
-												<th class="column100 column4" data-column="column4">Proveedor</th>
+												<th class="column100" style="width: 5%">#</th>
+												<th class="column100" style="width: 5%">Cantidad</th>
+												<th class="column100" style="width: 55%">Proveedor</th>
 												<th class="column100 column5" data-column="column5">Rut</th>
 											</tr>
 										</thead>
@@ -309,7 +310,7 @@
 									</h3>
 								</div>
 								<div style="width: 100%;">
-									<canvas id="myBarChart" height="360"></canvas>
+									<canvas id="myBarChart" height="268"></canvas>
 								</div>
 							</div>
 						</div>
@@ -323,18 +324,18 @@
 							<!-- Page length options -->
 							<div class="panel panel-flat">
 								<div class="panel-heading">
-									<h4 align="center" class="panel-title">
-										<u>Top 10 Licitaciones</u>
+									<h4 align="center" class="panel-title">Top 10 Licitaciones
 									</h4>
 								</div>
 								<div class="table100 ver5 m-b-110">
 									<table data-vertable="ver5" id="top10CompradorLicitaciones">
 										<thead>
 											<tr class="row100 head">
-												<th class="column100 column2" data-column="column2">#</th>
-												<th class="column100 column3" data-column="column3">Cantidad</th>
-												<th class="column100 column4" data-column="column4">Organismo</th>
-												<th class="column100 column5" data-column="column5">Rut</th>
+												<th class="column100" style="width: 5%">#</th>
+												<th class="column100" style="width: 5%">Cantidad</th>
+												<th class="column100" style="width: 55%">Organismo</th>
+												<th class="column100" style="width: 25%">Rut</th>
+												<th class="column100" style="width: 1%">Monto</th>
 											</tr>
 										</thead>
 										<tbody></tbody>
@@ -349,12 +350,10 @@
 						<div class="detail-info">
 							<div class="panel panel-flat">
 								<div class="panel-heading">
-									<h3 class="title" align="center">
-										<u>Top 10 Licitaciones</u>
-									</h3>
+									<h3 class="title" align="center">Top 10 Licitaciones</h3>
 								</div>
 								<div style="width: 100%;">
-									<canvas id="myBarChart2" height="370"></canvas>
+									<canvas id="myBarChart2" height="304"></canvas>
 								</div>
 							</div>
 						</div>
@@ -560,12 +559,13 @@
 													var myBarChart = new Chart(
 															ctx).Bar(tempData,
 															options);
+
 												});
 							}
 
 							drawBarChart4();
 
-							function drawBarChart4() {
+							function drawBarChart3() {
 
 								// Add a helper to format timestamp data
 								Date.prototype.formatMMDDYYYY = function() {
@@ -655,8 +655,8 @@
 													var tempData = {
 														labels : labels,
 														datasets : [ {
-															fillColor : "rgba(151,187,205,0.2)",
-															strokeColor : "rgba(151,187,205,1)",
+															fillColor : "rgba(243,128,1,1)", //Fondo de Barra
+															strokeColor : "rgba(49,69,146,1)", //Borde de Barra
 															pointColor : "rgba(151,187,205,1)",
 															pointStrokeColor : "#fff",
 															pointHighlightFill : "#fff",
@@ -713,8 +713,8 @@
 													var tempData = {
 														labels : labels,
 														datasets : [ {
-															fillColor : "rgba(151,187,205,0.2)",
-															strokeColor : "rgba(151,187,205,1)",
+															fillColor : "rgba(243,128,1,1)",
+															strokeColor : "rgba(49,69,146,1)",
 															pointColor : "rgba(151,187,205,1)",
 															pointStrokeColor : "#fff",
 															pointHighlightFill : "#fff",
@@ -827,6 +827,25 @@
 							});
 
 						});
+		function formatNumber(num) {
+			if (!num || num == 'NaN')
+				return '0';
+			if (num == 'Infinity')
+				return '&#x221e;';
+			num = num.toString().replace(/\$|\,/g, '');
+			if (isNaN(num))
+				num = "0";
+			sign = (num == (num = Math.abs(num)));
+			num = Math.floor(num * 100 + 0.50000000001);
+			cents = num % 100;
+			num = Math.floor(num / 100).toString();
+			if (cents < 10)
+				cents = "0" + cents;
+			for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
+				num = num.substring(0, num.length - (4 * i + 3)) + '.'
+						+ num.substring(num.length - (4 * i + 3));
+			return (((sign) ? '' : '-') + num );
+		}
 
 		function top10AudienciasPublicas(data, status, jqxhrObject) {
 			if (data) {
@@ -891,6 +910,7 @@
 							var cantidad = top10CompradorLicitaciones.cantidad;
 							var institucion = top10CompradorLicitaciones.nombreComprador;
 							var rutComprador = top10CompradorLicitaciones.rutComprador;
+							var monto = top10CompradorLicitaciones.monto;
 
 							$("#top10CompradorLicitaciones")
 									.append(
@@ -905,7 +925,10 @@
 													+ institucion
 													+ "</td>"
 													+ "<td class='column100 column5' data-column='column5'>"
-													+ rutComprador + "</td>"
+													+ rutComprador
+													+ "</td>"
+													+ "<td class='column100 column5' data-column='column5'>"
+													+ '$' + formatNumber(monto) + "</td>"
 													+ "</tr>");
 						});
 			}

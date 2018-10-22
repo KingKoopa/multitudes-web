@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.repository.impl;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,10 +98,13 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 
 		List<Top10CompradorLicitacionesDTO> top10CompradorLicitacionesLst = new ArrayList<>();
 
-		Query query = entityManager.createNativeQuery(
-				"select count(comprador_rut_unidad), comprador_rut_unidad, comprador_nombre_unidad\r\n"
-						+ "from licitacion_detalle  \r\n" + "group by comprador_rut_unidad \r\n"
-						+ "order by count(comprador_rut_unidad) desc limit 10;");
+		Query query = entityManager.createNativeQuery("select count(li.comprador_rut_unidad), li.comprador_rut_unidad,\r\n" + 
+				"li.comprador_nombre_unidad, sum(coalesce(le.adjudicacion_monto_unitario*le.adjudicacion_antidad, 0))\r\n" + 
+				"from licitacion_detalle li Join licitacion_detalle_licitacion_item ld\r\n" + 
+				"on (li.codigo_externo = ld.codigo_externo) Join licitacion_item le\r\n" + 
+				"on (ld.licitacion_item_id = le.id)\r\n" + 
+				"group by comprador_rut_unidad\r\n" + 
+				"order by count(comprador_rut_unidad) desc limit 10;");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
@@ -109,6 +113,7 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 			top10CompradorLicitacionesDTO.setCantidad(((BigInteger) obj[0]).intValue());
 			top10CompradorLicitacionesDTO.setRutComprador((String) obj[1]);
 			top10CompradorLicitacionesDTO.setNombreComprador((String) obj[2]);
+			top10CompradorLicitacionesDTO.setMonto(((BigDecimal) obj[3]).intValue());
 			top10CompradorLicitacionesLst.add(top10CompradorLicitacionesDTO);
 		}
 		return top10CompradorLicitacionesLst;
