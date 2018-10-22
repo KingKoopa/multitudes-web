@@ -49,16 +49,19 @@ public class Asistente implements Serializable {
 
 	@Column(name="representa_tipo")
 	private String representaTipo;
+	
+	@Column(name="representa_rut")
+	private String representaRut;
 
 	@Column(name="representante_legal")
 	private String representanteLegal;
 
 	//bi-directional many-to-one association to cargoActivo
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cargo_activo_id", nullable = false)
 	private CargoActivo cargoActivo;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "audiencia_detalle_asistente", joinColumns = {
 			@JoinColumn(name = "asistente_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "audiencia_detalle_id", nullable = false, updatable = false) })
@@ -153,6 +156,14 @@ public class Asistente implements Serializable {
 
 	public void setRepresentaTipo(String representaTipo) {
 		this.representaTipo = representaTipo;
+	}
+
+	public String getRepresentaRut() {
+		return representaRut;
+	}
+
+	public void setRepresentaRut(String representaRut) {
+		this.representaRut = representaRut;
 	}
 
 	public String getRepresentanteLegal() {

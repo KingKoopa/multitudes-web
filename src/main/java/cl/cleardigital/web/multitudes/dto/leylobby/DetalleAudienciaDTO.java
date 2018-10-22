@@ -23,6 +23,8 @@ public class DetalleAudienciaDTO implements Serializable
     private String cargo;
 
     private List<AsistenteDTO> asistentes;
+    
+    private List<MateriaDTO> materias;
 
     private String fecha_inicio;
 
@@ -120,7 +122,15 @@ public class DetalleAudienciaDTO implements Serializable
         this.asistentes = asistentes;
     }
 
-    public String getFecha_inicio ()
+    public List<MateriaDTO> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<MateriaDTO> materias) {
+		this.materias = materias;
+	}
+
+	public String getFecha_inicio ()
     {
         return fecha_inicio;
     }

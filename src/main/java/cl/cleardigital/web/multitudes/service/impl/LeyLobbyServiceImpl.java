@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import cl.cleardigital.web.multitudes.dto.dashboard.AudienciasPorMesDTO;
+import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPrivadasDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPublicasDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10CompradorLicitacionesDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10ProveedorLicitacionesDTO;
-import cl.cleardigital.web.multitudes.dto.dashboard.AudienciasPorMesDTO;
-import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPrivadasDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.InstitucionDetalleDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
@@ -28,10 +28,12 @@ import cl.cleardigital.web.multitudes.feign.client.LeyLobbyFeignClient;
 import cl.cleardigital.web.multitudes.model.leylobby.Asistente;
 import cl.cleardigital.web.multitudes.model.leylobby.AudienciaCabecera;
 import cl.cleardigital.web.multitudes.model.leylobby.AudienciaDetalle;
+import cl.cleardigital.web.multitudes.model.leylobby.AudienciaMateria;
 import cl.cleardigital.web.multitudes.model.leylobby.CargoActivo;
 import cl.cleardigital.web.multitudes.model.leylobby.InstitucionDetalle;
 import cl.cleardigital.web.multitudes.repository.leylobby.AsistenteRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.AudienciaDetalleRepository;
+import cl.cleardigital.web.multitudes.repository.leylobby.AudienciaMateriaRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.CabeceraAudienciaRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.CargoActivoRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.DashboardRepository;
@@ -64,6 +66,9 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 	@Autowired
 	private AudienciaDetalleRepository audienciaDetalleRepository;
 
+	@Autowired
+	private AudienciaMateriaRepository audienciaMateriaRepository;
+	
 	@Autowired
 	private DashboardRepository dashboardRepository;
 
@@ -185,6 +190,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 									asistente.setRepresentaGiro(asistenteDTO.getRepresenta().getGiro());
 									asistente.setRepresentaNaturaleza(asistenteDTO.getRepresenta().getNaturaleza());
 									asistente.setRepresentaNombre(asistenteDTO.getRepresenta().getNombre());
+									asistente.setRepresentaRut(asistenteDTO.getRepresenta().getPasaporte());//RUT
 									asistente.setRepresentanteLegal(
 											asistenteDTO.getRepresenta().getRepresentante_legal());
 									asistente.setRepresentaPais(asistenteDTO.getRepresenta().getPais());
@@ -192,12 +198,25 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 									asistenteRepository.save(asistente);
 									asistenteLst.add(asistente);
 								});
+								
+								//materias
+								List<AudienciaMateria> audienciaMateriaLst = new ArrayList<>();
+								detalleAudienciaDTO.getMaterias().stream().forEach(materiaDTO -> {
+									AudienciaMateria audienciaMateria = new AudienciaMateria();
+									audienciaMateria.setNombre(materiaDTO.getNombre());
+									audienciaMateriaRepository.save(audienciaMateria);
+									audienciaMateriaLst.add(audienciaMateria);
+									
+								});
+								
+								
 								// Poblar detalle audiencia:
 								AudienciaDetalle audienciaDetalle = new AudienciaDetalle();
 								audienciaDetalle.setInstitucionUrl(detalleAudienciaDTO.getInstitucion_url());
 								audienciaDetalle.setSujetoPasivoUrl(detalleAudienciaDTO.getSujeto_pasivo_url());
 								audienciaDetalle.setId(audienciaCabecera.getId());
 								audienciaDetalle.setAsistentes(asistenteLst);
+								audienciaDetalle.setMaterias(audienciaMateriaLst);
 								audienciaDetalleRepository.save(audienciaDetalle);
 							}
 						}

@@ -31,6 +31,12 @@ public class AudienciaDetalle implements Serializable {
 					@JoinColumn(name = "asistente_id", nullable = false, updatable = false) })
 	private List<Asistente> asistentes;
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "audiencia_detalle_materia", joinColumns = {
+			@JoinColumn(name = "audiencia_detalle_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "audiencia_materia_id", nullable = false, updatable = false) })
+	private List<AudienciaMateria> materias;
+	
 	public AudienciaDetalle() {
 	}
 
@@ -64,6 +70,14 @@ public class AudienciaDetalle implements Serializable {
 
 	public void setAsistentes(List<Asistente> asistentes) {
 		this.asistentes = asistentes;
+	}
+
+	public List<AudienciaMateria> getMaterias() {
+		return materias;
+	}
+
+	public void setMaterias(List<AudienciaMateria> materias) {
+		this.materias = materias;
 	}
 
 }

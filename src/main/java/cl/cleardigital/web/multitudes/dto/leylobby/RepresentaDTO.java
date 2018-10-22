@@ -20,6 +20,8 @@ public class RepresentaDTO implements Serializable
     private String directorio;
 
     private String naturaleza;
+    
+    private String pasaporte;
 
     public String getGiro ()
     {
@@ -101,7 +103,15 @@ public class RepresentaDTO implements Serializable
         this.naturaleza = naturaleza;
     }
 
-    @Override
+    public String getPasaporte() {
+		return pasaporte;
+	}
+
+	public void setPasaporte(String pasaporte) {
+		this.pasaporte = pasaporte;
+	}
+
+	@Override
     public String toString()
     {
         return "ClassPojo [giro = "+giro+", nombre = "+nombre+", pais = "+pais+", domicilio = "+domicilio+", tipo = "+tipo+", representante_legal = "+representante_legal+", directorio = "+directorio+", naturaleza = "+naturaleza+"]";
