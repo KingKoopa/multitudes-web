@@ -75,11 +75,13 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 
 		List<Top10AudienciasPrivadasDTO> top10AudienciasPrivadasLst = new ArrayList<>();
 
-		Query query = entityManager.createNativeQuery("select count(ad.id) as cantidad_audiencias "
-				+ ", asist.representa_nombre as nombre_proveedor " + "from audiencia_detalle ad "
-				+ "join audiencia_detalle_asistente ada on ada.audiencia_detalle_id = ad.id "
-				+ "join asistente asist on asist.id = ada.asistente_id " + "group by asist.representa_nombre "
-				+ "order by count(ad.id) desc " + "limit 10;");
+		Query query = entityManager.createNativeQuery("select count(ad.id) as cantidad_audiencias , \r\n" + 
+				"asist.representa_nombre as nombre_proveedor,\r\n" + 
+				"asist.representa_rut as representa_rut\r\n" + 
+				"from audiencia_detalle ad \r\n" + 
+				"join audiencia_detalle_asistente ada on ada.audiencia_detalle_id = ad.id \r\n" + 
+				"join asistente asist on asist.id = ada.asistente_id group by asist.representa_nombre \r\n" + 
+				"order by count(ad.id) desc limit 10;");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
@@ -87,6 +89,7 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 			Top10AudienciasPrivadasDTO top10AudienciasPrivadasDTO = new Top10AudienciasPrivadasDTO();
 			top10AudienciasPrivadasDTO.setCantidad(((BigInteger) obj[0]).intValue());
 			top10AudienciasPrivadasDTO.setProveedor((String) obj[1]);
+			top10AudienciasPrivadasDTO.setRutProveedor((String) obj[2]);
 			top10AudienciasPrivadasLst.add(top10AudienciasPrivadasDTO);
 		}
 		return top10AudienciasPrivadasLst;
