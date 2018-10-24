@@ -50,5 +50,4 @@ public class LeyLobbyController {
 		return new ResponseEntity<List<SujetoPasivoAudienciaDTO>>(pasivoDetailDTOLst, HttpStatus.OK);
 	}
 	
-
 }

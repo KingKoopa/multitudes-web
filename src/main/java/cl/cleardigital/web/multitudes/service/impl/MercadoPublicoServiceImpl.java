@@ -203,7 +203,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			for(LicitacionDetalle licitacionDetalle : licitacionDetalleLst) {
 				for(LicitacionItem items : licitacionDetalle.getItems()) {
 					if(items.getAdjudicacionAntidad() != null && items.getAdjudicacionMontoUnitario() != null) {
-						montoLicitado = items.getAdjudicacionAntidad() * items.getAdjudicacionMontoUnitario();
+						montoLicitado += items.getAdjudicacionAntidad() * items.getAdjudicacionMontoUnitario();
 					}
 				}
 				//tipos de licitacion:
@@ -261,7 +261,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 				
 					if(licitacionItem.getAdjudicacionAntidad() != null && licitacionItem.getAdjudicacionMontoUnitario() != null
 							&& licitacionItem.getAdjudicacionRutProveedor().equals(rutProveedor)) {
-						montoLicitado = licitacionItem.getAdjudicacionAntidad() * licitacionItem.getAdjudicacionMontoUnitario();
+						montoLicitado += licitacionItem.getAdjudicacionAntidad() * licitacionItem.getAdjudicacionMontoUnitario();
 					}
 				
 				//tipos de licitacion:
