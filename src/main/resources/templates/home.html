@@ -65,7 +65,6 @@
 <link rel="stylesheet" type="text/css" href="/css/tables/main.css">
 <link rel="stylesheet" type="text/css"
 	href="/css/tables/perfect-scrollbar.css">
-<link rel="stylesheet" href="/css/table.css">
 
 <script src="/js/Chart.min.js" async></script>
 <script src="/js/utils.js" async></script>
@@ -79,7 +78,7 @@
 
 .centrado {
 	color: white;
-	top: 50%;
+	top: 15%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	position: absolute;
@@ -129,7 +128,7 @@
 		</div>
 	</header>
 	<div id="myCarousel" class="carousel slide" data-ride="carousel"
-		style="width: 80%;">
+		style="width: 100%">
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 			<li data-target="#myCarousel" data-slide-to="1"></li>
@@ -140,8 +139,8 @@
 		<div class="carousel-inner">
 			<div class="item active">
 				<div class="contenedor">
-					<img src="/img/multitudes_images/Palabras.jpg" alt=""
-						style="width: 130%; height: 500px">
+					<img src="/img/multitudes_images/Palabras.jpg"
+						style="width: 130%; height: 477px">
 					<!--<div class="centrado">
 						<h3>
 							<span style="background-color: green;"><b>Todas las
@@ -153,8 +152,7 @@
 			</div>
 			<div class="item">
 				<div class="contenedor">
-					<img src="/img/multitudes_images/domino.jpg" alt=""
-						style="width: 100%; height: 500px">
+					<img src="/img/multitudes_images/domino.jpg" style="width: 116%;">
 					<div class="centrado">
 						<h3>
 							<span style="background-color: green;"><b>Datos</b><br>
@@ -166,24 +164,20 @@
 			</div>
 			<div class="item">
 				<div class="contenedor">
-					<img src="/img/multitudes_images/office.jpg" alt=""
-						style="width: 100%; height: 500px">
+					<img src="/img/multitudes_images/office.jpg" style="width: 116%;">
 					<div class="centrado">
-						<h3>
-							<span><b>Proveedores
-									representados en audiencias <br> Sujetos pasivos de Lobby
-									<br> Fechas de Audiencias <br> Temática de audiencias
-									<br> Lobbistas
+						<h3 style="color: black">
+							<span><b>Proveedores representados en audiencias <br>
+									Sujetos pasivos de Lobby <br> Fechas de Audiencias <br>
+									Temática de audiencias <br> Lobbistas
 							</b></span>
 						</h3>
 					</div>
 				</div>
-
 			</div>
 			<div class="item">
 				<div class="contenedor">
-					<img src="/img/multitudes_images/money.jpg" alt=""
-						style="width: 100%; height: 500px">
+					<img src="/img/multitudes_images/money.jpg" style="width: 116%;">
 					<div class="centrado">
 						<h3>
 							<span style="background-color: orange;"><b>Montos
@@ -196,12 +190,11 @@
 			</div>
 			<div class="item">
 				<div class="contenedor">
-					<img src="/img/multitudes_images/tie.jpg" alt=""
-						style="width: 100%; height: 500px">
+					<img src="/img/multitudes_images/tie.jpg" style="width: 116%;">
 					<div class="centrado">
 						<h3>
-							<span>Se un ciudadano <b>activo</b>,
-								participa y ayúdanos a transparentar
+							<span style="background-color: black;">Se un ciudadano <b>activo</b>, participa y ayúdanos
+								a transparentar
 							</span>
 						</h3>
 					</div>
@@ -217,7 +210,8 @@
 			class="sr-only">Siguiente</span>
 		</a>
 	</div>
-	<section class="section" style="background-color: #1a1b3336;">
+	<section class="section" style="background-color: #77848c;">
+		<!-- #1a1b3336 -->
 		<div class="container" style="width: 100%;">
 			<div class="row">
 				<div class="col-md-12">
@@ -274,7 +268,7 @@
 												<th class="column100" style="width: 5%">#</th>
 												<th class="column100" style="width: 5%">Cantidad</th>
 												<th class="column100" style="width: 55%">Proveedor</th>
-												<th class="column100 column5" data-column="column5">Rut</th>
+												<th class="column100">Rut</th>
 											</tr>
 										</thead>
 										<tbody></tbody>
@@ -292,7 +286,9 @@
 									<h3 class="title" align="center">Top 10 Licitadores</h3>
 								</div>
 								<div style="width: 100%;">
-									<canvas id="myBarChart" height="268"></canvas>
+									<h5><b><i>N° Licitaciones</i></b></h5>
+									<canvas id="myBarChart" height="233"></canvas>
+									<h5 align="center"><b><i>Rut Proveedor</i></b></h5>
 								</div>
 							</div>
 						</div>
@@ -335,7 +331,9 @@
 									<h3 class="title" align="center">Top 10 Licitaciones</h3>
 								</div>
 								<div style="width: 100%;">
-									<canvas id="myBarChart2" height="304"></canvas>
+								<h5><b><i>N° Licitaciones</i></b></h5>
+									<canvas id="myBarChart2" height="270px"></canvas>
+									<h5 align="center"><b><i>Rut Organismo</i></b></h5>
 								</div>
 							</div>
 						</div>
@@ -376,7 +374,8 @@
 										Mayores Audiencias</h3>
 								</div>
 								<div style="width: 100%;">
-									<canvas id="myBarChart3" height="273"></canvas>
+								<h5><b><i>N° Audiencias</i></b></h5>
+									<canvas id="myBarChart3" height="255"></canvas>
 								</div>
 							</div>
 						</div>
@@ -440,7 +439,9 @@
 									</h3>
 								</div>
 								<div style="width: 100%;">
-									<canvas id="myBarChart4" height="398"></canvas>
+								<h5><b><i>N° Audiencias</i></b></h5>
+									<canvas id="myBarChart4" height="363"></canvas>
+									<h5 align="center"><b><i>Rut Proveedor</i></b></h5>
 								</div>
 							</div>
 						</div>
