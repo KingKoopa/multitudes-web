@@ -16,7 +16,7 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 
 	private String nombreComprador;
 	private String rutComprador;
-	private Integer montoLicitado;
+	private Long montoLicitado;
 	private Integer sujetosPasivosCantidad = 0;
 	private Integer numeroAudiencias;
 	private Integer licitacionesPublicas;
@@ -56,10 +56,10 @@ public class SujetoPasivoCabeceraDTO implements Serializable{
 	public void setRutComprador(String rutComprador) {
 		this.rutComprador = rutComprador;
 	}
-	public Integer getMontoLicitado() {
+	public Long getMontoLicitado() {
 		return montoLicitado;
 	}
-	public void setMontoLicitado(Integer montoLicitado) {
+	public void setMontoLicitado(Long montoLicitado) {
 		this.montoLicitado = montoLicitado;
 	}
 	public Integer getSujetosPasivosCantidad() {

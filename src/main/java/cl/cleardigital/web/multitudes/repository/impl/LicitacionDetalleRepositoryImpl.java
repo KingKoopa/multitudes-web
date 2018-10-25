@@ -94,7 +94,7 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 	@SuppressWarnings("unchecked")
 	private String _getProveedoresAdjudicados(String codigoExterno){
 		Query query = entityManager.createNativeQuery("select  \n" + 
-				"COALESCE(concat(li.adjudicacion_nombre_proveedor,' / ',li.adjudicacion_rut_proveedor),'',concat(li.adjudicacion_nombre_proveedor,' / ',li.adjudicacion_rut_proveedor))\n" + 
+				"COALESCE(concat(li.adjudicacion_nombre_proveedor,' - ',li.adjudicacion_rut_proveedor),'',concat(li.adjudicacion_nombre_proveedor,'',li.adjudicacion_rut_proveedor, ''))\n" + 
 				"from licitacion_detalle ld\n" + 
 				"join licitacion_detalle_licitacion_item ldi on ldi.codigo_externo = ld.codigo_externo\n" + 
 				"join licitacion_item li on li.id = ldi.licitacion_item_id\n" + 
@@ -102,14 +102,14 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 				"group by ld.codigo_externo\n" + 
 				", ld.comprador_region_unidad\n" + 
 				", ld.comprador_nombre_usuario \n" + 
-				", concat(li.adjudicacion_nombre_proveedor,' / ',li.adjudicacion_rut_proveedor)"); 
+				", concat(li.adjudicacion_nombre_proveedor,' - ',li.adjudicacion_rut_proveedor)"); 
 		
 		List<String> objLst = query.getResultList();
 		List<String> proveedoresAdjudicados = new ArrayList<>();
 	    for(String obj: objLst){
 	    		proveedoresAdjudicados.add((String) obj);
 	    }
-		return StringUtils.join(proveedoresAdjudicados);
+		return proveedoresAdjudicados != null && !proveedoresAdjudicados.isEmpty() ? StringUtils.join(proveedoresAdjudicados).replace("[", "").replace("]", "") : "";
 	}
 	
 	@Override
@@ -149,7 +149,7 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 	@SuppressWarnings("unchecked")
 	private String _getCompradorOtorgante(String codigoExterno){
 		Query query = entityManager.createNativeQuery("select \n" + 
-				" COALESCE(concat(ld.comprador_nombre_organismo,' / ',ld.comprador_rut_unidad),'',concat(ld.comprador_nombre_organismo,' / ',ld.comprador_rut_unidad))\n" + 
+				" COALESCE(concat(ld.comprador_nombre_organismo,' - ',ld.comprador_rut_unidad),'',concat(ld.comprador_nombre_organismo,' / ',ld.comprador_rut_unidad))\n" + 
 				"from licitacion_detalle ld\n" + 
 				"where ld.codigo_externo = '"+ codigoExterno +"'"); 
 		

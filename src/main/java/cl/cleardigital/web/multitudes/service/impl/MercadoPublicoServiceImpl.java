@@ -195,7 +195,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 		List<LicitacionDetalle> licitacionDetalleLst =  licitacionDetalleRepository.findByCompradorRutUnidad(rutOrganismo);
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
 		if(licitacionDetalleLst != null && !licitacionDetalleLst.isEmpty()) {
-			Integer montoLicitado = 0;
+			Long montoLicitado = 0L;
 			sujetoPasivoCabeceraDTO.setNombreComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorNombreOrganismo());
 			sujetoPasivoCabeceraDTO.setRutComprador(licitacionDetalleLst.stream().findFirst().get().getCompradorRutUnidad());
 			List<SujetoPasivoCabeceraLicitacionesDTO> sujetoPasivoCabeceraLicitacionesDTOLst = new ArrayList<>();
@@ -226,7 +226,12 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			List<SujetoPasivoCabeceraLicitacionesDTO> newSujetoPasivoCabeceraLicitaciones = _populateSujetoPasivoCabeceraLicitaciones(result);
 			if(newSujetoPasivoCabeceraLicitaciones != null && !newSujetoPasivoCabeceraLicitaciones.isEmpty()) {
 		        sujetoPasivoCabeceraDTO.setCabecerasLicitacion(newSujetoPasivoCabeceraLicitaciones);
-		        sujetoPasivoCabeceraDTO.setLicitacionesPublicas(newSujetoPasivoCabeceraLicitaciones.size());
+		        sujetoPasivoCabeceraDTO.setLicitacionesPublicas(newSujetoPasivoCabeceraLicitaciones
+		        												  .stream()
+		        												  .filter(cabeceraLicitacion -> cabeceraLicitacion.getCantidad() > 0)
+		        												  .mapToInt(cabeceraLicitacion -> cabeceraLicitacion.getCantidad())
+		        												  .sum()
+		        												  );
 			}
 		
 		}
@@ -285,7 +290,11 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService{
 			List<SujetoActivoLicitacionesDTO> newSujetoActivoLicitacionesDTO = _populateSujetoActivoLicitaciones(result);
 			if(newSujetoActivoLicitacionesDTO != null && !newSujetoActivoLicitacionesDTO.isEmpty()) {
 				sujetoActivoCabeceraDTO.setSujetoLicitaciones(newSujetoActivoLicitacionesDTO);
-				sujetoActivoCabeceraDTO.setNumeroLicitaciones(newSujetoActivoLicitacionesDTO.size());
+				sujetoActivoCabeceraDTO.setNumeroLicitaciones(newSujetoActivoLicitacionesDTO
+														    .stream()
+														    .filter(cabeceraLicitacion -> cabeceraLicitacion.getCantidad() > 0)
+														    .mapToInt(cabeceraLicitacion -> cabeceraLicitacion.getCantidad())
+														    .sum());
 			}
 		
 		}
