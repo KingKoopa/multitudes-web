@@ -53,6 +53,16 @@
 <link rel="stylesheet" type="text/css"
 	href="/css/tables/perfect-scrollbar.css">
 
+<style type="text/css">
+@media screen and (max-width: 600px) {
+	table {
+		width: 130%;
+		border: black 1px solid;
+		display: block;
+		overflow: auto;
+	}
+}
+</style>
 </head>
 
 <body>
@@ -151,7 +161,8 @@
 								<li><span>Sujetos pasivos:</span> <span
 									th:text="${sujetoPasivoCabeceraDTO != null ? sujetoPasivoCabeceraDTO.sujetosPasivosCantidad : '0'}"></span>
 									<a id="btn_ver_sujetos_pasivos"
-									class="btn btn-primary btn-block" style="width: 25%; background-color: #002933;">Ver+</a></li>
+									class="btn btn-primary btn-block"
+									style="width: 25%; background-color: #002933;">Ver+</a></li>
 								<li>
 									<div class="table100 ver5 m-b-110"
 										id="sujetos_pasivos_detail_table" style="display: none;">
@@ -216,7 +227,8 @@
 								<li><span>Licitaciones adjudicadas:</span> <span
 									th:text="${sujetoPasivoCabeceraDTO != null ?  sujetoPasivoCabeceraDTO.licitacionesPublicas : '0'}"></span>
 									<a id="btn_ver_detalle_licitaciones"
-									class="btn btn-primary btn-block" style="width: 25%; background-color: #002933;">Ver+</a></li>
+									class="btn btn-primary btn-block"
+									style="width: 25%; background-color: #002933;">Ver+</a></li>
 								<li>
 									<div class="table100 ver5 m-b-110"
 										id="licitaciones_detail_table" style="display: none;">
