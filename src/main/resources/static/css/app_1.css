@@ -9252,7 +9252,7 @@ a.mdc-bg-lime-A700:focus {
 }
 
 .mdc-text-yellow {
-  color: #FFEB3B;
+  color: #002933;
 }
 
 a.mdc-text-yellow:hover,
@@ -9302,11 +9302,11 @@ a.mdc-text-yellow-300:focus {
 
 a.mdc-text-yellow-400:hover,
 a.mdc-text-yellow-400:focus {
-  color: #FFEB3B;
+  color: #002933;
 }
 
 .mdc-text-yellow-500 {
-  color: #FFEB3B;
+  color: #002933;
 }
 
 a.mdc-text-yellow-500:hover,
@@ -9387,7 +9387,7 @@ a.mdc-text-yellow-A700:focus {
 }
 
 .mdc-bg-yellow {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 
 a.mdc-bg-yellow:hover,
@@ -9437,11 +9437,11 @@ a.mdc-bg-yellow-300:focus {
 
 a.mdc-bg-yellow-400:hover,
 a.mdc-bg-yellow-400:focus {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 
 .mdc-bg-yellow-500 {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 
 a.mdc-bg-yellow-500:hover,
@@ -11178,7 +11178,7 @@ a.mdc-text-black-darker:focus {
 
 .form-group--light .form-group__bar:before,
 .form-group--light .form-group__bar:after {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 
 .form-group--light label {
@@ -11187,13 +11187,13 @@ a.mdc-text-black-darker:focus {
 
 .form-group--light .checkbox input:checked + .input-helper:before,
 .form-group--light .radio input:checked + .input-helper:before {
-  background-color: #FFEB3B;
-  border-color: #FFEB3B;
+  background-color: #002933;
+  border-color: #002933;
 }
 
 .form-group--light .checkbox .input-helper:before,
 .form-group--light .radio .input-helper:before {
-  border-color: #FFEB3B;
+  border-color: #002933;
 }
 
 .form-group--light .checkbox .input-helper:after,

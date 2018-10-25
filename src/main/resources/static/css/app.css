@@ -7471,7 +7471,7 @@ a.mdc-bg-lime-A700:focus {
   background-color: #88b700;
 }
 .mdc-text-yellow {
-  color: #FFEB3B;
+  color: #002933;
 }
 a.mdc-text-yellow:hover,
 a.mdc-text-yellow:focus {
@@ -7510,10 +7510,10 @@ a.mdc-text-yellow-300:focus {
 }
 a.mdc-text-yellow-400:hover,
 a.mdc-text-yellow-400:focus {
-  color: #FFEB3B;
+  color: #002933;
 }
 .mdc-text-yellow-500 {
-  color: #FFEB3B;
+  color: #002933;
 }
 a.mdc-text-yellow-500:hover,
 a.mdc-text-yellow-500:focus {
@@ -7576,7 +7576,7 @@ a.mdc-text-yellow-A700:focus {
   color: #ccab00;
 }
 .mdc-bg-yellow {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 a.mdc-bg-yellow:hover,
 a.mdc-bg-yellow:focus {
@@ -7615,10 +7615,10 @@ a.mdc-bg-yellow-300:focus {
 }
 a.mdc-bg-yellow-400:hover,
 a.mdc-bg-yellow-400:focus {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 .mdc-bg-yellow-500 {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 a.mdc-bg-yellow-500:hover,
 a.mdc-bg-yellow-500:focus {
@@ -8974,19 +8974,19 @@ a.mdc-text-black-darker:focus {
 }
 .form-group--light .form-group__bar:before,
 .form-group--light .form-group__bar:after {
-  background-color: #FFEB3B;
+  background-color: #002933;
 }
 .form-group--light label {
   color: #fff;
 }
 .form-group--light .checkbox input:checked + .input-helper:before,
 .form-group--light .radio input:checked + .input-helper:before {
-  background-color: #FFEB3B;
-  border-color: #FFEB3B;
+  background-color: #002933;
+  border-color: #002933;
 }
 .form-group--light .checkbox .input-helper:before,
 .form-group--light .radio .input-helper:before {
-  border-color: #FFEB3B;
+  border-color: #002933;
 }
 .form-group--light .checkbox .input-helper:after,
 .form-group--light .radio .input-helper:after {
@@ -10716,7 +10716,7 @@ a {
   z-index: 2;
 }
 .search__type > a {
-  background-color: #FFEB3B;
+  background-color: #002933;
   height: 100%;
   padding: 17px 0 0 19px;
   text-transform: uppercase;
@@ -10732,18 +10732,15 @@ a {
   color: #3e3e3e;
   font-size: 13px;
 }
-.search__type.open > a {
-  border-radius: 2px 0 0 0;
-}
+
 .search__type.open > a,
 .search__type > a:hover,
 .search__type .dropdown-menu {
-  background-color: #FDD835;
+  background-color: #002933;
 }
 .search__type .dropdown-menu {
   top: 50px;
-  border-radius: 0 0 2px 2px;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 10px #002933;
   min-width: 120px;
   width: 120px;
 }
@@ -10772,7 +10769,7 @@ a {
   font-weight: 500;
 }
 .search__type .dropdown-menu > div:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #002933;
 }
 .search__input {
   border: 0;
@@ -10837,7 +10834,7 @@ a {
   margin-left: 5px;
 }
 .my-location__location > a {
-  color: #FFEB3B;
+  color: #002933;
   font-size: 15px;
 }
 .my-location__location .dropdown-menu {

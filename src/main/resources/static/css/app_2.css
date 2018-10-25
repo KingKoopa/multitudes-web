@@ -355,7 +355,7 @@
 }
 
 .search__type > a {
-  background-color: #FFEB3B;
+  background-color: #002933;
   height: 100%;
   padding: 17px 0 0 19px;
   text-transform: uppercase;
@@ -379,7 +379,7 @@
 .search__type.open > a,
 .search__type > a:hover,
 .search__type .dropdown-menu {
-  background-color: #FDD835;
+  background-color: #002933;
 }
 
 .search__type .dropdown-menu {
@@ -418,7 +418,7 @@
 }
 
 .search__type .dropdown-menu > div:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #002933;
 }
 
 .search__input {
@@ -497,7 +497,7 @@
 }
 
 .my-location__location > a {
-  color: #FFEB3B;
+  color: #002933;
   font-size: 15px;
 }
 
