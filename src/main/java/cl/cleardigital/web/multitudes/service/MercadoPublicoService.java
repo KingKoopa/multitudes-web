@@ -20,7 +20,7 @@ public interface MercadoPublicoService {
 	
 	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo, java.sql.Date fechaDesde, java.sql.Date fechaHasta) throws Exception;
 	
-	public SujetoActivoCabeceraDTO getFichaSujetoActivo(String rutProveedor) throws Exception;
+	public SujetoActivoCabeceraDTO getFichaSujetoActivo(String rutOrganismo, java.sql.Date fechaDesde, java.sql.Date fechaHasta) throws Exception;
 
 	public List<LicitacionesAdjudicadasDetalleDTO> getDetalleLicitacionAdjudicada(String rutAdjudicado, String tipo) throws Exception;
 	

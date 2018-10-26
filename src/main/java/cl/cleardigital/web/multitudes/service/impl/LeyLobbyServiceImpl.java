@@ -288,9 +288,9 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 	}
 
 	@Override
-	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre) throws Exception {
+	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String rut, Date fechaDesde, Date fechaHasta) throws Exception {
 
-		List<SujetoActivoAudienciaDTO> activoDetalleLst = cabeceraAudienciaRepository.findByActivoAudiencias(nombre);
+		List<SujetoActivoAudienciaDTO> activoDetalleLst = cabeceraAudienciaRepository.findByActivoAudiencias(rut, fechaDesde, fechaHasta);
 
 		return activoDetalleLst;
 	}

@@ -104,11 +104,12 @@
 			</div>
 		</div>
 	</header>
-	<section class="section" style="background-image: url(/img/multitudes_images/back.jpg);">
+	<section class="section"
+		style="background-image: url(/img/multitudes_images/back.jpg);">
 		<div class="container">
 			<header class="section__title section__title-alt">
-				<h2 style="color:white;">Lobby + Compras</h2>
-				<small style="color:white;">Ficha Sujeto Activo</small> <br>
+				<h2 style="color: white;">Lobby + Compras</h2>
+				<small style="color: white;">Ficha Sujeto Activo</small> <br>
 
 				<form id="searcher_form"
 					th:action="@{/ficha-sujeto-activo-cabecera}" method="post">
@@ -124,11 +125,11 @@
 						</div>
 					</div>
 					<br>
-					<div style="width: 100%">
-						<label style="color:white;">Fecha Desde:</label> <input type="date" value="2015-07-01"
-							id="fechaDesde">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<label style="color:white;">Fecha Hasta:</label> <input type="date" value="2015-07-31"
-							id="fechaHasta">
+					<div>
+						<label Style="color: white;">Fecha Desde:</label> <input
+							type="date" value="2015-07-01" id="fechaDesde" name="fechaDesde">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label Style="color: white;">Fecha Hasta:</label> <input
+							type="date" value="2015-07-31" id="fechaHasta" name="fechaHasta">
 					</div>
 				</form>
 				<br>
@@ -157,13 +158,16 @@
 								<!-- <li><span>Tipo Proveedor:</span> <span th:text="${sujetoActivoCabeceraDTO != null ? sujetoActivoCabeceraDTO.tipoProveedor : ''}"></span></li> Falta Dato -->
 								<li><span></span></li>
 								<!-- Nº de audiencias -->
-								<li><span>Nº de audiencias:</span> <span>2</span> <a
-									id="btn_ver_detalle_audiencia"
-									class="btn btn-propio-2 btn-block" style="width: 25%; background-color: #002933;">Ver+</a></li>
+								<li><span>Nº de audiencias:</span> <span
+									th:text="${sujetoActivoCabeceraDTO != null ?  sujetoActivoCabeceraDTO.numeroAudiencias : '0'}"></span>
+									<a id="btn_ver_detalle_audiencia"
+									class="btn btn-propio-2 btn-block"
+									style="width: 25%; background-color: #002933;">Ver+</a></li>
 								<li>
 									<div class="table100 ver5 m-b-110" id="audiencias_detail_table"
 										style="display: none;">
-										<table data-vertable="ver5">
+										<table data-vertable="ver5"
+											th:if="${sujetoActivoCabeceraDTO != null}">
 											<thead>
 												<tr class="row100 head">
 													<th class="column100 column2" data-column="column2">Sujeto
@@ -175,32 +179,21 @@
 												</tr>
 											</thead>
 											<tbody>
-												<tr class="row100">
-													<td class="column100 column2" data-column="column2">ANTONIO
-														FRANCISCO BELMONTE SANCHEZ</td>
-													<td class="column100 column3" data-column="column3">01/01/2017</td>
-													<td class="column100 column4" data-column="column4">Informar
-														Estado de Avance de las Obras. Hospital de Antofagasta\ La
-														Serena - Vallenar</td>
-													<td class="column100 column5" data-column="column5">Elaboración,
-														dictación, modificación, denegación o rechazo de actos
-														administrativos, proyectos de ley y leyes.</td>
-													<td class="column100 column6" data-column="column6">Ministerio
-														Obras Públicas</td>
-												</tr>
-												<tr class="row100">
-													<td class="column100 column2" data-column="column2">ANTONIO
-														FRANCISCO BELMONTE SANCHEZ</td>
-													<td class="column100 column3" data-column="column3">05/05/2017</td>
-													<td class="column100 column4" data-column="column4">ESTADO
-														DE COMPRA DE TERRENO EN PADRE LAS CASAS POSTULACIÓN A
-														VIVIENDAS SOCIALES EN RENAICO</td>
-													<td class="column100 column5" data-column="column5">Elaboración,
-														dictación, modificación, denegación o rechazo de actos
-														administrativos, proyectos de ley y leyes.</td>
-													<td class="column100 column6" data-column="column6">Ministerio
-														de Obras Publicas</td>
-												</tr>
+												<th:block
+													th:each="audiencia : ${sujetoActivoCabeceraDTO.sujetosActivos}">
+													<tr class="row100">
+														<td th:text="${audiencia.sujetoActivo}"
+															class="column100 column2" data-column="column2"></td>
+														<td th:text="${audiencia.fecha}" class="column100 column3"
+															data-column="column3"></td>
+														<td th:text="${audiencia.tema}" class="column100 column4"
+															data-column="column4"></td>
+														<td th:text="${audiencia.materias}"
+															class="column100 column4" data-column="column4"></td>
+														<td th:text="${audiencia.organismo}"
+															class="column100 column4" data-column="column4"></td>
+													</tr>
+												</th:block>
 											</tbody>
 										</table>
 									</div>
@@ -209,7 +202,8 @@
 								<li><span>Nº de licitaciones que participó:</span> <span
 									th:text="${sujetoActivoCabeceraDTO != null ?  sujetoActivoCabeceraDTO.numeroLicitaciones : '0'}"></span>
 									<a id="btn_ver_detalle_licitaciones"
-									class="btn btn-propio-2 btn-block" style="width: 25%; background-color: #002933;">Ver+</a></li>
+									class="btn btn-propio-2 btn-block"
+									style="width: 25%; background-color: #002933;">Ver+</a></li>
 								<li>
 									<div id="licitaciones_detail_table"
 										class="table100 ver5 m-b-110" style="display: none;">

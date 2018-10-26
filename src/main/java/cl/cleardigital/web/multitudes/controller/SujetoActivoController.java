@@ -1,5 +1,7 @@
 package cl.cleardigital.web.multitudes.controller;
 
+import java.sql.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.service.MercadoPublicoService;
 
 
@@ -31,17 +34,20 @@ public class SujetoActivoController {
 	
 	@RequestMapping(path= {"ficha-sujeto-activo-cabecera"}, method = RequestMethod.POST)
 	public ModelAndView getSujetoActivoData(
-			@RequestParam(value="fiscalId", required=false) String fiscalId) throws Exception{
+			@RequestParam(value="fiscalId", required=false) String fiscalId
+			,@RequestParam(value="fechaDesde", required=false) Date fechaDesde
+			,@RequestParam(value="fechaHasta", required=false) Date fechaHasta) throws Exception{
 		
 		ModelAndView modelAndView = new ModelAndView("active-subject-list");
 		
 		SujetoActivoCabeceraDTO sujetoActivoCabeceraDTO = new SujetoActivoCabeceraDTO();
 		if(fiscalId != null) {
-			sujetoActivoCabeceraDTO = mercadoPublicoService.getFichaSujetoActivo(fiscalId);
+			sujetoActivoCabeceraDTO = mercadoPublicoService.getFichaSujetoActivo(fiscalId, fechaDesde, fechaHasta);
 		}
 		modelAndView.addObject("sujetoActivoCabeceraDTO", sujetoActivoCabeceraDTO);
 		return modelAndView;
 	}
+	
 	
 
 }

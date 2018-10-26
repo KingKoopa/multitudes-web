@@ -53,10 +53,12 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	{
 		return sujetosActivos;
 	}
+	
 		public List<SujetoActivoLicitacionesDTO> getSujetoLicitaciones() 
 	{
 		return sujetoLicitaciones;
 	}
+		
 		public Integer getNumeroLicitaciones()
 	{
 		return numeroLicitaciones;

@@ -10,7 +10,7 @@ public interface CabeceraAudienciaCustomRepository {
 	
 	public List<SujetoPasivoAudienciaDTO> findByPasivoAudiencias(String nombre, Date fechaDesde, Date fechaHasta)throws Exception;
 	
-	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String nombre)throws Exception;
+	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String rut, Date fechaDesde, Date fechaHasta)throws Exception;
 	
 	public Integer getCantidadSujetosActivos(Integer audienciaId)throws Exception;
 	
