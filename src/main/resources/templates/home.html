@@ -54,8 +54,6 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Page Loader JS -->
@@ -136,10 +134,13 @@
 			</div>
 		</div>
 	</header>
+	<!-- Carrousel 2 -->
+
+	<!--   -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel"
 		style="width: 100%">
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="0"></li>
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 			<li data-target="#myCarousel" data-slide-to="3"></li>
@@ -147,19 +148,6 @@
 		</ol>
 		<div class="carousel-inner">
 			<div class="item active">
-				<div class="contenedor">
-					<img src="/img/multitudes_images/Palabras.jpg"
-						style="width: 130%; height: 477px">
-					<!--<div class="centrado">
-						<h3>
-							<span style="background-color: green;"><b>Todas las
-									personas tienen derecho a incidir y defender sus intereses y
-									los de la comunidad como parte del ejercicio de la democracia.</b></span>
-						</h3>
-					</div>-->
-				</div>
-			</div>
-			<div class="item">
 				<div class="contenedor">
 					<img src="/img/multitudes_images/domino.jpg" style="width: 116%;">
 					<div class="centrado">
@@ -209,6 +197,12 @@
 					</div>
 				</div>
 			</div>
+			<div class="item">
+				<div class="contenedor">
+					<img src="/img/multitudes_images/palabras.jpg"
+						style="width: 116%; height: 477px;">
+				</div>
+			</div>
 		</div>
 		<a class="left carousel-control" href="#myCarousel" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left"></span> <span
@@ -219,7 +213,8 @@
 			class="sr-only">Siguiente</span>
 		</a>
 	</div>
-	<section class="section" style="background-color: #77848c; background-image: url(/img/multitudes_images/back.jpg);">
+	<section class="section"
+		style="background-color: #77848c; background-image: url(/img/multitudes_images/back.jpg);">
 		<!-- #1a1b3336 -->
 		<div class="container" style="width: 100%;">
 			<div class="row">
@@ -347,7 +342,7 @@
 									<h5>
 										<b><i>N° Licitaciones</i></b>
 									</h5>
-									<canvas id="myBarChart2" height="270px"></canvas>
+									<canvas id="myBarChart2" height="288px"></canvas>
 									<h5 align="center">
 										<b><i>Rut Organismo</i></b>
 									</h5>
