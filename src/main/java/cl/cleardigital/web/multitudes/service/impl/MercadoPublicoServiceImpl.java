@@ -93,7 +93,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 						String detalleLicitacion = null;
 						try {
 							detalleLicitacion = mercadoPublicoFeignClient
-									.getDetalleLicitacion(licitacionHeaderDTO.getCodigoExterno(),
+									.getDetalleLicitacion("744835-1010-L114",
 											"209E4884-27D6-4A45-9F68-CE247DECCF2F")
 									.getBody();
 						} catch (Exception e) {
@@ -165,7 +165,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 										: null);
 
 								licitacionDetalle.setCodigoEstado(licitacionDetailDTO.getCodigoEstado());
-								licitacionDetalle.setCodigoExterno(licitacionDetailDTO.getCodigoExterno());
+								licitacionDetalle.setCodigoExterno(licitacionDetailDTO.getCodigoExterno().trim());
 								licitacionDetalle.setCompradorCargoUsuario(licitacionDetailDTO.getComprador() != null
 										? licitacionDetailDTO.getComprador().getCargoUsuario()
 										: null);
