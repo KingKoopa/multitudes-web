@@ -56,7 +56,7 @@ public class LicitacionItem implements Serializable {
 	@Column(name="unidad_medida")
 	private String unidadMedida;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "licitacion_detalle_licitacion_item", joinColumns = {
 			@JoinColumn(name = "licitacion_item_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "codigo_externo", nullable = false, updatable = false) })

@@ -101,7 +101,7 @@ public class LicitacionDetalle implements Serializable {
 	@Column(name="nombre")
 	private String nombre;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "licitacion_detalle_licitacion_item", joinColumns = {
 			@JoinColumn(name = "codigo_externo", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "licitacion_item_id", nullable = false, updatable = false) })
