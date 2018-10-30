@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<!--[if IE 9 ]><html lang="es" class="ie9"><![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fundación Multitudes</title>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="icon" type="image/x-icon" href="/img/icono_multitudes.png" />
+<!-- JS file -->
+<script src="/js/jquery.easy-autocomplete.min.js"></script>
+
+<!-- Pagination -->
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+
+<script src="/js/paging.js"></script>
+<!-- CSS file -->
+<link rel="stylesheet" href="/js/easy-autocomplete.min.css" />
+<link rel="stylesheet" href="/css/style.css" />
+
+<!-- CSS Tables -->
+<link rel="stylesheet" type="text/css" href="/css/tables/main.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/tables/perfect-scrollbar.css">
+
+<!-- Site -->
+<link rel="stylesheet" href="/css/app_1.min.css">
+<link rel="stylesheet" href="/css/app_2.min.css">
+
+<!-- Page Loader JS -->
+<script src="/js/page-loader.min.js" async></script>
+
+<style type="text/css">
+.easy-autocomplete-container {
+	max-height: 160px;
+	overflow-y: scroll;
+}
+
+.TFtable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.TFtable td {
+	padding: 7px;
+	border: #4e95f4 1px solid;
+}
+/* provide some minimal visual accomodation for IE8 and below */
+.TFtable tr {
+	background: #b8d1f3;
+}
+/*  Define the background color for all the ODD background rows  */
+.TFtable tr:nth-child(odd) {
+	background: #b8d1f3;
+}
+/*  Define the background color for all the EVEN background rows  */
+.TFtable tr:nth-child(even) {
+	background: #dae5f4;
+}
+
+@media screen and (max-width: 600px) {
+	table {
+		width: 110%;
+		border: black 1px solid;
+		display: block;
+		overflow: auto;
+	}
+}
+</style>
+
+</head>
+
+<body>
+	<div id="page-loader">
+		<div class="page-loader__spinner"></div>
+	</div>
+	<header id="header">
+		<div class="header__main">
+			<div class="container">
+				<a class="logo" th:href="@{/}"> <img src="/img/logoFinal.png"
+					alt="" style="height: 50px; width: 150px;">
+					<div class="logo__text">
+						<span style="color: white;">Fundación Multitudes</span>
+					</div>
+				</a>
+				<div class="navigation-trigger visible-xs visible-sm"
+					data-rmd-action="block-open" data-rmd-target=".navigation">
+					<i class="zmdi zmdi-menu"></i>
+				</div>
+
+				<ul class="navigation">
+					<li class="visible-xs visible-sm"><a class="navigation__close"
+						data-rmd-action="navigation-close" href=""><i
+							class="zmdi zmdi-long-arrow-right"></i></a></li>
+
+					<li class="navigation__dropdown"><a
+						href="https://www.fundacionmultitudes.org/sobre-nosotros">Sobre
+							Nosotros</a></li>
+					<li class="navigation__dropdown"><a
+						th:href="@{/ficha-sujeto-pasivo}">Organismo Comprador</a></li>
+					<li class="navigation__dropdown"><a
+						th:href="@{/ficha-sujeto-activo}">Proveedor del Estado</a></li>
+					<!--<li class="navigation__dropdown"><a th:href="@{/dashboard}">Dashboard</a></li>-->
+				</ul>
+			</div>
+		</div>
+	</header>
+	<section class="section"
+		style="background-image: url(/img/multitudes_images/back.jpg);">
+		<div class="container">
+			<header class="section__title section__title-alt">
+				<h2 style="color: white;">Lobby + Compras</h2>
+				<small style="color: white;">Detalle de Licitaciones
+					Adjudicadas</small> <br>
+			</header>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="detail-info">
+							<ul class="detail-info__list clearfix" id="ull">
+								<!-- Sujetospasivos -->
+								<li>
+									<div class="table100 ver5 m-b-110" id="audiencias_detail_table"
+										style="display: none;">
+										<table data-vertable="ver5"
+											th:if="${sujetoActivoCabeceraDTO != null}"
+											style="width: 125%">
+											<thead>
+												<tr class="row100 head">
+													<th class="column100" style="width: 5%">Sujeto Activo</th>
+													<th class="column100" style="width: 7%">Fecha</th>
+													<th class="column100" style="width: 25%">Tema</th>
+													<th class="column100" style="width: 25%">Materias</th>
+													<th class="column100" style="width: 5%">Organismo</th>
+												</tr>
+											</thead>
+											<tbody>
+												<th:block
+													th:each="audiencia : ${sujetoActivoCabeceraDTO.sujetosActivos}">
+													<tr class="row100">
+														<td th:text="${audiencia.sujetoActivo}"
+															class="column100 column2" data-column="column2"></td>
+														<td th:text="${audiencia.fecha}" class="column100 column3"
+															data-column="column3"></td>
+														<td th:text="${audiencia.tema}" class="column100 column4"
+															data-column="column4"></td>
+														<td th:text="${audiencia.materias}"
+															class="column100 column4" data-column="column4"></td>
+														<td th:text="${audiencia.organismo}"
+															class="column100 column4" data-column="column4"></td>
+													</tr>
+												</th:block>
+											</tbody>
+										</table>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Listing Search -->
+	<button class="btn btn--action btn--circle hidden-md hidden-lg"
+		data-rmd-action="block-open" data-rmd-target="#inquire">
+		<i class="zmdi zmdi-phone"></i>
+	</button>
+	<footer id="footer">
+		<div class="container hidden-xs">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="footer__block">
+						<a class="logo clearfix" href="">
+							<div class="logo__text">
+								<span>Fundación Multitudes</span>
+							</div>
+						</a>
+						<address class="m-t-20 m-b-20 f-14">Román Díaz #445,
+							Providencia, Región Metropolitana</address>
+
+						<div class="f-20">+56 9 95090351</div>
+						<div class="f-14 m-t-5">contacto@fundacionmultitudes.org</div>
+
+						<div class="f-20 m-t-20">
+							<a href="" class="m-r-10"><i class="zmdi zmdi-google"></i></a> <a
+								href="" class="m-r-10"><i class="zmdi zmdi-facebook"></i></a> <a
+								href=""><i class="zmdi zmdi-twitter"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer__bottom">
+			<div class="container">
+				<span class="footer__copyright">© Fundación Multitudes</span> <a
+					href="https://www.fundacionmultitudes.org/sobre-nosotros"
+					target="_blank">Sobre Nosotros</a>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Site functions and actions -->
+	<script src="/js/app.min.js"></script>
+
+	<!-- Demo only -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyD_nanUpVqytOmHHfuW4htZsiLH7YUzJ1A"
+		async></script>
+	<script src="/js/demo/demo.js"></script>
+	<script src="/js/demo/maps/listing-detail-location-map.js"></script>
+	<script src="/js/demo/charts/line-chart.js"></script>
+
+
+
+	<script>
+		$(document).ready(function() {
+
+			//lista sujetos pasivos:
+			$("#btn_ver_sujetos_pasivos").click(function(e) {
+				if ($("#sujetos_pasivos_detail_table").is(':visible')) {
+					$("#sujetos_pasivos_detail_table").hide();
+					$("#btn_ver_sujetos_pasivos").text("Ver +");
+				} else {
+					$("#sujetos_pasivos_detail_table").show();
+					$("#btn_ver_sujetos_pasivos").text("Ver -");
+				}
+			});
+
+			//audiencias
+			$("#btn_ver_detalle_audiencia").click(function(e) {
+				if ($("#audiencias_detail_table").is(':visible')) {
+					$("#audiencias_detail_table").hide();
+					$("#btn_ver_detalle_audiencia").text("Ver +");
+				} else {
+					$("#audiencias_detail_table").show();
+					$("#btn_ver_detalle_audiencia").text("Ver -");
+				}
+			});
+
+			//Licitaciones:
+			$("#btn_ver_detalle_licitaciones").click(function(e) {
+				if ($("#licitaciones_detail_table").is(':visible')) {
+					$("#licitaciones_detail_table").hide();
+					$("#btn_ver_detalle_licitaciones").text("Ver +");
+				} else {
+					$("#licitaciones_detail_table").show();
+					$("#btn_ver_detalle_licitaciones").text("Ver -");
+				}
+			});
+
+			$('#mitable').paging({
+				limit : 10,
+				rowDisplayStyle : 'block',
+				activePage : 0,
+				rows : []
+			});
+		});
+	</script>
+
+	<script>
+		var options = {
+			url : function(phrase) {
+				return "http://localhost:9000/mercado-publico/search?rutUnidad="
+						+ phrase;
+			},
+			adjustWidth : false,
+			getValue : "displayableName",
+			minCharNumber : 3,
+			list : {
+				maxNumberOfElements : 13,
+				match : {
+					enabled : true
+				},
+				onChooseEvent : function() {
+					var selectedItemValue = $("#searchField")
+							.getSelectedItemData().rutProveedor;
+					$("#fiscalId").val(selectedItemValue);
+				}
+			}
+		};
+	</script>
+
+
+
+</body>
+
+</html>
