@@ -98,6 +98,8 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 			personActive.setTema((String) obj[2]);
 			personActive.setMaterias((String) obj[3]);
 			personActive.setOrganismo((String) obj[4]);
+			personActive.setCantidad((Integer) obj[5]);
+			personActive.setRemunerado((Boolean) obj[6]);
 			personActiveLst.add(personActive);
 		}
 

@@ -14,7 +14,22 @@ public class SujetoActivoAudienciaDTO implements Serializable{
 	private String tema;
 	private String materias;
 	private String organismo;
+	private Integer cantidad;
+	private Boolean remunerado;
 	
+	
+	public Integer getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
+	}
+	public Boolean getRemunerado() {
+		return remunerado;
+	}
+	public void setRemunerado(Boolean remunerado) {
+		this.remunerado = remunerado;
+	}
 	public String getSujetoActivo()
 	{
 		return sujetoActivo;
