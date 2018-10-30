@@ -74,27 +74,19 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 	public List<SujetoActivoAudienciaDTO> findByActivoAudiencias(String rut, Date fechaDesde, Date fechaHasta)
 			throws Exception {
 		Query query = entityManager
-				.createNativeQuery("select CONCAT(ca.sujeto_nombres, ' ', ca.sujeto_apellidos) as 'Nombre',\r\n" + 
-						"date_format(ac.fecha_inicio, '%d-%m-%Y') as 'Fecha', ac.referencia as 'Tema',\r\n" + 
-						"am.nombre as 'Materia', id.nombre as 'Organismo'\r\n" + 
-						"from cargo_activo ca\r\n" + 
-						"Join asistente asi on(ca.id = asi.cargo_activo_id)\r\n" + 
-						"Join audiencia_detalle_asistente ada \r\n" + 
-						"on (ada.asistente_id = asi.id)\r\n" + 
-						"Join audiencia_detalle ad \r\n" + 
-						"on (ad.id = ada.audiencia_detalle_id)\r\n" + 
-						"Join audiencia_detalle_materia adm \r\n" + 
-						"on (ad.id = adm.audiencia_detalle_id)\r\n" + 
-						"Join audiencia_materia am \r\n" + 
-						"on (am.id = adm.audiencia_materia_id)\r\n" + 
-						"Join audiencia_cabecera ac \r\n" + 
-						"on (ac.id= ad.id)\r\n" + 
-						"Join institucion_detalle id \r\n" + 
-						"on (id.id = ac.institucion_detail_id)\r\n" + 
-						"where asi.representa_rut = '"+rut+"'\r\n" + 
-						"and str_to_date(ac.fecha_inicio,'%Y-%m-%d') \r\n" + 
-						"between '"+fechaDesde+"' \r\n" + 
-						"and '"+fechaHasta+"';");
+				.createNativeQuery("select CONCAT(ca.sujeto_nombres, ' ', ca.sujeto_apellidos) as 'Nombre',\r\n"
+						+ "date_format(ac.fecha_inicio, '%d-%m-%Y') as 'Fecha', \r\n" + "ac.referencia as 'Tema',\r\n"
+						+ "am.nombre as 'Materia', id.nombre as 'Organismo', \r\n"
+						+ "COUNT(ad.id) as 'Audiencias', ca.remunerado\r\n"
+						+ "from cargo_activo ca Join asistente asi\r\n" + " on(ca.id = asi.cargo_activo_id)\r\n"
+						+ "Join audiencia_detalle_asistente ada \r\n" + "on (ada.asistente_id = asi.id)\r\n"
+						+ "Join audiencia_detalle ad \r\n" + "on (ad.id = ada.audiencia_detalle_id)\r\n"
+						+ "Join audiencia_detalle_materia adm\r\n" + " on (ad.id = adm.audiencia_detalle_id)\r\n"
+						+ "Join audiencia_materia am \r\n" + "on (am.id = adm.audiencia_materia_id)\r\n"
+						+ "Join audiencia_cabecera ac on (ac.id= ad.id)\r\n" + " Join institucion_detalle id \r\n"
+						+ "on (id.id = ac.institucion_detail_id)\r\n" + "where asi.representa_rut = '"+rut+"' \r\n"
+						+ "and str_to_date(ac.fecha_inicio,'%Y-%m-%d')\r\n"
+						+ "between '"+fechaDesde+"' and '"+fechaHasta+"'\r\n" + "group by Nombre, asi.representa_rut;");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();

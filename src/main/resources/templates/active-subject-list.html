@@ -164,10 +164,8 @@
 											<thead>
 												<tr class="row100 head">
 													<th class="column100" style="width: 5%">Sujeto Activo</th>
-													<th class="column100" style="width: 7%">Fecha</th>
-													<th class="column100" style="width: 25%">Tema</th>
-													<th class="column100" style="width: 25%">Materias</th>
-													<th class="column100" style="width: 5%">Organismo</th>
+													<th class="column100" style="width: 7%">Cantidad</th>
+													<th class="column100" style="width: 5%">Detalle</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -178,12 +176,8 @@
 															class="column100 column2" data-column="column2"></td>
 														<td th:text="${audiencia.fecha}" class="column100 column3"
 															data-column="column3"></td>
-														<td th:text="${audiencia.tema}" class="column100 column4"
-															data-column="column4"></td>
-														<td th:text="${audiencia.materias}"
-															class="column100 column4" data-column="column4"></td>
-														<td th:text="${audiencia.organismo}"
-															class="column100 column4" data-column="column4"></td>
+														<td class="column100 column4" data-column="column4"><i
+															class="fa fa-search"></i></td>
 													</tr>
 												</th:block>
 											</tbody>
