@@ -127,23 +127,22 @@
 							<ul class="detail-info__list clearfix" id="ull">
 								<!-- Sujetospasivos -->
 								<li>
-									<div class="table100 ver5 m-b-110" id="audiencias_detail_table"
-										style="display: none;">
+									<div class="table100 ver5 m-b-110" id="audiencias_detail_table">
 										<table data-vertable="ver5"
-											th:if="${sujetoActivoCabeceraDTO != null}"
+											th:if="${sujetoActivoAudienciaDTOLst != null}"
 											style="width: 125%">
 											<thead>
 												<tr class="row100 head">
 													<th class="column100" style="width: 5%">Sujeto Activo</th>
 													<th class="column100" style="width: 7%">Fecha</th>
-													<th class="column100" style="width: 25%">Tema</th>
-													<th class="column100" style="width: 25%">Materias</th>
+													<th class="column100" style="width: 35%">Tema</th>
+													<th class="column100" style="width: 10%">Materias</th>
 													<th class="column100" style="width: 5%">Organismo</th>
 												</tr>
 											</thead>
 											<tbody>
 												<th:block
-													th:each="audiencia : ${sujetoActivoCabeceraDTO.sujetosActivos}">
+													th:each="audiencia : ${sujetoActivoAudienciaDTOLst}">
 													<tr class="row100">
 														<td th:text="${audiencia.sujetoActivo}"
 															class="column100 column2" data-column="column2"></td>
@@ -264,31 +263,6 @@
 			});
 		});
 	</script>
-
-	<script>
-		var options = {
-			url : function(phrase) {
-				return "http://localhost:9000/mercado-publico/search?rutUnidad="
-						+ phrase;
-			},
-			adjustWidth : false,
-			getValue : "displayableName",
-			minCharNumber : 3,
-			list : {
-				maxNumberOfElements : 13,
-				match : {
-					enabled : true
-				},
-				onChooseEvent : function() {
-					var selectedItemValue = $("#searchField")
-							.getSelectedItemData().rutProveedor;
-					$("#fiscalId").val(selectedItemValue);
-				}
-			}
-		};
-	</script>
-
-
 
 </body>
 

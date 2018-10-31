@@ -164,6 +164,7 @@
 											<thead>
 												<tr class="row100 head">
 													<th class="column100" style="width: 5%">Sujeto Activo</th>
+													<th class="column100" style="width: 7%">Remunerado</th>
 													<th class="column100" style="width: 7%">Cantidad</th>
 													<th class="column100" style="width: 5%">Detalle</th>
 												</tr>
@@ -174,10 +175,15 @@
 													<tr class="row100">
 														<td th:text="${audiencia.sujetoActivo}"
 															class="column100 column2" data-column="column2"></td>
-														<td th:text="${audiencia.fecha}" class="column100 column3"
-															data-column="column3"></td>
-														<td class="column100 column4" data-column="column4"><i
-															class="fa fa-search"></i></td>
+														<td th:text="${audiencia.remunerado ? 'Si' : 'No'}"
+															class="column100 column3" data-column="column3"></td>
+														<td th:text="${audiencia.cantidad}"
+															class="column100 column3" data-column="column3"></td>
+														<td class="column100 column4" data-column="column4">
+															<a target="_blank"
+															th:href="@{/detalle-audiencia-sujeto-activo(fiscalId=${sujetoActivoCabeceraDTO.rutProveedor},(fechaDesde=${audiencia.fechaDesde}),(fechaHasta=${audiencia.fechaHasta}),(cargoActivoid=${audiencia.cargoId}))}"><i
+																class="fa fa-search"></i></a>
+														</td>
 													</tr>
 												</th:block>
 											</tbody>

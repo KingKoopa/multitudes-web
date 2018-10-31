@@ -77,16 +77,16 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 				.createNativeQuery("select CONCAT(ca.sujeto_nombres, ' ', ca.sujeto_apellidos) as 'Nombre',\r\n"
 						+ "date_format(ac.fecha_inicio, '%d-%m-%Y') as 'Fecha', \r\n" + "ac.referencia as 'Tema',\r\n"
 						+ "am.nombre as 'Materia', id.nombre as 'Organismo', \r\n"
-						+ "COUNT(ad.id) as 'Audiencias', ca.remunerado\r\n"
+						+ "COUNT(ad.id) as 'Audiencias', ca.remunerado, ca.id\r\n"
 						+ "from cargo_activo ca Join asistente asi\r\n" + " on(ca.id = asi.cargo_activo_id)\r\n"
 						+ "Join audiencia_detalle_asistente ada \r\n" + "on (ada.asistente_id = asi.id)\r\n"
 						+ "Join audiencia_detalle ad \r\n" + "on (ad.id = ada.audiencia_detalle_id)\r\n"
 						+ "Join audiencia_detalle_materia adm\r\n" + " on (ad.id = adm.audiencia_detalle_id)\r\n"
 						+ "Join audiencia_materia am \r\n" + "on (am.id = adm.audiencia_materia_id)\r\n"
 						+ "Join audiencia_cabecera ac on (ac.id= ad.id)\r\n" + " Join institucion_detalle id \r\n"
-						+ "on (id.id = ac.institucion_detail_id)\r\n" + "where asi.representa_rut = '"+rut+"' \r\n"
-						+ "and str_to_date(ac.fecha_inicio,'%Y-%m-%d')\r\n"
-						+ "between '"+fechaDesde+"' and '"+fechaHasta+"'\r\n" + "group by Nombre, asi.representa_rut;");
+						+ "on (id.id = ac.institucion_detail_id)\r\n" + "where asi.representa_rut = '" + rut + "' \r\n"
+						+ "and str_to_date(ac.fecha_inicio,'%Y-%m-%d')\r\n" + "between '" + fechaDesde + "' and '"
+						+ fechaHasta + "'\r\n" + "group by Nombre, asi.representa_rut;");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
@@ -98,8 +98,48 @@ public class CabeceraAudienciaRepositoryImpl implements CabeceraAudienciaCustomR
 			personActive.setTema((String) obj[2]);
 			personActive.setMaterias((String) obj[3]);
 			personActive.setOrganismo((String) obj[4]);
-			personActive.setCantidad((Integer) obj[5]);
-			personActive.setRemunerado((Boolean) obj[6]);
+			personActive.setCantidad(((BigInteger) obj[5]).intValue());
+			Integer remunerado = (Integer) obj[6];
+			Boolean resultado = (remunerado != null && remunerado == 1) ? Boolean.TRUE : Boolean.FALSE;
+			personActive.setRemunerado(resultado);
+			personActive.setCargoId(((Integer) obj[7]));
+			personActive.setFechaDesde(fechaDesde);
+			personActive.setFechaHasta(fechaHasta);
+
+			personActiveLst.add(personActive);
+		}
+
+		return personActiveLst;
+	}
+
+	@Override
+	public List<SujetoActivoAudienciaDTO> findByActivoAudienciasDetalle(String rut, Date fechaDesde, Date fechaHasta,
+			Integer cargoId) throws Exception {
+		Query query = entityManager
+				.createNativeQuery("select CONCAT(ca.sujeto_nombres, ' ', ca.sujeto_apellidos) as 'Nombre',\r\n"
+						+ "date_format(ac.fecha_inicio, '%d-%m-%Y') as 'Fecha', \r\n" + "ac.referencia as 'Tema',\r\n"
+						+ "am.nombre as 'Materia', id.nombre as 'Organismo'\r\n"
+						+ "from cargo_activo ca Join asistente asi\r\n" + " on(ca.id = asi.cargo_activo_id)\r\n"
+						+ "Join audiencia_detalle_asistente ada \r\n" + "on (ada.asistente_id = asi.id)\r\n"
+						+ "Join audiencia_detalle ad \r\n" + "on (ad.id = ada.audiencia_detalle_id)\r\n"
+						+ "Join audiencia_detalle_materia adm\r\n" + " on (ad.id = adm.audiencia_detalle_id)\r\n"
+						+ "Join audiencia_materia am \r\n" + "on (am.id = adm.audiencia_materia_id)\r\n"
+						+ "Join audiencia_cabecera ac on (ac.id= ad.id)\r\n" + " Join institucion_detalle id \r\n"
+						+ "on (id.id = ac.institucion_detail_id)\r\n"
+						+ "where asi.representa_rut = '"+rut+"' and\r\n" + "ca.id = "+cargoId+"\r\n"
+						+ "and str_to_date(ac.fecha_inicio,'%Y-%m-%d')\r\n" + "between '"+fechaDesde+"' and '"+fechaHasta+"';");
+
+		@SuppressWarnings("unchecked")
+		List<Object[]> objLst = query.getResultList();
+		List<SujetoActivoAudienciaDTO> personActiveLst = new ArrayList<>();
+		for (Object[] obj : objLst) {
+			SujetoActivoAudienciaDTO personActive = new SujetoActivoAudienciaDTO();
+			personActive.setSujetoActivo((String) obj[0]);
+			personActive.setFecha((String) obj[1].toString());
+			personActive.setTema((String) obj[2]);
+			personActive.setMaterias((String) obj[3]);
+			personActive.setOrganismo((String) obj[4]);
+
 			personActiveLst.add(personActive);
 		}
 

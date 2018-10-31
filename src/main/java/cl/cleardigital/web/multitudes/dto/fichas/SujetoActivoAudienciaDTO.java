@@ -1,6 +1,7 @@
 package cl.cleardigital.web.multitudes.dto.fichas;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -16,8 +17,29 @@ public class SujetoActivoAudienciaDTO implements Serializable{
 	private String organismo;
 	private Integer cantidad;
 	private Boolean remunerado;
+	private Date fechaDesde;
+	private Date fechaHasta;
+	private Integer cargoId;
 	
 	
+	public Date getFechaDesde() {
+		return fechaDesde;
+	}
+	public void setFechaDesde(Date fechaDesde) {
+		this.fechaDesde = fechaDesde;
+	}
+	public Date getFechaHasta() {
+		return fechaHasta;
+	}
+	public void setFechaHasta(Date fechaHasta) {
+		this.fechaHasta = fechaHasta;
+	}
+	public Integer getCargoId() {
+		return cargoId;
+	}
+	public void setCargoId(Integer cargoId) {
+		this.cargoId = cargoId;
+	}
 	public Integer getCantidad() {
 		return cantidad;
 	}

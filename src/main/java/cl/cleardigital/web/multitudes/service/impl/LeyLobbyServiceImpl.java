@@ -335,4 +335,15 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 		return top10ProveedorLicitacionesLst;
 	}
 
+	@Override
+	public List<SujetoActivoAudienciaDTO> getFichaSujetoActivoDetalle(String rut, Date fechaDesde, Date fechaHasta,
+			Integer cargoId) throws Exception {
+		
+		List<SujetoActivoAudienciaDTO> sujetoActivoAudienciaDTOLst = cabeceraAudienciaRepository.findByActivoAudienciasDetalle(rut, fechaDesde, fechaHasta, cargoId);
+		
+		return sujetoActivoAudienciaDTOLst;
+	}
+	
+
+
 }
