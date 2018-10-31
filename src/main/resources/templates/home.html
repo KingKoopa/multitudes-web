@@ -938,7 +938,7 @@
 							var cantidad = top10ProveedorLicitaciones.cantidad;
 							var institucion = top10ProveedorLicitaciones.nombreProveedor;
 							var rutProveedor = top10ProveedorLicitaciones.rutProveedor;
-							var monto = 0;
+							var monto = top10ProveedorLicitaciones.totalAdjudicado;
 
 							$("#top10ProveedorLicitaciones")
 									.append(
@@ -955,7 +955,7 @@
 													+ "<td class='column100 column5' data-column='column5'>"
 													+ rutProveedor + "</td>"
 													+ "<td class='column100 column5' data-column='column5'>"
-													+ monto + "</td>"
+													+  '$' + formatNumber(monto) + "</td>"
 													+ "</tr>");
 						});
 			}

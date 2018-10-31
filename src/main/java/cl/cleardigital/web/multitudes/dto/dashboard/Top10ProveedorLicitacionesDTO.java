@@ -8,7 +8,15 @@ public class Top10ProveedorLicitacionesDTO {
 	private Integer cantidad;
 	private String nombreProveedor;
 	private String rutProveedor;
+	private Integer totalAdjudicado;
 	
+	
+	public Integer getTotalAdjudicado() {
+		return totalAdjudicado;
+	}
+	public void setTotalAdjudicado(Integer totalAdjudicado) {
+		this.totalAdjudicado = totalAdjudicado;
+	}
 	public Integer getCantidad() {
 		return cantidad;
 	}

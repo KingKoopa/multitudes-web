@@ -127,10 +127,13 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 		List<Top10ProveedorLicitacionesDTO> top10ProveedorLicitacionesLst = new ArrayList<>();
 
 		Query query = entityManager.createNativeQuery(
-				"select count(adjudicacion_rut_proveedor), adjudicacion_rut_proveedor, adjudicacion_nombre_proveedor\n" + 
-				"from licitacion_item\n" + 
-				"group by adjudicacion_rut_proveedor\n" + 
-				"order by count(adjudicacion_rut_proveedor) desc limit 10");
+				"select count(adjudicacion_rut_proveedor), \r\n" + 
+				"adjudicacion_rut_proveedor, adjudicacion_nombre_proveedor,\r\n" + 
+				"sum(coalesce(adjudicacion_monto_unitario*adjudicacion_antidad, 0))\r\n" + 
+				"from licitacion_item \r\n" + 
+				"group by adjudicacion_rut_proveedor \r\n" + 
+				"order by count(adjudicacion_rut_proveedor) \r\n" + 
+				"desc limit 10;");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
@@ -139,6 +142,7 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 			top10ProveedorLicitacionesDTO.setCantidad(((BigInteger) obj[0]).intValue());
 			top10ProveedorLicitacionesDTO.setRutProveedor((String) obj[1]);
 			top10ProveedorLicitacionesDTO.setNombreProveedor((String) obj[2]);
+			top10ProveedorLicitacionesDTO.setTotalAdjudicado(((BigDecimal) obj[3]).intValue());
 			top10ProveedorLicitacionesLst.add(top10ProveedorLicitacionesDTO);
 		}
 		return top10ProveedorLicitacionesLst;
