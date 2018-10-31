@@ -51,13 +51,13 @@ th, td {
 }
 
 .row100.head th {
-  padding-top: 24px;
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .row100 td {
-  padding-top: 18px;
-  padding-bottom: 14px;
+  padding-top: 11px;
+  padding-bottom: 10px;
 }
 
 /*==================================================================
