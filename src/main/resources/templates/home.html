@@ -269,6 +269,7 @@
 												<th class="column100" style="width: 5%">Cantidad</th>
 												<th class="column100" style="width: 55%">Proveedor</th>
 												<th class="column100">Rut</th>
+												<th class="column100">Monto</th>
 											</tr>
 										</thead>
 										<tbody></tbody>
@@ -937,6 +938,7 @@
 							var cantidad = top10ProveedorLicitaciones.cantidad;
 							var institucion = top10ProveedorLicitaciones.nombreProveedor;
 							var rutProveedor = top10ProveedorLicitaciones.rutProveedor;
+							var monto = 0;
 
 							$("#top10ProveedorLicitaciones")
 									.append(
@@ -952,6 +954,8 @@
 													+ "</td>"
 													+ "<td class='column100 column5' data-column='column5'>"
 													+ rutProveedor + "</td>"
+													+ "<td class='column100 column5' data-column='column5'>"
+													+ monto + "</td>"
 													+ "</tr>");
 						});
 			}
