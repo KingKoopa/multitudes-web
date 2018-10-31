@@ -93,7 +93,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 						String detalleLicitacion = null;
 						try {
 							detalleLicitacion = mercadoPublicoFeignClient
-									.getDetalleLicitacion("744835-1010-L114",
+									.getDetalleLicitacion("4825-155-L114",
 											"209E4884-27D6-4A45-9F68-CE247DECCF2F")
 									.getBody();
 						} catch (Exception e) {
@@ -312,7 +312,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 			java.sql.Date fechaHasta) throws Exception {
 		log.info("MercadoPublicoService::getFichaSujetoPasivo()");
 
-		List<LicitacionItem> licitacionItemLst = licitacionItemRepository.findByAdjudicacionRutProveedor(rutProveedor);/*licitacionItemRepository.findByAdjudicacionRutProveedor(rutProveedor);*/
+		List<LicitacionItem> licitacionItemLst = licitacionItemRepository.findByAdjudicacionRutProveedor(rutProveedor);
 		SujetoActivoCabeceraDTO sujetoActivoCabeceraDTO = new SujetoActivoCabeceraDTO();
 		if (licitacionItemLst != null && !licitacionItemLst.isEmpty()) {
 			Integer montoLicitado = 0;
