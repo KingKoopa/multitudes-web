@@ -255,7 +255,6 @@
 				<div class="col-12 col-sm-6">
 					<div class="card">
 						<div class="detail-info">
-							<!-- Page length options -->
 							<div class="panel panel-flat">
 								<div class="panel-heading">
 									<h4 align="center" class="panel-title">Top 10 Licitadores
@@ -265,10 +264,10 @@
 									<table id="top10ProveedorLicitaciones">
 										<thead>
 											<tr class="row100 head">
-												<th class="column100" style="width: 5%">#</th>
-												<th class="column100" style="width: 5%">Cantidad</th>
-												<th class="column100" style="width: 55%">Proveedor</th>
-												<th class="column100">Rut</th>
+												<th class="column100" style="width: 2%">#</th>
+												<th class="column100" style="width: 2%">Cantidad</th>
+												<th class="column100" style="width: 50%">Proveedor</th>
+												<th class="column100" style="width: 25%">Rut</th>
 												<th class="column100">Monto</th>
 											</tr>
 										</thead>
@@ -290,7 +289,7 @@
 									<h5>
 										<b><i>N° Licitaciones</i></b>
 									</h5>
-									<canvas id="myBarChart" height="241"></canvas>
+									<canvas id="myBarChart" height="251"></canvas>
 									<h5 align="center">
 										<b><i>Rut Proveedor</i></b>
 									</h5>
@@ -339,7 +338,7 @@
 									<h5>
 										<b><i>N° Licitaciones</i></b>
 									</h5>
-									<canvas id="myBarChart2" height="288px"></canvas>
+									<canvas id="myBarChart2" height="251px"></canvas>
 									<h5 align="center">
 										<b><i>Rut Organismo</i></b>
 									</h5>
@@ -386,7 +385,7 @@
 									<h5>
 										<b><i>N° Audiencias</i></b>
 									</h5>
-									<canvas id="myBarChart3" height="255"></canvas>
+									<canvas id="myBarChart3" height="200"></canvas>
 								</div>
 							</div>
 						</div>
@@ -428,9 +427,9 @@
 									<table data-vertable="ver5" id="top10AudienciasPrivadas">
 										<thead>
 											<tr class="row100 head">
-												<th class="column100 column2" data-column="column2">#</th>
-												<th class="column100 column3" data-column="column3">Cantidad</th>
-												<th class="column100 column4" data-column="column4">Institucion</th>
+												<th class="column100" style="width: 2%">#</th>
+												<th class="column100" style="width: 2%">Cantidad</th>
+												<th class="column100" style="width: 50%">Institucion</th>
 												<th class="column100 column5" data-column="column5">Rut</th>
 											</tr>
 										</thead>
@@ -453,7 +452,7 @@
 									<h5>
 										<b><i>N° Audiencias</i></b>
 									</h5>
-									<canvas id="myBarChart4" height="363"></canvas>
+									<canvas id="myBarChart4" height="224"></canvas>
 									<h5 align="center">
 										<b><i>Rut Proveedor</i></b>
 									</h5>
@@ -938,7 +937,7 @@
 							var cantidad = top10ProveedorLicitaciones.cantidad;
 							var institucion = top10ProveedorLicitaciones.nombreProveedor;
 							var rutProveedor = top10ProveedorLicitaciones.rutProveedor;
-							var monto = 0;
+							var monto = top10ProveedorLicitaciones.totalAdjudicado;
 
 							$("#top10ProveedorLicitaciones")
 									.append(
@@ -955,7 +954,7 @@
 													+ "<td class='column100 column5' data-column='column5'>"
 													+ rutProveedor + "</td>"
 													+ "<td class='column100 column5' data-column='column5'>"
-													+ monto + "</td>"
+													+  '$' + formatNumber(monto) + "</td>"
 													+ "</tr>");
 						});
 			}
