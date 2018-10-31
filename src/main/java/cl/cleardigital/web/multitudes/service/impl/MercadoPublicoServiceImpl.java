@@ -441,4 +441,6 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 		return AdjudicacionDetalleLst;
 	}
 
+	
+
 }

@@ -32,6 +32,7 @@
 table {
   width: 100%;
   background-color: #fff;
+  border: black 1px solid;
 }
 
 th, td {

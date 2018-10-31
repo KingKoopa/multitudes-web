@@ -71,9 +71,7 @@
 		<div class="page-loader__spinner"></div>
 	</div>
 	<!-- End page loader -->
-
 	<header id="header">
-
 		<div class="header__main">
 			<div class="container">
 				<a class="logo" th:href="@{/}"> <img src="/img/logoFinal.png"
@@ -82,12 +80,10 @@
 						<span style="color: white;">Fundación Multitudes</span>
 					</div>
 				</a>
-
 				<div class="navigation-trigger visible-xs visible-sm"
 					data-rmd-action="block-open" data-rmd-target=".navigation">
 					<i class="zmdi zmdi-menu"></i>
 				</div>
-
 				<ul class="navigation">
 					<li class="visible-xs visible-sm"><a class="navigation__close"
 						data-rmd-action="navigation-close" href=""><i
@@ -104,11 +100,12 @@
 			</div>
 		</div>
 	</header>
-	<section class="section" style="background-image: url(/img/multitudes_images/back.jpg);">
+	<section class="section"
+		style="background-image: url(/img/multitudes_images/back.jpg);">
 		<div class="container">
 			<header class="section__title section__title-alt">
-				<h2 style="color:white;">Lobby + Compras</h2>
-				<small style="color:white;">Ficha Organismo Comprador</small> <br>
+				<h2 style="color: white;">Lobby + Compras</h2>
+				<small style="color: white;">Ficha Organismo Comprador</small> <br>
 				<form id="searcher_form"
 					th:action="@{/ficha-sujeto-pasivo-cabecera}" method="post">
 					<input type="hidden" name="fiscalId" id="fiscalId" />
@@ -127,21 +124,16 @@
 					</div>
 					<br>
 					<div>
-						<label Style="color:white;">Fecha Desde:</label> <input type="date" value="2015-07-01"
-							id="fechaDesde" name="fechaDesde">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<label Style="color:white;">Fecha Hasta:</label> <input type="date" value="2015-07-31"
-							id="fechaHasta" name="fechaHasta">
+						<label Style="color: white;">Fecha Desde:</label> <input
+							type="date" value="2015-07-01" id="fechaDesde" name="fechaDesde">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<label Style="color: white;">Fecha Hasta:</label> <input
+							type="date" value="2015-07-31" id="fechaHasta" name="fechaHasta">
 					</div>
 				</form>
-
-
 			</header>
-
-
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-
 						<div class="detail-info">
 							<div class="detail-info__header clearfix">
 								<strong
@@ -197,7 +189,6 @@
 										</table>
 									</div>
 								</li>
-
 								<!-- <li><span></span></li>
 									<li><span></span></li>
                                     
@@ -263,23 +254,18 @@
 										</table>
 									</div>
 								</li>
-
 							</ul>
-
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</section>
-
 	<!-- Listing Search -->
 	<button class="btn btn--action btn--circle hidden-md hidden-lg"
 		data-rmd-action="block-open" data-rmd-target="#inquire">
 		<i class="zmdi zmdi-phone"></i>
 	</button>
-
 	<footer id="footer">
 		<div class="container hidden-xs">
 			<div class="row">

@@ -9,6 +9,7 @@ import cl.cleardigital.web.multitudes.dto.dashboard.Top10AudienciasPublicasDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10CompradorLicitacionesDTO;
 import cl.cleardigital.web.multitudes.dto.dashboard.Top10ProveedorLicitacionesDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
+import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoCabeceraDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 
 
@@ -33,4 +34,6 @@ public interface LeyLobbyService {
 	public List<Top10CompradorLicitacionesDTO> getTop10CompradorLicitaciones() throws Exception;
 	
 	public List<Top10ProveedorLicitacionesDTO> getTop10ProveedorLicitaciones() throws Exception;
+	
+	public List<SujetoActivoAudienciaDTO> getFichaSujetoActivoDetalle(String rutOrganismo, java.sql.Date fechaDesde, java.sql.Date fechaHasta, Integer cargoId) throws Exception;
 }

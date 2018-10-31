@@ -89,9 +89,8 @@
 		display: block;
 		overflow: auto;
 	}
-	
 	h3 {
-	    font-size: 11px;
+		font-size: 11px;
 	}
 }
 </style>
@@ -270,6 +269,7 @@
 												<th class="column100" style="width: 5%">Cantidad</th>
 												<th class="column100" style="width: 55%">Proveedor</th>
 												<th class="column100">Rut</th>
+												<th class="column100">Monto</th>
 											</tr>
 										</thead>
 										<tbody></tbody>
@@ -290,7 +290,7 @@
 									<h5>
 										<b><i>N° Licitaciones</i></b>
 									</h5>
-									<canvas id="myBarChart" height="233"></canvas>
+									<canvas id="myBarChart" height="241"></canvas>
 									<h5 align="center">
 										<b><i>Rut Proveedor</i></b>
 									</h5>
@@ -465,7 +465,6 @@
 			</div>
 		</div>
 	</section>
-
 	<footer id="footer">
 		<div class="container hidden-xs">
 			<div class="row">
@@ -503,7 +502,6 @@
 		$(document)
 				.ready(
 						function() {
-
 							function drawBarChart4() {
 
 								// Add a helper to format timestamp data
@@ -940,6 +938,7 @@
 							var cantidad = top10ProveedorLicitaciones.cantidad;
 							var institucion = top10ProveedorLicitaciones.nombreProveedor;
 							var rutProveedor = top10ProveedorLicitaciones.rutProveedor;
+							var monto = 0;
 
 							$("#top10ProveedorLicitaciones")
 									.append(
@@ -955,6 +954,8 @@
 													+ "</td>"
 													+ "<td class='column100 column5' data-column='column5'>"
 													+ rutProveedor + "</td>"
+													+ "<td class='column100 column5' data-column='column5'>"
+													+ monto + "</td>"
 													+ "</tr>");
 						});
 			}

@@ -71,9 +71,7 @@
 		<div class="page-loader__spinner"></div>
 	</div>
 	<!-- End page loader -->
-
 	<header id="header">
-
 		<div class="header__main">
 			<div class="container">
 				<a class="logo" th:href="@{/}"> <img src="/img/logoFinal.png"
@@ -82,12 +80,10 @@
 						<span style="color: white;">Fundación Multitudes</span>
 					</div>
 				</a>
-
 				<div class="navigation-trigger visible-xs visible-sm"
 					data-rmd-action="block-open" data-rmd-target=".navigation">
 					<i class="zmdi zmdi-menu"></i>
 				</div>
-
 				<ul class="navigation">
 					<li class="visible-xs visible-sm"><a class="navigation__close"
 						data-rmd-action="navigation-close" href=""><i
@@ -133,10 +129,7 @@
 					</div>
 				</form>
 				<br>
-
 			</header>
-
-
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
@@ -148,7 +141,6 @@
 								<small
 									th:text="${sujetoActivoCabeceraDTO != null ? sujetoActivoCabeceraDTO.rutProveedor : ''}"></small>
 							</div>
-
 							<ul class="detail-info__list clearfix">
 								<li><span>Monto adjudicado:</span> <span
 									th:text="${sujetoActivoCabeceraDTO != null ? '$'+#numbers.formatDecimal(sujetoActivoCabeceraDTO.monto, 0, 'DEFAULT', 0, 'DEFAULT'): ''}"></span>
@@ -167,15 +159,14 @@
 									<div class="table100 ver5 m-b-110" id="audiencias_detail_table"
 										style="display: none;">
 										<table data-vertable="ver5"
-											th:if="${sujetoActivoCabeceraDTO != null}" style="width: 125%">
+											th:if="${sujetoActivoCabeceraDTO != null}"
+											style="width: 125%">
 											<thead>
 												<tr class="row100 head">
-													<th class="column100" style="width: 5%">Sujeto
-														Activo</th>
-													<th class="column100" style="width: 7%">Fecha</th>
-													<th class="column100" style="width: 25%">Tema</th>
-													<th class="column100" style="width: 25%">Materias</th>
-													<th class="column100" style="width: 5%">Organismo</th>
+													<th class="column100" style="width: 5%">Sujeto Activo</th>
+													<th class="column100" style="width: 7%">Remunerado</th>
+													<th class="column100" style="width: 7%">Cantidad</th>
+													<th class="column100" style="width: 5%">Detalle</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -184,14 +175,15 @@
 													<tr class="row100">
 														<td th:text="${audiencia.sujetoActivo}"
 															class="column100 column2" data-column="column2"></td>
-														<td th:text="${audiencia.fecha}" class="column100 column3"
-															data-column="column3"></td>
-														<td th:text="${audiencia.tema}" class="column100 column4"
-															data-column="column4"></td>
-														<td th:text="${audiencia.materias}"
-															class="column100 column4" data-column="column4"></td>
-														<td th:text="${audiencia.organismo}"
-															class="column100 column4" data-column="column4"></td>
+														<td th:text="${audiencia.remunerado ? 'Si' : 'No'}"
+															class="column100 column3" data-column="column3"></td>
+														<td th:text="${audiencia.cantidad}"
+															class="column100 column3" data-column="column3"></td>
+														<td class="column100 column4" data-column="column4">
+															<a target="_blank"
+															th:href="@{/detalle-audiencia-sujeto-activo(fiscalId=${sujetoActivoCabeceraDTO.rutProveedor},(fechaDesde=${audiencia.fechaDesde}),(fechaHasta=${audiencia.fechaHasta}),(cargoActivoid=${audiencia.cargoId}))}"><i
+																class="fa fa-search"></i></a>
+														</td>
 													</tr>
 												</th:block>
 											</tbody>
@@ -239,10 +231,8 @@
 								</li>
 
 							</ul>
-
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -287,7 +277,6 @@
 			</div>
 		</div>
 	</footer>
-
 	<!-- Older IE warning message -->
 	<!--[if lt IE 9]>
         <div class="ie-warning">
