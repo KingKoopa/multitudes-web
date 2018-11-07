@@ -52,9 +52,11 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 	@Override
 	public List<AudienciasPorMesDTO> getAudienciasPorMes() throws Exception {
 
-		Query query = entityManager.createNativeQuery(" select count(*) as 'Cantidad de Audiencias', \r\n"
-				+ "DATE_FORMAT(trim(fecha_inicio), '%b-%y') as 'Fecha' \r\n" + "from audiencia_cabecera\r\n"
-				+ "group by DATE_FORMAT(fecha_inicio, '%m') \r\n" + "order by fecha_inicio DESC ");
+		Query query = entityManager.createNativeQuery(" select count(*) as 'Cantidad de Audiencias',\r\n" + 
+				"DATE_FORMAT(trim(fecha_inicio), '%b-%y') as 'Fecha' \r\n" + 
+				"from audiencia_cabecera\r\n" + 
+				"group by DATE_FORMAT(fecha_inicio, '%b-%y')\r\n" + 
+				"order by fecha_inicio desc; ");
 
 		@SuppressWarnings("unchecked")
 		List<Object[]> objLst = query.getResultList();
