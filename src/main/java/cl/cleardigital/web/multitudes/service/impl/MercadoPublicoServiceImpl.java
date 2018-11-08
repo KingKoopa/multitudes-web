@@ -93,7 +93,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 						String detalleLicitacion = null;
 						try {
 							detalleLicitacion = mercadoPublicoFeignClient
-									.getDetalleLicitacion("4825-155-L114",
+									.getDetalleLicitacion(licitacionHeaderDTO.getCodigoExterno(),
 											"209E4884-27D6-4A45-9F68-CE247DECCF2F")
 									.getBody();
 						} catch (Exception e) {
@@ -440,7 +440,5 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 
 		return AdjudicacionDetalleLst;
 	}
-
-	
 
 }
