@@ -1,6 +1,7 @@
 package cl.cleardigital.web.multitudes.service.impl;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -54,6 +55,8 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 
 	@Autowired
 	private LeyLobbyServiceImpl leyLobbyServiceImpl;
+	
+	private SimpleDateFormat dateformatyyyyMMdd = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Override
 	public Boolean getLicitacionPorFecha(Date fechaDesde, Date fechaHasta) throws Exception {
@@ -257,8 +260,10 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 	public SujetoPasivoCabeceraDTO getFichaSujetoPasivo(String rutOrganismo, java.sql.Date fechaDesde,
 			java.sql.Date fechaHasta) throws Exception {
 		log.info("MercadoPublicoService::getFichaSujetoPasivo()");
+		String fechaDesdeStr = dateformatyyyyMMdd.format(fechaDesde);
+		String fechaHastaStr = dateformatyyyyMMdd.format(fechaHasta);
 		List<LicitacionDetalle> licitacionDetalleLst = licitacionDetalleRepository
-				.findByCompradorRutUnidad(rutOrganismo);
+				.findByCompradorRutUnidadAndFechaAdjudicacionBetween(rutOrganismo, fechaDesdeStr, fechaHastaStr);
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
 		if (licitacionDetalleLst != null && !licitacionDetalleLst.isEmpty()) {
 			Long montoLicitado = 0L;
@@ -311,8 +316,9 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 	public SujetoActivoCabeceraDTO getFichaSujetoActivo(String rutProveedor, java.sql.Date fechaDesde,
 			java.sql.Date fechaHasta) throws Exception {
 		log.info("MercadoPublicoService::getFichaSujetoPasivo()");
-
-		List<LicitacionItem> licitacionItemLst = licitacionItemRepository.findByAdjudicacionRutProveedor(rutProveedor);/*licitacionItemRepository.findByAdjudicacionRutProveedor(rutProveedor);*/
+		String fechaDesdeStr = dateformatyyyyMMdd.format(fechaDesde);
+		String fechaHastaStr = dateformatyyyyMMdd.format(fechaHasta);
+		List<LicitacionItem> licitacionItemLst = licitacionItemRepository.findByAdjudicacionRutProveedorAndLicitacionDetalleFechaAdjudicacionBetween(rutProveedor, fechaDesdeStr, fechaHastaStr);/*licitacionItemRepository.findByAdjudicacionRutProveedor(rutProveedor);*/
 		SujetoActivoCabeceraDTO sujetoActivoCabeceraDTO = new SujetoActivoCabeceraDTO();
 		if (licitacionItemLst != null && !licitacionItemLst.isEmpty()) {
 			Integer montoLicitado = 0;

@@ -1,5 +1,6 @@
 package cl.cleardigital.web.multitudes.repository.mercadopublico;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +12,7 @@ public interface LicitacionDetalleRepository extends JpaRepository<LicitacionDet
 	
 	public List<LicitacionDetalle> findDistinctByItemsAdjudicacionRutProveedor(String rutProveedor);
 	
-	public List<LicitacionDetalle> findByCompradorRutUnidad(String rutOrganismo);
+	public List<LicitacionDetalle> findByCompradorRutUnidadAndFechaAdjudicacionBetween(String rutOrganismo, String fechaDesde, String fechaHasta);
 	
 	public List<LicitacionItem> findByItemsAdjudicacionRutProveedor(String rutProveedor);
 }
