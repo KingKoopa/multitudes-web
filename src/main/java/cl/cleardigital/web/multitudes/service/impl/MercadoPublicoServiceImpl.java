@@ -321,7 +321,7 @@ public class MercadoPublicoServiceImpl implements MercadoPublicoService {
 		List<LicitacionItem> licitacionItemLst = licitacionItemRepository.findByAdjudicacionRutProveedorAndLicitacionDetalleFechaAdjudicacionBetween(rutProveedor, fechaDesdeStr, fechaHastaStr);/*licitacionItemRepository.findByAdjudicacionRutProveedor(rutProveedor);*/
 		SujetoActivoCabeceraDTO sujetoActivoCabeceraDTO = new SujetoActivoCabeceraDTO();
 		if (licitacionItemLst != null && !licitacionItemLst.isEmpty()) {
-			Integer montoLicitado = 0;
+			Long montoLicitado = 0L;
 			sujetoActivoCabeceraDTO
 					.setNombreProveedor(licitacionItemLst.stream().findFirst().get().getAdjudicacionNombreProveedor());
 			sujetoActivoCabeceraDTO
