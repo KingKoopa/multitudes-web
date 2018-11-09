@@ -8,6 +8,6 @@ import cl.cleardigital.web.multitudes.model.mercadopublico.LicitacionItem;
 
 public interface LicitacionItemRepository extends JpaRepository<LicitacionItem, Integer>{
 	
-	public List<LicitacionItem> findByAdjudicacionRutProveedor(String rutProveedor);
+	public List<LicitacionItem> findByAdjudicacionRutProveedorAndLicitacionDetalleFechaAdjudicacionBetween(String rutProveedor, String fechaDesde, String fechaHasta);
 
 }
