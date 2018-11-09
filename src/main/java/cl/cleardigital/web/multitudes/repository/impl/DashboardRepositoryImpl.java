@@ -118,7 +118,7 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 			top10CompradorLicitacionesDTO.setCantidad(((BigInteger) obj[0]).intValue());
 			top10CompradorLicitacionesDTO.setRutComprador((String) obj[1]);
 			top10CompradorLicitacionesDTO.setNombreComprador((String) obj[2]);
-			top10CompradorLicitacionesDTO.setMonto(((BigDecimal) obj[3]).intValue());
+			top10CompradorLicitacionesDTO.setMonto(((BigDecimal) obj[3]).longValue());
 			top10CompradorLicitacionesLst.add(top10CompradorLicitacionesDTO);
 		}
 		return top10CompradorLicitacionesLst;
@@ -144,7 +144,7 @@ public class DashboardRepositoryImpl implements DashboardCustomRepository {
 			top10ProveedorLicitacionesDTO.setCantidad(((BigInteger) obj[0]).intValue());
 			top10ProveedorLicitacionesDTO.setRutProveedor((String) obj[1]);
 			top10ProveedorLicitacionesDTO.setNombreProveedor((String) obj[2]);
-			top10ProveedorLicitacionesDTO.setTotalAdjudicado(((BigDecimal) obj[3]).intValue());
+			top10ProveedorLicitacionesDTO.setTotalAdjudicado(((BigDecimal) obj[3]).longValue());
 			top10ProveedorLicitacionesLst.add(top10ProveedorLicitacionesDTO);
 		}
 		return top10ProveedorLicitacionesLst;

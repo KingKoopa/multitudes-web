@@ -8,14 +8,14 @@ public class Top10CompradorLicitacionesDTO {
 	private Integer cantidad;
 	private String nombreComprador;
 	private String rutComprador;
-	private Integer monto;
+	private Long monto;
 	
 	
 	
-	public Integer getMonto() {
+	public Long getMonto() {
 		return monto;
 	}
-	public void setMonto(Integer monto) {
+	public void setMonto(Long monto) {
 		this.monto = monto;
 	}
 	public Integer getCantidad() {
