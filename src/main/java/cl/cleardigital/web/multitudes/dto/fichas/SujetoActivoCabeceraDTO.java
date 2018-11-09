@@ -16,7 +16,7 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	private String rutProveedor;
 	private String giro;
 	private String region;
-	private Integer monto;
+	private Long monto;
 	private String tipoProveedor;
 	private Integer numeroAudiencias;
 	private Integer numeroLicitaciones;
@@ -87,11 +87,11 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	{
 		this.giro = giro;
 	}
-	public Integer getMonto() 
+	public Long getMonto() 
 	{
 		return monto;
 	}
-	public void setMonto(Integer monto)
+	public void setMonto(Long monto)
 	{
 		this.monto = monto;
 	}

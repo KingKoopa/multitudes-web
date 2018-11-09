@@ -12,7 +12,7 @@ public class SujetoPasivoCabeceraLicitacionesDTO implements Serializable {
 	private String tipoLicitacion;
 	private String descripcion;
 	private Integer cantidad;
-	private Integer monto = 1000000;
+	private Long monto ;
 	
 	
 	public String getTipoLicitacion() {
@@ -115,10 +115,10 @@ public class SujetoPasivoCabeceraLicitacionesDTO implements Serializable {
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
 	}
-	public Integer getMonto() {
+	public Long getMonto() {
 		return monto;
 	}
-	public void setMonto(Integer monto) {
+	public void setMonto(Long monto) {
 		this.monto = monto;
 	}
 	
