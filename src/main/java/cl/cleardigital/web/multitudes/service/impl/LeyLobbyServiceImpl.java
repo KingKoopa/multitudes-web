@@ -143,6 +143,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 			if (audienciaCabeceraLst != null && !audienciaCabeceraLst.isEmpty()) {
 				audienciaCabeceraLst.stream().forEach(audienciaCabecera -> {
 					try {
+						Thread.sleep(1000);// esperamos 1 segs.
 						String detalleAudiencia = leyLobbyFeignClient.getAudienciaDetalle(audienciaCabecera.getId(),
 								"$2y$10$Svt0LXSqQFTNrBUvvkvsTOZRhZ.ERbz.hmFU3dLy5Cp").getBody();
 						if (detalleAudiencia != null) {
@@ -157,6 +158,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 									CargoActivo cargoActivo = cargoActivoRepository.findOne(cargoActivoId);
 									try {
 										if (cargoActivo == null) {// no existe el cargo
+											Thread.sleep(1000);// esperamos 1 segs.
 											cargoActivo = new CargoActivo();
 											String cargoActivoStr = leyLobbyFeignClient
 													.getCargoActivo(cargoActivoId,
