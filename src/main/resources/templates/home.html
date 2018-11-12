@@ -273,6 +273,10 @@
 										</thead>
 										<tbody></tbody>
 									</table>
+									<div id="loadingProveedorLicitaciones" align="center">
+										<img src="/img/multitudes_images/pacman.gif">
+										<h5 align="center">Cargando Datos...</h5>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -284,6 +288,10 @@
 							<div class="panel panel-flat">
 								<div class="panel-heading">
 									<h3 class="title" align="center">Top 10 Licitadores</h3>
+								</div>
+								<div id="loadingGrafico" align="center">
+									<img src="/img/multitudes_images/pacman.gif">
+									<h5 align="center">Cargando Datos...</h5>
 								</div>
 								<div style="width: 100%;">
 									<h5>
@@ -322,6 +330,10 @@
 										</thead>
 										<tbody></tbody>
 									</table>
+									<div id="loadingCompradorLicitaciones" align="center">
+										<img src="/img/multitudes_images/pacman.gif">
+										<h5 align="center">Cargando Datos...</h5>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -333,6 +345,10 @@
 							<div class="panel panel-flat">
 								<div class="panel-heading">
 									<h3 class="title" align="center">Top 10 Licitaciones</h3>
+								</div>
+								<div id="loadingGrafico2" align="center">
+									<img src="/img/multitudes_images/pacman.gif">
+									<h5 align="center">Cargando Datos...</h5>
 								</div>
 								<div style="width: 100%;">
 									<h5>
@@ -369,6 +385,10 @@
 									<tbody>
 									</tbody>
 								</table>
+								<div id="loadingAudienciasPublicas" align="center">
+									<img src="/img/multitudes_images/pacman.gif">
+									<h5 align="center">Cargando Datos...</h5>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -380,6 +400,10 @@
 								<div class="panel-heading">
 									<h3 class="title" align="center">Top 10 Organismos con
 										Mayores Audiencias</h3>
+								</div>
+								<div id="loadingGrafico3" align="center">
+									<img src="/img/multitudes_images/pacman.gif">
+									<h5 align="center">Cargando Datos...</h5>
 								</div>
 								<div style="width: 100%;">
 									<h5>
@@ -435,6 +459,10 @@
 										</thead>
 										<tbody></tbody>
 									</table>
+									<div id="loadingAudienciasPrivadas" align="center">
+										<img src="/img/multitudes_images/pacman.gif">
+										<h5 align="center">Cargando Datos...</h5>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -447,6 +475,10 @@
 								<div class="panel-heading">
 									<h3 class="title" align="center">Top 10 Lobby - Proveedor
 									</h3>
+								</div>
+								<div id="loadingGrafico4" align="center">
+									<img src="/img/multitudes_images/pacman.gif">
+									<h5 align="center">Cargando Datos...</h5>
 								</div>
 								<div style="width: 100%;">
 									<h5>
@@ -501,6 +533,48 @@
 		$(document)
 				.ready(
 						function() {
+
+							$(document).ajaxStart(function() {
+								$("#loadingProveedorLicitaciones").show();
+							}).ajaxStop(function() {
+								$("#loadingProveedorLicitaciones").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingCompradorLicitaciones").show();
+							}).ajaxStop(function() {
+								$("#loadingCompradorLicitaciones").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingAudienciasPublicas").show();
+							}).ajaxStop(function() {
+								$("#loadingAudienciasPublicas").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingAudienciasPrivadas").show();
+							}).ajaxStop(function() {
+								$("#loadingAudienciasPrivadas").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingGrafico").show();
+							}).ajaxStop(function() {
+								$("#loadingGrafico").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingGrafico2").show();
+							}).ajaxStop(function() {
+								$("#loadingGrafico2").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingGrafico3").show();
+							}).ajaxStop(function() {
+								$("#loadingGrafico3").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingGrafico4").show();
+							}).ajaxStop(function() {
+								$("#loadingGrafico4").hide();
+							});
+
 							function drawBarChart4() {
 
 								// Add a helper to format timestamp data
@@ -814,6 +888,8 @@
 								error : errorDialog
 							});
 
+							$('#proveedorLicitaciones').text('loading...');
+
 							$.ajax({
 								type : "GET",
 								url : "/dashboard/top-proveedor-licitaciones",
@@ -952,10 +1028,11 @@
 													+ institucion
 													+ "</td>"
 													+ "<td class='column100 column5' data-column='column5'>"
-													+ rutProveedor + "</td>"
+													+ rutProveedor
+													+ "</td>"
 													+ "<td class='column100 column5' data-column='column5'>"
-													+  '$' + formatNumber(monto) + "</td>"
-													+ "</tr>");
+													+ '$' + formatNumber(monto)
+													+ "</td>" + "</tr>");
 						});
 			}
 		}
