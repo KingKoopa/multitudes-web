@@ -23,6 +23,7 @@ import cl.cleardigital.web.multitudes.dto.fichas.SujetoActivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.fichas.SujetoPasivoAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.leylobby.CabeceraAudienciaDTO;
 import cl.cleardigital.web.multitudes.dto.leylobby.CargoActivoDTO;
+import cl.cleardigital.web.multitudes.dto.leylobby.CargoPasivoDTO;
 import cl.cleardigital.web.multitudes.dto.leylobby.DetalleAudienciaDTO;
 import cl.cleardigital.web.multitudes.feign.client.LeyLobbyFeignClient;
 import cl.cleardigital.web.multitudes.model.leylobby.Asistente;
@@ -31,6 +32,7 @@ import cl.cleardigital.web.multitudes.model.leylobby.AudienciaDetalle;
 import cl.cleardigital.web.multitudes.model.leylobby.AudienciaMateria;
 import cl.cleardigital.web.multitudes.model.leylobby.CargoActivo;
 import cl.cleardigital.web.multitudes.model.leylobby.InstitucionDetalle;
+import cl.cleardigital.web.multitudes.model.leylobby.SujetoPasivoDetalle;
 import cl.cleardigital.web.multitudes.repository.leylobby.AsistenteRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.AudienciaDetalleRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.AudienciaMateriaRepository;
@@ -38,6 +40,7 @@ import cl.cleardigital.web.multitudes.repository.leylobby.CabeceraAudienciaRepos
 import cl.cleardigital.web.multitudes.repository.leylobby.CargoActivoRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.DashboardRepository;
 import cl.cleardigital.web.multitudes.repository.leylobby.InstitucionDetalleRepository;
+import cl.cleardigital.web.multitudes.repository.leylobby.SujetoPasivoDetalleRepository;
 import cl.cleardigital.web.multitudes.service.LeyLobbyService;
 
 @Service("leyLobbyService")
@@ -72,6 +75,9 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 	@Autowired
 	private DashboardRepository dashboardRepository;
 
+	@Autowired
+	private SujetoPasivoDetalleRepository sujetoPasivoDetalleRepository;
+	
 	@Override
 	public Boolean getAudienciasHeaders() throws Exception {
 
@@ -182,6 +188,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 									} catch (Exception e) {
 										e.printStackTrace();
 									}
+									
 									Asistente asistente = new Asistente();
 									asistente.setApellidos(asistenteDTO.getApellidos());
 									asistente.setCargoActivo(cargoActivo);
@@ -201,6 +208,39 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 									asistenteLst.add(asistente);
 								});
 								
+								// Poblar los sujetos pasivos:
+								Integer pasivoId = Integer
+										.parseInt(detalleAudienciaDTO.getSujeto_pasivo_url().split("/")[6]);
+								SujetoPasivoDetalle sujetoPasivoDetalle = sujetoPasivoDetalleRepository.findOne(pasivoId);
+								try {
+									if (sujetoPasivoDetalle == null) {// no existe el sujeto pasivo
+										Thread.sleep(1000);// esperamos 1 segs.
+										sujetoPasivoDetalle = new SujetoPasivoDetalle();
+										String sujetoPasivoStr = leyLobbyFeignClient
+												.getCargoPasivo(pasivoId,
+														"$2y$10$Svt0LXSqQFTNrBUvvkvsTOZRhZ.ERbz.hmFU3dLy5Cp")
+												.getBody();
+										if (sujetoPasivoStr != null) {
+											
+											CargoPasivoDTO cargoPasivoDTO = gson.fromJson(sujetoPasivoStr,
+													CargoPasivoDTO.class);
+											sujetoPasivoDetalle.setId(pasivoId);
+											sujetoPasivoDetalle.setApellidos(cargoPasivoDTO.getApellidos());
+											sujetoPasivoDetalle.setCargo(cargoPasivoDTO.getCargo());
+											sujetoPasivoDetalle.setFechaInicio(cargoPasivoDTO.getFecha_inicio());
+											sujetoPasivoDetalle.setFechaTermino(cargoPasivoDTO.getFecha_termino());
+											sujetoPasivoDetalle.setInstitucionCodigo(cargoPasivoDTO.getInstitucion().getCodigo());
+											sujetoPasivoDetalle.setInstitucionNombre(cargoPasivoDTO.getInstitucion().getNombre());
+											sujetoPasivoDetalle.setNombres(cargoPasivoDTO.getNombres());
+											sujetoPasivoDetalleRepository.save(sujetoPasivoDetalle);
+											
+										}
+									}
+
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+								
 								//materias
 								List<AudienciaMateria> audienciaMateriaLst = new ArrayList<>();
 								detalleAudienciaDTO.getMaterias().stream().forEach(materiaDTO -> {
@@ -219,6 +259,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 								audienciaDetalle.setId(audienciaCabecera.getId());
 								audienciaDetalle.setAsistentes(asistenteLst);
 								audienciaDetalle.setMaterias(audienciaMateriaLst);
+								audienciaDetalle.setSujetoPasivo(sujetoPasivoDetalle);//sujeto pasivo
 								audienciaDetalleRepository.save(audienciaDetalle);
 							}
 						}

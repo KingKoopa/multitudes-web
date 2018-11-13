@@ -37,6 +37,11 @@ public class AudienciaDetalle implements Serializable {
 					@JoinColumn(name = "audiencia_materia_id", nullable = false, updatable = false) })
 	private List<AudienciaMateria> materias;
 	
+    //bi-directional many-to-one association to sujetoPasivoDetalle
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "sujeto_pasivo_id", nullable = false)
+	private SujetoPasivoDetalle sujetoPasivo;
+	
 	public AudienciaDetalle() {
 	}
 
@@ -78,6 +83,14 @@ public class AudienciaDetalle implements Serializable {
 
 	public void setMaterias(List<AudienciaMateria> materias) {
 		this.materias = materias;
+	}
+
+	public SujetoPasivoDetalle getSujetoPasivo() {
+		return sujetoPasivo;
+	}
+
+	public void setSujetoPasivo(SujetoPasivoDetalle sujetoPasivo) {
+		this.sujetoPasivo = sujetoPasivo;
 	}
 
 }

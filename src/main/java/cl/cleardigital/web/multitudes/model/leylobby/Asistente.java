@@ -60,6 +60,11 @@ public class Asistente implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cargo_activo_id", nullable = false)
 	private CargoActivo cargoActivo;
+//	
+//	//bi-directional many-to-one association to sujetoPasivoDetalle
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "sujeto_pasivo_id", nullable = false)
+//	private SujetoPasivoDetalle sujetoPasivo;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "audiencia_detalle_asistente", joinColumns = {
@@ -189,5 +194,15 @@ public class Asistente implements Serializable {
 	public void setAudienciasDetalle(List<AudienciaDetalle> audienciasDetalle) {
 		this.audienciasDetalle = audienciasDetalle;
 	}
+
+//	public SujetoPasivoDetalle getSujetoPasivo() {
+//		return sujetoPasivo;
+//	}
+//
+//	public void setSujetoPasivo(SujetoPasivoDetalle sujetoPasivo) {
+//		this.sujetoPasivo = sujetoPasivo;
+//	}
+
+	
 
 }

@@ -41,5 +41,11 @@ public interface LeyLobbyFeignClient {
 			@PathVariable(name="cargo_id") Integer cargoId
 			,@RequestHeader("api-key") String apiKey
 			) throws Exception;
+	
+	@RequestMapping(value = "/cargos-pasivos/{cargo_id}", method = RequestMethod.GET)
+	public ResponseEntity<String> getCargoPasivo(
+			@PathVariable(name="cargo_id") Integer cargoId
+			,@RequestHeader("api-key") String apiKey
+			) throws Exception;
 }
 

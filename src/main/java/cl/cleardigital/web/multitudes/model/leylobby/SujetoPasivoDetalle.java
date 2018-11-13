@@ -1,6 +1,8 @@
 package cl.cleardigital.web.multitudes.model.leylobby;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -17,33 +19,31 @@ public class SujetoPasivoDetalle implements Serializable {
 	@Column(name="apellidos")
 	private String apellidos;
 
-	@Column(name="audiencias_url")
-	private String audienciasUrl;
-
 	@Column(name="cargo")
 	private String cargo;
 
-	@Column(name="donativos_url")
-	private String donativosUrl;
+	@Column(name="fecha_inicio")
+	private String fechaInicio;
+
+	@Column(name="fecha_termino")
+	private String fechaTermino;
 
 	@Id
-	private Integer id;
+	private int id;
 
-	@Column(name="institucion_url")
-	private String institucionUrl;
+	@Column(name="institucion_codigo")
+	private String institucionCodigo;
 
-	@Column(name="nombres")
+	@Column(name="institucion_nombre")
+	private String institucionNombre;
+
+	@Column(name="nombres")	
 	private String nombres;
 
-	@Column(name="resolucion")
-	private String resolucion;
-
-	@Column(name="resolucion_url")
-	private String resolucionUrl;
-
-	@Column(name="viajes_url")
-	private String viajesUrl;
-
+	//bi-directional many-to-one association to Asistente
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "sujetoPasivo")
+	private List<AudienciaDetalle> AudienciaDetalle;
+	
 	public SujetoPasivoDetalle() {
 	}
 
@@ -55,14 +55,6 @@ public class SujetoPasivoDetalle implements Serializable {
 		this.apellidos = apellidos;
 	}
 
-	public String getAudienciasUrl() {
-		return this.audienciasUrl;
-	}
-
-	public void setAudienciasUrl(String audienciasUrl) {
-		this.audienciasUrl = audienciasUrl;
-	}
-
 	public String getCargo() {
 		return this.cargo;
 	}
@@ -71,28 +63,44 @@ public class SujetoPasivoDetalle implements Serializable {
 		this.cargo = cargo;
 	}
 
-	public String getDonativosUrl() {
-		return this.donativosUrl;
+	public String getFechaInicio() {
+		return this.fechaInicio;
 	}
 
-	public void setDonativosUrl(String donativosUrl) {
-		this.donativosUrl = donativosUrl;
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
 
-	public Integer getId() {
+	public String getFechaTermino() {
+		return this.fechaTermino;
+	}
+
+	public void setFechaTermino(String fechaTermino) {
+		this.fechaTermino = fechaTermino;
+	}
+
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getInstitucionUrl() {
-		return this.institucionUrl;
+	public String getInstitucionCodigo() {
+		return this.institucionCodigo;
 	}
 
-	public void setInstitucionUrl(String institucionUrl) {
-		this.institucionUrl = institucionUrl;
+	public void setInstitucionCodigo(String institucionCodigo) {
+		this.institucionCodigo = institucionCodigo;
+	}
+
+	public String getInstitucionNombre() {
+		return this.institucionNombre;
+	}
+
+	public void setInstitucionNombre(String institucionNombre) {
+		this.institucionNombre = institucionNombre;
 	}
 
 	public String getNombres() {
@@ -103,28 +111,11 @@ public class SujetoPasivoDetalle implements Serializable {
 		this.nombres = nombres;
 	}
 
-	public String getResolucion() {
-		return this.resolucion;
+	public List<AudienciaDetalle> getAudienciaDetalle() {
+		return AudienciaDetalle;
 	}
 
-	public void setResolucion(String resolucion) {
-		this.resolucion = resolucion;
+	public void setAudienciaDetalle(List<AudienciaDetalle> audienciaDetalle) {
+		AudienciaDetalle = audienciaDetalle;
 	}
-
-	public String getResolucionUrl() {
-		return this.resolucionUrl;
-	}
-
-	public void setResolucionUrl(String resolucionUrl) {
-		this.resolucionUrl = resolucionUrl;
-	}
-
-	public String getViajesUrl() {
-		return this.viajesUrl;
-	}
-
-	public void setViajesUrl(String viajesUrl) {
-		this.viajesUrl = viajesUrl;
-	}
-
 }
