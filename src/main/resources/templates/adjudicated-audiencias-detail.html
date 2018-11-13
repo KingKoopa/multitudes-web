@@ -135,7 +135,9 @@
 													<th class="column100" style="width: 5%">Sujeto Activo</th>
 													<th class="column100" style="width: 7%">Fecha</th>
 													<th class="column100" style="width: 35%">Tema</th>
-													<th class="column100" style="width: 10%">Materias</th>
+													<th class="column100" style="width: 20%">Materias</th>
+													<th class="column100" style="width: 10%">Sujeto Pasivo</th>
+													<th class="column100" style="width: 10%">Cargo</th>
 													<th class="column100" style="width: 8%">Organismo</th>
 												</tr>
 											</thead>
@@ -150,6 +152,10 @@
 														<td th:text="${audiencia.tema}" class="column100 column4"
 															data-column="column4"></td>
 														<td th:text="${audiencia.materias}"
+															class="column100 column4" data-column="column4"></td>
+															<td th:text="${audiencia.sujetoPasivo}"
+															class="column100 column4" data-column="column4"></td>
+															<td th:text="${audiencia.cargoPasivo}"
 															class="column100 column4" data-column="column4"></td>
 														<td th:text="${audiencia.organismo}"
 															class="column100 column4" data-column="column4"></td>

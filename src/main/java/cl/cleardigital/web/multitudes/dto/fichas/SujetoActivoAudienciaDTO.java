@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 public class SujetoActivoAudienciaDTO implements Serializable{
 	
 	private String sujetoActivo;
+	private String sujetoPasivo;
+	private String cargoPasivo;
 	private String fecha;
 	private String tema;
 	private String materias;
@@ -22,6 +24,19 @@ public class SujetoActivoAudienciaDTO implements Serializable{
 	private Integer cargoId;
 	
 	
+	
+	public String getSujetoPasivo() {
+		return sujetoPasivo;
+	}
+	public void setSujetoPasivo(String sujetoPasivo) {
+		this.sujetoPasivo = sujetoPasivo;
+	}
+	public String getCargoPasivo() {
+		return cargoPasivo;
+	}
+	public void setCargoPasivo(String cargoPasivo) {
+		this.cargoPasivo = cargoPasivo;
+	}
 	public Date getFechaDesde() {
 		return fechaDesde;
 	}
