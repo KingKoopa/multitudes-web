@@ -144,7 +144,7 @@
 
 							<ul class="detail-info__list clearfix">
 								<li><span>Monto Transado:</span> <span
-									th:text="${sujetoPasivoCabeceraDTO != null ? '$'+#numbers.formatDecimal(sujetoPasivoCabeceraDTO.montoLicitado, 0, 'DEFAULT', 0, 'DEFAULT') : ''}"></span>
+									th:text="${sujetoPasivoCabeceraDTO != null and sujetoPasivoCabeceraDTO.montoLicitado != null ? '$'+#numbers.formatDecimal(sujetoPasivoCabeceraDTO.montoLicitado, 0, 'DEFAULT', 0, 'DEFAULT') : ''}"></span>
 								</li>
 
 								<!-- Sujetos pasivos -->
@@ -398,6 +398,14 @@
 		document.getElementById("searchField").required = true;
 
 		$(document).ready(function() {
+			
+			var now = new Date();
+			var day = ("0" + now.getDate()).slice(-2);
+			var month = ("0" + (now.getMonth() + 1)).slice(-2);
+			var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+			var todayLast = now.getFullYear()-1+"-"+(month)+"-"+(day) ;
+			$('#fechaDesde').val(todayLast);
+			$('#fechaHasta').val(today);
 
 			//lista sujetos pasivos:
 			$("#btn_ver_sujetos_pasivos").click(function(e) {
