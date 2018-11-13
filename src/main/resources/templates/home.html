@@ -429,6 +429,10 @@
 										<i><b>N° Audiencias</b></i>
 									</h5>
 									<canvas id="myLineChart" height="80"></canvas>
+									<div id="loadingAudienciasPorMes" align="center">
+										<img src="/img/multitudes_images/pacman.gif">
+										<h5 align="center">Cargando Datos...</h5>
+									</div>
 									<h5 align="right">
 										<i><b>Mes-Año</b></i>
 									</h5>
@@ -577,6 +581,11 @@
 								$("#loadingGrafico4").show();
 							}).ajaxStop(function() {
 								$("#loadingGrafico4").hide();
+							});
+							$(document).ajaxStart(function() {
+								$("#loadingAudienciasPorMes").show();
+							}).ajaxStop(function() {
+								$("#loadingAudienciasPorMes").hide();
 							});
 
 							function drawBarChart4() {
@@ -880,6 +889,10 @@
 													var myLineChart = new Chart(
 															ctx).Line(tempData,
 															options);
+													
+													//Detener Pacman
+													$("#loadingAudienciasPorMes")
+															.hide();
 												});
 							}
 
