@@ -43,6 +43,8 @@ public class SujetoPasivoController {
 		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
 		if(fiscalId != null) {
 			sujetoPasivoCabeceraDTO = mercadoPublicoService.getFichaSujetoPasivo(fiscalId, fechaDesde, fechaHasta);
+			sujetoPasivoCabeceraDTO.setFechaDesde(fechaDesde);
+			sujetoPasivoCabeceraDTO.setFechaHasta(fechaHasta);
 		}
 		modelAndView.addObject("sujetoPasivoCabeceraDTO", sujetoPasivoCabeceraDTO);
 		return modelAndView;

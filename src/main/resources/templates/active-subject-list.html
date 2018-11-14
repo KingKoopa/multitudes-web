@@ -133,7 +133,12 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-
+						<a class="logo" target="_blank" style="color: white;"
+							th:if="${sujetoActivoCabeceraDTO != null}"
+							th:href="@{/api/sujeto-activo(fiscalId=${sujetoActivoCabeceraDTO.rutProveedor},(fechaDesde=${sujetoActivoCabeceraDTO.fechaDesde}),(fechaHasta=${sujetoActivoCabeceraDTO.fechaHasta}))}">
+							Link<img Style="float: right; margin-top: 8px; width: 35px;"
+							src="/img/multitudes_images/json.png" alt="Json">
+						</a>
 						<div class="detail-info">
 							<div class="detail-info__header clearfix">
 								<strong
@@ -378,38 +383,54 @@
 	<script>
 		document.getElementById("searchField").required = true;
 
-		$(document).ready(function() {
-			
-			var now = new Date();
-			var day = ("0" + now.getDate()).slice(-2);
-			var month = ("0" + (now.getMonth() + 1)).slice(-2);
-			var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-			var todayLast = now.getFullYear()-1+"-"+(month)+"-"+(day) ;
-			$('#fechaDesde').val(todayLast);
-			$('#fechaHasta').val(today);
+		$(document)
+				.ready(
+						function() {
 
-			//audiencias
-			$("#btn_ver_detalle_audiencia").click(function(e) {
-				if ($("#audiencias_detail_table").is(':visible')) {
-					$("#audiencias_detail_table").hide();
-					$("#btn_ver_detalle_audiencia").text("Ver +");
-				} else {
-					$("#audiencias_detail_table").show();
-					$("#btn_ver_detalle_audiencia").text("Ver -");
-				}
-			});
+							var now = new Date();
+							var day = ("0" + now.getDate()).slice(-2);
+							var month = ("0" + (now.getMonth() + 1)).slice(-2);
+							var today = now.getFullYear() + "-" + (month) + "-"
+									+ (day);
+							var todayLast = now.getFullYear() - 1 + "-"
+									+ (month) + "-" + (day);
+							$('#fechaDesde').val(todayLast);
+							$('#fechaHasta').val(today);
 
-			//Licitaciones:
-			$("#btn_ver_detalle_licitaciones").click(function(e) {
-				if ($("#licitaciones_detail_table").is(':visible')) {
-					$("#licitaciones_detail_table").hide();
-					$("#btn_ver_detalle_licitaciones").text("Ver +");
-				} else {
-					$("#licitaciones_detail_table").show();
-					$("#btn_ver_detalle_licitaciones").text("Ver -");
-				}
-			});
-		});
+							//audiencias
+							$("#btn_ver_detalle_audiencia").click(
+									function(e) {
+										if ($("#audiencias_detail_table").is(
+												':visible')) {
+											$("#audiencias_detail_table")
+													.hide();
+											$("#btn_ver_detalle_audiencia")
+													.text("Ver +");
+										} else {
+											$("#audiencias_detail_table")
+													.show();
+											$("#btn_ver_detalle_audiencia")
+													.text("Ver -");
+										}
+									});
+
+							//Licitaciones:
+							$("#btn_ver_detalle_licitaciones").click(
+									function(e) {
+										if ($("#licitaciones_detail_table").is(
+												':visible')) {
+											$("#licitaciones_detail_table")
+													.hide();
+											$("#btn_ver_detalle_licitaciones")
+													.text("Ver +");
+										} else {
+											$("#licitaciones_detail_table")
+													.show();
+											$("#btn_ver_detalle_licitaciones")
+													.text("Ver -");
+										}
+									});
+						});
 	</script>
 
 	<script>

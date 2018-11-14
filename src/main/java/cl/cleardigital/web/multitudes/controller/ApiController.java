@@ -7,6 +7,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,57 +26,43 @@ import cl.cleardigital.web.multitudes.service.MercadoPublicoService;
 
 
 @Controller
-@RequestMapping("/")
-public class SujetoActivoController {
+@RequestMapping("api")
+public class ApiController {
 	
 	@Autowired
 	private MercadoPublicoService mercadoPublicoService;
-	@Autowired
-	private LeyLobbyService leyLobbyService;
 	
 	private static final Logger log = LoggerFactory.getLogger(SujetoPasivoController.class);
 		
-	@RequestMapping(path= {"ficha-sujeto-activo"}, method = RequestMethod.GET)
-	public ModelAndView fichaSujetoActivo() throws Exception{
-		ModelAndView modelAndView = new ModelAndView("active-subject-list");
-		return modelAndView;
-	}
-	
-	@RequestMapping(path= {"ficha-sujeto-activo-cabecera"}, method = RequestMethod.POST)
-	public ModelAndView getSujetoActivoData(
+
+	@RequestMapping(value= {"sujeto-activo"}, method = RequestMethod.GET)
+	public ResponseEntity<?> getSujetoActivoData(
 			@RequestParam(value="fiscalId", required=false) String fiscalId
 			,@RequestParam(value="fechaDesde", required=false) Date fechaDesde
 			,@RequestParam(value="fechaHasta", required=false) Date fechaHasta) throws Exception{
-		
-		ModelAndView modelAndView = new ModelAndView("active-subject-list");
+	
 		
 		SujetoActivoCabeceraDTO sujetoActivoCabeceraDTO = new SujetoActivoCabeceraDTO();
 		if(fiscalId != null) {
 			sujetoActivoCabeceraDTO = mercadoPublicoService.getFichaSujetoActivo(fiscalId, fechaDesde, fechaHasta);
-			//Posible
-			sujetoActivoCabeceraDTO.setFechaDesde(fechaDesde);
-			sujetoActivoCabeceraDTO.setFechaHasta(fechaHasta);
 		}
-		modelAndView.addObject("sujetoActivoCabeceraDTO", sujetoActivoCabeceraDTO);
-		return modelAndView;
+
+		return new ResponseEntity<SujetoActivoCabeceraDTO>(sujetoActivoCabeceraDTO, HttpStatus.OK);
 	}
 	
-	@RequestMapping(path= {"detalle-audiencia-sujeto-activo"}, method = RequestMethod.GET)
-	public ModelAndView getSujetoActivoDetail(
+	@RequestMapping(value= {"sujeto-pasivo"}, method = RequestMethod.GET)
+	public ResponseEntity<?> getSujetoPasivoData(
 			@RequestParam(value="fiscalId", required=false) String fiscalId
-			,@RequestParam(value="fechaDesde", required=false) Date fechaDesde
-			,@RequestParam(value="fechaHasta", required=false) Date fechaHasta
-			,@RequestParam(value="cargoActivoid", required=false) Integer cargoActivoid) throws Exception{
-		
-		ModelAndView modelAndView = new ModelAndView("adjudicated-audiencias-detail");
-		
-		List<SujetoActivoAudienciaDTO> sujetoActivoAudienciaDTOLst = new ArrayList<>();
-		
+			,@RequestParam(value="fechaDesde", required=false)Date fechaDesde
+			,@RequestParam(value="fechaHasta", required=false) Date fechaHasta) throws Exception{
+
+		SujetoPasivoCabeceraDTO sujetoPasivoCabeceraDTO = new SujetoPasivoCabeceraDTO();
 		if(fiscalId != null) {
-			sujetoActivoAudienciaDTOLst = leyLobbyService.getFichaSujetoActivoDetalle(fiscalId, fechaDesde, fechaHasta, cargoActivoid);
+			sujetoPasivoCabeceraDTO = mercadoPublicoService.getFichaSujetoPasivo(fiscalId, fechaDesde, fechaHasta);
 		}
-		modelAndView.addObject("sujetoActivoAudienciaDTOLst", sujetoActivoAudienciaDTOLst);
-		return modelAndView;	
-	}
+
+		return new ResponseEntity<SujetoPasivoCabeceraDTO>(sujetoPasivoCabeceraDTO, HttpStatus.OK);
+	} 
+
 
 }
