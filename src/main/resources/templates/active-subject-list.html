@@ -133,8 +133,11 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<a class="logo" href="#"> <img Style="float: right; margin-top: 8px; width: 35px;"
-							src="/img/multitudes_images/json.png" alt="Json"> <!--  style="height: 50px; width: 150px;"-->
+						<a class="logo" target="_blank" style="color: white;"
+							th:if="${sujetoActivoCabeceraDTO != null}"
+							th:href="@{/api/sujeto-activo(fiscalId=${sujetoActivoCabeceraDTO.rutProveedor},(fechaDesde=${sujetoActivoCabeceraDTO.fechaDesde}),(fechaHasta=${sujetoActivoCabeceraDTO.fechaHasta}))}">
+							Link<img Style="float: right; margin-top: 8px; width: 35px;"
+							src="/img/multitudes_images/json.png" alt="Json">
 						</a>
 						<div class="detail-info">
 							<div class="detail-info__header clearfix">

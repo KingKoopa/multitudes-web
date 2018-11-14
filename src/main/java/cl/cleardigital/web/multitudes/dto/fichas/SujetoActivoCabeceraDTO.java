@@ -1,6 +1,7 @@
 package cl.cleardigital.web.multitudes.dto.fichas;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -23,10 +24,25 @@ public class SujetoActivoCabeceraDTO implements Serializable{
 	private String displayableName; //Nombre & Region Proveedor
 	private List<SujetoActivoAudienciaDTO> sujetosActivos;
 	private List<SujetoActivoLicitacionesDTO> sujetoLicitaciones;
+	private Date fechaDesde;
+	private Date fechaHasta;
 	
 	
-		
+	public Date getFechaDesde() {
+		return fechaDesde;
+	}
 
+	public void setFechaDesde(Date fechaDesde) {
+		this.fechaDesde = fechaDesde;
+	}
+
+	public Date getFechaHasta() {
+		return fechaHasta;
+	}
+
+	public void setFechaHasta(Date fechaHasta) {
+		this.fechaHasta = fechaHasta;
+	}
 
 	public String getDisplayableName() {
 		

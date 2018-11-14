@@ -50,6 +50,9 @@ public class SujetoActivoController {
 		SujetoActivoCabeceraDTO sujetoActivoCabeceraDTO = new SujetoActivoCabeceraDTO();
 		if(fiscalId != null) {
 			sujetoActivoCabeceraDTO = mercadoPublicoService.getFichaSujetoActivo(fiscalId, fechaDesde, fechaHasta);
+			//Posible
+			sujetoActivoCabeceraDTO.setFechaDesde(fechaDesde);
+			sujetoActivoCabeceraDTO.setFechaHasta(fechaHasta);
 		}
 		modelAndView.addObject("sujetoActivoCabeceraDTO", sujetoActivoCabeceraDTO);
 		return modelAndView;
