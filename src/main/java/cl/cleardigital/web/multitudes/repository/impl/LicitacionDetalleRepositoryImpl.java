@@ -170,21 +170,5 @@ public class LicitacionDetalleRepositoryImpl implements LicitacionDetalleCustomR
 		return personActiveLst;
 	}
 
-/*	@Override
-	public Long getMontoTransadoPorRutOrganismo(String rutProveedor) throws Exception {
-
-		Query query = entityManager
-				.createNativeQuery("Select coalesce(SUM(li.adjudicacion_antidad * li.adjudicacion_monto_unitario), 0) \r\n" + 
-						"from licitacion_detalle ld  Join licitacion_detalle_licitacion_item lu \r\n" + 
-						"on (lu.codigo_externo = ld.codigo_externo)\r\n" + 
-						"Join licitacion_item li on (li.id = lu.licitacion_item_id)\r\n" + 
-						"where comprador_rut_unidad = '"+rutProveedor+"' ");
-
-		@SuppressWarnings("unchecked")
-		Long montoTransado = (Long) query.getSingleResult();
-
-
-		return montoTransado;
-	}*/
 
 }
