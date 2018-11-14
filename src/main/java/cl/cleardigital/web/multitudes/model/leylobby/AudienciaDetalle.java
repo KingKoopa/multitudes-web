@@ -39,7 +39,7 @@ public class AudienciaDetalle implements Serializable {
 	
     //bi-directional many-to-one association to sujetoPasivoDetalle
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "sujeto_pasivo_id", nullable = false)
+	@JoinColumn(name = "sujeto_pasivo_id", nullable = true)
 	private SujetoPasivoDetalle sujetoPasivo;
 	
 	public AudienciaDetalle() {

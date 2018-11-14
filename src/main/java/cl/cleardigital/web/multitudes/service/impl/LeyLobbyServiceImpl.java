@@ -150,6 +150,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 				audienciaCabeceraLst.stream().forEach(audienciaCabecera -> {
 					try {
 						Thread.sleep(1000);// esperamos 1 segs.
+						log.info("*AUDIENCIA ID: {}*", audienciaCabecera.getId());
 						String detalleAudiencia = leyLobbyFeignClient.getAudienciaDetalle(audienciaCabecera.getId(),
 								"$2y$10$Svt0LXSqQFTNrBUvvkvsTOZRhZ.ERbz.hmFU3dLy5Cp").getBody();
 						if (detalleAudiencia != null) {
@@ -211,6 +212,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 								// Poblar los sujetos pasivos:
 								Integer pasivoId = Integer
 										.parseInt(detalleAudienciaDTO.getSujeto_pasivo_url().split("/")[6]);
+								log.info("*PASIVO ID: {}*", pasivoId);
 								SujetoPasivoDetalle sujetoPasivoDetalle = sujetoPasivoDetalleRepository.findOne(pasivoId);
 								try {
 									if (sujetoPasivoDetalle == null) {// no existe el sujeto pasivo
@@ -239,6 +241,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 
 								} catch (Exception e) {
 									e.printStackTrace();
+									log.info("{}", e.getMessage());
 								}
 								
 								//materias
@@ -259,7 +262,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 								audienciaDetalle.setId(audienciaCabecera.getId());
 								audienciaDetalle.setAsistentes(asistenteLst);
 								audienciaDetalle.setMaterias(audienciaMateriaLst);
-								audienciaDetalle.setSujetoPasivo(sujetoPasivoDetalle);//sujeto pasivo
+								audienciaDetalle.setSujetoPasivo(sujetoPasivoDetalle.getId() != 0 ? sujetoPasivoDetalle : null);//sujeto pasivo
 								audienciaDetalleRepository.save(audienciaDetalle);
 							}
 						}
