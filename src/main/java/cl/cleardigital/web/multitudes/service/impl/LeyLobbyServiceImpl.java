@@ -262,7 +262,7 @@ public class LeyLobbyServiceImpl implements LeyLobbyService {
 								audienciaDetalle.setId(audienciaCabecera.getId());
 								audienciaDetalle.setAsistentes(asistenteLst);
 								audienciaDetalle.setMaterias(audienciaMateriaLst);
-								audienciaDetalle.setSujetoPasivo(sujetoPasivoDetalle.getId() != 0 ? sujetoPasivoDetalle : null);//sujeto pasivo
+								audienciaDetalle.setSujetoPasivo(sujetoPasivoDetalle != null && sujetoPasivoDetalle.getId() != 0 ? sujetoPasivoDetalle : null);//sujeto pasivo
 								audienciaDetalleRepository.save(audienciaDetalle);
 							}
 						}
